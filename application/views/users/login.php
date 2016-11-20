@@ -3,7 +3,7 @@
 <?php echo form_open('users/login'); ?>
     <fieldset>
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="login" placeholder="Username/Email/Phone №" type="text"/>
+            <input autocomplete="off" autofocus class="form-control" name="login" placeholder="Email" type="text"/>
         </div>
         <div class="form-group">
             <input class="form-control" name="password" placeholder="Password" type="password"/>

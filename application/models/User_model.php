@@ -1,10 +1,7 @@
 <?php
 class User_model extends Base_model {
     
-    public function set_user($id = NULL)
-    {
-        
-        date_default_timezone_set('Europe/Kiev');
+    public function set_user($id = NULL){
         
         //getting array of entered data
         $data['username'] = $this->input->post('username');
@@ -14,6 +11,7 @@ class User_model extends Base_model {
         if ($id === NULL)
         {
             //inserting user if it's not exists
+            date_default_timezone_set('Europe/Kiev');
             $data['hash'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
             $data['joindate'] = date("Y-m-d H:i:s");
             return $this->db->insert('users', $data);
@@ -40,7 +38,13 @@ class User_model extends Base_model {
     */
     
     public function login($data){
-        $row = $this->get_records($data['login'], 'username');
+        $row = $this->get_records($data['login'], 'email');
+        
+        if ($row == NULL)
+        {
+            //user not exists
+            return 1;
+        }
         
         if (password_verify($data['pass'], $row['hash']))
         {
@@ -50,6 +54,11 @@ class User_model extends Base_model {
                 'username'  => $row['username'],
                 'logged'    => TRUE
             );
+        }
+        else
+        {
+            //wrong password
+            return 2;
         }
     }
 

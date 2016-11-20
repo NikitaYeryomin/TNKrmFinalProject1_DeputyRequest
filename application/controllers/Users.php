@@ -113,12 +113,55 @@ class Users extends CI_Controller {
                 'login' => $this->input->post('login'),
                 'pass'  => $this->input->post('password')
             );
-            
-            $this->session->set_userdata('logged_in', $this->user_model->login($data));
-            $session_data = $this->session->userdata('logged_in');
-            $data['username'] = $session_data['username'];
-            $data['logged'] = $session_data['logged'];
-            redirect('users');
+            $result = $this->user_model->login($data);
+            switch ($result)
+            {
+                case 1:
+                {
+                    $this->load->view('User not exists');
+                    break;
+                }
+                case 2:
+                {
+                    sorry('Wrong password');
+                    break;
+                }
+                default:
+                {
+                    $this->session->set_userdata('logged_in', $result);
+                    //$session_data = $this->session->userdata('logged_in');
+                    $data['username'] = $result['username'];
+                    $data['logged'] = $result['logged'];
+                    $this->index();
+                }
+            }
+            /*
+            if ($result == 1)
+            {
+                //user not exists
+                
+                //show_error('User not exists', 'User not exists');
+            }
+            if ($result == 2)
+            {
+                //wrong password
+                
+            }
+            if ($result)
+            {
+                $this->session->set_userdata('logged_in', $result);
+                //$session_data = $this->session->userdata('logged_in');
+                $data['username'] = $result['username'];
+                $data['logged'] = $result['logged'];
+                $this->index();
+                //redirect('users');
+            }
+            else
+            {
+                //wrong password
+                redirect('/');
+            }
+            */
         }
     }
     
