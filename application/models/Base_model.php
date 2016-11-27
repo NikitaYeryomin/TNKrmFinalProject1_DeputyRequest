@@ -4,15 +4,6 @@ class Base_model extends CI_Model {
     private $table;
     private $id_field;
     
-    /*
-    public function console_log($data){
-        echo '<script>';
-        echo 'console.log('. json_encode( $data ) .')';
-        echo '</script>';
-        //pause(10000);
-    }
-    */
-    
     public function __construct()
     {
         $class = str_replace('_model','', strtolower(get_class($this)));
@@ -51,6 +42,11 @@ class Base_model extends CI_Model {
         $query = $this->db->get_where($this->table, array($field => $str));
         
         return $query->row_array();
+    }
+    
+    public function delete($id)
+    {
+        return $this->db->delete($this->table, array($this->id_field => $id));
     }
 }
 ?>

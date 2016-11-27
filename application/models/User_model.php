@@ -39,13 +39,6 @@ class User_model extends Base_model {
     
     public function login($data){
         $row = $this->get_records($data['login'], 'email');
-        
-        if ($row == NULL)
-        {
-            //user not exists
-            return 1;
-        }
-        
         if (password_verify($data['pass'], $row['hash']))
         {
             // remember that user's now logged in by storing user's ID in session
@@ -58,7 +51,7 @@ class User_model extends Base_model {
         else
         {
             //wrong password
-            return 2;
+            return FALSE;
         }
     }
 

@@ -1,1 +1,1 @@
-<h2><?php $message; ?></h2>
+<h2><?= $message; ?></h2>

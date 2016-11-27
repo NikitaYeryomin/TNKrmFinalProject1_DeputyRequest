@@ -1,5 +1,5 @@
 <?php
-class Pages extends CI_Controller {
+class Pages extends Admin_controller {
 
     public function view($page = 'home'){
         //$this->load->helper('date');
@@ -10,14 +10,9 @@ class Pages extends CI_Controller {
             show_404();
         }
                 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
-        $data['inner_view'] = 'pages/'.$page;
-        $this->load->view('template', $data);
-    }
-    
-    public function sorry($message){
-        $data['message'] = $message;
-        $this->view('template', $data);
+        $this->data['title'] = ucfirst($page); // Capitalize the first letter
+        $this->data['inner_view'] = 'pages/'.$page;
+        $this->load->view('template', $this->data);
     }
 }
 ?>
