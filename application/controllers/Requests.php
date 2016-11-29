@@ -21,8 +21,8 @@ class Requests extends Admin_controller {
         $this->load->view('template', $this->data);
     }
         
-    public function edit($id = FALSE)
-    {
+    public function edit($id = FALSE){
+        
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('title', 'Title', 'required');
@@ -48,7 +48,20 @@ class Requests extends Admin_controller {
         }
         else
         {
-            $this->request_model->editrequest($id);
+            $post = array(
+                'title'   => $this->input->post('title'),
+                'text'    => $this->input->post('text'),
+                'user_id' => $this->session->userdata('logged_in')['id']
+            );
+            if (!$id)
+            {
+                $post['adddate'] = date("Y-m-d H:i:s");
+            }
+            if ($id)
+            {
+                $post['status'] = $this->input->post('status');
+            }
+            $this->request_model->set_data($id, $post);
             redirect('requests');
         }
     }

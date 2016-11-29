@@ -4,15 +4,15 @@ class Base_model extends CI_Model {
     private $table;
     private $id_field;
     
-    public function __construct()
-    {
+    public function __construct(){
+        
         $class = str_replace('_model','', strtolower(get_class($this)));
         $this->table = $class.'s';
         $this->id_field = $class.'id';
     }
 
-    public function get_records($str = NULL, $field = NULL)
-    {
+    public function get_records($str = NULL, $field = NULL){
+        
         if ($field == NULL)
         {
             $field = $this->id_field;
@@ -44,8 +44,17 @@ class Base_model extends CI_Model {
         return $query->row_array();
     }
     
-    public function delete($id)
-    {
+    public function set_data($id = NULL, $post){
+        
+        if (!$id)
+        {
+            return $this->db->insert($this->table, $post);
+        }
+        return $this->db->update($this->table, $post, array($this->id_field => $id));
+    }
+    
+    public function delete($id){
+        
         return $this->db->delete($this->table, array($this->id_field => $id));
     }
 }

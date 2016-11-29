@@ -10,7 +10,13 @@ class MY_Controller extends CI_Controller {
         $this->load->model('request_model');
         $this->load->model('user_model');
         $this->data = array();
+        date_default_timezone_set('Europe/Kiev');
     }
+    
+    function fullname($user){
+        return $user['lastname'] . ' ' . $user['firstname'] .' ' . $user['secondname'];
+    }
+
 }
 
 class Admin_controller extends MY_Controller {

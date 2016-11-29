@@ -5,6 +5,7 @@ class Request_model extends Base_model {
     
     public function __construct()
     {
+        parent::__construct();
         $this->sql = 'select requests.*, users.username FROM requests, users WHERE requests.user_id = users.userid';
     }    
     
@@ -15,14 +16,13 @@ class Request_model extends Base_model {
             $result = $this->db->query($this->sql)->result_array();
             return $result;
         }
-        else
+        $this->sql .= ' AND requests.requestid = ?';
+        $result = $this->db->query($this->sql, array($id))->result_array();
+        if (count($result) > 0)
         {
-            $this->sql .= ' AND requests.requestid = ?';
-            $result = $this->db->query($this->sql, array($id))->result_array();
-            if (count($result) > 0)
-                return $result[0];
-            return null;
+            return $result[0];
         }
+        return null;
     }
     
     public function filter_by_user($id)
@@ -36,17 +36,10 @@ class Request_model extends Base_model {
         return null;
     }
     
-    public function editrequest($id = FALSE)
+    public function editrequest($id = FALSE, $post)
     {
-        $post = array(
-            'title'     => $this->input->post('title'),
-            'text'      => $this->input->post('text'),
-            'user_id'   => $this->session->userdata('logged_in')['id']
-        );
         if (!$id)
         {
-            date_default_timezone_set('Europe/Kiev');
-            $post['adddate'] = date("Y-m-d H:i:s");
             return $this->db->insert('requests', $post);
         }
         return $this->db->update('requests', $post, array('requestid' => $id));

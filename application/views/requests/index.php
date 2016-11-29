@@ -9,6 +9,7 @@
                 <th>Text</th>
                 <th>Author</th>
                 <th>Reply</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,10 +21,11 @@
             <td><?= $request['text'] ?></td>
             <td><a href="<?php echo site_url('requests/filter/'.$request['user_id']); ?>"><?= $request['username'] ?></a></td>
             <td>
-                <?php if(!($request['reply'] == NULL)): ?>
-                    <?php echo site_url('requests/'.$request['reply']); ?>
+                <?php if (!($request['reply_id'] == 0)): ?>
+                    <?php echo site_url('requests/'.$request['reply_id']); ?>
                 <?php endif; ?>
             </td>
+            <td><?= $request['status'] ?></td>
             <td>
                 <a href="<?= site_url('requests/edit/'.$request['requestid']) ?>">
                     <span class="glyphicon glyphicon-pencil" title="Edit user <?= $request['requestid'] ?>"></span>
