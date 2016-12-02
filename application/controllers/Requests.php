@@ -72,9 +72,9 @@ class Requests extends Admin_controller {
         redirect('requests');
     }
     
-    public function filter($id)
+    public function filter($class, $id)
     {
-        $this->data['requests'] = $this->request_model->filter_by_user($id);
+        $this->data['requests'] = $this->request_model->filter_by_class('user', $id);
         $this->data['title'] = 'Requests archive';
         $this->data['inner_view'] = 'requests/index';
         $this->load->view('template', $this->data);

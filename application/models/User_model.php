@@ -17,7 +17,7 @@ class User_model extends Base_model {
             // remember that user's now logged in by storing user's ID in session
             return $newdata = array(
                 'id'        => $row['userid'],
-                'username'  => $row['username'],
+                'username'  => fullname($row),
                 'logged'    => TRUE
             );
         }

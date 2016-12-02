@@ -1,0 +1,101 @@
+<?php
+$config = array(
+    'register'      => array(
+        array(
+            'field' => 'firstname',
+            'label' => 'Имя',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'secondname',
+            'label' => 'Отчество',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'lastname',
+            'label' => 'Фамилия',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rule'  => 'required|valid_email|unique'
+            ),
+        array(
+            'field' => 'phone',
+            'label' => 'Телефон №',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'city',
+            'label' => 'Город',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'address',
+            'label' => 'Улица, № дома',
+            'rule'  => 'required'
+        )
+        array(
+            'field' => 'password',
+            'label' => 'Пароль',
+            'rule'  => 'required'
+            ),
+        array(
+            'field' => 'confirm',
+            'label' => 'Подтверждение пароля',
+            'rule'  => 'required|matches[password]'
+        )
+    ),
+    'edituser' => array(
+        array(
+            'field' => 'firstname',
+            'label' => 'Имя',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'secondname',
+            'label' => 'Отчество',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'lastname',
+            'label' => 'Фамилия',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rule'  => 'required|valid_email'
+            ),
+        array(
+            'field' => 'phone',
+            'label' => 'Телефон №',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'city',
+            'label' => 'Город',
+            'rule'  => 'required'
+        ),
+        array(
+            'field' => 'address',
+            'label' => 'Улица, № дома',
+            'rule'  => 'required'
+        )
+        array(
+            'field' => 'password',
+            'label' => 'Пароль',
+            'rule'  => 'required'
+            ),
+        array(
+            'field' => 'confirm',
+            'label' => 'Подтверждение пароля',
+            'rule'  => 'required|matches[password]'
+        )
+    ),
+    'addrequest'    => array(
+        ),
+    'editrequest'   => array(
+        )
+    )

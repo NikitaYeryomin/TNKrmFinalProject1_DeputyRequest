@@ -11,7 +11,7 @@
         <!-- http://getbootstrap.com/ -->
         <!-- <script src="/js/bootstrap.min.js"></script> -->
 
-        <!-- <script src="/js/scripts.js"></script> -->
+        <script src="/js/script.js"></script>
         
         <title>CodeIgniter Tutorial</title>
     </head>

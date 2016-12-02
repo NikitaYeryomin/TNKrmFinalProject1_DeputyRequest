@@ -6,7 +6,8 @@ class Request_model extends Base_model {
     public function __construct()
     {
         parent::__construct();
-        $this->sql = 'select requests.*, users.username FROM requests, users WHERE requests.user_id = users.userid';
+        // Добавить таблицу deputys
+        $this->sql = 'SELECT t1.*, t2.userid, t2.firstname, t2.secondname, t2.lastname FROM requests AS t1, users AS t2 WHERE t1.user_id = t2.userid';
     }    
     
     public function getrequests($id = FALSE)
@@ -16,7 +17,7 @@ class Request_model extends Base_model {
             $result = $this->db->query($this->sql)->result_array();
             return $result;
         }
-        $this->sql .= ' AND requests.requestid = ?';
+        $this->sql .= ' AND t1.requestid = ?';
         $result = $this->db->query($this->sql, array($id))->result_array();
         if (count($result) > 0)
         {
@@ -25,9 +26,9 @@ class Request_model extends Base_model {
         return null;
     }
     
-    public function filter_by_user($id)
+    public function filter_by_class($class, $id)
     {
-        $this->sql .= ' AND requests.user_id = ?';
+        $this->sql .= ' AND t1.' . $class . '_id = ?';
         $result = $this->db->query($this->sql, array($id))->result_array();
         if (count($result) > 0)
         {
