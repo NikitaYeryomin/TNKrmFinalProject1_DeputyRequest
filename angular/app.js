@@ -1,5 +1,5 @@
 var app = angular.module('App', [
-    'ui.router'
+    //'ui.router'
     //'ui.bootstrap',
     //'ngResource',
     //'angularFileUpload',
