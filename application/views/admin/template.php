@@ -20,15 +20,15 @@
             <div id="top">
                 <ul class="nav nav-pills">
                     <li><a href = "/">Home</a></li>
-                    <li><a href = "/users/edit">Register</a></li>
+                    <li><a href = "/admin/users/edit/">Register</a></li>
                 <?php if (!isset($logged)): ?>
-                    <li><a href = "/users/login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+                    <li><a href = "/admin/users/login/"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
                 <?php endif ?>
                 <?php if (isset($logged)): ?>
-                    <li><a href = "/requests"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;Requests</a></li>
-                    <li><a href = "/users">Users List</a></li>
+                    <li><a href = "/admin/requests/"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;Requests</a></li>
+                    <li><a href = "/admin/users/">Users List</a></li>
                     <li><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong><?= $username; ?></strong></a></li>
-                    <li><a href = "/users/logout"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
+                    <li><a href = "/users/logout/"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
                 <?php endif ?>
                 </ul>
             </div>
