@@ -48,10 +48,11 @@ class Requests extends Admin_controller {
         }
         else
         {
+            $logged_in = $this->session->userdata('logged_in');
             $post = array(
                 'title'   => $this->input->post('title'),
                 'text'    => $this->input->post('text'),
-                'user_id' => $this->session->userdata('logged_in')['id']
+                'user_id' => $logged_in['id']
             );
             if (!$id)
             {
