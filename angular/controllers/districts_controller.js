@@ -63,7 +63,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location',
                 content += '<a href="district/' + text[i] + '">' + text[i] + '</a><br>';
             }
             var image = {
-                url: '/files/flag.gif',
+                url: '/img/flag.gif',
                 size: new google.maps.Size(19, 20),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(1, 20)
