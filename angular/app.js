@@ -1,5 +1,5 @@
 var app = angular.module('App', [
-    //'ui.router'
+    'ui.router'
     //'ui.bootstrap',
     //'ngResource',
     //'angularFileUpload',
@@ -14,10 +14,19 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
         $stateProvider
             .state('home', {
                 url: '/',
+                templateUrl: '/angular/templates/home.html',
+                controller: 'AppController'
+            })
+            .state('login', {
+                url: '/login',
                 templateUrl: '/angular/templates/login_form.html',
                 controller: 'AuthController'
             })
-
+            .state('districts', {
+                url: '/districts',
+                templateUrl: '/angular/templates/districts_index.html',
+                controller: 'DistrictsController'
+            });
 
         /*$locationProvider.html5Mode({
          enabled: true,

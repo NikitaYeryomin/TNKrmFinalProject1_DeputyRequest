@@ -14,11 +14,10 @@ class User_model extends Base_model {
         $row = $this->get_records($data['email'], 'email');
         if (password_verify($data['pass'], $row['hash']))
         {
-            // remember that user's now logged in by storing user's ID in session
-            return $newdata = array(
+            return array(
                 'id'        => $row['userid'],
                 'username'  => fullname($row),
-                'logged'    => TRUE
+                'role'    => $row['role']
             );
         }
         return FALSE;

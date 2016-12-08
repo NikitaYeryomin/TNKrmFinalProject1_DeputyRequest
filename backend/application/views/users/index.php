@@ -20,10 +20,10 @@
             <td><?= $user['city'] ?>&nbsp;<?= $user['street'] ?>&nbsp;<?= $user['home'] ?></td>
             <td><?= $user['joindate'] ?></td>
             <td>
-                <a href="<?= site_url('/users/edit/'.$user['userid']) ?>">
+                <a href="<?= site_url('/backend/manage/users/edit/'.$user['userid']) ?>">
                     <span class="glyphicon glyphicon-pencil" title="Edit user <?= $user['userid'] ?>"></span>
                 </a>
-                <a href="<?= site_url('/users/delete/'.$user['userid']) ?>" onClick='return confirm("Are you sure to delete this user?");'>
+                <a href="<?= site_url('/backend/manage/users/delete/'.$user['userid']) ?>" onClick='return confirm("Are you sure to delete this user?");'>
                     <span class="glyphicon glyphicon-remove" title="Delete user <?= $user['userid'] ?>"></span>
                 </a>
             </td>

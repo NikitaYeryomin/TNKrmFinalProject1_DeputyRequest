@@ -2,7 +2,7 @@
 class Users extends Admin_controller {
 
     public function index(){
-        $this->data['users'] = $this->user_model->get_records();
+        $this->data['users'] = $this->user->get_records();
         $this->data['title'] = 'Users list';
         $this->data['inner_view'] = 'users/index';
         $this->load->view('template', $this->data);
@@ -16,7 +16,7 @@ class Users extends Admin_controller {
     
     public function edituser($id){
         $this->data['title'] = 'Edit user data for ID:'.$id;
-        $this->data['user'] = $this->user_model->get_records($id);
+        $this->data['user'] = $this->user->get_records($id);
         $this->_edit($id);
     }
 
@@ -29,7 +29,7 @@ class Users extends Admin_controller {
         else
         {
             $this->data['title'] = 'Edit user data for ID:'.$id;
-            $this->data['user'] = $this->user_model->get_records($id);
+            $this->data['user'] = $this->user->get_records($id);
         }
         // setting rules for form validation
         $this->form_validation->set_rules('firstname', 'Имя', 'required');
@@ -83,18 +83,18 @@ class Users extends Admin_controller {
             {
                 $post['role'] = $this->input->post('role');    
             }
-            $this->user_model->set_data($id, $post);
+            $this->user->set_data($id, $post);
             redirect('users');
         }
     }
     
     public function delete($id){
-        $this->user_model->delete($id);
+        $this->user->delete($id);
         if ($id == $this->session->userdata('logged_in')['id'])
         {
             $this->logout();
         }
-        redirect('users');
+        redirect('/backend/manage/users');
     }
 
     public function login(){
@@ -112,7 +112,7 @@ class Users extends Admin_controller {
                 'email' => $this->input->post('email'),
                 'pass'  => $this->input->post('password')
             );
-            $result = $this->user_model->login($this->data);
+            $result = $this->user->login($this->data);
             if ($result)
             {
                 $this->session->set_userdata('logged_in', $result);
@@ -126,11 +126,6 @@ class Users extends Admin_controller {
             }
         }
     }
-    
-    public function logout(){
-        $this->session->unset_userdata('logged_in');
-        $this->session->sess_destroy();
-        redirect('/');
-    }
+
 }
 ?>

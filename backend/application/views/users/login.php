@@ -17,5 +17,5 @@
     </fieldset>
 </form>
 <div>
-    or <a href="/index.php/users/edit/">register</a> for an account
+    or <a href="/backend/index.php/users/edit/">register</a> for an account
 </div>

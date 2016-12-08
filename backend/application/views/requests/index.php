@@ -1,4 +1,4 @@
-<h2><a href='/index.php/requests/edit'>Create request</a></h2>
+<h2><a href='/backend/index.php/requests/edit'>Create request</a></h2>
 <div>
     <table class="table-striped table-bordered table-hover table-condensed">
         <thead>

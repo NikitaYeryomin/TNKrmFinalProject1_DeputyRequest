@@ -3,7 +3,7 @@ class Requests extends Admin_controller {
 
     public function view($id = NULL)
     {
-        $this->data['requests_item'] = $this->request_model->getrequests($id);
+        $this->data['requests_item'] = $this->request->getrequests($id);
         if (empty($this->data['requests_item']))
         {
             show_404();
@@ -15,7 +15,7 @@ class Requests extends Admin_controller {
         
     public function index()
     {
-        $this->data['requests'] = $this->request_model->getrequests();
+        $this->data['requests'] = $this->request->getrequests();
         $this->data['title'] = 'Requests archive';
         $this->data['inner_view'] = 'requests/index';
         $this->load->view('template', $this->data);
@@ -29,7 +29,7 @@ class Requests extends Admin_controller {
         $this->form_validation->set_rules('text', 'Text', 'required');
         if ($id)
         {
-            $this->data['requests_item'] = $this->request_model->getrequests($id);
+            $this->data['requests_item'] = $this->request->getrequests($id);
             if (empty($this->data['requests_item']))
             {
                 show_404();
@@ -61,20 +61,20 @@ class Requests extends Admin_controller {
             {
                 $post['status'] = $this->input->post('status');
             }
-            $this->request_model->set_data($id, $post);
+            $this->request->set_data($id, $post);
             redirect('requests');
         }
     }
     
     public function delete($id)
     {
-        $this->request_model->delete($id);
+        $this->request->delete($id);
         redirect('requests');
     }
     
     public function filter($class, $id)
     {
-        $this->data['requests'] = $this->request_model->filter_by_class('user', $id);
+        $this->data['requests'] = $this->request->filter_by_class('user', $id);
         $this->data['title'] = 'Requests archive';
         $this->data['inner_view'] = 'requests/index';
         $this->load->view('template', $this->data);

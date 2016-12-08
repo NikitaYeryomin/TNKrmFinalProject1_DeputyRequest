@@ -1,25 +1,6 @@
 <?php
 class Users extends Front_controller {
 
-    /*public function index(){
-        $this->data['users'] = $this->user_model->get_records();
-        $this->data['title'] = 'Users list';
-        $this->data['inner_view'] = 'users/index';
-        $this->load->view('template', $this->data);
-    }
-
-    public function register(){
-        $this->data['title'] = 'Register new user';
-        $this->data['user'] = NULL;
-        $this->_edit();
-    }
-
-    public function edituser($id){
-        $this->data['title'] = 'Edit user data for ID:'.$id;
-        $this->data['user'] = $this->user_model->get_records($id);
-        $this->_edit($id);
-    }*/
-
     public function edit($id = NULL){
         if (!$id)
         {
@@ -89,13 +70,15 @@ class Users extends Front_controller {
     }
 
     public function login(){
-        $this->data['title'] = 'User login';
-        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->data['inner_view'] = 'users/login';
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('template', $this->data);
+            echo json_encode(array(
+                'error' => 1,
+                'message' => 'validation_error',
+                'data' => $this->form_validation->error_array()
+            ));
         }
         else
         {
@@ -103,25 +86,51 @@ class Users extends Front_controller {
                 'email' => $this->input->post('email'),
                 'pass'  => $this->input->post('password')
             );
-            $result = $this->user_model->login($this->data);
+            $result = $this->user->login($this->data);
             if ($result)
             {
                 $this->session->set_userdata('logged_in', $result);
                 $this->data['username'] = $result['username'];
-                $this->data['logged'] = $result['logged'];
-                redirect('users');
+                echo json_encode(array(
+                    'error' => 0,
+                    'currentUser' => $result
+                ));
             }
             else
             {
-                sorry('Incorrect username and/or password');
+                echo json_encode(array(
+                    'error' => 1,
+                    'message' => 'Incorrect username and/or password!'
+                ));
             }
         }
     }
 
-    public function logout(){
+    public function _logout(){
         $this->session->unset_userdata('logged_in');
         $this->session->sess_destroy();
+    }
+
+    public function admin_logout(){
+        $this->_logout();
         redirect('/');
+    }
+
+    public function logout(){
+        $this->_logout();
+        echo json_encode(array(
+            'error' => 0,
+        ));
+    }
+
+    public function current() {
+        $logged_in = $this->session->userdata('logged_in');
+        if ($logged_in) {
+            echo json_encode(array('error' => 0, 'currentUser' => $logged_in));
+        }
+        else {
+            echo json_encode(array('error' => 0, 'currentUser' => null));
+        }
     }
 }
 ?>

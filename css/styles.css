@@ -58,3 +58,9 @@ th
     /*text-align: center;*/
     font-weight: bold;
 }
+
+#gmaps {
+    width: 450px;
+    height: 450px;
+    margin: 10 auto;
+}

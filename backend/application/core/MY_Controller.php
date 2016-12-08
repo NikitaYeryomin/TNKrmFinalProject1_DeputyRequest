@@ -7,16 +7,18 @@ class MY_Controller extends CI_Controller {
         
         parent::__construct();
         $this->load->model('base_model');
-        $this->load->model('request_model');
-        $this->load->model('user_model');
+        $this->load->model('request_model', 'request');
+        $this->load->model('user_model', 'user');
+
+        $this->load->model('place_model', 'place');
+        $this->load->model('districts_model', 'districts'); //TODO: rename to district (?)
         $this->data = array();
         date_default_timezone_set('Europe/Kiev');
 
         $session_data = $this->session->userdata('logged_in');
         if ($session_data)
         {
-            $this->data['username'] = $session_data['username'];
-            $this->data['logged'] = $session_data['logged'];
+            $this->data['logged_in'] = $session_data;
         }
     }
     
