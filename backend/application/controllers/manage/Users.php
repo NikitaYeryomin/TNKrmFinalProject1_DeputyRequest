@@ -90,7 +90,8 @@ class Users extends Admin_controller {
     
     public function delete($id){
         $this->user->delete($id);
-        if ($id == $this->session->userdata('logged_in')['id'])
+        $logged_in = $this->session->userdata('logged_in');
+        if ($id == $logged_in['id'])
         {
             $this->logout();
         }
