@@ -45,7 +45,11 @@ class Admin_controller extends MY_Controller {
     public function __construct(){
         
         parent::__construct();
-        
+
+        $user = $this->data['logged_in'];
+        if (!$user or !($user['role'] == 'admin')) {
+            redirect('/');
+        }
 
     }
 }

@@ -86,37 +86,6 @@ app.filter('timeFromNow', function() {
     }
 });
 
-app.filter('eventName', function() {
-    return function(video) {
-        if (video == undefined) {
-            return '-';
-        }
-        if (video.event_name != '' && video.event_name != undefined) {
-            return video.event_name;
-        } else if (video.location.place_name != '' && video.location.place_name != undefined) {
-            return video.location.place_name;
-        } else {
-            return [video.location.city, convertCountryCode(video.location.country)].clean().join(", ");
-        }
-    }
-});
-
-app.filter('eventEventName', function() {
-    return function(event) {
-        if (event == undefined) {
-            return '-';
-        }
-        if (event.event_name != '' && event.event_name != undefined) {
-            return event.event_name;
-        } else if (event.items[0] && event.items[0].place_name != '' && event.items[0].place_name != undefined) {
-            return video.location.place_name;
-        } else if (event.items[0] && (event.items[0].city != undefined || event.items[0].country != undefined) ) {
-            return [event.items[0].city, convertCountryCode(event.items[0].country)].clean().join(", ");
-        } else {
-            return 'Untitled';
-        }
-    }
-});
 
 app.filter('locationFromAddress', function() {
     return function(obj) {

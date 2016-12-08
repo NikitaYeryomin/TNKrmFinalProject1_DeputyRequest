@@ -1,10 +1,6 @@
 app.controller('DistrictsController', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
 
-        $scope.getData = function() {
-
-        }
-        $scope.getData();
 
     }])
 
