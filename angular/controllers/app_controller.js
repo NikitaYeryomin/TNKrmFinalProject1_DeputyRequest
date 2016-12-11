@@ -1,5 +1,8 @@
-app.controller('AppController', ['$scope', '$rootScope', '$http', '$location',
-    function($scope, $rootScope, $http, $location) {
+app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', 'Page',
+    function($scope, $rootScope, $http, $location, Page) {
+
+        $scope.Page = Page;
+
         $scope.logout = function() {
             $http({
                 method: "POST",

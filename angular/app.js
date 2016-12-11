@@ -34,6 +34,14 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
          });*/
     }]);
 
+app.factory('Page', function(){
+    var title = 'default';
+    return {
+        title: function() { return title; },
+        setTitle: function(newTitle) { title = newTitle; }
+    };
+});
+
 app.filter('startFrom', function() {
     return function(data, start) {
         if (data) {

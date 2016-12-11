@@ -1,7 +1,6 @@
-app.controller('DistrictsController', ['$scope', '$http', '$location',
-    function($scope, $http, $location) {
-
-
+app.controller('DistrictsController', ['$scope', '$http', '$location', 'Page',
+    function($scope, $http, $location, Page) {
+       Page.setTitle("Districts");
     }])
 
 .directive('myMap', ['$http', function($http) {
