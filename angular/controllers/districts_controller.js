@@ -1,6 +1,6 @@
 app.controller('DistrictsController', ['$scope', '$http', '$location', 'Page',
     function($scope, $http, $location, Page) {
-       Page.setTitle("Districts");
+       Page.setTitle("виборчі дільниці");
     }])
 
 .directive('myMap', ['$http', function($http) {
@@ -111,4 +111,3 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', 'Page',
         link: link
     };
 }]);
-
