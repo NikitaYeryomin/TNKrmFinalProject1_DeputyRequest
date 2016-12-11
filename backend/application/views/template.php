@@ -34,7 +34,7 @@
             </div>
             <?php print_r($this->session->userdata('logged_in')); ?>
             <div id="bottom">
-                <em><span class="glyphicon glyphicon-copyright-mark"></span>BrainBasket Kramatorsk 2016-2017</em>
+                <em>&copy; BrainBasket Kramatorsk 2016&ndash;2017</em>
             </div>
         </div>
     </body>

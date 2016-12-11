@@ -6,8 +6,8 @@ var app = angular.module('App', [
     //'angucomplete-alt'
 ]);
 
-app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
-    function($stateProvider, $locationProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/');
 

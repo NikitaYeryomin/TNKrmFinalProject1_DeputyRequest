@@ -15,15 +15,14 @@
     <script src="/angular/app.js"></script>
     <script src="/angular/controllers/app_controller.js"></script>
     <script src="/angular/controllers/auth_controller.js"></script>
-    <script src="/angular/controllers/districts_controller.js"></script>
+    <script src="/angular/controllers/districts_controller.js" charset="utf-8"></script>
 </head>
-<body>
-<body>
+<body ng-controller="AppController">
 <div class="container">
     <div id="top">
         <ul class="nav nav-pills">
             <li><a href="" ui-sref="home">Home</a></li>
-            <li ng-show="!logged_in"><a href="" ui-sref = "login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+            <li ng-show="!logged_in"><a href="" ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
             <li ng-show="!logged_in"><a href = "/users/edit">Register</a></li>
             <li ng-show="logged_in"><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>{{currentUser.username}}</strong></a></li>
             <li ng-show="logged_in"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
@@ -31,10 +30,9 @@
     </div>
     <div id="middle" ui-view></div>
     <div id="bottom">
-        <em><span class="glyphicon glyphicon-copyright-mark"></span>BrainBasket Kramatorsk 2016-2017</em>
+        <em>&copy; BrainBasket Kramatorsk 2016&ndash;2017</em>
     </div>
 </div>
 
-</body>
 </body>
 </html>

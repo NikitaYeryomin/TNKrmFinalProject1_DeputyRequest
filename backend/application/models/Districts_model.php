@@ -22,14 +22,7 @@ public function get_districts($id = FALSE)
         }
 $this->db->select(' districts.*, places.address AS address, places.latitude AS latitude, places.longitude AS longitude FROM districts INNER JOIN places ON (districts.place_id = places.id) WHERE districts.id='.$id,FALSE);
 $query=$this->db->get();
-/*                $this->db->select('*');
-              //  $this->db->from('districts');
-  //              $this->db->join('places', 'places.id = districts.place_id');
-  //             $this->db->where('districts'.'id', $id);
-      //          $query = $this->db->get_where('districts', array('districts.id' => $id));*/
                 return $query->row_array();
-        /*/$query = $this->db->get_where('districts', array('id' => $id));
-        //return $query->row_array();*/
 }
  
 public function placed_districts($id = FALSE)

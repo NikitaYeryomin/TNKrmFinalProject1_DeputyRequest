@@ -1,7 +1,7 @@
 <?php
 class Districts extends Front_Controller
 {
-    public function index()
+public function index()
     {
         $data['title'] = 'виборчі дільниці';
 
@@ -70,7 +70,7 @@ class Districts extends Front_Controller
         echo json_encode($data, JSON_NUMERIC_CHECK );
     }
 
-    function _olorizer()
+function _olorizer()
     {
         $flag = 0;
         $hex = array('0', '1', '2', '3', '4', '5', '6', '7', '8', 'A', 'B', '9', 'C', 'D', 'E', 'F');
@@ -91,7 +91,7 @@ class Districts extends Front_Controller
         return $olor;
     }
 
-    public function district($id = NULL)
+public function district($id = NULL)
     {
         $data['district'] = $this->districts_model->get_districts($id);
         if (empty($data['district'])) {
@@ -104,7 +104,7 @@ class Districts extends Front_Controller
         $this->load->view('templates/footer');
     }
 
-    public function edit($id = NULL)
+public function edit($id = NULL)
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -133,13 +133,13 @@ class Districts extends Front_Controller
         }
     }
 
-    public function delete($id)
+public function delete($id)
     {
         $this->districts_model->delete_district($id);
         redirect('districts');
     }
 
-    public function add()
+public function add()
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
