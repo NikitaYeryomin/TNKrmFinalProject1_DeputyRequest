@@ -26,7 +26,7 @@
             <li><a href="" ui-sref="home">Home</a></li>
             <li ng-show="!logged_in"><a href="" ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
             <li ng-show="!logged_in"><a href = "/users/edit">Register</a></li>
-            <li><a href="" ui-sref="manage/users">Users List</a></li>
+            <li ng-show="currentUser.role == 'admin'"><a href="" ui-sref="manage/users">Users List</a></li>
             <li ng-show="logged_in"><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>{{currentUser.username}}</strong></a></li>
             <li ng-show="logged_in"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
         </ul>
