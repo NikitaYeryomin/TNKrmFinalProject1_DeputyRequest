@@ -1,4 +1,4 @@
-app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location',
+app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
     function($scope, $rootScope, $http, $location) {
         $scope.users = function() {
             $http({

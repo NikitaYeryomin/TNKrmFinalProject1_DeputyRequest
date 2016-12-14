@@ -25,7 +25,8 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location',
                         $rootScope.currentUser = response.data.currentUser;
                         if ($rootScope.currentUser.role == 'admin') {
                             console.log('redirecting to backend...');
-                            window.location.href = '/backend';
+                            //window.location.href = '/backend';
+                            $location.path('/backend/manage/users')
                         }
                         else {
                             $location.path('/districts');
