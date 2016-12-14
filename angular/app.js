@@ -26,6 +26,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/districts',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController'
+            })
+            .state('manage/users', {
+                url: '/backend/manage/users',
+                templateUrl: '/angular/templates/users_index.html',
+                controller: 'UsersController'
             });
 
         /*$locationProvider.html5Mode({
