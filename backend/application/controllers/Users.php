@@ -1,6 +1,7 @@
 <?php
 class Users extends Front_controller {
-
+    
+    /*
     public function edit($id = NULL){
         if (!$id)
         {
@@ -68,6 +69,7 @@ class Users extends Front_controller {
             redirect('users');
         }
     }
+    */
 
     public function login(){
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
@@ -75,9 +77,9 @@ class Users extends Front_controller {
         if ($this->form_validation->run() === FALSE)
         {
             echo json_encode(array(
-                'error' => 1,
-                'message' => 'validation_error',
-                'data' => $this->form_validation->error_array()
+                'error'     => 1,
+                'message'   => 'validation_error',
+                'data'      => $this->form_validation->error_array()
             ));
         }
         else

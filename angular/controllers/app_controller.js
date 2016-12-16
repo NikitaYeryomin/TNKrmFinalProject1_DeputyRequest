@@ -14,7 +14,6 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
             }).then(function() {
                 window.location.href = '/';
             });
-
         };
 
         function getCurrentUser() {
@@ -31,7 +30,6 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
                 if ($rootScope.currentUser) {
                     $rootScope.logged_in = true;
                 }
-
             });
         }
         getCurrentUser();

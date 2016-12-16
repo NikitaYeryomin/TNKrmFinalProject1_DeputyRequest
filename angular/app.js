@@ -32,7 +32,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/users_index.html',
                 controller: 'UsersController'
             });
-
         /*$locationProvider.html5Mode({
          enabled: true,
          requireBase: false

@@ -2,12 +2,19 @@
 class Users extends Admin_controller {
 
     public function index(){
-        $this->data['users'] = $this->user->get_records();
+        //$this->data['users'] = ;
+        echo json_encode(array(
+                'error' => 0,
+                'UserList' => $this->user->get_records()
+            ));
+        /*
         $this->data['title'] = 'Users list';
         $this->data['inner_view'] = 'users/index';
         $this->load->view('template', $this->data);
+        */
     }
     
+    /*
     public function register(){
         $this->data['title'] = 'Register new user';
         $this->data['user'] = NULL;
@@ -19,7 +26,8 @@ class Users extends Admin_controller {
         $this->data['user'] = $this->user->get_records($id);
         $this->_edit($id);
     }
-
+    */
+    
     public function edit($id = NULL){
         if (!$id)
         {
