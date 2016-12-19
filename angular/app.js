@@ -22,6 +22,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/login_form.html',
                 controller: 'AuthController'
             })
+            .state('register', {
+                url: '/register',
+                templateUrl: '/angular/templates/register_form.html',
+                controller: 'UsersController'
+            })
             .state('districts', {
                 url: '/districts',
                 templateUrl: '/angular/templates/districts_index.html',
@@ -34,14 +39,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
             })
             .state('user/edit', {
                 url: '/backend/manage/users/edit',
-                templateUrl: '/angular/templates/user.html',
-                controller: 'UsersController'
-            })
-            .state('user/delete', {
-                url: '/backend/manage/users/delete',
-                templateUrl: '/angular/templates/users_index.html', //какой здесь template?
+                templateUrl: '/angular/templates/useredit.html',
                 controller: 'UsersController'
             });
+            /*
+            .state('user/delete', {
+                url: '/backend/manage/users/delete',
+                templateUrl: '/angular/templates/userdelete.html', //какой адрес?
+                controller: 'UsersController'
+            });
+            */
         /*$locationProvider.html5Mode({
          enabled: true,
          requireBase: false
