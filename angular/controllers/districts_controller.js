@@ -1,7 +1,9 @@
-app.controller('DistrictsController', ['$scope', '$http', '$location', 'Page',
-    function($scope, $http, $location, Page) {
+app.controller('DistrictsController', ['$scope', '$http', '$location', 'Page','$stateParams',
+    function($scope, $http, $location, Page, $stateParams) {
        Page.setTitle("виборчі дільниці");
-    }])
+       
+       $scope.districtId = $stateParams.districtId;
+  }])
 
 .directive('myMap', ['$http', function($http) {
     var map, infoWindow;

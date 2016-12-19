@@ -8,7 +8,7 @@
         <th>знаходження місця для голосування
         <th><acronym title="територіальний виборчий округ">ТВО</acronym>
 <tr ng-repeat="district in districts">
-    <td><a href="" ui-sref="/districts/district/{{district.id}}">{{district.id}}</a></td>
+    <td><a href="" ui-sref="districts({districtId: district.id})">{{district.id}}</a></td>
     <td>{{district.addresses}}</td>
     <td><div ng-repeat="place in places | filter: {id: district.place_id} : true">{{place.address}}</div></td>
     <td align=center><a href="" ui-sref="tvo/id/{{district.tvoid}}">{{district.tvoid}}</a></td>
