@@ -23,7 +23,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'AuthController'
             })
             .state('districts', {
-                url: '/districts',
+                url: '/districts:districtId',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController'
             })
