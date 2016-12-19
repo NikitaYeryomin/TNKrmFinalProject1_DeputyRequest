@@ -1,3 +1,3 @@
-function fullname($user){
-    return $user.lastname + " " + $user.firstname + " " + $user.secondname;
+function fullname(user){
+    return user.lastname + " " + user.firstname + " " + user.secondname;
 }

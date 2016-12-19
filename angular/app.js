@@ -31,6 +31,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/backend/manage/users',
                 templateUrl: '/angular/templates/users_index.html',
                 controller: 'UsersController'
+            })
+            .state('user/edit', {
+                url: '/backend/manage/users/edit',
+                templateUrl: '/angular/templates/user.html',
+                controller: 'UsersController'
+            })
+            .state('user/delete', {
+                url: '/backend/manage/users/delete',
+                templateUrl: '/angular/templates/users_index.html', //какой здесь template?
+                controller: 'UsersController'
             });
         /*$locationProvider.html5Mode({
          enabled: true,

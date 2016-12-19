@@ -1,6 +1,8 @@
 app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location', 'Page', 
     function($scope, $rootScope, $http, $location, Page) {
+        
         Page.setTitle("Список користувачів");
+        
         $scope.users = function() {
             $http({
                 method: 'GET',
@@ -14,5 +16,6 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
                 }
             });
         };
+        
         $scope.users();
     }]);

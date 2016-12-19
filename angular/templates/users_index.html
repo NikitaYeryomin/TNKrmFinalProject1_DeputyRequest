@@ -20,14 +20,13 @@
             <td>{{user.city + " " + user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
-                <a href="<?= site_url('/backend/manage/users/edit/'.$user['userid']) ?>">
-                    <span class="glyphicon glyphicon-pencil" title="Edit user <?= $user['userid'] ?>"></span>
+                <a href="" ui-sref="/user/edit/{{user.userid}}">
+                    <span class="glyphicon glyphicon-pencil" title="Edit user {{user.userid}}"></span>
                 </a>
-                <a href="<?= site_url('/backend/manage/users/delete/'.$user['userid']) ?>" onClick='return confirm("Are you sure to delete this user?");'>
-                    <span class="glyphicon glyphicon-remove" title="Delete user <?= $user['userid'] ?>"></span>
+                <a href="" ui-sref="/user/delete/{{user.userid}}">
+                    <span class="glyphicon glyphicon-remove" title="Delete user {{user.userid}}"></span>
                 </a>
             </td>
         </tr>
-    <?php endforeach; ?>
     </table>
 </div>
