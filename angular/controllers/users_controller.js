@@ -12,7 +12,7 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
                 if (response.data.error == 0) {
                     $scope.users = response.data.UserList;
                     console.log($scope.users);
-                    $location.path('/backend/manage/users');
+                    //$location.path('/backend/manage/users');
                 }
             });
         };

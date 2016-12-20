@@ -13,7 +13,6 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
     <script src="/angular/app.js"></script>
-    <script src="/angular/controllers/utils.js"></script>
     <script src="/angular/controllers/app_controller.js"></script>
     <script src="/angular/controllers/auth_controller.js"></script>
     <script src="/angular/controllers/users_controller.js"></script>
@@ -25,10 +24,10 @@
         <ul class="nav nav-pills">
             <li><a href="" ui-sref="home">Home</a></li>
             <li ng-show="!logged_in"><a href="" ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
-            <li ng-show="!logged_in"><a href="" ui-sref="user/edit">Register</a></li>
-            <li ng-show="currentUser.role == 'admin'"><a href="" ui-sref="manage/users">Users List</a></li>
+            <li ng-show="!logged_in"><a href="" ui-sref="register">Register</a></li>
             <li ng-show="logged_in"><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>{{currentUser.username}}</strong></a></li>
             <li ng-show="logged_in"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
+            <li ng-show="currentUser.role == 'admin'"><a href="" ui-sref="manage">Manage</a></li>
         </ul>
     </div>
     <div id="middle" ui-view></div>

@@ -32,14 +32,19 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController'
             })
-            .state('manage/users', {
-                url: '/backend/manage/users',
+            .state('manage', {
+                url: '/manage',
+                templateUrl: '/angular/templates/manage.html',
+                controller: 'ManageController'
+            })
+            .state('manage.users', {
+                url: '/manage/users',
                 templateUrl: '/angular/templates/users_index.html',
                 controller: 'UsersController'
             })
-            .state('user/edit', {
-                url: '/backend/manage/users/edit',
-                templateUrl: '/angular/templates/useredit.html',
+            .state('manage.users.edit', {
+                url: '/manage/users/edit',
+                templateUrl: '/angular/templates/user.html',
                 controller: 'UsersController'
             });
             /*

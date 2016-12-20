@@ -33,5 +33,9 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
             });
         }
         getCurrentUser();
+        
+        $scope.fullname = function(user){
+            return user.lastname + " " + user.firstname + " " + user.secondname;
+        };
 
     }]);
