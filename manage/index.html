@@ -29,19 +29,21 @@
                      src="/manage/images/left_menu_button.png">
                 <img id="left_menu_button_close"
                      src="/manage/images/left_menu_button_close.png">
-            </a></li>
+                </a>
+            </li>
             <li><a href="/">Home</a></li>
             <li ng-show="!logged_in"><a href="" ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
             <li ng-show="!logged_in"><a href="" ui-sref="register">Register</a></li>
             <li ng-show="logged_in"><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>{{currentUser.username}}</strong></a></li>
             <li ng-show="logged_in"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
-
         </ul>
     </div>
     <div id="left_sidebar">
-        <a href="" ui-sref="users">Користувачі</a>
-        <a href="" ui-sref="requests">Запити</a>
-        <a href="" ui-sref="districts">Дільниці</a>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="" ui-sref="users">Користувачі</a></li>
+            <li><a href="" ui-sref="requests">Запити</a></li>
+            <li><a href="" ui-sref="districts">Дільниці</a></li>
+        </ul>
     </div>
     <h2>{{Page.title()}}</h2>
     <div id="main_content" ui-view></div>

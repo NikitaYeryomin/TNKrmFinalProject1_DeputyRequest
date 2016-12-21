@@ -8,6 +8,8 @@
     z-index: 999;
     display: none;
     text-align: left;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 /*#left_sidebar h4 {
@@ -24,9 +26,11 @@
     margin-bottom: 18px;
     font-size: 13px;
 }*/
+
 #left_sidebar a {
     display: block;
 }
+
 
 #left_menu_button {
     width: 20px;
