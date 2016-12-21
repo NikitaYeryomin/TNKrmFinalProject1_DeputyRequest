@@ -45,10 +45,16 @@ class Admin_controller extends MY_Controller {
     public function __construct(){
         
         parent::__construct();
-
-        $user = $this->data['logged_in'];
+        $user = null;
+        if (array_key_exists('logged_in', $this->data)) {
+            $user = $this->data['logged_in'];
+        }
         if (!$user or !($user['role'] == 'admin')) {
-            redirect('/');
+            echo json_encode(array(
+                'error' => 1,
+                'message' => 'Access denied'
+            ));
+            die;
         }
 
     }

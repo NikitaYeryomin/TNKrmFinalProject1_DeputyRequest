@@ -1,4 +1,3 @@
-<h2>{{Page.title()}}</h2>
 <div>
     <table class="table-striped table-bordered table-hover table-condensed">
         <thead>
@@ -20,7 +19,7 @@
             <td>{{user.city + " " + user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
-                <a href="" ui-sref="/user/edit/{{user.userid}}">
+                <a href="" ui-sref="user_edit({userId: user.userid})">
                     <span class="glyphicon glyphicon-pencil" title="Edit user {{user.userid}}"></span>
                 </a>
                 <a href="" ng-click="deleteuser(user.userid)">

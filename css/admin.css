@@ -1,0 +1,38 @@
+#left_sidebar {
+    position: absolute;
+    width: 175px;
+    height: 80%;
+    padding-left: 10px;
+    top: 100px;
+    background: #fff;
+    z-index: 999;
+    display: none;
+    text-align: left;
+}
+
+/*#left_sidebar h4 {
+    color: #5d5d5d;
+    font-size: 11px;
+    margin-top: 50px;
+
+}
+
+#left_sidebar a {
+    display: block;
+    color: #e81e25;
+    text-decoration: none;
+    margin-bottom: 18px;
+    font-size: 13px;
+}*/
+#left_sidebar a {
+    display: block;
+}
+
+#left_menu_button {
+    width: 20px;
+}
+
+#left_menu_button_close {
+    width: 20px;
+    display: none;
+}

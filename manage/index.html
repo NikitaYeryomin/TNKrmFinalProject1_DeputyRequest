@@ -1,0 +1,72 @@
+<html ng-app="App" ng-controller="AppController">
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <title>{{Page.title()}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <link href="/css/admin.css" rel="stylesheet"/>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+
+    <script src="/manage/app.js"></script>
+    <script src="/angular/shared.js"></script>
+    <script src="/manage/controllers/app_controller.js"></script>
+    <script src="/manage/controllers/manage_controller.js"></script>
+    <script src="/manage/controllers/users_controller.js"></script>
+</head>
+<body ng-controller="AppController">
+<div class="container">
+
+
+    <div id="top">
+        <ul class="nav nav-pills">
+            <li><a id="show_left_sidebar" class="left_menu_button" href="">
+                <img id="left_menu_button"
+                     src="/manage/images/left_menu_button.png">
+                <img id="left_menu_button_close"
+                     src="/manage/images/left_menu_button_close.png">
+            </a></li>
+            <li><a href="/">Home</a></li>
+            <li ng-show="!logged_in"><a href="" ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+            <li ng-show="!logged_in"><a href="" ui-sref="register">Register</a></li>
+            <li ng-show="logged_in"><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>{{currentUser.username}}</strong></a></li>
+            <li ng-show="logged_in"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
+
+        </ul>
+    </div>
+    <div id="left_sidebar">
+        <a href="" ui-sref="users">Користувачі</a>
+        <a href="" ui-sref="requests">Запити</a>
+        <a href="" ui-sref="districts">Дільниці</a>
+    </div>
+    <h2>{{Page.title()}}</h2>
+    <div id="main_content" ui-view></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#show_left_sidebar').click(function() {
+                $('#left_sidebar').toggle();
+                if ($('#left_sidebar').is(':hidden')) {
+                    $('#main_content, #footer_content').css('margin-left', '0');
+                    $('#left_menu_button_close').css('display', 'none');
+                    $('#left_menu_button').css('display', 'inherit');
+                }
+                if ($('#left_sidebar').is(':visible')) {
+                    $('#main_content, #footer_content').css('margin-left', '175px');
+                    $('#left_menu_button_close').css('display', 'inherit');
+                    $('#left_menu_button').css('display', 'none');
+                }
+            });
+        });
+    </script>
+    <div id="bottom">
+        <em>&copy; BrainBasket Kramatorsk 2016&ndash;2017</em>
+    </div>
+</div>
+
+</body>
+</html>

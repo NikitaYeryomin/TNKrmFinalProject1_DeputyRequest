@@ -1,7 +1,8 @@
-app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location', 'Page', 
-    function($scope, $rootScope, $http, $location, Page) {
-        
-        Page.setTitle("Список користувачів");
+app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
+    function($scope, $rootScope, $http, $location, $state, Page) {
+        if ($state.current.data != undefined) {
+            Page.setTitle($state.current.data.title);
+        }
         
         $scope.users = function() {
             $http({
@@ -18,4 +19,6 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
         };
         
         $scope.users();
+
+
     }]);

@@ -13,9 +13,9 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
     <script src="/angular/app.js"></script>
+    <script src="/angular/shared.js"></script>
     <script src="/angular/controllers/app_controller.js"></script>
     <script src="/angular/controllers/auth_controller.js"></script>
-    <script src="/angular/controllers/users_controller.js"></script>
     <script src="/angular/controllers/districts_controller.js" charset="utf-8"></script>
 </head>
 <body ng-controller="AppController">
@@ -27,7 +27,7 @@
             <li ng-show="!logged_in"><a href="" ui-sref="register">Register</a></li>
             <li ng-show="logged_in"><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>{{currentUser.username}}</strong></a></li>
             <li ng-show="logged_in"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
-            <li ng-show="currentUser.role == 'admin'"><a href="" ui-sref="manage">Manage</a></li>
+            <li ng-show="currentUser.role == 'admin'"><a href="/manage">Manage</a></li>
         </ul>
     </div>
     <div id="middle" ui-view></div>

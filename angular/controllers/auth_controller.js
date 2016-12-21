@@ -1,5 +1,9 @@
-app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location',
-    function($scope, $rootScope, $http, $location) {
+app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
+    function($scope, $rootScope, $http, $location, $state, Page) {
+        if ($state.current.data != undefined) {
+            Page.setTitle($state.current.data.title);
+        }
+
         $scope.login = function() {
             if ($scope.email == '') {
                 //$scope.showErrorMessageNullEmailAdmin = true;
@@ -25,8 +29,8 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location',
                         $rootScope.currentUser = response.data.currentUser;
                         if ($rootScope.currentUser.role == 'admin') {
                             console.log('redirecting to backend...');
-                            //window.location.href = '/backend';
-                            $location.path('/backend/manage/users')
+                            window.location.href = '/manage';
+                            //$location.path('/backend/manage/users')
                         }
                         else {
                             $location.path('/districts');

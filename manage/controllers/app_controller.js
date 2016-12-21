@@ -1,8 +1,7 @@
-app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', 'Page',
-    function($scope, $rootScope, $http, $location, Page) {
+app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
+    function($scope, $rootScope, $http, $location, $state, Page) {
 
         $scope.Page = Page;
-        Page.setTitle("Система online-звернень до депутатів місцевих рад");
 
         $scope.logout = function() {
             $http({
@@ -27,9 +26,13 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
                     return;
                 }
                 $rootScope.currentUser = response.data.currentUser;
-                if ($rootScope.currentUser) {
+                if ($rootScope.currentUser && $rootScope.currentUser.role == 'admin') {
                     $rootScope.logged_in = true;
                 }
+                else {
+                    window.location.href = '/';
+                }
+
             });
         }
         getCurrentUser();
@@ -38,9 +41,11 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
             return user.lastname + " " + user.firstname + " " + user.secondname;
         };
 
+        $rootScope.$on('$viewContentLoaded', function(event, toState){
+            if ($('#left_sidebar').is(':visible')) {
+                $('#main_content').css('margin-left', '175px');
+            }
 
-        $scope.fullname = function(user){
-            return user.lastname + " " + user.firstname + " " + user.secondname;
-        }
+        })
 
     }]);
