@@ -38,9 +38,4 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
             return user.lastname + " " + user.firstname + " " + user.secondname;
         };
 
-
-        $scope.fullname = function(user){
-            return user.lastname + " " + user.firstname + " " + user.secondname;
-        }
-
     }]);
