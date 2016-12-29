@@ -113,11 +113,6 @@ class Users extends Front_controller {
         $this->session->sess_destroy();
     }
 
-    public function admin_logout(){
-        $this->_logout();
-        redirect('/');
-    }
-
     public function logout(){
         $this->_logout();
         echo json_encode(array(
@@ -133,6 +128,12 @@ class Users extends Front_controller {
         else {
             echo json_encode(array('error' => 0, 'currentUser' => null));
         }
+    }
+
+    public function register() {
+        echo json_encode(array(
+            'error' => 0,
+        ));
     }
 }
 ?>

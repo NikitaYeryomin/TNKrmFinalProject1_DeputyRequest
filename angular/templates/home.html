@@ -8,7 +8,7 @@
                 </div>
 
                 <div ng-show="!logged_in" class="register-links col-tn-6">
-                    <span><a href="#" ui-sref="login">Увійти</a><span class="hide-reg"> або <a href="#">Зареєструватися</a></span></span>
+                    <span><a href="#" ui-sref="login">Увійти</a><span class="hide-reg"> або <a href="#" ui-sref="register">Зареєструватися</a></span></span>
                 </div>
                 <div ng-show="logged_in" class="register-links col-tn-6">
                     <span>{{currentUser.username}}</span>

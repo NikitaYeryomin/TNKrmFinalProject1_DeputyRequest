@@ -13,7 +13,6 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                 //$scope.showErrorMessageNullEmailAdmin = false;
                 //$scope.errorMessageNullEmailAdmin = '';
                 //$scope.emailRedBorder = '';
-
                 $http({
                     method: 'POST',
                     url: '/backend/users/login',
@@ -36,6 +35,7 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                             $location.path('/districts');
                         }
                     }
+
                     // if (response.message == 'email * Enter a valid email address.') {
                     //     $scope.showErrorMessageNullEmailAdmin = true;
                     //     $scope.errorMessageNullEmailAdmin = 'Enter a valid email address';
