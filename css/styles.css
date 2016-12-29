@@ -59,6 +59,15 @@ th
     font-weight: bold;
 }
 
+table.districts_table td{
+    font-size: 10px;
+}
+
+
+.districts_table {
+    font-size: 10px;
+}
+
 #gmaps {
     width: 450px;
     height: 450px;

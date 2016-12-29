@@ -1,6 +1,8 @@
+<ng-include src="'/angular/templates/header.html'"></ng-include>
+
 <h2>{{Page.title()}}</h2>
 
-<table border="1" cellspacing="0">
+<table class="districts_table" border="1" cellspacing="0">
     <tr>
         <th>номер
         <th>межі
@@ -8,7 +10,7 @@
         <th><acronym title="територіальний виборчий округ">ТВО</acronym>
 <tr ng-repeat="district in districts">
     <td><a href="" ui-sref="districts_inner({districtId: district.id})">{{district.id}}</a></td>
-    <td>{{district.addresses}}</td>
+    <td style="font-size: 10px">{{district.addresses}}</td>
     <td><div ng-repeat="place in places | filter: {id: district.place_id} : true">{{place.address}}</div></td>
     <td align=center><a href="" ui-sref="tvo/id/{{district.tvoid}}">{{district.tvoid}}</a></td>
 </tr>

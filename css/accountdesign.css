@@ -1,0 +1,335 @@
+@font-face {
+    font-family: "Roboto-Bold";
+    src: url("/fonts/Roboto/Roboto-Bold.ttf");
+}
+@font-face {
+    font-family: "Roboto-Light";
+    src: url("/fonts/Roboto/Roboto-Light.ttf");
+}
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("/fonts/Roboto/Roboto-Regular.ttf");
+}
+@font-face {
+    font-family: "Roboto-Medium";
+    src: url("/fonts/Roboto/Roboto-Medium.ttf");
+}
+@font-face {
+    font-family: "helveticaNeueCyrBold";
+    src: url("/fonts/HelveticaNeue/helveticaneuecyr-bold.otf");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "helveticaNeueCyrLight";
+    src: url("/fonts/HelveticaNeue/helveticaneuecyr-light.otf");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "helveticaNeueCyrRoman";
+    src: url("/fonts/HelveticaNeue/HelveticaNeueCyr-Roman.otf");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Open Sans', sans-serif;
+    src: url("https://fonts.googleapis.com/css?family=Open+Sans");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "SegoeUIRegular";
+    src: url("/fonts/Segoe UI/SegoeUIRegular/SegoeUIRegular.eot");
+    src: url("/fonts/Segoe UI/SegoeUIRegular/SegoeUIRegular.eot?#iefix") format("embedded-opentype"), url("/fonts/Segoe UI/SegoeUIRegular/SegoeUIRegular.woff") format("woff"), url("/fonts/Segoe UI/SegoeUIRegular/SegoeUIRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "SegoeUIBold";
+    src: url("/fonts/Segoe UI/SegoeUIBold/SegoeUIBold.eot");
+    src: url("/fonts/Segoe UI/SegoeUIBold/SegoeUIBold.eot?#iefix") format("embedded-opentype"), url("/fonts/Segoe UI/SegoeUIBold/SegoeUIBold.woff") format("woff"), url("/fonts/Segoe UI/SegoeUIBold/SegoeUIBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "SegoeUIItalic";
+    src: url("/fonts/Segoe UI/SegoeUIItalic/SegoeUIItalic.eot");
+    src: url("/fonts/Segoe UI/SegoeUIItalic/SegoeUIItalic.eot?#iefix") format("embedded-opentype"), url("/fonts/Segoe UI/SegoeUIItalic/SegoeUIItalic.woff") format("woff"), url("/fonts/Segoe UI/SegoeUIItalic/SegoeUIItalic.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "SegoeUILight";
+    src: url("/fonts/Segoe UI/SegoeUILight/SegoeUILight.eot");
+    src: url("/fonts/Segoe UI/SegoeUILight/SegoeUILight.eot?#iefix") format("embedded-opentype"), url("/fonts/Segoe UI/SegoeUILight/SegoeUILight.woff") format("woff"), url("/fonts/Segoe UI/SegoeUILight/SegoeUILight.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "SegoeUISemiBold";
+    src: url("/fonts/Segoe UI/SegoeUISemiBold/SegoeUISemiBold.eot");
+    src: url("/fonts/Segoe UI/SegoeUISemiBold/SegoeUISemiBold.eot?#iefix") format("embedded-opentype"), url("/fonts/Segoe UI/SegoeUISemiBold/SegoeUISemiBold.woff") format("woff"), url("/fonts/Segoe UI/SegoeUISemiBold/SegoeUISemiBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+.yellow-button {
+    font-family: "Roboto-Bold";
+    font-size: 16px;
+    color: #3c3f47;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    background: #ffc320;
+    background: -moz-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #ffc320), color-stop(100%, #ffda2e));
+    background: -webkit-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -o-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -ms-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: linear-gradient(to right, #ffc320 0%, #ffda2e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc320', endColorstr='#ffda2e', GradientType=1);
+}
+.account-design {
+    min-height: 110px;
+}
+.account-design h1 {
+    font-size: 30px;
+    font-family: "Roboto-Bold";
+    margin-top: 19px;
+    margin-bottom: 0px;
+}
+.account-design h2 {
+    font-family: "Roboto-Light";
+    font-size: 18px;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+.account-main .container {
+    margin-top: 26px;
+}
+.account-main .container .first-level ul li a {
+    font-family: "Roboto-Light";
+    font-size: 24px;
+}
+@media (max-width: 633px) {
+    .account-main .container .inputs-holder .inputs {
+        display: block;
+        margin: 20px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+    .account-main .container .inputs-holder .inputs:first-child {
+        margin-right: 0;
+        padding-right: 0;
+    }
+}
+.account-main .container .inputs {
+    margin-bottom: 40px;
+    display: inline-block;
+    max-width: 330px;
+    vertical-align: top;
+}
+.account-main .container .inputs:first-child {
+    padding-right: 40px;
+    border-right: 1px solid #e9eaec;
+    margin-right: 40px;
+}
+@media (max-width: 633px) {
+    .account-main .container .inputs:first-child {
+        border-right: none;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #e9eaec;
+    }
+}
+.account-main .container .inputs > span {
+    font-family: "Roboto-Light";
+    font-size: 16px;
+    color: #AAACB1;
+    font-weight: lighter;
+}
+.account-main .container .inputs label {
+    margin-top: 30px;
+    font-family: "Roboto-Light";
+    font-size: 16px;
+    font-weight: normal;
+    color: #293042;
+}
+.account-main .container .inputs .input-zone input {
+    border-color: #cccccc;
+    border-radius: 1px;
+    min-height: 40px;
+    min-width: 280px;
+}
+.account-main .container .inputs .social-auth {
+    text-align: center;
+    height: 40px;
+    position: relative;
+    margin-top: 55px;
+}
+.account-main .container .inputs .social-auth span {
+    position: absolute;
+    top: 11px;
+    left: 41%;
+    font-size: 14px;
+    font-family: "Roboto-Light";
+    color: #AAACB1;
+    font-weight: lighter;
+}
+.account-main .container .inputs .social-auth .bank-id-button {
+    float: right;
+    height: 40px;
+    width: 105px;
+    background-image: url("/Images/Common/bankID.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0px;
+    background-color: transparent;
+    border: none;
+}
+.account-main .container .inputs .social-auth .bank-id-button-oshad {
+    float: left;
+    height: 40px;
+    width: 80px;
+    background-image: url("/Images/Common/bankIDoshad.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0px;
+    background-color: transparent;
+    border: none;
+    margin-right: 60px;
+}
+.account-main .container .inputs .social-auth .bank-id-button-signature {
+    height: 40px;
+    width: 120px;
+    background-image: url("/Images/Common/digitalsign.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0px;
+    background-color: transparent;
+    border: none;
+    margin-right: 60px;
+}
+.account-main .container .log-butt-cont {
+    margin-top: 30px;
+}
+.account-main .container .log-butt-cont .log-in-butt {
+    margin-right: 20px;
+    font-family: "Roboto-Bold";
+    font-size: 16px;
+    color: #3c3f47;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    background: #ffc320;
+    background: -moz-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #ffc320), color-stop(100%, #ffda2e));
+    background: -webkit-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -o-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -ms-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: linear-gradient(to right, #ffc320 0%, #ffda2e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc320', endColorstr='#ffda2e', GradientType=1);
+}
+.account-main .container .log-butt-cont .forgot-pass {
+    font-family: "Roboto-Light";
+    font-size: 16px;
+    color: #aaacb1!important;
+    text-decoration: none;
+    border-bottom: 1px solid #d4d6d9;
+}
+.register-tab .reg-input {
+    min-height: 40px;
+    margin-bottom: 22px;
+}
+.register-tab .reg-input > div > p {
+    position: relative;
+    top: 19px;
+    font-family: "Roboto-Light";
+    font-size: 14px;
+    color: #aaacb1;
+}
+.register-tab .reg-input label {
+    font-family: "Roboto-Light";
+    font-size: 16px;
+    font-weight: normal;
+    color: #293042;
+}
+.register-tab .reg-input input {
+    border-color: #CCC;
+    border-radius: 1px;
+    min-height: 40px;
+}
+.register-tab .reg-input .reg-city-selector .bootstrap-select {
+    height: 40px;
+}
+.register-tab .reg-input .reg-city-selector .bootstrap-select button {
+    border-color: #CCC;
+    border-radius: 1px;
+}
+.register-tab .reg-input .reg-city-selector .bootstrap-select button span {
+    font-family: "Roboto-Light";
+    font-size: 18px;
+}
+.register-tab .name-org-butt {
+    font-family: "Roboto-Light";
+    font-size: 16px;
+    color: #aaacb1;
+    border-bottom: 1px solid #d4d6d9;
+    cursor: pointer;
+}
+.register-tab .cancel-org-name {
+    position: relative;
+    top: 10px;
+    font-size: 14px;
+}
+.register-tab .captcha-holder {
+    margin-bottom: 20px;
+}
+.register-tab .captcha-holder > div {
+    padding: 15px 20px;
+    background-color: #e9eaec;
+}
+.register-tab .captcha-holder p {
+    font-family: "Roboto-Light";
+    font-size: 14px;
+    color: #293042;
+    margin-bottom: 20px;
+}
+.register-tab .registration-submit {
+    font-family: "Roboto-Bold";
+    font-size: 16px;
+    color: #3c3f47;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    background: #ffc320;
+    background: -moz-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #ffc320), color-stop(100%, #ffda2e));
+    background: -webkit-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -o-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: -ms-linear-gradient(left, #ffc320 0%, #ffda2e 100%);
+    background: linear-gradient(to right, #ffc320 0%, #ffda2e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc320', endColorstr='#ffda2e', GradientType=1);
+    margin: 0;
+    margin-bottom: 20px;
+}
+#previewContent label {
+    display: block;
+    font-family: "Roboto-Bold";
+    font-size: 16px;
+    font-weight: normal;
+    color: #293042;
+}
+#previewContent p {
+    font-family: "Roboto-Light";
+    font-size: 16px;
+    color: #929293;
+}
+#previewButton {
+    font-family: 'Roboto-Bold';
+    font-size: 16px;
+    color: #3C3F47;
+    padding: 10px 20px;
+    border: medium none;
+    border-radius: 2px;
+    background: transparent linear-gradient(to right, #FFC320 0%, #FFDA2E 100%) repeat scroll 0% 0%;
+    margin-bottom: 40px;
+}

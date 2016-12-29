@@ -1,13 +1,25 @@
 <html ng-app="App" ng-controller="AppController">
 <head>
     <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-    <title>{{Page.title()}}</title>
+    <title>Cистема online-звернень до місцевих депутатів - {{Page.title()}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="/css/styles.css" rel="stylesheet"/>
+    <link href="/css/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/accountdesign.css">
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
+
+    <script src="http://e-dem.in.ua/bundles/modernizr?v=wBEWDufH_8Md-Pbioxomt90vm6tJN2Pyy9u9zHtWsPo1"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -17,24 +29,45 @@
     <script src="/angular/controllers/app_controller.js"></script>
     <script src="/angular/controllers/auth_controller.js"></script>
     <script src="/angular/controllers/districts_controller.js" charset="utf-8"></script>
+    <script src="/angular/controllers/users_controller.js" charset="utf-8"></script>
 </head>
-<body ng-controller="AppController">
-<div class="container">
-    <div id="top">
-        <ul class="nav nav-pills">
-            <li><a href="" ui-sref="home">Home</a></li>
-            <li ng-show="!logged_in"><a href="" ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
-            <li ng-show="!logged_in"><a href="" ui-sref="register">Register</a></li>
-            <li ng-show="logged_in"><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>{{currentUser.username}}</strong></a></li>
-            <li ng-show="logged_in"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
-            <li ng-show="currentUser.role == 'admin'"><a href="/manage">Manage</a></li>
-        </ul>
-    </div>
-    <div id="middle" ui-view></div>
-    <div id="bottom">
-        <em>&copy; BrainBasket Kramatorsk 2016&ndash;2017</em>
-    </div>
-</div>
+<body>
 
+<div ui-view></div>
+
+
+<footer class="container-fluid main-footer">
+    <div class="footer-part-holder">
+        <div class="container">
+            <div class="footer-top-part">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-tn-8">
+                    <h2>
+                        <a href="/">Система online-звернень до місцевих депутатів</a>
+                    </h2>
+                    <div class="row bund-ukrain" style="margin-top: 10px;">
+                        <div class="foot-image-holder">
+                            <img src="/img/bb-logo.jpg" />
+                        </div>
+                        <div style="width: 85%;">
+                            <p>
+                                Створена в рамках програми &#171;Technology Nation&#187; <br> фонду Brainbasket Foundation
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-sm-12" style="margin-top: 10px;">
+                            <p style="color: #B1B2B5;font-size: 12px;font-family: 'Roboto-Regular';">
+                                Зауваження та побажання надсилайте на <a href="mailto:nikyer@gmail.com" target="_top">
+                                nikyer@gmail.com
+                            </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
 </body>
 </html>

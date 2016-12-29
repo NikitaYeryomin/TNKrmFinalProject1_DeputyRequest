@@ -1,10 +1,17 @@
 app.controller('DistrictsController', ['$scope', '$http', '$location', '$state', 'Page', '$stateParams',
     function($scope, $http, $location, $state, Page, $stateParams) {
+        $scope.districtId = $stateParams.districtId;
+
         if ($state.current.data != undefined) {
-            Page.setTitle($state.current.data.title);
+            if ($state.current.name == 'district') {
+                Page.setTitle($state.current.data.title + " " + $scope.districtId);
+            }
+            else {
+                Page.setTitle($state.current.data.title);
+            }
         }
-       
-       $scope.districtId = $stateParams.districtId;
+
+
   }])
 
 .directive('myMap', ['$http', function($http) {

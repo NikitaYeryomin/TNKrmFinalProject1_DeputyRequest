@@ -1,1 +1,57 @@
-<h1>Home</h1>
+<header class="container-fluid " style="background-image: url('/img/main.jpg');background-size:cover;">
+    <div class="container">
+
+        <section class="top-section">
+            <div class="row top-menu-row">
+                <div class="selectpicker city-selector">
+                    <label onclick="showCityModal()" class="city-button" style="padding-top: 5px;">Краматорськ <span class="caret"></span></label>
+                </div>
+
+                <div ng-show="!logged_in" class="register-links col-tn-6">
+                    <span><a href="#" ui-sref="login">Увійти</a><span class="hide-reg"> або <a href="#">Зареєструватися</a></span></span>
+                </div>
+                <div ng-show="logged_in" class="register-links col-tn-6">
+                    <span>{{currentUser.username}}</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="motivator row">
+            <div class="col-lg-9 col-md-9">
+                <a href="/">
+                    <h1>Система online-звернень</h1>
+                    <h1>до місцевих депутатів</h1>
+                </a>
+            </div>
+
+            <div class="create-btn col-lg-3 col-md-3 col-sm-3" id="createMainButt">
+                <a href=""><button>+ Створити звернення</button></a>
+            </div>
+        </section>
+        <section class="status-navigation">
+            <div class="row">
+                <ul>
+                    <li>
+                        <label class="pet-count">
+                            16 звернень
+                        </label>
+                        <a href="" class="active">НА РОЗГЛЯДІ</a>
+                    </li>
+                    <li>
+                        <label class="pet-count">
+                            1 звернення
+                        </label>
+                        <a href="" >З ВІДПОВІДДЮ</a>
+                    </li>
+                    <li>
+                        <label></label>
+                        <a class="menu-all" href="" >УСІ</a>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+    </div>
+</header>
+
+<section class="content" style=""><div my-map=""></div></section>
