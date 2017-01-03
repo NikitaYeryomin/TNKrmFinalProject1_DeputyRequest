@@ -21,93 +21,87 @@
 
             <div class="row">
                 <div class="col-sm-12 register-tab">
-                    <form role="form" novalidate="novalidate">
+                    <form ng-submit="register()" role="form" novalidate="novalidate">
                         <div class="row reg-input" style="margin-bottom: 29px;">
-                        <div class="col-lg-3 col-md-3">
-                            <label>Прізвище</label>
-                            <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" type="text" value="">
-                            <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>
+                            <div class="col-lg-3 col-md-3">
+                                <label>Прізвище</label>
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="Surname" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label>Ім’я</label>
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Name" name="Name" ng-model="Name" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <label>По батькові</label>
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Patronymic" name="Patronymic" ng-model="Patronymic" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Patronymic" data-valmsg-replace="true"></span>
+                            </div>
                         </div>
-                        <div class="col-lg-3 col-md-3">
-                            <label>Ім’я</label>
-                            <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Name" name="Name" type="text" value="">
-                            <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
-                        </div>
-                        <div class="col-lg-3 col-md-3">
-                            <label>По батькові</label>
-                            <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Patronymic" name="Patronymic" type="text" value="">
-                            <span class="field-validation-valid text-danger" data-valmsg-for="Patronymic" data-valmsg-replace="true"></span>
-                        </div>
-                    </div>
-
                         <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-6">
+                            <div class="col-lg-3 col-sm-3">
                                 <label>Ваше місто</label>
+                                
                                 <div class="selectpicker reg-city-selector">
-                                    <select id="selectpickerCity" class="selectpicker show-tick form-control bs-select-hidden" name="City">
-
-
+                                    <select id="selectpickerCity" class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="City">
                                         <option value="Бахмут">Бахмут</option>
                                         <option value="Баштанка">Баштанка</option>
                                         <option value="Білопілля">Білопілля</option>
                                         <option value="Благодатне">Благодатне</option>
-                                        <option value="Вижниця">Вижниця</option>
-                                        <option value="Вишгород">Вишгород</option>
-                                        <option value="Вінниця">Вінниця</option>
-                                        <option value="Володимир-Волинський">Володимир-Волинський</option>
-                                        <option value="Горішні Плавні">Горішні Плавні</option>
-                                        <option value="Гостомель">Гостомель</option>
-                                        <option value="Деражня">Деражня</option>
-                                        <option value="Дніпро">Дніпро</option>
-                                        <option value="Дніпряни">Дніпряни</option>
-                                        <option value="Долина">Долина</option>
-                                        <option value="Дрогобич">Дрогобич</option>
-                                        <option value="Дубно">Дубно</option>
-                                        <option value="Енергодар">Енергодар</option>
-                                        <option value="Жашків">Жашків</option>
-                                        <option value="Жидичин">Жидичин</option>
-                                        <option value="Жовті Води">Жовті Води</option>
-                                        <option value="Заліщики">Заліщики</option>
-                                        <option value="Заставна">Заставна</option>
-                                        <option value="Збараж">Збараж</option>
-                                        <option value="Звенигородка">Звенигородка</option>
-                                        <option value="Здолбунів">Здолбунів</option>
-                                        <option value="Знам’янка">Знам’янка</option>
-                                        <option value="Золотоноша">Золотоноша</option>
-                                        <option value="Ізюм">Ізюм</option>
-                                        <option value="Ірпінь">Ірпінь</option>
-                                        <option value="Калуш">Калуш</option>
-                                        <option value="Кам&#39;янське">Кам'янське</option>
-                                        <option value="Каховка">Каховка</option>
-                                        <option value="Кіцмань">Кіцмань</option>
-                                        <option value="Ковель">Ковель</option>
-                                        <option value="Коломия">Коломия</option>
-                                        <option value="Конотоп">Конотоп</option>
-                                        <option value="Коростишів">Коростишів</option>
-                                        <option value="Корсунь-Шевченківський">Корсунь-Шевченківський</option>
-                                        <option value="Корюківка">Корюківка</option>
-                                        <option value="Краматорськ">Краматорськ</option>
-                                        <option value="Кропивницький">Кропивницький</option>
-                                        <option value="Ланівці">Ланівці</option>
-                                        <option value="Липовець">Липовець</option>
-                                        <option value="Лисичанськ">Лисичанськ</option>
-                                        <option value="Луцьк">Луцьк</option>
-                                        <option value="Львів">Львів</option>
-
-                                        <option value="another">Iнше</option>
                                     </select>
+                                    <div class="btn-group bootstrap-select show-tick form-control">
+                                        <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="selectpickerCity" title="Бахмут">
+                                            <span class="filter-option pull-left">Бахмут</span>&nbsp;<span class="caret"></span>
+                                        </button>
+                                        <div class="dropdown-menu open" style="max-height: 485px; overflow: hidden; min-height: 92px;">
+                                            <ul class="dropdown-menu inner" role="menu" style="max-height: 473px; overflow-y: auto; min-height: 80px;">
+                                                <li data-original-index="0" class="selected">
+                                                    <a tabindex="0" class="" style="" data-tokens="null">
+                                                        <span class="text">Бахмут</span>
+                                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                                    </a>
+                                                </li>
+                                                <li data-original-index="1">
+                                                    <a tabindex="0" class="" style="" data-tokens="null">
+                                                        <span class="text">Баштанка</span>
+                                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                                    </a>
+                                                </li>
+                                                <li data-original-index="2">
+                                                    <a tabindex="0" class="" style="" data-tokens="null">
+                                                        <span class="text">Білопілля</span>
+                                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                                    </a>
+                                                </li>
+                                                <li data-original-index="3">
+                                                    <a tabindex="0" class="" style="" data-tokens="null">
+                                                        <span class="text">Благодатне</span>
+                                                        <span class="glyphicon glyphicon-ok check-mark"></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="City" data-valmsg-replace="true"></span>
                                 </div>
-
+                                
                             </div>
-                            <div class="col-lg-3 col-sm-6">
-                                <label> </label>
-                                <input class="form-control" id="cityInput" name="cityInput" value="" type="text" placeholder="Введіть назву міста" style="display: none;top: 8px;position: relative;">
+                            <div class="col-lg-3 col-sm-3">
+                                <label>Вулиця</label>
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Street" name="Street" ng-model="Street" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Street" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                <label>Номер будинку</label>
+                                <input class="form-control" data-val="true" data-val-regex="Введіть номер будинку" data-val-required="Введіть номер будинку" id="Home" name="Home" ng-model="Home" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Home" data-valmsg-replace="true"></span>
                             </div>
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-6">
                                 <label>Електронна пошта</label>
-                                <input class="form-control" data-val="true" data-val-email="Введіть електронну пошту" data-val-required="Введіть електронну пошту" id="Email" name="Email" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-email="Введіть електронну пошту" data-val-required="Введіть електронну пошту" id="Email" name="Email" ng-model="Email" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                             </div>
                             <div class="col-lg-3 col-sm-6 hidden-xs">
@@ -115,12 +109,21 @@
                                 <p>Буде використовуватись для входу</p>
                             </div>
                         </div>
-
-
+                        <div class="row reg-input">
+                            <div class="col-lg-3 col-sm-6">
+                                <label>Мобільний телефон</label>
+                                <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="Phone" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-lg-3 col-sm-6 hidden-xs">
+                                <label></label>
+                                <p>Потрібен щоб підтвердити реєстрацію</p>
+                            </div>
+                        </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-6">
                                 <label>Пароль</label>
-                                <input class="form-control" data-val="true" data-val-length="Пароль має бути довжиною хоча б 6 символів" data-val-length-max="100" data-val-length-min="6" data-val-required="Це поле обов`язкове для заповнення" id="Password" name="Password" type="password">
+                                <input class="form-control" data-val="true" data-val-length="Пароль має бути довжиною хоча б 6 символів" data-val-length-max="100" data-val-length-min="6" data-val-required="Це поле обов`язкове для заповнення" id="Password" name="Password" ng-model="Password" type="password">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                             </div>
 
@@ -130,6 +133,7 @@
                                 <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
                             </div>
                         </div>
+                        <!--
                         <div class="row">
                             <div class="col-sm-12 captcha-holder">
                                 <div style="border-radius: 3px;">
@@ -141,10 +145,11 @@
                                 </div>
                             </div>
                         </div>
+                        -->
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="checkbox">
-                                    <label><input checked="checked" data-val="true" data-val-required="The EmailDelivery field is required." id="EmailDelivery" name="EmailDelivery" type="checkbox" value="true"><input name="EmailDelivery" type="hidden" value="false">Я згоден отримувати email розсилку</label>
+                                    <label><input checked="checked" data-val="true" data-val-required="The EmailDelivery field is required." id="EmailDelivery" name="EmailDelivery" type="checkbox" value="true"><input name="EmailDelivery" ng-model="EmailDelivery" type="hidden" value="false">Я згоден отримувати email розсилку</label>
                                 </div>
                             </div>
                         </div>
@@ -153,9 +158,9 @@
                                 <p style="margin-bottom: 20px; color:#AAACB1;">Повідомляємо, що Єдина система місцевих петицій не здійснює обробку, використання, поширення та доступ третіх осіб до персональних даних користувачів. Мобільний телефон користувача використовується лише для підтвердження реєстрації та не зберігається в базі даних системи.</p>
                             </div>
                         </div>
-                        <button type="button" id="previewButton">Переглянути реєстраційні дані</button>
+                        <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal">Переглянути реєстраційні дані</button>
                         <div class="modal fade" id="registerPreviewModal">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-sm">
                                 <div class="modal-content new-modal-content">
                                     <div class="modal-header">
                                         <div class="top-modal-head">
@@ -172,30 +177,35 @@
                                                 <label>
                                                     Ім`я при підписанні та створенні петиції
                                                 </label>
-                                                <p id="previewName"></p>
+                                                <p>{{Surname}}&nbsp;{{Name}}&nbsp;{{Patronymic}}</p>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>
                                                     Електронна адреса
                                                 </label>
-                                                <p id="previewEmail"></p>
+                                                <p>{{Email}}</p>
+                                                <label>
+                                                    Мобільний телефон
+                                                </label>
+                                                <p>{{Phone}}</p>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>
-                                                    Ваше місто
+                                                    Ваша адреса:
                                                 </label>
-                                                <p id="previewCity"></p>
+                                                <p>{{City}},&nbsp;{{Street}}&nbsp;{{Home}}</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <div class="footer-modal-border"></div>
-                                        <input type="submit" value="Зареєструватися" class="registration-submit" style="margin-bottom: 0px;">
+                                        <input type="submit" value="Зареєструватися" class="registration-submit" style="margin-bottom: 0px;" ng-submit="register()">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>    </div>
+                    </form>
+                </div>
             </div>
 
 

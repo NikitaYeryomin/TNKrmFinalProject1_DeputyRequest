@@ -6,11 +6,13 @@
                 <div class="selectpicker city-selector">
                     <label onclick="showCityModal()" class="city-button" style="padding-top: 5px;">Краматорськ <span class="caret"></span></label>
                 </div>
-
-                <div ng-show="!logged_in" class="register-links col-tn-6">
+                <div ng-show="!logged_in" class="register-links col-tn-4">
                     <span><a href="#" ui-sref="login">Увійти</a><span class="hide-reg"> або <a href="#" ui-sref="register">Зареєструватися</a></span></span>
                 </div>
-                <div ng-show="logged_in" class="register-links col-tn-6">
+                <div ng-show="currentUser.role == 'admin'" class="register-links col-tn-4">
+                    &nbsp;<a href="/manage"><span>Manage</span></a>
+                </div>
+                <div ng-show="logged_in" class="register-links col-tn-4">
                     <span>Вітаємо, {{currentUser.username}}</span>
                 </div>
             </div>

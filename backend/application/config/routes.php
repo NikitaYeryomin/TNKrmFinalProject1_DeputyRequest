@@ -55,6 +55,7 @@ $route['users/delete'] = 'users/delete';
 $route['users/login'] = 'users/login';
 //$route['users/(:any)'] = 'users';
 $route['users'] = 'users';
+$route['citys'] = 'citys';
 $route['requests/edit'] = 'requests/edit';
 $route['requests/delete'] = 'requests/delete';
 $route['requests/(:any)'] = 'requests/view/$1';

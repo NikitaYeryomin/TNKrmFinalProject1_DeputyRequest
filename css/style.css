@@ -381,7 +381,7 @@ header {
 }
 .main-footer {
     padding: 5px 0;
-    position: absolute;
+    position: relative;
     bottom: 0;
     height: 60px;
     width: 100%;
