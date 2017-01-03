@@ -22,14 +22,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
             })
             .state('users', {
                 url: '/users',
-                templateUrl: '/manage/templates/users_index.html',
+                templateUrl: '/manage/templates/user/index.html',
                 controller: 'UsersController',
                 data:{
                     title: 'Список користувачів'
                 }
             })
-            .state('user_edit', {
-                url: '/user_edit/:userId',
+            .state('users.edit', {
+                url: '/edit/:userId',
                 templateUrl: '/manage/templates/user/edit.html',
                 controller: 'UsersController',
                 data:{

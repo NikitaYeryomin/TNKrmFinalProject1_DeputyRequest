@@ -19,7 +19,7 @@
             <td>{{user.city + " " + user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
-                <a href="" ui-sref="user_edit({userId: user.userid})">
+                <a href="" ui-sref="users.edit({userId: user.userid})">
                     <span class="glyphicon glyphicon-pencil" title="Edit user {{user.userid}}"></span>
                 </a>
                 <a href="" ng-click="deleteuser(user.userid)">
