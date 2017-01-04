@@ -1,6 +1,6 @@
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('requests/edit/'.$requests_item['requestid']); ?>
+<?php echo form_open('request/edit/'.$requests_item['requestid']); ?>
     <fieldset>
         <div class="form-group">
             <label for="title">Title</label>

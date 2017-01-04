@@ -17,7 +17,7 @@ class User_model extends Base_model {
             return array(
                 'id'        => $row['userid'],
                 'username'  => fullname($row),
-                'role'    => $row['role']
+                'role'      => $row['role']
             );
         }
         return FALSE;

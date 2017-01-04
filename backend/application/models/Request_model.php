@@ -7,7 +7,7 @@ class Request_model extends Base_model {
     {
         parent::__construct();
         // Добавить таблицу deputys
-        $this->sql = 'SELECT t1.*, t2.userid, t2.firstname, t2.secondname, t2.lastname FROM requests AS t1, users AS t2 WHERE t1.user_id = t2.userid';
+        $this->sql = 'SELECT t1.*, t2.userid, t2.firstname, t2.secondname, t2.lastname FROM request AS t1, users AS t2 WHERE t1.user_id = t2.userid';
     }    
     
     public function getrequests($id = FALSE)
@@ -41,9 +41,9 @@ class Request_model extends Base_model {
     {
         if (!$id)
         {
-            return $this->db->insert('requests', $post);
+            return $this->db->insert('request', $post);
         }
-        return $this->db->update('requests', $post, array('requestid' => $id));
+        return $this->db->update('request', $post, array('requestid' => $id));
     }
 }
 ?>

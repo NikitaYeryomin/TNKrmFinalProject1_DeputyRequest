@@ -1,5 +1,5 @@
 <?php
-class Users extends Front_controller {
+class User extends Front_controller {
     
     /*
     public function edit($id = NULL){

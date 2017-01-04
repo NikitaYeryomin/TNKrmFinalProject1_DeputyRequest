@@ -1,13 +1,13 @@
-app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
+app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
     function($scope, $rootScope, $http, $location, $state, Page) {
         if ($state.current.data != undefined) {
             Page.setTitle($state.current.data.title);
         }
         
-        $scope.users = function() {
+        $scope.user = function() {
             $http({
                 method: 'GET',
-                url: '/backend/manage/users',
+                url: '/backend/manage/user',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
                 if (response.data.error == 0) {
@@ -18,7 +18,7 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
             });
         };
         
-        $scope.users();
+        $scope.user();
 
 
     }]);

@@ -9,6 +9,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('base_model');
         $this->load->model('request_model', 'request');
         $this->load->model('user_model', 'user');
+        $this->load->model('city_model', 'city');
 
         $this->load->model('place_model', 'place');
         $this->load->model('districts_model', 'districts'); //TODO: rename to district (?)

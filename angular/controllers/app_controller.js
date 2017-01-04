@@ -7,7 +7,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
         $scope.logout = function() {
             $http({
                 method: "POST",
-                url: '/backend/users/logout',
+                url: '/backend/user/logout',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -19,7 +19,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
         function getCurrentUser() {
             $http({
                 method: 'GET',
-                url: '/backend/users/current'
+                url: '/backend/user/current'
             }).then(function(response) {
                 console.log(response.data);
                 if (response.data.error) {

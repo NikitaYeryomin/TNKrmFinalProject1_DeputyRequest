@@ -1,6 +1,7 @@
 <?php
-class Requests extends Admin_controller {
+class City extends Admin_controller {
 
+    /*
     public function view($id = NULL)
     {
         $this->data['requests_item'] = $this->request->getrequests($id);
@@ -12,15 +13,17 @@ class Requests extends Admin_controller {
         $this->data['inner_view'] = 'requests/view';
         $this->load->view('template', $this->data);
     }
+    */
         
     public function index()
     {
-        $this->data['requests'] = $this->request->getrequests();
-        $this->data['title'] = 'Requests archive';
-        $this->data['inner_view'] = 'requests/index';
-        $this->load->view('template', $this->data);
+        echo json_encode(array(
+                'error' => 0,
+                'CityList' => $this->city->get_records()
+            ));
     }
-        
+    
+    /*    
     public function edit($id = FALSE){
         
         $this->load->helper('form');
@@ -66,7 +69,9 @@ class Requests extends Admin_controller {
             redirect('requests');
         }
     }
+    */
     
+    /*
     public function delete($id)
     {
         $this->request->delete($id);
@@ -80,5 +85,6 @@ class Requests extends Admin_controller {
         $this->data['inner_view'] = 'requests/index';
         $this->load->view('template', $this->data);
     }
+    */
 }
 ?>

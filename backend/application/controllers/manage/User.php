@@ -1,5 +1,5 @@
 <?php
-class Users extends Admin_controller {
+class User extends Admin_controller {
 
     public function index(){
         //$this->data['users'] = ;
@@ -63,7 +63,7 @@ class Users extends Admin_controller {
         //running form
         if (!($this->form_validation->run()))
         {
-            $this->data['inner_view'] = 'users/user';
+            $this->data['inner_view'] = 'user/user';
             $this->load->view('template', $this->data);
         }
         else
@@ -92,7 +92,7 @@ class Users extends Admin_controller {
                 $post['role'] = $this->input->post('role');    
             }
             $this->user->set_data($id, $post);
-            redirect('users');
+            redirect('user');
         }
     }
     
@@ -103,14 +103,14 @@ class Users extends Admin_controller {
         {
             $this->logout();
         }
-        redirect('/backend/manage/users');
+        redirect('/backend/manage/user');
     }
 
     public function login(){
         $this->data['title'] = 'User login';
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->data['inner_view'] = 'users/login';
+        $this->data['inner_view'] = 'user/login';
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('template', $this->data);
@@ -127,7 +127,7 @@ class Users extends Admin_controller {
                 $this->session->set_userdata('logged_in', $result);
                 $this->data['username'] = $result['username'];
                 $this->data['logged'] = $result['logged'];
-                redirect('users');
+                redirect('user');
             }
             else
             {

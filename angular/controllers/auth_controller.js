@@ -15,7 +15,7 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                 //$scope.emailRedBorder = '';
                 $http({
                     method: 'POST',
-                    url: '/backend/users/login',
+                    url: '/backend/user/login',
                     data: $.param({
                         'email': $scope.email,
                         'password': $scope.password

@@ -20,10 +20,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     title: 'Адміністрування системи'
                 }
             })
-            .state('users', {
-                url: '/users',
+            .state('user', {
+                url: '/user',
                 templateUrl: '/manage/templates/user/index.html',
-                controller: 'UsersController',
+                controller: 'UserController',
                 data:{
                     title: 'Список користувачів'
                 }
@@ -31,9 +31,17 @@ app.config(['$stateProvider', '$urlRouterProvider',
             .state('users.edit', {
                 url: '/edit/:userId',
                 templateUrl: '/manage/templates/user/edit.html',
-                controller: 'UsersController',
+                controller: 'UserController',
                 data:{
                     title: 'Редагування користувача'
+                }
+            })
+            .state('city',{
+                url: '/city',
+                templateUrl: '/manage/templates/city/index.html',
+                controller: 'CityController',
+                data:{
+                    title:'Список міст'
                 }
             });
             /*

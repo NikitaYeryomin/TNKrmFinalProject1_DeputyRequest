@@ -31,7 +31,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
             .state('register', {
                 url: '/register',
                 templateUrl: '/angular/templates/register_form.html',
-                controller: 'UsersController',
+                controller: 'UserController',
                 data:{
                     title: 'Реєстрація'
                 }

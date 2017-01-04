@@ -16,14 +16,15 @@
     <script src="/angular/shared.js"></script>
     <script src="/manage/controllers/app_controller.js"></script>
     <script src="/manage/controllers/manage_controller.js"></script>
-    <script src="/manage/controllers/users_controller.js"></script>
+    <script src="/manage/controllers/user_controller.js"></script>
+    <script src="/manage/controllers/city_controller.js"></script>
 </head>
 <body ng-controller="AppController">
 <div class="container">
 
-
     <div id="top">
         <ul class="nav nav-pills">
+            <!--
             <li><a id="show_left_sidebar" class="left_menu_button" href="">
                 <img id="left_menu_button"
                      src="/manage/images/left_menu_button.png">
@@ -31,13 +32,27 @@
                      src="/manage/images/left_menu_button_close.png">
                 </a>
             </li>
+            -->
             <li><a href="/">Home</a></li>
+            <li><a href="" ui-sref="user">Користувачі</a></li>
+            <li><a href="" ui-sref="request">Запити</a></li>
+            <li><a href="" ui-sref="city">Міста</a></li>
+            <li><a href="" ui-sref="districts">Дільниці</a></li>
+            <li ng-show="logged_in">
+                <a href="" ng-click="logout()">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    <strong>&nbsp;Log Out</strong>
+                </a>
+            </li>
+            <!--
             <li ng-show="!logged_in"><a href="" ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
             <li ng-show="!logged_in"><a href="" ui-sref="register">Register</a></li>
             <li ng-show="logged_in"><a><span class="glyphicon glyphicon-user"></span>&nbsp;<strong>{{currentUser.username}}</strong></a></li>
             <li ng-show="logged_in"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Log Out</strong></a></li>
+            -->
         </ul>
     </div>
+    <!--
     <div id="left_sidebar">
         <ul class="nav nav-pills nav-stacked">
             <li><a href="" ui-sref="users">Користувачі</a></li>
@@ -45,9 +60,11 @@
             <li><a href="" ui-sref="districts">Дільниці</a></li>
         </ul>
     </div>
+    -->
     <h2>{{Page.title()}}</h2>
     <div id="main_content" ui-view></div>
 
+    <!--
     <script>
         $(document).ready(function() {
             $('#show_left_sidebar').click(function() {
@@ -65,6 +82,7 @@
             });
         });
     </script>
+    -->
     <div id="bottom">
         <em>&copy; BrainBasket Kramatorsk 2016&ndash;2017</em>
     </div>

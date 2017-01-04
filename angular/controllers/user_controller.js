@@ -1,4 +1,4 @@
-app.controller('UsersController', ['$scope', '$http', '$location', '$state', 'Page', '$stateParams',
+app.controller('UserController', ['$scope', '$http', '$location', '$state', 'Page', '$stateParams',
     function($scope, $http, $location, $state, Page, $stateParams) {
 
         if ($state.current.data != undefined) {
@@ -12,7 +12,7 @@ app.controller('UsersController', ['$scope', '$http', '$location', '$state', 'Pa
             } else {
                 $http({
                     method: 'POST',
-                    url: '/backend/users/register',
+                    url: '/backend/user/register',
                     data: $.param({
                         'firstname' : $scope.Name,
                         'secondname': $scope.Patronymic,

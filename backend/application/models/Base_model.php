@@ -7,7 +7,7 @@ class Base_model extends CI_Model {
     public function __construct(){
         
         $class = str_replace('_model','', strtolower(get_class($this)));
-        $this->table = $class.'s';
+        $this->table = $class;
         $this->id_field = $class.'id';
     }
 
