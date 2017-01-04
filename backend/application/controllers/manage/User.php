@@ -2,16 +2,10 @@
 class User extends Admin_controller {
 
     public function index(){
-        //$this->data['users'] = ;
         echo json_encode(array(
                 'error' => 0,
                 'UserList' => $this->user->get_records()
             ));
-        /*
-        $this->data['title'] = 'Users list';
-        $this->data['inner_view'] = 'users/index';
-        $this->load->view('template', $this->data);
-        */
     }
     
     /*
