@@ -1,5 +1,17 @@
 #gmaps {
-    width: 450px;
+    width: 600px;
     height: 450px;
     margin: 10 auto;
+}
+td:nth-child(2), td:nth-child(3), th {
+    padding:3 3 3 3;
+}
+td:nth-child(2), td:nth-child(3){
+    font-size: 12px;
+}
+th, td:nth-child(1) {
+    text-align: center;
+}
+tr:nth-child(even){
+   background-color:#eee;
 }

@@ -106,7 +106,15 @@ h2,
 h3 {
     font-family: "Roboto-Bold";
     font: 1.5em;
+}
+h1,h3 {
     color: white;
+}
+header h2 {
+    color: white;
+}
+h2 {
+    text-align:center;
 }
 ul,
 li {

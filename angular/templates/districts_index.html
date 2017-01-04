@@ -11,11 +11,11 @@
         <th>знаходження місця для голосування
         <th><acronym title="територіальний виборчий округ">ТВО</acronym>
 <tr ng-repeat="district in districts">
-    <td><a href="" ui-sref="districts_inner({districtId: district.id})">{{district.id}}</a></td>
-    <td style="font-size: 10px">{{district.addresses}}</td>
+    <td><a href="" ui-sref="district({districtId: district.id})">{{district.id}}</a></td>
+    <td>{{district.addresses}}</td>
     <td><div ng-repeat="place in places | filter: {id: district.place_id} : true">{{place.address}}</div></td>
-    <td align=center><a href="" ui-sref="tvo/id/{{district.tvoid}}">{{district.tvoid}}</a></td>
+    <td align=center><a href="" ui-sref="tvo({tvoId:district.tvoid})">{{district.tvoid}}</a></td>
 </tr>
 </table>
 
-<em>дані згідно <a href="https://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&pid100=14&pf5271=48&prejim=3">Державного реєстра виборців</a></em>
+<em style="margin: 3px;display: block;">дані згідно <a href="http://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&pid100=14&pf5271=48&prejim=3">Державного реєстра виборців</a></em>

@@ -41,15 +41,23 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
                 data:{
-                    title: 'Дільниці'
+                    title: 'Виборчі дільниці'
                 }
             })
-            .state('districts_inner', {
-                url: '/districts/:districtId',
+            .state('district', {
+                url: '/district/:districtId',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
                 data:{
-                    title: 'Дільниця'
+                    title: 'Виборча дільниця'
+                }
+            })
+            .state('tvo', {
+                url: '/tvo/:tvoId',
+                templateUrl: '/angular/templates/districts_index.html',
+                controller: 'DistrictsController',
+                data:{
+                    title: 'Територіальний виборчий округ'
                 }
             });
 
