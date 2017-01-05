@@ -6,7 +6,7 @@
 td:nth-child(2), td:nth-child(3), th {
     padding:3 3 3 3;
 }
-td:nth-child(2), td:nth-child(3){
+.districts td:nth-child(2), .districts td:nth-child(3){
     font-size: 12px;
 }
 th, td:nth-child(1) {
