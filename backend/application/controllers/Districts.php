@@ -7,7 +7,7 @@ public function full_map()
 
         $districts = $this->districts->get_districts();
         $data['districts'] = $districts;
-        $places = $this->deputy->get_deputies();
+        //$places = $this->deputy->get_deputies();
     //    $data['places'] = $places;
 
         $data['error'] = 0;

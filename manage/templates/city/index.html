@@ -15,4 +15,9 @@
             <td>{{city.active}}</td>
         </tr>
     </table>
+    <select id="selectpickerCity" class="show-tick form-control bs-select-hidden" name="City" ng-model="City">
+        <option disabled selected value="">Оберіть місто</option>
+        <option ng-repeat="city in cities" value="{{city.cityid}}">{{city.city}}</option>
+    </select>
+    <div><p ng-model="City">{{City}}</p></div>
 </div>
