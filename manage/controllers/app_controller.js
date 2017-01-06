@@ -47,5 +47,22 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
             }
 
         })
+        
+        $scope.showConfirm = function(ev) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.confirm()
+                .title('Підтвердження видалення користувача')
+                .textContent('Ві дійсно бажаєте видалити користувача?')
+                .ariaLabel('Lucky day')
+                .targetEvent(ev)
+                .ok('Так')
+                .cancel('Ні');
+        
+            $mdDialog.show(confirm).then(function() {
+                $scope.status = 'You decided to get rid of your debt.';
+            }, function() {
+                $scope.status = 'You decided to keep your debt.';
+            });
+        };
 
     }]);

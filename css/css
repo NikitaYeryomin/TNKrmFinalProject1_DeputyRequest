@@ -4430,6 +4430,7 @@ body.modal-open,
 .modal-open .navbar-fixed-bottom {
     margin-right: 15px
 }
+/*
 .modal {
     position: absolute;
     top: 0;
@@ -4441,6 +4442,7 @@ body.modal-open,
     overflow: auto;
     overflow-y: scroll
 }
+*/
 .modal.fade .modal-dialog {
     -webkit-transform: translate(0, -25%);
     -ms-transform: translate(0, -25%);
