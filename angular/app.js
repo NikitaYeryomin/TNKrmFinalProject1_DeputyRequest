@@ -53,6 +53,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     pageTitle: 'Виборча дільниця'
                 }
             })
+            .state('city',{
+                url: '/city',
+                templateUrl: '/manage/templates/city/index.html',
+                controller: 'CityController',
+                data:{
+                    title:'Список міст'
+                }
+            })
             .state('tvo', {
                 url: '/tvo/:tvoId',
                 templateUrl: '/angular/templates/districts_index.html',
