@@ -19,6 +19,17 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         };
         
         $scope.user();
-
+        
+        $scope.deleteuser = function(userId) {
+            $http({
+                method: 'GET',
+                url: '/backend/manage/user/delete/' + userId,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.user();
+                }
+            })
+        }
 
     }]);

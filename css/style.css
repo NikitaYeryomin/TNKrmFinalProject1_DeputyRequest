@@ -228,7 +228,7 @@ header {
     padding: 0;
 }
 .motivator h1 {
-    font-size: 60px;
+    font-size: 50px;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -377,21 +377,21 @@ header {
     }
 }
 .footer-holder {
-    background-color: #424752;
+    background-color: #445;
 }
 .footer-part-holder {
     width: 100%;
-    background-color: #424752;
+    background-color: #445;
 }
 .footer-part-holder .container .footer-top-part {
     margin-bottom: 10px;
     overflow: hidden;
 }
 .main-footer {
-    padding: 5px 0;
+    padding: 0 0;
     position: relative;
     bottom: 0;
-    height: 60px;
+    height: 50px;
     width: 100%;
 }
 footer {
@@ -399,7 +399,8 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    background-color: #424752;
+    background-color: #445;
+    font-size: 12px;
 }
 footer .container div {
     padding-left: 0;
@@ -407,7 +408,6 @@ footer .container div {
 }
 footer .footer-text p {
     font-family: "Roboto-Regular";
-    font-size: 12px;
     color: #b1b3b6;
 }
 footer .row {
@@ -456,7 +456,6 @@ footer .bund-ukrain {
 footer .bund-ukrain p {
     margin-left: 0;
     color: #b1b2b5;
-    font-size: 14px;
     font-family: "Roboto-Regular";
     padding-left: 10px;
 }
@@ -469,7 +468,7 @@ footer .bund-ukrain .foot-image-holder {
     width: 50px;
     position: relative;
     left: 0px;
-    top: -5px;
+    top: -8px;
 }
 @media (max-width: 761px) {
     footer .bund-ukrain .foot-image-holder {
@@ -489,7 +488,6 @@ footer .bund-ukrain div img {
 }
 footer .bund-ukrain div p {
     color: #b1b2b5;
-    font-size: 14px;
     font-family: "Roboto-Regular";
 }
 @media (max-width: 991px) {

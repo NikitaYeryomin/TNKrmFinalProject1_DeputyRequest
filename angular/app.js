@@ -1,6 +1,6 @@
 var app = angular.module('App', [
-    'ui.router'
-    ,"ngPageTitle"
+    'ui.router',
+    'ngPageTitle'
     //'ui.bootstrap',
     //'ngResource',
     //'angularFileUpload',
@@ -51,6 +51,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'DistrictsController',
                 data:{
                     pageTitle: 'Виборча дільниця'
+                }
+            })
+            .state('city',{
+                url: '/city',
+                templateUrl: '/manage/templates/city/index.html',
+                controller: 'CityController',
+                data:{
+                    title:'Список міст'
                 }
             })
             .state('tvo', {

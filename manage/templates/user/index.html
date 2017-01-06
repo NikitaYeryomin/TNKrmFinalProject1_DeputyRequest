@@ -16,7 +16,7 @@
             <td>{{fullname(user)}}</td>
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
-            <td>{{user.city + " " + user.street + " " + user.home}}</td>
+            <td><a href="" ng-click="">{{user.city}}</a><br>{{user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
                 <a href="" ui-sref="user.edit({userId: user.userid})">

@@ -18,15 +18,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
-    <script type="text/javascript" defer src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="https://cdn.rawgit.com/riggerthegeek/ng-page-title/master/dist/ng-page-title.min.js"></script>
+    <script type="text/javascript" defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCJjLs1molYuc7ro6rAG5G6tS9SQqvVOE"></script>
 <!--script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCJjLs1molYuc7ro6rAG5G6tS9SQqvVOE&callback=initMap"></script-->
-<script src="https://cdn.rawgit.com/riggerthegeek/ng-page-title/master/dist/ng-page-title.min.js"></script>
     <script src="/angular/app.js"></script>
     <script src="/angular/shared.js"></script>
     <script src="/angular/controllers/app_controller.js"></script>
     <script src="/angular/controllers/auth_controller.js"></script>
     <script src="/angular/controllers/districts_controller.js" charset="utf-8"></script>
     <script src="/angular/controllers/user_controller.js" charset="utf-8"></script>
+    <script src="/angular/controllers/city_controller.js" charset="utf-8"></script>
 </head>
 <body>
 
@@ -39,16 +40,12 @@
             <div class="footer-top-part">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-tn-8">
                     <div class="row bund-ukrain" style="margin-top: 10px;">
-                        <div class="foot-image-holder">
-                            <img src="/img/bb-logo.jpg" />
-                        </div>
-                        <div style="width: 85%;">
-                            <p>
-                                Створено в рамках навчальної програми &#171;<a href="http://brainbasket.org/technology-nation/" target="_blank">Technology Nation</a>&#187;
-                                <br>фонду <a href="http://brainbasket.org/" target="_blank">Brainbasket Foundation</a><br>
-                                Зауваження та побажання надсилайте на <a href="mailto:nikyer@gmail.com" target="_top">nikyer@gmail.com</a>
-                            </p>
-                        </div>
+                        <div class="foot-image-holder"><img src="/img/bb-logo.jpg" /></div>
+                        <div style="width: 85%;"><p>
+                            Створено в рамках навчальної програми &#171;<a href="http://brainbasket.org/technology-nation/" target="_blank">Technology Nation</a>&#187;
+                            <br>фонду <a href="http://brainbasket.org/" target="_blank">Brainbasket Foundation</a><br>
+                            <span class="l">Зауваження та побажання надсилайте на <a href="mailto:nikyer@gmail.com?subject=Cистема звернень до депутатів" target="_top">nikyer@gmail.com</a></span>
+                        </p></div>
                     </div>
                 </div>
             </div>

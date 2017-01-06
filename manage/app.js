@@ -28,7 +28,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     title: 'Список користувачів'
                 }
             })
-            .state('users.edit', {
+            .state('user.edit', {
                 url: '/edit/:userId',
                 templateUrl: '/manage/templates/user/edit.html',
                 controller: 'UserController',
