@@ -1,6 +1,6 @@
 var app = angular.module('App', [
-    'ui.router'
-    ,"ngPageTitle"
+    'ui.router',
+    'ngPageTitle'
     //'ui.bootstrap',
     //'ngResource',
     //'angularFileUpload',

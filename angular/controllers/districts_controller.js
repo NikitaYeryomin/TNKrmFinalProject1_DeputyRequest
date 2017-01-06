@@ -14,10 +14,8 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
 
   }])
 
-.directive('myMap', ['$http', function($http) {
+.directive('fullMap', ['$http', function($http) {
     var map, infoWindow;
-    var markers = [];
-
     // directive link function
     var link = function($scope, element, attrs) {
 
@@ -42,13 +40,89 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             }
         }
 
-        function addDistrict(id, coords, olor) {
+        function addDistrict(id, coords, сolor, tvoid) {
             var district = new google.maps.Polygon({
                 paths: coords,
-                strokeColor: '#' + olor,
+                strokeColor: сolor,
                 strokeOpacity: 0.9,
                 strokeWeight: 2,
-                fillColor: '#' + olor,
+                fillColor: сolor,
+                fillOpacity: 0.4
+            });
+            district.setMap(map);
+
+            district.addListener('click', function (pos) {
+                var infowindow = new google.maps.InfoWindow({
+                    content: (
+'дільниця № <a href="district/' + id + '">' + id + '</a>,<br><acronym title="територіальний виборчий округ">ТВО</acronym> № ' + tvoid
+                        ),
+                    position: pos.latLng
+                });
+                infowindow.open(map);
+            });
+        }
+
+        $http({
+            method: 'GET',
+            url: '/backend/districts/full_map'
+        }).then(function(response) {
+            console.log(response.data);
+            $scope.scale = response.data.scale;
+            var districts = response.data.districts_on_map;
+         //   $scope.districts = response.data.districts;
+            initMap();
+
+            for (var i = 0; i < districts.length; i++) {
+                addDistrict(districts[i][0], districts[i][1], districts[i][2], districts[i][3]);
+            }
+//alert(districts);
+        });
+
+    };
+
+    return {
+        restrict: 'A',
+        template: '<div id="gmaps"></div>',
+        replace: true,
+        link: link
+    };
+}])
+
+/********************************************************************************************/
+
+.directive('districtsMap', ['$http', function($http) {
+    var map, infoWindow;
+    // directive link function
+    var link = function($scope, element, attrs) {
+
+        // init the map
+        function initMap() {
+            // map config
+            var latitude = (parseFloat($scope.scale.maxlat) + parseFloat($scope.scale.minlat)) / 2;
+            var longtitude = (parseFloat($scope.scale.maxlon) + parseFloat($scope.scale.minlon)) / 2;
+
+            var mapOptions = {
+                zoom: 12,
+                center: {lat: latitude, lng: longtitude},
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                streetViewControl: false,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    mapTypeIds: [google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.ROADMAP],
+                }
+            };
+            if (map === void 0) {
+                map = new google.maps.Map(element[0], mapOptions);
+            }
+        }
+
+        function addDistrict(id, coords, сolor) {
+            var district = new google.maps.Polygon({
+                paths: coords,
+                strokeColor: сolor,
+                strokeOpacity: 0.9,
+                strokeWeight: 2,
+                fillColor: сolor,
                 fillOpacity: 0.4
             });
             district.setMap(map);
@@ -122,3 +196,4 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
         link: link
     };
 }]);
+
