@@ -10,8 +10,6 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                 Page.setTitle($state.current.data.title);
             }
         }
-
-
   }])
 
 .directive('fullMap', ['$http', function($http) {
@@ -40,7 +38,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             }
         }
 
-        function addDistrict(id, coords, сolor, tvoid) {
+        function addDistrict(id, coords, сolor, tvoid, dep) {
             var district = new google.maps.Polygon({
                 paths: coords,
                 strokeColor: сolor,
@@ -54,7 +52,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             district.addListener('click', function (pos) {
                 var infowindow = new google.maps.InfoWindow({
                     content: (
-'дільниця № <a href="district/' + id + '">' + id + '</a>,<br><acronym title="територіальний виборчий округ">ТВО</acronym> № ' + tvoid
+'дільниця № <a href="district/'+id+'">'+id+'</a>,<br><acronym title="територіальний виборчий округ">ТВО</acronym> № '+tvoid+',<br>депутат'+dep
                         ),
                     position: pos.latLng
                 });
@@ -68,14 +66,26 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
         }).then(function(response) {
             console.log(response.data);
             $scope.scale = response.data.scale;
-            var districts = response.data.districts_on_map;
+            var districts = response.data.districts;
+            var deputies = response.data.deputies;
          //   $scope.districts = response.data.districts;
             initMap();
 
             for (var i = 0; i < districts.length; i++) {
-                addDistrict(districts[i][0], districts[i][1], districts[i][2], districts[i][3]);
+                var dep='';var flag=0;
+                    for (var j = 0; j < deputies.length; j++) {
+                        if (deputies[j]['tvoid']==districts[i][3]){
+                            if (flag>0){dep='и '+dep+', ';}
+                            else {dep=' ';}
+                            dep+=deputies[j]['name'].slice(0,1)+'. '+deputies[j]['patronymic'].slice(0,1)+'. '+deputies[j]['surname'];
+                            flag++;
+                        }
+                        
             }
-//alert(districts);
+                        if (flag==0){dep='а нема';}
+                addDistrict(districts[i][0], districts[i][1], districts[i][2], districts[i][3], dep);
+            }
+//alert(deputies);
         });
 
     };

@@ -7,8 +7,8 @@ public function full_map()
 
         $districts = $this->districts->get_districts();
         $data['districts'] = $districts;
-        $places = $this->deputy->get_deputies();
-    //    $data['places'] = $places;
+        $deputies = $this->deputy->get_deputies();
+        $data['deputies'] = $deputies;
 
         $data['error'] = 0;
 
@@ -54,21 +54,20 @@ public function full_map()
                 $districts[$k4]['id'], $vertex, $this->сolorizer(),$districts[$k4]['tvoid']
                 );
         }
-        $data['districts_on_map'] = $_districts;
+        $data['districts'] = $_districts;
 
-       /* $_places = array();
-        foreach ($places as $k => $v) {
-            $_places[$k]= array($places[$k]['latitude'], $places[$k]['longitude']);
-            $vote_places = array();
-            foreach ($districts as $k2 => $v2) {
-                if ($districts[$k2]['place_id'] == $places[$k]['id']) {
-                    $vote_places[] = $districts[$k2]['id'];
-                }
-            }
-            $_places[$k][] = $vote_places;
+      $_deputies = array();
+        foreach ($deputies as $k => $v) {
+            $_deputies[$k]= array(
+                'id'=>$deputies[$k]['id'],
+                'surname'=>$deputies[$k]['surname'],
+                'name'=>$deputies[$k]['name'],
+                'patronymic'=>$deputies[$k]['patronymic'],
+                'tvoid'=>$deputies[$k]['tvoid']
+                );
         }
-        $data['places_on_map'] = $_places;
-*/
+        $data['deputies'] = $_deputies;
+
         echo json_encode($data, JSON_NUMERIC_CHECK );
     }
 
