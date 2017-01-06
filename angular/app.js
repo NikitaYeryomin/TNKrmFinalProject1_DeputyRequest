@@ -1,5 +1,6 @@
 var app = angular.module('App', [
-    'ui.router'
+    'ui.router',
+    'ngPageTitle'
     //'ui.bootstrap',
     //'ngResource',
     //'angularFileUpload',
@@ -17,7 +18,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/home.html',
                 controller: 'AppController',
                 data:{
-                    title: 'Система online-звернень до депутатів місцевих рад'
+                    pageTitle: 'Система online-звернень до депутатів місцевих рад'
                 }
             })
             .state('login', {
@@ -25,7 +26,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/login_form.html',
                 controller: 'AuthController',
                 data:{
-                    title: 'Вхід у систему'
+                    pageTitle: 'Вхід у систему'
                 }
             })
             .state('register', {
@@ -33,7 +34,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/register_form.html',
                 controller: 'UserController',
                 data:{
-                    title: 'Реєстрація'
+                    pageTitle: 'Реєстрація'
                 }
             })
             .state('districts', {
@@ -41,7 +42,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
                 data:{
-                    title: 'Виборчі дільниці'
+                    pageTitle: 'Виборчі дільниці'
                 }
             })
             .state('district', {
@@ -49,7 +50,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
                 data:{
-                    title: 'Виборча дільниця'
+                    pageTitle: 'Виборча дільниця'
                 }
             })
             .state('tvo', {
@@ -57,7 +58,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
                 data:{
-                    title: 'Територіальний виборчий округ'
+                    pageTitle: 'Територіальний виборчий округ'
                 }
             });
 
