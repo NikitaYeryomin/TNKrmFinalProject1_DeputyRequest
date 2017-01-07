@@ -388,7 +388,7 @@ header {
     overflow: hidden;
 }
 .main-footer {
-    padding: 0 0;
+    padding: 7px 0;
     position: relative;
     bottom: 0;
     height: 50px;

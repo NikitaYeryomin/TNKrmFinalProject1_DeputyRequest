@@ -85,7 +85,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                         if (flag==0){dep='а нема';}
                 addDistrict(districts[i][0], districts[i][1], districts[i][2], districts[i][3], dep);
             }
-//alert(deputies);
+//alert(districts);
         });
 
     };
