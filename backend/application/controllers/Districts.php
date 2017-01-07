@@ -5,7 +5,7 @@ public function full_map()
     {
         $data['title'] = 'виборчі дільниці';
 
-        $districts = $this->districts->get_districts();
+        $districts = $this->districts->get_districts('fullmap');
         $data['districts'] = $districts;
         $deputies = $this->deputy->get_deputies();
         $data['deputies'] = $deputies;
@@ -54,6 +54,11 @@ public function full_map()
                 $districts[$k4]['id'], $vertex, $this->сolorizer(),$districts[$k4]['tvoid']
                 );
         }
+        $i=1;
+        while ($i<count($_districts)) {
+            if ($_districts[$i][3]==$_districts[$i-1][3]){$_districts[$i][2]=$_districts[$i-1][2];}
+            $i++;
+        }    
         $data['districts'] = $_districts;
 
       $_deputies = array();
