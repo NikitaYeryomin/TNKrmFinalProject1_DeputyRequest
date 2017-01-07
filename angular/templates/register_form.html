@@ -154,7 +154,7 @@
                                                 <label>
                                                     Ваша адреса:
                                                 </label>
-                                                <p>{{City}}</p>
+                                                <p ng-repeat="city in cities | filter: {cityid:City} : true">{{city.city}}</p>
                                                 <p>{{Street}}, буд. {{Home}}</p>
                                             </div>
                                         </div>
