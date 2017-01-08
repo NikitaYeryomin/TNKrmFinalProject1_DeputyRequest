@@ -8,6 +8,12 @@ public function get_districts($id = FALSE)
                 $query = $this->db->get('districts');
                 return $query->result_array();
         }
+        if ($id == "fullmap")
+        {
+                $this->db->order_by('tvoid', 'ASC');
+                $query = $this->db->get('districts');
+                return $query->result_array();
+        }        
         if ($id == "id")
         {
                 $this->db->select('id');
