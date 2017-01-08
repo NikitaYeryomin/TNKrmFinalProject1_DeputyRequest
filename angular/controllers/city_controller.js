@@ -19,5 +19,4 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.city();
 
-
     }]);

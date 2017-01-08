@@ -3,7 +3,6 @@ app.controller('UserController', ['$scope', '$http', '$location', '$state', 'Pag
 
         if ($state.current.data != undefined) {
             Page.setTitle($state.current.data.title);
-
         }
         
         $scope.register = function() {
