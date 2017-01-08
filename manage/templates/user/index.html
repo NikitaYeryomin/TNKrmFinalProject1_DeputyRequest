@@ -13,19 +13,37 @@
         </thead>
         <tr ng-repeat="user in users">
             <td>{{user.userid}}</td>
-            <td>{{fullname(user)}}</td>
+            <td><a href="" ui-sref="user.edit({userId: user.userid})">{{fullname(user)}}</a></td>
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
             <td><a href="" ng-click="">{{user.city}}</a><br>{{user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
-                <a href="" ui-sref="user.edit({userId: user.userid})">
-                    <span class="glyphicon glyphicon-pencil" title="Edit user {{user.userid}}"></span>
-                </a>
-                <a href="" ng-click="deleteuser(user.userid)">
-                    <span class="glyphicon glyphicon-remove" title="Delete user {{user.userid}}"></span>
-                </a>
+                <button class="btn btn-danger fa fa-trash" type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal" ng-model="ID" value="{{user.userid}}"></button>
+                <!--<button class="btn btn-danger fa fa-trash" type="button" ng-click="deleteuser(user.userid)"></button>-->
             </td>
         </tr>
     </table>
+</div>
+<div class="modal fade" id="registerPreviewModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content new-modal-content">
+            <div class="modal-header">
+                <div class="top-modal-head">
+                    <label>Підтвердження видалення облікового запису користувача</label>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix"></div>
+                <h4 class="modal-title">Ви дійсно бажаєте видалити запис користувача</h4>
+                <p ng-repeat="user in users | filter: {userid:ID} : true">{{fullname(user)}}?</p>
+                <div class="head-modal-border"></div>
+            </div>
+            <div class="modal-footer">
+                <div class="footer-modal-border"></div>
+                <button type="button" class="btn btn-primary fa fa-info" data-dismiss="modal">Скасувати</button>
+                <button type="button" class="btn btn-danger fa fa-trash" ng-click="deleteuser(user.userid)">Видалити</button>
+            </div>
+        </div>
+    </div>
 </div>
