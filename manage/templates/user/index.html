@@ -19,13 +19,13 @@
             <td><a href="" ng-click="">{{user.city}}</a><br>{{user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
-                <button class="btn btn-danger fa fa-trash" type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal" ng-model="ID" value="{{user.userid}}"></button>
+                <button class="btn btn-danger fa fa-trash" type="button" id="previewButton{{user.userid}}" data-toggle="modal" data-target="#DeleteConfirmModal" ng-model="ID" value="{{user.userid}}"></button>
                 <!--<button class="btn btn-danger fa fa-trash" type="button" ng-click="deleteuser(user.userid)"></button>-->
             </td>
         </tr>
     </table>
 </div>
-<div class="modal fade" id="registerPreviewModal">
+<div class="modal fade" id="DeleteConfirmModal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content new-modal-content">
             <div class="modal-header">
@@ -41,8 +41,10 @@
             </div>
             <div class="modal-footer">
                 <div class="footer-modal-border"></div>
-                <button type="button" class="btn btn-primary fa fa-info" data-dismiss="modal">Скасувати</button>
-                <button type="button" class="btn btn-danger fa fa-trash" ng-click="deleteuser(user.userid)">Видалити</button>
+                <div class="row">
+                    <button type="button" class="btn btn-primary fa fa-info" data-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-danger fa fa-trash" ng-click="deleteuser(user.userid)">Видалити</button>
+                </div>
             </div>
         </div>
     </div>

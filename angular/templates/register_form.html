@@ -135,25 +135,17 @@
                                     <div class="modal-body">
                                         <div id="previewContent" class="row">
                                             <div class="col-sm-12">
-                                                <label>
-                                                    Ім`я при підписанні та створенні петиції
-                                                </label>
+                                                <label>Ім`я при підписанні та створенні петиції</label>
                                                 <p>{{Surname}}&nbsp;{{Name}}&nbsp;{{Patronymic}}</p>
                                             </div>
                                             <div class="col-sm-12">
-                                                <label>
-                                                    Електронна адреса
-                                                </label>
+                                                <label>Електронна адреса</label>
                                                 <p>{{Email}}</p>
-                                                <label>
-                                                    Мобільний телефон
-                                                </label>
+                                                <label>Мобільний телефон</label>
                                                 <p>{{Phone}}</p>
                                             </div>
                                             <div class="col-sm-12">
-                                                <label>
-                                                    Ваша адреса:
-                                                </label>
+                                                <label>Ваша адреса:</label>
                                                 <p ng-repeat="city in cities | filter: {cityid:City} : true">{{city.city}}</p>
                                                 <p>{{Street}}, буд. {{Home}}</p>
                                             </div>
