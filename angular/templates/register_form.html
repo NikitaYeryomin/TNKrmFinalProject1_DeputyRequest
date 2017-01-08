@@ -24,17 +24,17 @@
                         <div class="row reg-input" style="margin-bottom: 29px;">
                             <div class="col-lg-3 col-md-3">
                                 <label>Прізвище</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="Surname" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="user.surname" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <label>Ім’я</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Name" name="Name" ng-model="Name" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Name" name="Name" ng-model="user.name" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <label>По батькові</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Patronymic" name="Patronymic" ng-model="Patronymic" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Patronymic" name="Patronymic" ng-model="user.patronymic" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Patronymic" data-valmsg-replace="true"></span>
                             </div>
                         </div>
@@ -50,19 +50,19 @@
                             </div>
                             <div class="col-lg-3 col-sm-3">
                                 <label>Вулиця</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Street" name="Street" ng-model="Street" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Street" name="Street" ng-model="user.street" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Street" data-valmsg-replace="true"></span>
                             </div>
                             <div class="col-lg-3 col-sm-3">
                                 <label>Номер будинку</label>
-                                <input class="form-control" data-val="true" data-val-regex="Введіть номер будинку" data-val-required="Введіть номер будинку" id="Home" name="Home" ng-model="Home" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-regex="Введіть номер будинку" data-val-required="Введіть номер будинку" id="Home" name="Home" ng-model="user.home" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Home" data-valmsg-replace="true"></span>
                             </div>
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-6">
                                 <label>Електронна пошта</label>
-                                <input class="form-control" data-val="true" data-val-email="Введіть електронну пошту" data-val-required="Введіть електронну пошту" id="Email" name="Email" ng-model="Email" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-email="Введіть електронну пошту" data-val-required="Введіть електронну пошту" id="Email" name="Email" ng-model="user.email" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                             </div>
                             <div class="col-lg-3 col-sm-6 hidden-xs">
@@ -73,7 +73,7 @@
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-6">
                                 <label>Мобільний телефон</label>
-                                <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="Phone" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
                             </div>
                             <div class="col-lg-3 col-sm-6 hidden-xs">
@@ -84,7 +84,7 @@
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-6">
                                 <label>Пароль</label>
-                                <input class="form-control" data-val="true" data-val-length="Пароль має бути довжиною хоча б 6 символів" data-val-length-max="100" data-val-length-min="6" data-val-required="Це поле обов`язкове для заповнення" id="Password" name="Password" ng-model="Password" type="password">
+                                <input class="form-control" data-val="true" data-val-length="Пароль має бути довжиною хоча б 6 символів" data-val-length-max="100" data-val-length-min="6" data-val-required="Це поле обов`язкове для заповнення" id="Password" name="Password" ng-model="user.password" type="password">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                             </div>
 
@@ -110,7 +110,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="checkbox">
-                                    <label><input checked="checked" data-val="true" data-val-required="The EmailDelivery field is required." id="EmailDelivery" name="EmailDelivery" type="checkbox" value="true"><input name="EmailDelivery" ng-model="EmailDelivery" type="hidden" value="false">Я згоден отримувати email розсилку</label>
+                                    <label><input checked="checked" data-val="true" data-val-required="The EmailDelivery field is required." id="EmailDelivery" name="EmailDelivery" type="checkbox" value="true"><input name="EmailDelivery" ng-model="user.emailDelivery" type="hidden" value="false">Я згоден отримувати email розсилку</label>
                                 </div>
                             </div>
                         </div>
@@ -138,24 +138,24 @@
                                                 <label>
                                                     Ім`я при підписанні та створенні петиції
                                                 </label>
-                                                <p>{{Surname}}&nbsp;{{Name}}&nbsp;{{Patronymic}}</p>
+                                                <p>{{user.surname}}&nbsp;{{user.name}}&nbsp;{{user.patronymic}}</p>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>
                                                     Електронна адреса
                                                 </label>
-                                                <p>{{Email}}</p>
+                                                <p>{{user.email}}</p>
                                                 <label>
                                                     Мобільний телефон
                                                 </label>
-                                                <p>{{Phone}}</p>
+                                                <p>{{user.phone}}</p>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>
                                                     Ваша адреса:
                                                 </label>
                                                 <p ng-repeat="city in cities | filter: {cityid:City} : true">{{city.city}}</p>
-                                                <p>{{Street}}, буд. {{Home}}</p>
+                                                <p>{{user.street}}, буд. {{user.home}}</p>
                                             </div>
                                         </div>
                                     </div>
