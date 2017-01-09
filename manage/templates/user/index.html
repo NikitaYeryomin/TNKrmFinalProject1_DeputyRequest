@@ -16,36 +16,36 @@
             <td><a href="" ui-sref="user.edit({userId: user.userid})">{{fullname(user)}}</a></td>
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
-            <td><a href="" ng-click="">{{user.city}}</a><br>{{user.street + " " + user.home}}</td>
+            <td><a href="" ng-click=""><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</p></a>{{user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
-                <button class="btn btn-danger fa fa-trash" type="button" id="previewButton{{user.userid}}" data-toggle="modal" data-target="#DeleteConfirmModal" ng-model="ID" value="{{user.userid}}"></button>
+                <button class="btn btn-danger fa fa-trash" type="button" id="previewButton{{user.userid}}" data-toggle="modal" data-target="#DeleteConfirmModal{{user.userid}}"></button>
                 <!--<button class="btn btn-danger fa fa-trash" type="button" ng-click="deleteuser(user.userid)"></button>-->
+                <div class="modal fade" id="DeleteConfirmModal{{user.userid}}">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content new-modal-content">
+                            <div class="modal-header">
+                                <div class="top-modal-head">
+                                    <label>Підтвердження видалення облікового запису користувача</label>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="clearfix"></div>
+                                <h4 class="modal-title">Ви дійсно бажаєте видалити запис користувача</h4>
+                                <p>{{fullname(user)}} ?</p>
+                                <div class="head-modal-border"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="footer-modal-border"></div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-danger fa fa-info" data-dismiss="modal">Скасувати</button>
+                                    <button type="button" class="btn btn-success fa fa-trash" ng-click="deleteuser(user.userid)">Видалити</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </td>
         </tr>
     </table>
-</div>
-<div class="modal fade" id="DeleteConfirmModal">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content new-modal-content">
-            <div class="modal-header">
-                <div class="top-modal-head">
-                    <label>Підтвердження видалення облікового запису користувача</label>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="clearfix"></div>
-                <h4 class="modal-title">Ви дійсно бажаєте видалити запис користувача</h4>
-                <p ng-repeat="user in users | filter: {userid:ID} : true">{{fullname(user)}}?</p>
-                <div class="head-modal-border"></div>
-            </div>
-            <div class="modal-footer">
-                <div class="footer-modal-border"></div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary fa fa-info" data-dismiss="modal">Скасувати</button>
-                    <button type="button" class="btn btn-danger fa fa-trash" ng-click="deleteuser(user.userid)">Видалити</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

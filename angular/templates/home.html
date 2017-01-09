@@ -13,7 +13,11 @@
                     &nbsp;<a href="/manage"><span>Manage</span></a>
                 </div>
                 <div ng-show="logged_in" class="register-links col-tn-4">
+                    <a href="" ui-sref="districts">Округи</a>
                     <span>Вітаємо, {{currentUser.username}}</span>
+                    <a href="" ng-click="logout()">
+                        <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out
+                    </a>
                 </div>
             </div>
         </section>

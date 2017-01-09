@@ -12,6 +12,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.users = response.data.UserList;
+                    $scope.cities = response.data.CityList;
+                    console.log($scope.users);
                     console.log($scope.users);
                     //$location.path('/backend/manage/users');
                 }
@@ -29,7 +31,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 if (response.data.error == 0) {
                     $scope.user();
                 }
-            })
-        }
+            });
+        };
 
     }]);

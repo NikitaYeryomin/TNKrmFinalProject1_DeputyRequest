@@ -4,7 +4,8 @@ class User extends Admin_controller {
     public function index(){
         echo json_encode(array(
                 'error' => 0,
-                'UserList' => $this->user->get_records()
+                'UserList' => $this->user->get_records(),
+                'CityList' => $this->city->get_records()
             ));
     }
     
