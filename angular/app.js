@@ -18,7 +18,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/home.html',
                 controller: 'AppController',
                 data:{
-                    pageTitle: 'Система online-звернень до депутатів місцевих рад'
+                    title: 'Система online-звернень до депутатів місцевих рад'
                 }
             })
             .state('login', {
@@ -26,7 +26,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/login_form.html',
                 controller: 'AuthController',
                 data:{
-                    pageTitle: 'Вхід у систему'
+                    title: 'Вхід у систему'
                 }
             })
             .state('register', {
@@ -34,7 +34,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/register_form.html',
                 controller: 'UserController',
                 data:{
-                    pageTitle: 'Реєстрація'
+                    title: 'Реєстрація'
                 }
             })
             .state('districts', {
@@ -42,15 +42,20 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
                 data:{
-                    pageTitle: 'Виборчі дільниці'
+                   title: 'Виборчі дільниці'
                 }
             })
             .state('district', {
                 url: '/district/:districtId',
-                templateUrl: '/angular/templates/districts_index.html',
+                templateUrl: '/angular/templates/district_index.html',
                 controller: 'DistrictsController',
                 data:{
-                    pageTitle: 'Виборча дільниця'
+                    title: "Виборча дільниця № {{getDistrictId}}"
+                },
+                resolve: {
+                    getDistrictId: ['$stateParams', function($stateParams) {
+                        return $stateParams.districtId;
+                    }]
                 }
             })
             .state('city',{
@@ -66,7 +71,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
                 data:{
-                    pageTitle: 'Територіальний виборчий округ'
+                    title: 'Територіальний виборчий округ'
                 }
             });
 
@@ -75,3 +80,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
          requireBase: false
          });*/
     }]);
+    
+    /*var getDistrictId = ["$route", function($route)
+    {    
+        return $route.current.params.districtId;
+    }];*/
