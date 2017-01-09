@@ -1,0 +1,21 @@
+<!--div   onMouseMove="titulizer()"-->
+<ng-include src="'/angular/templates/header.html'"></ng-include>
+<content style="padding:5px; display:block;">
+<h2 style="text-align: center" id="h2">Виборча дільниця № {{districtId}}</h2>
+<p style="text-align:center;"><strong>входить до територіального виборчого округу № {{district.tvoid}}, який у міській раді представляє депутат </strong></p>
+<fieldset> <legend>межі</legend>
+<p>{{district.addresses}}</p>
+<div district-map=""></div>
+
+
+</fieldset>
+<fieldset> <legend>місцезнаходження дільничної комісії / приміщення для голосування</legend>
+<p>{{district.address}}</p>
+</fieldset>
+<script>
+//function titulizer(){document.getElementById("title").innerHTML=document.getElementById("h2").innerHTML;}
+</script>
+
+<em style="margin: 3px;display: block;">дані згідно <a href="http://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&pid100=14&pf5271=48&prejim=3">Державного реєстра виборців</a></em>
+</content>
+<!--/div-->

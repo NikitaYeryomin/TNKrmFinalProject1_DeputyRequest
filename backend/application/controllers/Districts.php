@@ -3,8 +3,6 @@ class Districts extends Front_Controller
 {
 public function full_map()
     {
-        $data['title'] = 'виборчі дільниці';
-
         $districts = $this->districts->get_districts('fullmap');
         $data['districts'] = $districts;
         $deputies = $this->deputy->get_deputies();
@@ -78,10 +76,34 @@ public function full_map()
 
 /********************************************************************************************/
 
+public function district($id = NULL)
+    {
+        $district = $this->districts->get_districts($id);
+        $district['vertex'] = explode(";", $district['vertex']);
+        foreach ($district['vertex'] as $k => $v) {
+                $district['vertex'][$k] = explode(",", $v);
+            }
+
+        $data['district'] = $district;
+        $deputies = $this->deputy->get_deputies();
+        $_deputies = array();
+        foreach ($deputies as $k => $v) {
+            $_deputies[$k]= array(
+                'id'=>$deputies[$k]['id'],
+                'surname'=>$deputies[$k]['surname'],
+                'name'=>$deputies[$k]['name'],
+                'patronymic'=>$deputies[$k]['patronymic'],
+                'tvoid'=>$deputies[$k]['tvoid']
+                );
+        }
+        $data['deputies'] = $_deputies;
+        $data['error'] = 0;
+        echo json_encode($data);
+       // $data['vertex'] = $data['district']['vertex'];
+    }
+
 public function index()
     {
-        $data['title'] = 'виборчі дільниці';
-
         $districts = $this->districts->get_districts();
         $data['districts'] = $districts;
         $places = $this->place->get_places();
@@ -166,19 +188,6 @@ function сolorizer()
         }
         $сolor = '#'.$r . $g . $b;
         return $сolor;
-    }
-
-public function district($id = NULL)
-    {
-        $data['district'] = $this->districts_model->get_districts($id);
-        if (empty($data['district'])) {
-            show_404();
-        }
-        $data['vertex'] = $data['district']['vertex'];
-        $data['title'] = 'виборча дільниця № ' . $id;
-        $this->load->view('templates/header', $data);
-        $this->load->view('districts/district', $data);
-        $this->load->view('templates/footer');
     }
 
 public function edit($id = NULL)

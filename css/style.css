@@ -115,6 +115,7 @@ header h2 {
 }
 h2 {
     text-align:left;
+     margin-top: 0;
 }
 ul,
 li {

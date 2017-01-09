@@ -2,27 +2,23 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
     function($scope, $http, $location, $state, Page, $stateParams) {
         $scope.districtId = $stateParams.districtId;
 
-        if ($state.current.data != undefined) {
+        /*if ($state.current.data != undefined) {
             if ($state.current.name == 'district') {
-                Page.setTitle($state.current.data.title + " " + $scope.districtId);
+                Page.setTitle($scope.districtId);
             }
             else {
                 Page.setTitle($state.current.data.title);
             }
         }
+*/
   }])
-
-.directive('fullMap', ['$http', function($http) {
+/*********************************************************************************************************/
+  .directive('fullMap', ['$http', function($http) {
     var map, infoWindow;
-    // directive link function
     var link = function($scope, element, attrs) {
-
-        // init the map
         function initMap() {
-            // map config
             var latitude = (parseFloat($scope.scale.maxlat) + parseFloat($scope.scale.minlat)) / 2;
             var longtitude = (parseFloat($scope.scale.maxlon) + parseFloat($scope.scale.minlon)) / 2;
-
             var mapOptions = {
                 zoom: 12,
                 center: {lat: latitude, lng: longtitude},
@@ -37,7 +33,6 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                 map = new google.maps.Map(element[0], mapOptions);
             }
         }
-
         function addDistrict(id, coords, сolor, tvoid, dep) {
             var district = new google.maps.Polygon({
                 paths: coords,
@@ -48,18 +43,16 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                 fillOpacity: 0.4
             });
             district.setMap(map);
-
             district.addListener('click', function (pos) {
                 var infowindow = new google.maps.InfoWindow({
                     content: (
-'дільниця № <a href="district/'+id+'">'+id+'</a>,<br><acronym title="територіальний виборчий округ">ТВО</acronym> № '+tvoid+',<br>депутат'+dep
+'дільниця № <a href="#!/district/'+id+'">'+id+'</a>,<br><acronym title="територіальний виборчий округ">ТВО</acronym> № '+tvoid+',<br>депутат'+dep
                         ),
                     position: pos.latLng
                 });
                 infowindow.open(map);
             });
         }
-
         $http({
             method: 'GET',
             url: '/backend/districts/full_map'
@@ -68,9 +61,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             $scope.scale = response.data.scale;
             var districts = response.data.districts;
             var deputies = response.data.deputies;
-         //   $scope.districts = response.data.districts;
             initMap();
-
             for (var i = 0; i < districts.length; i++) {
                 var dep='';var flag=0;
                     for (var j = 0; j < deputies.length; j++) {
@@ -80,16 +71,12 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                             dep+=deputies[j]['name'].slice(0,1)+'. '+deputies[j]['patronymic'].slice(0,1)+'. '+deputies[j]['surname'];
                             flag++;
                         }
-                        
             }
                         if (flag==0){dep='а нема';}
                 addDistrict(districts[i][0], districts[i][1], districts[i][2], districts[i][3], dep);
             }
-//alert(districts);
         });
-
     };
-
     return {
         restrict: 'A',
         template: '<div id="gmaps"></div>',
@@ -97,20 +84,13 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
         link: link
     };
 }])
-
-/********************************************************************************************/
-
+/*********************************************************************************************************/
 .directive('districtsMap', ['$http', function($http) {
     var map, infoWindow;
-    // directive link function
     var link = function($scope, element, attrs) {
-
-        // init the map
         function initMap() {
-            // map config
             var latitude = (parseFloat($scope.scale.maxlat) + parseFloat($scope.scale.minlat)) / 2;
             var longtitude = (parseFloat($scope.scale.maxlon) + parseFloat($scope.scale.minlon)) / 2;
-
             var mapOptions = {
                 zoom: 12,
                 center: {lat: latitude, lng: longtitude},
@@ -125,7 +105,6 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                 map = new google.maps.Map(element[0], mapOptions);
             }
         }
-
         function addDistrict(id, coords, сolor) {
             var district = new google.maps.Polygon({
                 paths: coords,
@@ -136,7 +115,6 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                 fillOpacity: 0.4
             });
             district.setMap(map);
-
             district.addListener('click', function (pos) {
                 var infowindow = new google.maps.InfoWindow({
                     content: ('дільниця<br>№ <a href="district/' + id + '">' + id + '</a>'),
@@ -145,7 +123,6 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                 infowindow.open(map);
             });
         }
-
         function addMarker(lat, lon, text) {
             var content;
             text.length > 1 ? content = 'дільниці №№:<br>' : content = 'дільниця<br>№ ';
@@ -173,7 +150,6 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                 infowindow.open(map);
             });
         }
-
         $http({
             method: 'GET',
             url: '/backend/districts/index'
@@ -184,26 +160,62 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             var places = response.data.places_on_map;
             $scope.districts = response.data.districts;
             $scope.places = response.data.places;
-
             initMap();
-
             for (var i = 0; i < districts.length; i++) {
                 addDistrict(districts[i][0], districts[i][1], districts[i][2]);
             }
-
             for (var i = 0; i < places.length; i++) {
                 addMarker(places[i][0], places[i][1], places[i][2]);
             }
-
         });
-
     };
-
     return {
         restrict: 'A',
         template: '<div id="gmaps"></div>',
         replace: true,
         link: link
     };
-}]);
+}])
+/*********************************************************************************************************/
+.directive('districtMap', ['$http', function($http) {
+    var map, infoWindow;
+    var link = function($scope, element, attrs) {
+        function initMap() {
+            var latitude = 37;
+            var longtitude = 37;
+            var mapOptions = {
+                zoom: 12,
+                center: {lat: latitude, lng: longtitude},
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                streetViewControl: false,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    mapTypeIds: [google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.ROADMAP],
+                }
+            };
+            if (map === void 0) {
+                map = new google.maps.Map(element[0], mapOptions);
+            }
+        }
+   
+        $http({
+            method: 'GET',
+             url: '/backend/districts/district/' + $scope.districtId
+        }).then(function(response) {
+            console.log(response.data);
+            $scope.district = response.data.district;
+            var district = response.data.district;
+            var deputies = response.data.deputies;
+           // alert(district['vertex'][0][0]);
+            initMap();
+        });
 
+    };
+    return {
+        restrict: 'A',
+        template: '<div id="gmaps"></div>',
+        replace: true,
+        link: link
+    };
+}])
+;
