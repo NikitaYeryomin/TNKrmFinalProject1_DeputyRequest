@@ -9,6 +9,27 @@ class User extends Admin_controller {
             ));
     }
     
+    public function get($id) {
+        $result = $this->user->get_records($id);
+        if ($result) {
+            echo json_encode(array(
+                'error' => 0,
+                'User'  => $result
+                ));
+        } else {
+            echo json_encode(array(
+                'error' => 1,
+                'User'  => null
+                ));
+        }
+    }
+    
+    public function save($id) {
+        echo json_encode(array(
+            'error' => 0
+            ));
+    }
+    
     /*
     public function register(){
         $this->data['title'] = 'Register new user';
@@ -92,13 +113,13 @@ class User extends Admin_controller {
     }
     
     public function delete($id){
-        $this->user->delete($id);
         $logged_in = $this->session->userdata('logged_in');
         if ($id == $logged_in['id'])
         {
             $this->logout();
         }
-        redirect('/backend/manage/user');
+        $this->user->delete($id);
+        //redirect('/backend/manage/user');
     }
 
     public function login(){

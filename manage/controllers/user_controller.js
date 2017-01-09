@@ -14,7 +14,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     $scope.users = response.data.UserList;
                     $scope.cities = response.data.CityList;
                     console.log($scope.users);
-                    console.log($scope.users);
+                    console.log($scope.cities);
                     //$location.path('/backend/manage/users');
                 }
             });
@@ -30,6 +30,44 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.user();
+                }
+            });
+        };
+        
+        $scope.getuser = function(userId) {
+            $http({
+                method: 'GET',
+                url: '/backend/manage/user/get/' + userId,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.user = response.data.User;
+                    $location.path('/backend/manage/user/edit.html') //Путь к странице или state?
+                }
+            });            
+        };
+        
+        $scope.saveuser = function(userId) {
+            $http({
+                method: 'POST',
+                url: '/backend/manage/user/save' + userId,
+                data: $.param({
+                    'firstname' : $scope.user.name,
+                    'secondname': $scope.user.patronymic,
+                    'lastname'  : $scope.user.surname,
+                    'email'     : $scope.user.email,
+                    'phone'     : $scope.user.phone,
+                    'password'  : $scope.user.password,
+                    'city'      : $scope.user.city,
+                    'street'    : $scope.user.street,
+                    'home'      : $scope.user.home,
+                    'emaild'    : $scope.user.emailDelivery,
+                    'role'      : $scope.user.role
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.user = response.data.User;
                 }
             });
         };
