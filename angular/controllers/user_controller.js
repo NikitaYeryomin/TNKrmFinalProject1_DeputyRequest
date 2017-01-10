@@ -33,6 +33,6 @@ app.controller('UserController', ['$scope', '$http', '$location', '$state', 'Pag
                     $location.path('/districts');
                 }
             });
-        }
+        };
 
     }]);

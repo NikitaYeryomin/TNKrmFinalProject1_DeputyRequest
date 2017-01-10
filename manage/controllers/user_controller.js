@@ -42,7 +42,10 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.user = response.data.User;
-                    $location.path('/backend/manage/user/edit.html') //Путь к странице или state?
+                    $location.path('user.edit'); //Путь к странице или state?
+                } else {
+                    console.log('Error getting user info!');
+                    return;
                 }
             });            
         };
