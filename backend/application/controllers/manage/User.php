@@ -3,7 +3,7 @@ class User extends Admin_controller {
 
     public function index(){
         echo json_encode(array(
-                'error' => 0,
+                'error'    => 0,
                 'UserList' => $this->user->get_records(),
                 'CityList' => $this->city->get_records()
             ));
@@ -13,13 +13,15 @@ class User extends Admin_controller {
         $result = $this->user->get_records($id);
         if ($result) {
             echo json_encode(array(
-                'error' => 0,
-                'User'  => $result
+                'error'    => 0,
+                'User'     => $result,
+                'CityList' => $this->city->get_records()
                 ));
         } else {
             echo json_encode(array(
-                'error' => 1,
-                'User'  => null
+                'error'    => 1,
+                'User'     => null,
+                'CityList' => null
                 ));
         }
     }

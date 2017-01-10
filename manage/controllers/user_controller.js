@@ -42,7 +42,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.user = response.data.User;
-                    $location.path('user.edit'); //Путь к странице или state?
+                    $scope.cities = response.data.CityList;
+                    $location.path('user.edit/' + userId); //Путь к странице или state?
                 } else {
                     console.log('Error getting user info!');
                     return;

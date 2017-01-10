@@ -13,7 +13,7 @@
         </thead>
         <tr ng-repeat="user in users">
             <td>{{user.userid}}</td>
-            <td><a href="#" ui-sref="getuser({userId: user.userid})">{{fullname(user)}}</a></td>
+            <td><a href="#" ng-click="getuser(user.userid)">{{fullname(user)}}</a></td>
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
             <td><a href="#" ng-click=""><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</p></a>{{user.street + " " + user.home}}</td>
