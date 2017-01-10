@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 register-tab">
-                    <form ng-submit="register()" role="form" novalidate="novalidate">
+                    <form ng-submit="saveuser({userId: user.userid})" role="form" novalidate="novalidate">
                         <div class="row reg-input" style="margin-bottom: 29px;">
                             <div class="col-lg-3 col-md-3">
                                 <label>Прізвище</label>
@@ -48,8 +48,6 @@
                                 <input class="form-control" data-val="true" data-val-email="Введіть електронну пошту" data-val-required="Введіть електронну пошту" id="Email" name="Email" ng-model="user.email" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                             </div>
-                        </div>
-                        <div class="row reg-input">
                             <div class="col-lg-3 col-sm-6">
                                 <label>Мобільний телефон</label>
                                 <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">

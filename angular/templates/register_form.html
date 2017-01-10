@@ -42,7 +42,7 @@
                             <div class="col-lg-3 col-sm-3">
                                 <label>Ваше місто</label>
                                 <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="City">
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="user.city">
                                         <option disabled selected value="">Оберіть місто</option>
                                         <option ng-repeat="city in cities" value="{{city.cityid}}">{{city.city}}</option>
                                     </select>
@@ -110,7 +110,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="checkbox">
-                                    <label><input checked="checked" data-val="true" data-val-required="The EmailDelivery field is required." id="EmailDelivery" name="EmailDelivery" type="checkbox" value="true"><input name="EmailDelivery" ng-model="user.emailDelivery" type="hidden" value="false">Я згоден отримувати email розсилку</label>
+                                    <label><input checked="true" data-val="true" data-val-required="The EmailDelivery field is required." id="EmailDelivery" name="EmailDelivery" type="checkbox" value="true" ng-model="user.emailDelivery" />Я згоден отримувати email розсилку</label>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>Ваша адреса:</label>
-                                                <p ng-repeat="city in cities | filter: {cityid:City} : true">{{city.city}}</p>
+                                                <p ng-repeat="city in cities | filter: {cityid:user.city} : true">{{city.city}}</p>
                                                 <p>{{user.street}}, буд. {{user.home}}</p>
                                             </div>
                                         </div>
@@ -174,4 +174,11 @@
     $(document).submit(function(){
     	$('.modal').modal('hide');
     });
+</script>
+<script type="text/javascript">
+    window.onload = function() {
+        if(document.forms[0] && document.forms[0].EmailDelivery) {
+            document.forms[0].EmailDelivery.checked = true;
+        }
+    };
 </script>

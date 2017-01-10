@@ -43,7 +43,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 if (response.data.error == 0) {
                     $scope.user = response.data.User;
                     $scope.cities = response.data.CityList;
-                    $location.path('user.edit/' + userId); //Путь к странице или state?
+                    $location.path('useredit/' + userId); //Путь к странице или state?
                 } else {
                     console.log('Error getting user info!');
                     return;
@@ -54,7 +54,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.saveuser = function(userId) {
             $http({
                 method: 'POST',
-                url: '/backend/manage/user/save' + userId,
+                url: '/backend/manage/user/save/' + userId,
                 data: $.param({
                     'firstname' : $scope.user.name,
                     'secondname': $scope.user.patronymic,

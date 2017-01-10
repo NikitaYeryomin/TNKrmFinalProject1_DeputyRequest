@@ -58,7 +58,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     }]
                 }
             })
-            .state('city',{
+            .state('city', {
                 url: '/city',
                 templateUrl: '/manage/templates/city/index.html',
                 controller: 'CityController',

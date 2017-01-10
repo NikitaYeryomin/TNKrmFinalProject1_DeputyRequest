@@ -28,13 +28,21 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     title: 'Список користувачів'
                 }
             })
-            .state('user.edit', {
-                url: '/edit/:userId',
+            .state('useredit', {
+                url: '/user/:userId',
                 templateUrl: '/manage/templates/user/edit.html',
                 controller: 'UserController',
                 data:{
-                    title: 'Редагування користувача'
+                    title: 'Редагування користувача {{userId}}'
                 }
+                /*
+                ,
+                resolve: {
+                    getUserId: ['$stateParams', function($stateParams) {
+                        return $stateParams.userid;
+                    }]
+                }
+                */
             })
             .state('city',{
                 url: '/city',
