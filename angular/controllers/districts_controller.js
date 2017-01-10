@@ -117,7 +117,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             district.setMap(map);
             district.addListener('click', function (pos) {
                 var infowindow = new google.maps.InfoWindow({
-                    content: ('дільниця<br>№ <a href="district/' + id + '">' + id + '</a>'),
+                    content: ('дільниця<br>№ <a href="#!/district/' + id + '">' + id + '</a>'),
                     position: pos.latLng
                 });
                 infowindow.open(map);
@@ -127,7 +127,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             var content;
             text.length > 1 ? content = 'дільниці №№:<br>' : content = 'дільниця<br>№ ';
             for (var i = 0; i < text.length; i++) {
-                content += '<a href="district/' + text[i] + '">' + text[i] + '</a><br>';
+                content += '<a href="#!/district/' + text[i] + '">' + text[i] + '</a><br>';
             }
             var image = {
                 url: '/img/flag.gif',
@@ -176,15 +176,15 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
         link: link
     };
 }])
-/*********************************************************************************************************/
+/*************************************участок****************************************************/
 .directive('districtMap', ['$http', function($http) {
     var map, infoWindow;
-    var link = function($scope, element, attrs) {
+    var link = function($scope, element) {
         function initMap() {
-            var latitude = 37;
-            var longtitude = 37;
+            var latitude = ($scope.extremes.maxlat+$scope.extremes.minlat)/2;
+            var longtitude = ($scope.extremes.maxlon+$scope.extremes.minlon)/2;
             var mapOptions = {
-                zoom: 12,
+                zoom: 15,
                 center: {lat: latitude, lng: longtitude},
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false,
@@ -196,17 +196,49 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             if (map === void 0) {
                 map = new google.maps.Map(element[0], mapOptions);
             }
-        }
-   
-        $http({
+    var district = new google.maps.Polygon({
+        paths: $scope.district.vertex,
+        strokeColor: '#F00',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#F00',
+        fillOpacity: 0.25
+    });
+    district.setMap(map);
+    var image={
+        url:'/img/flag.gif',
+        size: new google.maps.Size(19,20),
+        origin:new google.maps.Point(0,0),
+        anchor:new google.maps.Point(1,20)
+    };
+    var marker = new google.maps.Marker
+        ({
+        position:new google.maps.LatLng($scope.district.latitude,$scope.district.longitude),
+        map:map,
+        icon:image
+    });
+    marker.addListener('click', function() {
+        var infowindow = new google.maps.InfoWindow({
+            content:('місцезнаходження дільничної комісії<br>/ приміщення для голосування'),
+            position:marker.getPosition() });
+	    infowindow.open(map );
+	}); 
+    marker.setMap(map);
+         }
+       $http({
             method: 'GET',
              url: '/backend/districts/district/' + $scope.districtId
         }).then(function(response) {
             console.log(response.data);
             $scope.district = response.data.district;
-            var district = response.data.district;
-            var deputies = response.data.deputies;
-           // alert(district['vertex'][0][0]);
+            $scope.extremes = response.data.extremes;
+            $scope.deputies = response.data.deputies;
+            if ($scope.deputies.length==0){$scope.prescriptum='не представляє жоден депутат';}
+            if ($scope.deputies.length==1){$scope.prescriptum='представляє депутат';}
+            if ($scope.deputies.length>1){
+                $scope.prescriptum='представляють депутати';
+                $scope.deputies[0].joint=' та';
+            }
             initMap();
         });
 

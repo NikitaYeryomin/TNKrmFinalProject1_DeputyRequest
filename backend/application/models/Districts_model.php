@@ -17,7 +17,7 @@ public function get_districts($id = FALSE)
         if ($id == "id")
         {
                 $this->db->select('id');
-                $query = $this->db->get('districts');
+              //  $query = $this->db->get('districts');
                 return $query->result_array();
         }
                 if ($id == "fortvo")

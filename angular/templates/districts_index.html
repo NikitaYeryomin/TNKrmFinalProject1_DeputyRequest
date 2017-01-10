@@ -13,7 +13,7 @@
 <tr ng-repeat="district in districts">
     <td><a href="" ui-sref="district({districtId: district.id})">{{district.id}}</a></td>
     <td>{{district.addresses}}</td>
-    <td><div ng-repeat="place in places | filter: {id: district.place_id} : true">{{place.address}}</div></td>
+    <td><span ng-repeat="place in places | filter: {id: district.place_id} : true">{{place.address}}</span></td>
     <td align=center><a href="" ui-sref="tvo({tvoId:district.tvoid})">{{district.tvoid}}</a></td>
 </tr>
 </table>

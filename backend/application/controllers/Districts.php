@@ -23,18 +23,10 @@ public function full_map()
         $scale->minlon = $districts[0]['vertex'][0][1];
         foreach ($districts as $k3 => $v3) {
             foreach ($districts[$k3]['vertex'] as $k4 => $v4) {
-                if ($scale->maxlat < $v4[0]) {
-                    $scale->maxlat = $v4[0];
-                }
-                if ($scale->minlat > $v4[0]) {
-                    $scale->minlat = $v4[0];
-                }
-                if ($scale->maxlon < $v4[1]) {
-                    $scale->maxlon = $v4[1];
-                }
-                if ($scale->minlon > $v4[1]) {
-                    $scale->minlon = $v4[1];
-                }
+                if ($scale->maxlat < $v4[0]) {$scale->maxlat = $v4[0];}
+                if ($scale->minlat > $v4[0]) {$scale->minlat = $v4[0];}
+                if ($scale->maxlon < $v4[1]) {$scale->maxlon = $v4[1];}
+                if ($scale->minlon > $v4[1]) {$scale->minlon = $v4[1];}
             }
         }
         $data['scale'] = $scale;
@@ -74,7 +66,7 @@ public function full_map()
         echo json_encode($data, JSON_NUMERIC_CHECK );
     }
 
-/********************************************************************************************/
+/******************************один участок***********************************************/
 
 public function district($id = NULL)
     {
@@ -83,22 +75,43 @@ public function district($id = NULL)
         foreach ($district['vertex'] as $k => $v) {
                 $district['vertex'][$k] = explode(",", $v);
             }
-
+        $extremes = new stdClass();
+        $extremes->maxlat = $district['latitude'];
+        $extremes->minlat = $district['latitude'];
+        $extremes->maxlon = $district['longitude'];
+        $extremes->minlon = $district['longitude'];
+        foreach ($district['vertex'] as $k => $v) {
+            if ($extremes->maxlat < $v[0]) {$extremes->maxlat = $v[0];}
+            if ($extremes->minlat > $v[0]) {$extremes->minlat = $v[0];}
+            if ($extremes->maxlon < $v[1]) {$extremes->maxlon = $v[1];}
+            if ($extremes->minlon > $v[1]) {$extremes->minlon = $v[1];}
+            }
+        $data['extremes'] = $extremes;
+        $vertex = array();
+            foreach ($district['vertex'] as $k => $v) {
+                $temp = new stdClass();
+                $temp->lat = $v[0];
+                $temp->lng = $v[1];
+                $vertex[] = $temp;
+            }
+        $district['vertex']=$vertex;
         $data['district'] = $district;
         $deputies = $this->deputy->get_deputies();
         $_deputies = array();
         foreach ($deputies as $k => $v) {
-            $_deputies[$k]= array(
+            if ($deputies[$k]['tvoid']==$district['tvoid'])
+            {array_push($_deputies,array(
                 'id'=>$deputies[$k]['id'],
                 'surname'=>$deputies[$k]['surname'],
                 'name'=>$deputies[$k]['name'],
                 'patronymic'=>$deputies[$k]['patronymic'],
                 'tvoid'=>$deputies[$k]['tvoid']
-                );
+                ));
+            }
         }
         $data['deputies'] = $_deputies;
         $data['error'] = 0;
-        echo json_encode($data);
+        echo json_encode($data,JSON_NUMERIC_CHECK);
        // $data['vertex'] = $data['district']['vertex'];
     }
 
