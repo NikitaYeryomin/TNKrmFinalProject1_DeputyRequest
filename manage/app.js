@@ -33,7 +33,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/manage/templates/user/edit.html',
                 controller: 'UserController',
                 data:{
-                    title: 'Редагування користувача {{userId}}'
+                    title: "Редагування користувача {{userId}}"
                 }
                 /*
                 ,
