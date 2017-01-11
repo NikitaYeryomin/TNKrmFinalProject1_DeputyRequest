@@ -12,7 +12,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
         }
 */
   }])
-/*********************************************************************************************************/
+/**************************************карта на главной*********************************************************/
   .directive('fullMap', ['$http', function($http) {
     var map, infoWindow;
     var link = function($scope, element, attrs) {
@@ -84,7 +84,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
         link: link
     };
 }])
-/*********************************************************************************************************/
+/******************************************список участков*****************************************************/
 .directive('districtsMap', ['$http', function($http) {
     var map, infoWindow;
     var link = function($scope, element, attrs) {
