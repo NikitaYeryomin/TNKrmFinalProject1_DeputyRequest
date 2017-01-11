@@ -71,9 +71,29 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
                 if (response.data.error == 0) {
-                    $scope.user = response.data.User;
+                    //
                 }
             });
         };
 
-    }]);
+    }])
+/***************user************/
+.directive('user', ['$http', function($http) {
+    $http({
+        method: 'GET',
+        url:    '/backend/manage/user/get/' + $scope.userId,
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }).then(function(response) {
+        if (response.data.error == 0) {
+            console.log(response.data);
+            $scope.user = response.data.User;
+            $scope.cities = response.data.CityList;
+        } else {
+            console.log('Error getting user info!');
+            return;
+        }
+    });
+    return {
+        restrict: 'A'
+    };
+}]);
