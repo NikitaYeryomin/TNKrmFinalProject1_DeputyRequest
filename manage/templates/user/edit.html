@@ -7,7 +7,7 @@
                         <div class="row reg-input" style="margin-bottom: 29px;">
                             <div class="col-lg-3 col-md-3">
                                 <label>Прізвище</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="user.surname" type="text" value="">
+                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="users.lastname" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>
                             </div>
                             <div class="col-lg-3 col-md-3">
@@ -43,24 +43,24 @@
                             </div>
                         </div>
                         <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-6">
+                            <div class="col-lg-3 col-sm-3">
                                 <label>Електронна пошта</label>
                                 <input class="form-control" data-val="true" data-val-email="Введіть електронну пошту" data-val-required="Введіть електронну пошту" id="Email" name="Email" ng-model="user.email" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                             </div>
-                            <div class="col-lg-3 col-sm-6">
+                            <div class="col-lg-3 col-sm-3">
                                 <label>Мобільний телефон</label>
                                 <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
                             </div>
                         </div>
                         <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-6">
+                            <div class="col-lg-3 col-sm-3">
                                 <label>Пароль</label>
                                 <input class="form-control" data-val="true" data-val-length="Пароль має бути довжиною хоча б 6 символів" data-val-length-max="100" data-val-length-min="6" data-val-required="Це поле обов`язкове для заповнення" id="Password" name="Password" ng-model="user.password" type="password">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                             </div>
-                            <div class="col-lg-3 col-sm-6">
+                            <div class="col-lg-3 col-sm-3">
                                 <label>Підтвердження паролю</label>
                                 <input class="form-control" data-val="true" data-val-equalto="Пароль та підтвердження паролю мають співпадати" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
