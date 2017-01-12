@@ -1,14 +1,13 @@
-app.controller('UserController', ['$scope', '$http', '$location', '$state', 'Page', '$stateParams',
-    function($scope, $http, $location, $state, Page, $stateParams) {
+app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page', '$stateParams',
+    function($scope, $rootScope, $http, $location, $state, Page, $stateParams) {
 
         if ($state.current.data != undefined) {
             Page.setTitle($state.current.data.title);
         }
+        
         $scope.user = {};
 
         $scope.register = function() {
-            $scope.test1 = 'test1';
-            console.log($scope);
             $http({
                 method: 'POST',
                 url: '/backend/user/register',
@@ -21,16 +20,15 @@ app.controller('UserController', ['$scope', '$http', '$location', '$state', 'Pag
                     'password'  : $scope.user.password,
                     'city'      : $scope.user.city,
                     'street'    : $scope.user.street,
-                    'home'      : $scope.user.home,
-                    'emaild'    : $scope.user.emailDelivery
+                    'home'      : $scope.user.home
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
-                console.log(response.data);
                 if (response.data.error == 0) {
+                    console.log('redirecting to mainpage...');
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
-                    $location.path('/districts');
+                    $location.path('/');
                 }
             });
         };

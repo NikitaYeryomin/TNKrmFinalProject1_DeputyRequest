@@ -11,8 +11,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.getuser = function(userId) {
             $http({
                 method: 'GET',
-                url: '/backend/manage/user/get/' + userId,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                url: '/backend/manage/user/get/' + userId
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.user = response.data.User;
@@ -38,7 +37,6 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'city'      : $scope.user.city,
                     'street'    : $scope.user.street,
                     'home'      : $scope.user.home,
-                    'emaild'    : $scope.user.emailDelivery,
                     'role'      : $scope.user.role
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}

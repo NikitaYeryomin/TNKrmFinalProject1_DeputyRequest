@@ -15,7 +15,7 @@ class User extends Front_controller {
         else
         {
             $this->data = array(
-                'email' => $this->input->post('email'),
+                'email'     => $this->input->post('email'),
                 'pass'  => $this->input->post('password')
             );
             $result = $this->user->login($this->data);
@@ -70,18 +70,13 @@ class User extends Front_controller {
             'city_id'   => $this->input->post('city'),
             'street'    => $this->input->post('street'),
             'home'      => $this->input->post('home'),
-            'emaild'    => $this->input->post('emaild'),
             'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
             'joindate'  => date("Y-m-d H:i:s"),
         );
         if ($this->user->set_data(NULL, $this->data)) {
+            $data['password'] = $this->input->post('password');
             $this->login();
         }
-        /*
-        echo json_encode(array(
-            'error' => 0,
-        ));
-        */
     }
 }
 ?>
