@@ -13,6 +13,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('deputy_model', 'deputy');
         $this->load->model('place_model', 'place');
         $this->load->model('districts_model', 'districts'); //TODO: rename to district (?)
+        $this->load->model('tvo_model', 'tvo');
         $this->data = array();
         date_default_timezone_set('Europe/Kiev');
 

@@ -1,13 +1,23 @@
-#gmaps {
-    width: 600px;
-    height: 450px;
-    margin: 10 auto;
+/******************тэги в алфавитном порядке*************************************/
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5
 }
+p {
+    margin: 0 0 5px
+}
+
 td:nth-child(2), td:nth-child(3), th {
     padding:3 3 3 3;
-}
-.districts td:nth-child(2), .districts td:nth-child(3){
-    font-size: 12px;
 }
 th, td:nth-child(1) {
     text-align: center;
@@ -15,6 +25,19 @@ th, td:nth-child(1) {
 tr:nth-child(even){
    background-color:#eee;
 }
+
+
+/******************классы в алфавитном порядке*************************************/
+.districts td:nth-child(2), .districts td:nth-child(3){
+    font-size: 12px;
+}
 .l{
     font-size: smaller;
+}
+
+/******************идентификаторы в алфавитном порядке*************************************/
+#gmaps {
+    width: 600px;
+    height: 450px;
+    margin: 10 auto;
 }

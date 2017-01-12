@@ -1,0 +1,16 @@
+<ng-include src="'/angular/templates/header.html'"></ng-include>
+<content style="padding:5px; display:block;">
+<h2 style="text-align: center" id="h2">територіальний виборчий округ № {{id}}</h2>
+<div ng-repeat="district in districts">
+<fieldset> <legend>виборча дільниця № <a href="#!/district/{{district.id}}">{{district.id}}</a></legend>
+<p title="місцезнаходження дільничної комісії / приміщення для голосування" style="font-style: italic;"><img src="/img/flag.gif"> {{district.address}}</p>
+<p>{{district.addresses}}</p>
+</fieldset>
+</div>
+<div one-tvo=""></div>
+<fieldset> <legend>депутат</legend>
+<p>{{district.address}}</p>
+</fieldset>
+
+<em style="margin: 3px;display: block;">дані згідно <a href="http://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&pid100=14&pf5271=48&prejim=3">Державного реєстра виборців</a> та <a href="http://www.cvk.gov.ua/pls/vm2015/PVM057?PID112=30&PID102=398&PF7691=398&PT001F01=100&rej=0&pt00_t001f01=100">Центральної виборчої комісії</a></em>
+</content>

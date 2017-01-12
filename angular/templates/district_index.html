@@ -1,11 +1,11 @@
 <ng-include src="'/angular/templates/header.html'"></ng-include>
 <content style="padding:5px; display:block;">
 <h2 style="text-align: center" id="h2">Виборча дільниця № {{districtId}}</h2>
-<p style="text-align:center;">входить до територіального виборчого округу № {{district.tvoid}}, який у міській раді {{prescriptum}}<span ng-repeat="deputy in deputies"><strong> {{deputy.name}} {{deputy.patronymic}} {{deputy.surname}}</strong>{{deputy.joint}}</span></p>
+<p style="text-align:center;">входить до територіального виборчого округу № <a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a>, який у міській раді {{prescriptum}}<span ng-repeat="deputy in deputies"><strong> <a href="#!/deputy/{{deputy.id}}">{{deputy.name}} {{deputy.patronymic}} {{deputy.surname}}</a></strong>{{deputy.joint}}</span></p>
 <fieldset> <legend>межі</legend>
 <p>{{district.addresses}}</p>
 <div district-map=""></div>
-</fieldset>{{extremes.maxlat}}
+</fieldset>
 <fieldset> <legend>місцезнаходження дільничної комісії / приміщення для голосування</legend>
 <p>{{district.address}}</p>
 </fieldset>
