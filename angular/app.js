@@ -66,14 +66,13 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     title:'Список міст'
                 }
             })
-            /*.state('tvo', {
-                url: '/tvo/:tvoId',
-                templateUrl: '/angular/templates/districts_index.html',
-                controller: 'DistrictsController',
-                data:{
-                    title: 'Територіальний виборчий округ'
-                }
-            })*/
+            .state('tvo', {
+                url: '/tvo/:id',
+                templateUrl: '/angular/templates/tvo.html',
+                controller: 'TvoController',
+                data:{title: 'Територіальний виборчий округ № {{id}}'},
+                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]}
+            })
             .state('deputies', {
                 url: '/deputies',
                 templateUrl: '/angular/templates/deputies_index.html',
