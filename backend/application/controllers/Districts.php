@@ -112,7 +112,6 @@ public function district($id = NULL)
         $data['deputies'] = $_deputies;
         $data['error'] = 0;
         echo json_encode($data,JSON_NUMERIC_CHECK);
-       // $data['vertex'] = $data['district']['vertex'];
     }
 
 public function index()

@@ -66,15 +66,36 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     title:'Список міст'
                 }
             })
-            .state('tvo', {
+            /*.state('tvo', {
                 url: '/tvo/:tvoId',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
                 data:{
                     title: 'Територіальний виборчий округ'
                 }
-            });
-
+            })*/
+            .state('deputies', {
+                url: '/deputies',
+                templateUrl: '/angular/templates/deputies_index.html',
+                controller: 'DeputyController',
+                data:{
+                   title: 'депутати'
+                }
+            })
+            .state('deputy', {
+                url: '/deputy/:districtId',
+                templateUrl: '/angular/templates/deputy_index.html',
+                controller: 'DeputyController',
+                data:{
+                    title: "депутат {{getDistrictId}}"
+                },
+                resolve: {
+                    getDistrictId: ['$stateParams', function($stateParams) {
+                        return $stateParams.districtId;
+                    }]
+                }
+            })
+            ;
         /*$locationProvider.html5Mode({
          enabled: true,
          requireBase: false
