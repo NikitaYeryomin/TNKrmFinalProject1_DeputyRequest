@@ -1,3 +1,7 @@
+/*******************************************************************
+****************************** АДминка *****************************
+*******************************************************************/
+
 app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
     function($scope, $rootScope, $http, $location, $state, Page) {
 
@@ -40,12 +44,6 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
         $scope.fullname = function(user){
             return user.lastname + " " + user.firstname + " " + user.secondname;
         };
-
-        $rootScope.$on('$viewContentLoaded', function(event, toState){
-            if ($('#left_sidebar').is(':visible')) {
-                $('#main_content').css('margin-left', '175px');
-            }
-        });
         
         /*
         $rootScope.$on('submit', function() {

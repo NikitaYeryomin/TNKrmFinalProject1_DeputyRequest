@@ -1,3 +1,7 @@
+/*******************************************************************
+****************************** АДминка *****************************
+*******************************************************************/
+
 var app = angular.module('App', [
     'ui.router'
     //'ui.bootstrap',
@@ -20,15 +24,15 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     title: 'Адміністрування системи'
                 }
             })
-            .state('user', {
-                url: '/user',
+            .state('users', {
+                url: '/users',
                 templateUrl: '/manage/templates/user/index.html',
-                controller: 'UserController',
+                controller: 'UsersController',
                 data:{
                     title: 'Список користувачів'
                 }
             })
-            .state('useredit', {
+            .state('user', {
                 url: '/user/:userId',
                 templateUrl: '/manage/templates/user/edit.html',
                 controller: 'UserController',
