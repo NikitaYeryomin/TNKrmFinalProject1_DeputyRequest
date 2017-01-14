@@ -31,10 +31,13 @@ tr:nth-child(even){
 .districts td:nth-child(2), .districts td:nth-child(3){
     font-size: 12px;
 }
-.l{
+.l, .source{
     font-size: smaller;
 }
-
+.source{
+    margin: 0px;
+    font-style: italic;
+}
 /******************идентификаторы в алфавитном порядке*************************************/
 #gmaps {
     width: 600px;

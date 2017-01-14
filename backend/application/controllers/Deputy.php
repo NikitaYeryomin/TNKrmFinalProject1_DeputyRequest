@@ -1,5 +1,5 @@
 <?php
-class Districts extends Front_Controller
+class Deputy extends Front_Controller
 {
 /******************************один депутат***********************************************/
 

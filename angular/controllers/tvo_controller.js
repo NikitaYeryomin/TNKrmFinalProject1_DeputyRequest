@@ -213,6 +213,21 @@ app.controller('TvoController', ['$scope', '$http', '$location', '$state', 'Page
                 infowindow.open(map);
             });
         }
+        function addMarker(lat, lon){
+            var image={
+                url:'/img/flag.gif',
+                size: new google.maps.Size(19,20),
+                origin:new google.maps.Point(0,0),
+                anchor:new google.maps.Point(1,20)
+            };
+            var marker = new google.maps.Marker
+                ({
+                position:new google.maps.LatLng(lat, lon),
+                map:map,
+                icon:image
+            });
+        marker.setMap(map);
+        }//addMarker
 
        $http({
             method: 'GET',
@@ -221,9 +236,13 @@ app.controller('TvoController', ['$scope', '$http', '$location', '$state', 'Page
             console.log(response.data);
             $scope.districts = response.data.districts;
             $scope.extremes = response.data.extremes;
+            $scope.deputies = response.data.deputies;
+            if ($scope.deputies.length>1){$scope.postfix='и';}
+            if ($scope.deputies.length==0){$scope.collision='Від округу депутата до міськради не делеговано.';}
             initMap();
             for (var i = 0; i < $scope.districts.length; i++) {
                 addDistrict($scope.districts[i]['id'], $scope.districts[i]['vertex'], $scope.districts[i]['color']);
+                addMarker($scope.districts[i]['latitude'], $scope.districts[i]['longitude'])
             }
 
         });

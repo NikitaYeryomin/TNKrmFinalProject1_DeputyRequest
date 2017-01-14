@@ -193,7 +193,9 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                     mapTypeIds: [google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.ROADMAP],
                 }
             };
-            if (map === void 0) {map = new google.maps.Map(element[0], mapOptions);}
+            if (map === void 0) {map = new google.maps.Map(element[0], mapOptions);
+                
+            }
     var district = new google.maps.Polygon({
         paths: $scope.district.vertex,
         strokeColor: '#F00',
