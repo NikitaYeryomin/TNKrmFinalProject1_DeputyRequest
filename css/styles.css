@@ -1,5 +1,16 @@
 /******************тэги в алфавитном порядке*************************************/
-
+a:active {
+    text-decoration: none;
+    color: #6cf;
+}
+a:focus {
+    text-decoration: none;
+    color: #6cf;
+}
+content h2, content h4{
+    margin-bottom: 0;
+    text-align: center!important;
+}
 legend {
     display: block;
     width: 100%;

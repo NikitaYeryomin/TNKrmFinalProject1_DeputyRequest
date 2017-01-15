@@ -5,11 +5,10 @@ public function get_deputies($id = FALSE)
 {
         if ($id === FALSE)
         {
-//$this->db->select(' deputies.*, parties.title AS party FROM deputies INNER JOIN parties ON (deputies.party_id = parties.id) ORDER BY tvoid ASC' ,FALSE);
                 $query = $this->db->get('deputies');
                 return $query->result_array();
         }
-$this->db->select(' deputies.*, parties.title AS party FROM deputies INNER JOIN parties ON (deputies.party_id = parties.id) WHERE deputies.id='.$id ,FALSE);
+$this->db->select(' deputies.*, parties.genitive_case AS party FROM deputies INNER JOIN parties ON (deputies.party_id = parties.id) WHERE deputies.id='.$id ,FALSE);
         $query = $this->db->get();
         return $query->row_array();
 }  

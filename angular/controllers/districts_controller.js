@@ -68,7 +68,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                         if (deputies[j]['tvoid']==districts[i][3]){
                             if (flag>0){dep='и '+dep+', ';}
                             else {dep=' ';}
-                            dep+=deputies[j]['name'].slice(0,1)+'. '+deputies[j]['patronymic'].slice(0,1)+'. '+deputies[j]['surname'];
+                            dep+='<a href="#!/deputy/'+deputies[j]['id']+'">'+deputies[j]['name'].slice(0,1)+'. '+deputies[j]['patronymic'].slice(0,1)+'. '+deputies[j]['surname']+'</a>';
                             flag++;
                         }
             }
