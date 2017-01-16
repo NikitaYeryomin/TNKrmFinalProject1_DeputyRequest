@@ -10,7 +10,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         }
 
         $scope.getuser = function() {
-            console.log($scope.id);
+            //console.log($scope.id);
             $http({
                 method: 'GET',
                 url: '/backend/manage/user/get/' + $scope.id
@@ -18,8 +18,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 if (response.data.error == 0) {
                     $scope.user = response.data.User;
                     $scope.cities = response.data.CityList;
-                    console.log($scope.user);
-                    console.log($scope.cities);
+                    //console.log($scope.user);
+                    //console.log($scope.cities);
                 } else {
                     console.log('Error getting user info!');
                     return;
@@ -28,7 +28,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             });            
         };
         
-        $scope.getuser($scope.id);
+        $scope.getuser();
         
         $scope.saveuser = function(userId) {
             $http({

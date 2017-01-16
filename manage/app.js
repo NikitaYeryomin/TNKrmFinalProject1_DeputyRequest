@@ -37,9 +37,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/manage/templates/user/edit.html',
                 controller: 'UserController',
                 data:{
-                    title: 'Редагування користувача {{userId}}'
+                    title: 'Редагування користувача {{getUserId}}'
                 },
-                resolve: {userId: ['$stateParams', function($stateParams) {
+                resolve: {
+                    getUserId: ['$stateParams', function($stateParams) {
                         return $stateParams.userId;
                     }]
                 }
