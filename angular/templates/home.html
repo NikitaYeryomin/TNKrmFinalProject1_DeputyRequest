@@ -6,18 +6,47 @@
                 <div class="selectpicker city-selector">
                     <label onclick="showCityModal()" class="city-button" style="padding-top: 5px;">Краматорськ <span class="caret"></span></label>
                 </div>
+                <nav class="navigation-pages">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="" ui-sref="districts">Округи</a>
+                        </li>
+                        
+                        <li>
+                            <a href="" ui-sref="laws">Нормативно-правова база</a>
+                        </li>
+                        
+                        <li>
+                            <a href="" ui-sref="about">Про проект</a>
+                        </li>
+                    </ul>
+                </nav>
                 <div ng-show="!logged_in" class="register-links col-tn-4">
                     <span><a href="#" ui-sref="login">Увійти</a><span class="hide-reg"> або <a href="#" ui-sref="register">Зареєструватися</a></span></span>
                 </div>
-                <div ng-show="currentUser.role == 'admin'" class="register-links col-tn-4">
-                    &nbsp;<a href="/manage"><span>Manage</span></a>
-                </div>
-                <div ng-show="logged_in" class="register-links col-tn-4">
-                    <a href="" ui-sref="districts">Округи</a>
-                    <span>Вітаємо, {{currentUser.username}}</span>
-                    <a href="" ng-click="logout()">
-                        <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out
-                    </a>
+                <div ng-show="logged_in" class="register-links col-tn-6">
+                    <div class="dropdown user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <div class="user-holder">
+                                <label>Вітаємо, {{currentUser.username}}</label>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" ui-sref="">Мій кабінет</a>
+                            </li>
+                            <li ng-show="currentUser.role == 'admin'">
+                                <a href="/manage">
+                                    <span>Адміністрування</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" ng-click="logout()">
+                                    <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>

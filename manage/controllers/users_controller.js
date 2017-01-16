@@ -11,15 +11,11 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
         $scope.users = function() {
             $http({
                 method: 'GET',
-                url: '/backend/manage/user',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                url: '/backend/manage/user'
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.users = response.data.UserList;
                     $scope.cities = response.data.CityList;
-                    console.log($scope.users);
-                    console.log($scope.cities);
-                    //$location.path('/backend/manage/users');
                 }
             });
         };
@@ -32,7 +28,8 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
                 url: '/backend/manage/user/delete/' + userId
             }).then(function(response) {
                 if (response.data.error == 0) {
-                    $scope.user();
+                    console.log(response.data.error);
+                    $scope.users();
                 }
             });
         };
