@@ -37,18 +37,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/manage/templates/user/edit.html',
                 controller: 'UserController',
                 data:{
-                    title: "Редагування користувача {{userId}}"
-                }
-                /*
-                ,
-                resolve: {
-                    getUserId: ['$stateParams', function($stateParams) {
-                        return $stateParams.userid;
+                    title: 'Редагування користувача {{userId}}'
+                },
+                resolve: {userId: ['$stateParams', function($stateParams) {
+                        return $stateParams.userId;
                     }]
                 }
-                */
             })
-            .state('city',{
+            .state('city', {
                 url: '/city',
                 templateUrl: '/manage/templates/city/index.html',
                 controller: 'CityController',
