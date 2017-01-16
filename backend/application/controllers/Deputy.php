@@ -1,24 +1,14 @@
 <?php
-class Districts extends Front_Controller
+class Deputy extends Front_Controller
 {
 /******************************один депутат***********************************************/
 
-public function district()
+public function id($id = NULL)
     {
-        $deputies = $this->deputy->get_deputies();
-        $_deputies = array();
-        foreach ($deputies as $k => $v) {
-        array_push($_deputies,array(
-                'id'=>$deputies[$k]['id'],
-                'surname'=>$deputies[$k]['surname'],
-                'name'=>$deputies[$k]['name'],
-                'patronymic'=>$deputies[$k]['patronymic'],
-                'tvoid'=>$deputies[$k]['tvoid']
-                ));
-        }
-        $data['deputies'] = $_deputies;
+        $deputy = $this->deputy->get_deputies($id);
+        $data['deputy'] = $deputy;
         $data['error'] = 0;
-        echo json_encode($data,JSON_NUMERIC_CHECK);
+        echo json_encode($data);
     }
 /******************************список депутатов***********************************************/
 public function index()

@@ -68,7 +68,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                         if (deputies[j]['tvoid']==districts[i][3]){
                             if (flag>0){dep='и '+dep+', ';}
                             else {dep=' ';}
-                            dep+=deputies[j]['name'].slice(0,1)+'. '+deputies[j]['patronymic'].slice(0,1)+'. '+deputies[j]['surname'];
+                            dep+='<a href="#!/deputy/'+deputies[j]['id']+'">'+deputies[j]['name'].slice(0,1)+'. '+deputies[j]['patronymic'].slice(0,1)+'. '+deputies[j]['surname']+'</a>';
                             flag++;
                         }
             }
@@ -193,7 +193,9 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
                     mapTypeIds: [google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.ROADMAP],
                 }
             };
-            if (map === void 0) {map = new google.maps.Map(element[0], mapOptions);}
+            if (map === void 0) {map = new google.maps.Map(element[0], mapOptions);
+                
+            }
     var district = new google.maps.Polygon({
         paths: $scope.district.vertex,
         strokeColor: '#F00',

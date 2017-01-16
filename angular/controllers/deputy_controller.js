@@ -1,17 +1,6 @@
 app.controller('DeputyController', ['$scope', '$http', '$location', '$state', 'Page', '$stateParams',
-    function($scope, $http, $location, $state, Page, $stateParams) {
-        $scope.districtId = $stateParams.districtId;
-
-        /*if ($state.current.data != undefined) {
-            if ($state.current.name == 'district') {
-                Page.setTitle($scope.districtId);
-            }
-            else {
-                Page.setTitle($state.current.data.title);
-            }
-        }
-*/
-  }])
+   function($scope, $http, $location, $state, Page, $stateParams) {$scope.id = $stateParams.id;}
+    ])
 /******************************************список депутатов*****************************************************/
 .directive('deputiesList', ['$http', function($http) {
     var map, infoWindow;
@@ -19,7 +8,6 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', 'P
         $http({
             method: 'GET',
             url: '/backend/deputy/index',
-            //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
             console.log(response.data);
             $scope.deputies = response.data.deputies;
@@ -27,7 +15,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', 'P
     };
     return {
         restrict: 'A',
-       // template: '<div id="gmaps"></div>',
+        template: '<div id="gmaps"></div>',
         replace: true,
         link: link
     };
@@ -37,12 +25,22 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', 'P
     var link = function($scope, element) {
        $http({
             method: 'GET',
-             url: '/backend/deputy/index/' + $scope.districtId
+             url: '/backend/deputy/id/' + $scope.id
         }).then(function(response) {
             console.log(response.data);
-            $scope.deputies = response.data.deputies;
+            $scope.deputy = response.data.deputy;
+            if ($scope.deputy.sex=="f"){$scope.deputy.sexfix="а";}
+            if ($scope.deputy.sex=="m"){$scope.deputy.sexfix="ий";}
+            $scope.deputy.tvourl="#!/tvo/"+$scope.deputy.tvoid;
+            if ($scope.deputy.tvoid!="0"){
+                $scope.deputy.listfix2="за списком ";
+                $scope.deputy.listfix1="територіального виборчого округу № ";
+            }
+            if ($scope.deputy.tvoid=="0"){
+                $scope.deputy.tvoid="";
+                $scope.deputy.listfix3=" як лідер списку";
+            }
         });
-
     };
     return {
         restrict: 'A',

@@ -82,17 +82,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
             .state('deputy', {
-                url: '/deputy/:districtId',
-                templateUrl: '/angular/templates/deputy_index.html',
+                url: '/deputy/:id',
+                templateUrl: '/angular/templates/deputy.html',
                 controller: 'DeputyController',
-                data:{
-                    title: "депутат {{getDistrictId}}"
-                },
-                resolve: {
-                    getDistrictId: ['$stateParams', function($stateParams) {
-                        return $stateParams.districtId;
-                    }]
-                }
+                data:{title: "депутат {{id}}"},
+                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]                }
             })
             ;
         /*$locationProvider.html5Mode({

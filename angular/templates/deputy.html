@@ -1,0 +1,13 @@
+<ng-include src="'/angular/templates/header.html'"></ng-include>
+<content style="padding:5px; display:block;">
+<h4>депутат <!--Краматорської -->міської ради</h3>
+<h2>{{deputy.name}} {{deputy.patronymic}} {{deputy.surname}}</h2>
+<h4>обран{{deputy.sexfix}} від {{deputy.listfix1}}<a href="{{deputy.tvourl}}">{{deputy.tvoid}}</a> {{deputy.listfix2}}{{deputy.party}}{{deputy.listfix3}}</h4>
+<fieldset> <legend>біографія</legend>
+{{deputy.bio}}
+</fieldset>
+<div deputy-page=""></div>
+<fieldset> <legend>звернення до депутата</legend>
+</fieldset>
+<p class="source">дані <a href="http://www.cvk.gov.ua/pls/vm2015/PVM057?PID112=30&PID102=398&PF7691=398&PT001F01=100&rej=0&pt00_t001f01=100">Центральної виборчої комісії</a></p>
+</content>

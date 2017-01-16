@@ -14,8 +14,8 @@
     <td><a href="" ui-sref="district({districtId: district.id})">{{district.id}}</a></td>
     <td>{{district.addresses}}</td>
     <td><span ng-repeat="place in places | filter: {id: district.place_id} : true">{{place.address}}</span></td>
-    <td align=center><a href="#!/tvo/{{district.tvoid}}" ui-sref="tvo({tvoId:district.tvoid})">{{district.tvoid}}</a></td>
+    <td align=center><a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a></td>
 </tr>
 </table>
 
-<em style="margin: 3px;display: block;">дані згідно <a href="http://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&pid100=14&pf5271=48&prejim=3">Державного реєстра виборців</a></em>
+<p class="source">дані згідно <a href="http://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&pid100=14&pf5271=48&prejim=3">Державного реєстра виборців</a></p>
