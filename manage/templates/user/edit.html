@@ -25,8 +25,8 @@
                             <div class="col-lg-3 col-sm-3">
                                 <label>Ваше місто</label>
                                 <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="cities">
-                                        <option ng-repeat="city in cities" value="{{city.cityid}}" ng-selected="city.cityid == user.city_id">{{city.city}}</option>
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="user.cities">
+                                        <option ng-repeat="city in cities" value="{{city.cityid}}" ng-selected="user.city.cityid == city_id">{{city.city}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -65,8 +65,11 @@
                                 <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
                             </div>
                         </div>
-                        <div>
-                            <button class="btn btn-success" type="submit">Зберегти дані</button>
+                        <div class="row reg-input">
+                            <div class="col-lg-1 col-sm-1">
+                                <label></label>
+                                <button class="btn btn-success" type="submit">Зберегти дані</button>
+                            </div>
                         </div>
                     </form>
                 </div>

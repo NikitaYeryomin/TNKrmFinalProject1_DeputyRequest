@@ -43,7 +43,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'email'     : $scope.user.email,
                     'phone'     : $scope.user.phone,
                     'password'  : $scope.user.password,
-                    'city'      : $scope.user.city,
+                    'city'      : $scope.user.cities,
                     'street'    : $scope.user.street,
                     'home'      : $scope.user.home,
                     'role'      : $scope.user.role
@@ -51,8 +51,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
                 if (response.data.error == 0) {
-                    console.log(response.data);
-                    $location.path('/user');
+                    //console.log(response.data);
+                    //$location.path('/users');
                 }
             });
         };
