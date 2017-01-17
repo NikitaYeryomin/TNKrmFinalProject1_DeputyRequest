@@ -37,6 +37,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     title: 'Реєстрація'
                 }
             })
+            .state('request', {
+                url: '/request',
+                templateUrl: '/angular/templates/request.html',
+                controller: 'AppController',
+                data:{
+                    title: 'Система online-звернень до депутатів місцевих рад'
+                }
+            })
             .state('districts', {
                 url: '/districts',
                 templateUrl: '/angular/templates/districts_index.html',
