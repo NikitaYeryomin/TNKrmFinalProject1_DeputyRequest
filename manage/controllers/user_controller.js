@@ -3,11 +3,8 @@
 *******************************************************************/
 
 app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams', 'Page',
-    function($scope, $rootScope, $http, $location, $state, $stateParams, Page) {
+    function($scope, $rootScope, $http, $location, $state, $stateParams) {
         $scope.id = $stateParams.userId;
-        if ($state.current.data != undefined) {
-            Page.setTitle($state.current.data.title);
-        }
 
         $scope.getuser = function() {
             //console.log($scope.id);
