@@ -4,11 +4,7 @@
 
 var app = angular.module('App', [
     'ui.router',
-    'ngPageTitle'
-    //'ui.bootstrap',
-    //'ngResource',
-    //'angularFileUpload',
-    //'angucomplete-alt'
+    'ui.router.title'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -21,28 +17,25 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/',
                 templateUrl: '/manage/templates/manage.html',
                 controller: 'ManageController',
-                data:{
-                    title: 'Адміністрування системи'
+                resolve: {
+                    $title: function() { return 'Адміністрування системи'}
                 }
             })
             .state('users', {
                 url: '/users',
                 templateUrl: '/manage/templates/user/index.html',
                 controller: 'UsersController',
-                data:{
-                    title: 'Список користувачів'
+                resolve: {
+                    $title: function() { return 'Список користувачів'}
                 }
             })
             .state('user', {
                 url: '/user/:userId',
                 templateUrl: '/manage/templates/user/edit.html',
                 controller: 'UserController',
-                data:{
-                    title: 'Редагування користувача {{getUserId}}'
-                },
                 resolve: {
-                    getUserId: ['$stateParams', function($stateParams) {
-                        return $stateParams.userId;
+                    $title: ['$stateParams', function($stateParams) {
+                        return "Редагування користувача " + $stateParams.userId;
                     }]
                 }
             })
@@ -50,8 +43,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/city',
                 templateUrl: '/manage/templates/city/index.html',
                 controller: 'CityController',
-                data:{
-                    title:'Список міст'
+                resolve: {
+                    $title: function() { return 'Список міст'}
                 }
             });
             /*
