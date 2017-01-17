@@ -3,7 +3,8 @@
 *******************************************************************/
 
 var app = angular.module('App', [
-    'ui.router'
+    'ui.router',
+    'ngPageTitle'
     //'ui.bootstrap',
     //'ngResource',
     //'angularFileUpload',

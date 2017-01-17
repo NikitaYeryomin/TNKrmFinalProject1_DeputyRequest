@@ -30,14 +30,16 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.getuser();
         
-        $scope.saveuser = function(userId) {
+        $scope.user = {};
+        
+        $scope.saveuser = function() {
             $http({
                 method: 'POST',
-                url: '/backend/manage/user/save/' + userId,
+                url: '/backend/manage/user/save/' + $scope.id,
                 data: $.param({
-                    'firstname' : $scope.user.name,
-                    'secondname': $scope.user.patronymic,
-                    'lastname'  : $scope.user.surname,
+                    'firstname' : $scope.user.firstname,
+                    'secondname': $scope.user.secondname,
+                    'lastname'  : $scope.user.lastname,
                     'email'     : $scope.user.email,
                     'phone'     : $scope.user.phone,
                     'password'  : $scope.user.password,
@@ -49,7 +51,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
                 if (response.data.error == 0) {
-                    //
+                    console.log(response.data);
+                    $location.path('/user');
                 }
             });
         };
