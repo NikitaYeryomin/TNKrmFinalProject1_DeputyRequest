@@ -16,22 +16,24 @@ class User extends Admin_controller {
         $result = $this->user->get_records($id);
         if ($result) {
             echo json_encode(array(
-                'error'    => 0,
-                'User'     => $result,
-                'CityList' => $this->city->get_records()
+                    'error'    => 0,
+                    'User'     => $result,
+                    'CityList' => $this->city->get_records(),
+                    'Roles'    => $this->user->sqlexec("SHOW COLUMNS FROM user WHERE field = 'role'")
                 ));
         } else {
             echo json_encode(array(
-                'error'    => 1,
-                'User'     => null,
-                'CityList' => null
+                    'error'    => 1,
+                    'User'     => null,
+                    'CityList' => null,
+                    'Roles'    => null
                 ));
         }
     }
     
     public function save($id) {
         echo json_encode(array(
-            'error' => 0
+                'error' => 0
             ));
     }
     

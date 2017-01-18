@@ -10,6 +10,10 @@ class Base_model extends CI_Model {
         $this->table = $class;
         $this->id_field = $class.'id';
     }
+    
+    public function sqlexec($sql) {
+        return $query = $this->db->query($sql)->result_array();
+    }
 
     public function get_records($str = NULL, $field = NULL){
         
