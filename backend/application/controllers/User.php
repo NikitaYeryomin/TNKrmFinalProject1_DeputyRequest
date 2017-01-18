@@ -16,7 +16,7 @@ class User extends Front_controller {
         {
             $this->data = array(
                 'email'     => $this->input->post('email'),
-                'pass'  => $this->input->post('password')
+                'pass'      => $this->input->post('password')
             );
             $result = $this->user->login($this->data);
             if ($result)
@@ -24,14 +24,14 @@ class User extends Front_controller {
                 $this->session->set_userdata('logged_in', $result);
                 $this->data['username'] = $result['username'];
                 echo json_encode(array(
-                    'error' => 0,
+                    'error'       => 0,
                     'currentUser' => $result
                 ));
             }
             else
             {
                 echo json_encode(array(
-                    'error' => 1,
+                    'error'   => 1,
                     'message' => 'Incorrect username and/or password!'
                 ));
             }

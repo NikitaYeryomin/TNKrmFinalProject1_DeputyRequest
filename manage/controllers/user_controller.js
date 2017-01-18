@@ -16,10 +16,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     $scope.user = response.data.User;
                     $scope.cities = response.data.CityList;
                     // getting list of user's roles
-                    var roles = response.data.Roles[0]['Type'];
-                    roles = roles.substring(roles.indexOf('(') + 1, roles.indexOf(')'));
-                    roles = roles.replace(/'/g, "");
-                    $scope.roles = roles.split(",");
+                    $scope.roles = response.data.Roles[0]['Type'];
+                    console.log(typeof($scope.roles));
                 } else {
                     console.log('Error getting user info!');
                     return;
