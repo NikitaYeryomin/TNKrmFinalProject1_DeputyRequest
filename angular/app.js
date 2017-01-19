@@ -42,7 +42,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/angular/templates/request.html',
                 controller: 'AppController',
                 data:{
-                    title: 'Система online-звернень до депутатів місцевих рад'
+                    title: 'Звернення до депутата місцевої ради'
                 }
             })
             .state('districts', {
