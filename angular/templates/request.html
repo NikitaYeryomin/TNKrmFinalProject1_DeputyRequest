@@ -6,27 +6,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 register-tab">
-                    <form ng-submit="" role="form" novalidate="novalidate" ng-controller="">
+                    <form ng-submit="" role="form" novalidate="novalidate">
                         <div class="row reg-input" style="margin-bottom: 29px;">
                             <div class="col-lg-3 col-md-3">
                                 <label>Заявник:</label>
                                 <label>{{currentUser.username}}</label>
-                                <!--
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="user.surname" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>-->
                             </div>
-                            <!--
-                            <div class="col-lg-3 col-md-3">
-                                <label>Ім’я</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Name" name="Name" ng-model="user.name" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <label>По батькові</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Patronymic" name="Patronymic" ng-model="user.patronymic" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Patronymic" data-valmsg-replace="true"></span>
-                            </div>
-                            -->
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-6">
@@ -46,14 +31,14 @@
                             <div class="col-lg-3 col-sm-3">
                                 <label>Тип звернення</label>
                                 <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="">
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="requestType" ng-model="request.type">
                                         <option disabled selected value="">Оберіть тип:</option>
                                         <option value="">Матеріальна допомога</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row reg-input"> 
+                        <div class="row reg-input">
                             <div class="col-lg-7 col-sm-6">
                                 <label>Зміст звернення</label>
                                 <span class="field-validation-valid text-danger" data-valmsg-for="PDescription" data-valmsg-replace="true"></span>

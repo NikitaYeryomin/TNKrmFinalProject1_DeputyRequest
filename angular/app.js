@@ -7,9 +7,9 @@ var app = angular.module('App', [
     //'angucomplete-alt'
 ]);
 
-app.config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
-
+app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
+    function($stateProvider, $urlRouterProvider, $qProvider) {
+        $qProvider.errorOnUnhandledRejections(false);
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
@@ -40,9 +40,17 @@ app.config(['$stateProvider', '$urlRouterProvider',
             .state('request', {
                 url: '/request',
                 templateUrl: '/angular/templates/request.html',
-                controller: 'AppController',
+                controller: 'UserController',
                 data:{
                     title: 'Звернення до депутата місцевої ради'
+                }
+            })
+            .state('user', {
+                url: '/user',
+                templateUrl: '/angular/templates/user.html',
+                controller: 'UserController',
+                data:{
+                    title: 'Кабінет користувача'
                 }
             })
             .state('districts', {
