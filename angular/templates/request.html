@@ -5,26 +5,25 @@
     <div class="petition-main account-main">
         <div class="container">
             <div class="row">
+                <div>
+                    <h2 style="text-align: center">Звернення</h2>
+                    <h2 style="text-align: center">до депутата територіального виборчого округу № <a>{{district.id}}</a></h2>
+                    <h2 style="text-align: center"><strong><a>(имя депутата) {{deputy.name}} {{deputy.patronymic}} {{deputy.surname}}</a></strong></h2>
+                </div>
                 <div class="col-sm-12 register-tab">
                     <form ng-submit="" role="form" novalidate="novalidate">
-                        <div class="row reg-input" style="margin-bottom: 29px;">
-                            <div class="col-lg-3 col-md-3">
-                                <label>Заявник:</label>
-                                <label>{{currentUser.username}}</label>
-                            </div>
-                        </div>
                         <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-6">
-                                <label>Мобільний телефон</label>
-                                <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>Заявник:&nbsp;<strong>{{currentUser.username}},</strong></label>
                             </div>
-                        </div>
-                        <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-6">
-                                <label>Адреса</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Street" name="Street" ng-model="user.street" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Street" data-valmsg-replace="true"></span>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>що проживає за адресою:&nbsp;<strong>{{user.city}},&nbsp;{{user.street}},&nbsp;{{user.home}}</strong></label>
+                            </div>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>Телефон:&nbsp;<strong>{{user.phone}}</strong></label>
+                            </div>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>E-mail:&nbsp;<strong>{{user.email}}</strong></label>
                             </div>
                         </div>
                         <div class="row reg-input">

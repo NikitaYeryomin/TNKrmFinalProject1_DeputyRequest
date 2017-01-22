@@ -18,7 +18,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'email'     : $scope.user.email,
                     'phone'     : $scope.user.phone,
                     'password'  : $scope.user.password,
-                    'city'      : $scope.user.city,
+                    'city_id'   : $scope.user.city_id,
                     'street'    : $scope.user.street,
                     'home'      : $scope.user.home
                 }),
@@ -28,7 +28,12 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     console.log('redirecting to mainpage...');
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
-                    $location.path('/');
+                    if ($rootScope.returnUrl) {
+                        $location.path($rootScoope.returnUrl);
+                        $rootScope.returnUrl = '';
+                    } else {
+                        $location.path('/user');
+                    }
                 }
             });
         };

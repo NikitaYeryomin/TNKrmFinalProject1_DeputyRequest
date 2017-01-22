@@ -22,7 +22,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 }
             })
             .state('login', {
-                url: '/login',
+                url: '/login?returnUrl',
                 templateUrl: '/angular/templates/login_form.html',
                 controller: 'AuthController',
                 data:{
@@ -40,7 +40,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             .state('request', {
                 url: '/request',
                 templateUrl: '/angular/templates/request.html',
-                controller: 'UserController',
+                controller: 'RequestController',
                 data:{
                     title: 'Звернення до депутата місцевої ради'
                 }
