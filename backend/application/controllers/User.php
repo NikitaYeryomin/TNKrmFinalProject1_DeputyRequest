@@ -78,5 +78,21 @@ class User extends Front_controller {
             $this->login();
         }
     }
+    
+    public function get($id) {
+        $result = $this->user->get_records($id);
+        if ($result) {
+            $city = $this->city->get_records($result['city_id']);
+            $result['city'] = $city['city'];
+            echo json_encode(array(
+                    'error' => 0,
+                    'User'  => $result
+                ));
+        } else {
+            echo json_encode(array(
+                    'error' => 1
+                ));
+        }
+    }
 }
 ?>

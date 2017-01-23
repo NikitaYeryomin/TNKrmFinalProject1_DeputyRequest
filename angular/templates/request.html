@@ -5,65 +5,39 @@
     <div class="petition-main account-main">
         <div class="container">
             <div class="row">
+                <div>
+                    <h2 style="text-align: center">Звернення</h2>
+                    <h2 style="text-align: center">до депутата територіального виборчого округу № <a>{{district.id}}</a></h2>
+                    <h2 style="text-align: center"><strong><a>(имя депутата) {{deputy.name}} {{deputy.patronymic}} {{deputy.surname}}</a></strong></h2>
+                </div>
                 <div class="col-sm-12 register-tab">
                     <form ng-submit="" role="form" novalidate="novalidate">
-                        <div class="row reg-input" style="margin-bottom: 29px;">
-                            <div class="col-lg-3 col-md-3">
-                                <label>Заявник:</label>
-                                <label>{{currentUser.username}}</label>
-                                <!--
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="user.surname" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>-->
-                            </div>
-                            <!--
-                            <div class="col-lg-3 col-md-3">
-                                <label>Ім’я</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Name" name="Name" ng-model="user.name" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <label>По батькові</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Patronymic" name="Patronymic" ng-model="user.patronymic" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Patronymic" data-valmsg-replace="true"></span>
-                            </div>
-                            -->
-                        </div>
                         <div class="row reg-input">
-                             <div class="col-lg-3 col-sm-3">
-                                <label>Вулиця</label>
-                                <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Street" name="Street" ng-model="user.street" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Street" data-valmsg-replace="true"></span>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>Заявник:&nbsp;<strong>{{currentUser.username}},</strong></label>
                             </div>
-                            <div class="col-lg-3 col-sm-3">
-                                <label>Номер будинку</label>
-                                <input class="form-control" data-val="true" data-val-regex="Введіть номер будинку" data-val-required="Введіть номер будинку" id="Home" name="Home" ng-model="user.home" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Home" data-valmsg-replace="true"></span>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>що проживає за адресою:&nbsp;<strong>{{user.city}},&nbsp;{{user.street}},&nbsp;{{user.home}}</strong></label>
                             </div>
-                            <div class="col-lg-3 col-sm-3">
-                                <label>Номер квартири</label>
-                                <input class="form-control" data-val="true" data-val-regex="Введіть номер квартири" data-val-required="Введіть номер квартири" id="Flat" name="Flat" ng-model="user.flat" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Flat" data-valmsg-replace="true"></span>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>Телефон:&nbsp;<strong>{{user.phone}}</strong></label>
                             </div>
-                        </div>
-                         <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-6">
-                                <label>Телефон</label>
-                                <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>E-mail:&nbsp;<strong>{{user.email}}</strong></label>
                             </div>
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-3">
                                 <label>Тип звернення</label>
                                 <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="" ng-model=""  data-ng-model="course" data-ng-options="course.Title for course in courses" data-ng-change="changeState(course)">
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="requestType" ng-model="request.type">
                                         <option disabled selected value="">Оберіть тип:</option>
                                         <option value="">Матеріальна допомога</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row reg-input"> 
+                        <div class="row reg-input">
                             <div class="col-lg-7 col-sm-6">
                                 <label>Зміст звернення</label>
                                 <span class="field-validation-valid text-danger" data-valmsg-for="PDescription" data-valmsg-replace="true"></span>
