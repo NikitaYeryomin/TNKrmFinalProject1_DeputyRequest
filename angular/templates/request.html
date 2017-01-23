@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 register-tab">
-                    <form ng-submit="" role="form" novalidate="novalidate" ng-controller="">
+                    <form ng-submit="" role="form" novalidate="novalidate">
                         <div class="row reg-input" style="margin-bottom: 29px;">
                             <div class="col-lg-3 col-md-3">
                                 <label>Заявник:</label>
@@ -29,24 +29,34 @@
                             -->
                         </div>
                         <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-6">
-                                <label>Мобільний телефон</label>
-                                <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
-                            </div>
-                        </div>
-                        <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-6">
-                                <label>Адреса</label>
+                             <div class="col-lg-3 col-sm-3">
+                                <label>Вулиця</label>
                                 <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Street" name="Street" ng-model="user.street" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Street" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                <label>Номер будинку</label>
+                                <input class="form-control" data-val="true" data-val-regex="Введіть номер будинку" data-val-required="Введіть номер будинку" id="Home" name="Home" ng-model="user.home" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Home" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                <label>Номер квартири</label>
+                                <input class="form-control" data-val="true" data-val-regex="Введіть номер квартири" data-val-required="Введіть номер квартири" id="Flat" name="Flat" ng-model="user.flat" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Flat" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                         <div class="row reg-input">
+                            <div class="col-lg-3 col-sm-6">
+                                <label>Телефон</label>
+                                <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
                             </div>
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-3">
                                 <label>Тип звернення</label>
                                 <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="">
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="" ng-model=""  data-ng-model="course" data-ng-options="course.Title for course in courses" data-ng-change="changeState(course)">
                                         <option disabled selected value="">Оберіть тип:</option>
                                         <option value="">Матеріальна допомога</option>
                                     </select>
