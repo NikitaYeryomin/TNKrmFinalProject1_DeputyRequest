@@ -80,13 +80,18 @@ class User extends Front_controller {
     }
     
     public function get($id) {
-        $result = $this->user->get_records($id);
+        
+        $sql = 'SELECT user.* , city.city, districts.tvoid, deputies.* 
+                FROM user
+                JOIN city ON user.city_id = city.cityid
+                JOIN districts ON user.tvo_id = districts.id
+                JOIN deputies ON districts.tvoid = deputies.tvoid
+                WHERE userid =' . $id;
+        $result = $this->user->sqlexec($sql);
         if ($result) {
-            $city = $this->city->get_records($result['city_id']);
-            $result['city'] = $city['city'];
             echo json_encode(array(
-                    'error' => 0,
-                    'User'  => $result
+                    'error'  => 0,
+                    'User'   => $result[0]
                 ));
         } else {
             echo json_encode(array(

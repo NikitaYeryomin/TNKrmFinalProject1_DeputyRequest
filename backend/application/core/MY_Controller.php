@@ -37,8 +37,8 @@ class Front_controller extends MY_Controller {
 
         parent::__construct();
 
-
     }
+    
 }
 
 

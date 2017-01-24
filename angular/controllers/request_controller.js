@@ -9,16 +9,30 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             } else {
                 $http({
                     method: 'GET',
-                    url: '/backend/user/get/' + $rootScope.currentUser.id,
+                    url: '/backend/user/get/' + $rootScope.currentUser.id
                 }).then(function(response) {
                     if (response.data.error == 0) {
                         $scope.user = response.data.User;
-                        //console.log($scope.user);
+                        //$scope.deputy = response.data.Deputy;
+                        console.log($scope.user);
+                        //console.log($scope.deputy);
                     }
                 });
             }
         };
         
+        $scope.getdeputy = function() {
+            $http({
+                method: 'GET',
+                url: '/backend/deputy/district/' + $scope.user.tvo_id
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.user = response.data.User;
+                    console.log($scope.user);
+                }
+            });
+        };
+
         $scope.getuser();
         
         $scope.request = {};
