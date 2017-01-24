@@ -20,18 +20,6 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 });
             }
         };
-        
-        $scope.getdeputy = function() {
-            $http({
-                method: 'GET',
-                url: '/backend/deputy/district/' + $scope.user.tvo_id
-            }).then(function(response) {
-                if (response.data.error == 0) {
-                    $scope.user = response.data.User;
-                    console.log($scope.user);
-                }
-            });
-        };
 
         $scope.getuser();
         
