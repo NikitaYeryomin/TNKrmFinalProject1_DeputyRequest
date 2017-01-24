@@ -1,16 +1,7 @@
-app.controller('DistrictsController', ['$scope', '$http', '$location', '$state', 'Page', '$stateParams',
-    function($scope, $http, $location, $state, Page, $stateParams) {
+app.controller('DistrictsController', ['$scope', '$http', '$location', '$state', '$stateParams',
+    function($scope, $http, $location, $state, $stateParams) {
         $scope.districtId = $stateParams.districtId;
 
-        /*if ($state.current.data != undefined) {
-            if ($state.current.name == 'district') {
-                Page.setTitle($scope.districtId);
-            }
-            else {
-                Page.setTitle($state.current.data.title);
-            }
-        }
-*/
   }])
 /**************************************карта на главной*********************************************************/
   .directive('fullMap', ['$http', function($http) {

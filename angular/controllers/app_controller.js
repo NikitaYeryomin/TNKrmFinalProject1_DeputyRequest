@@ -1,8 +1,5 @@
-app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', 'Page',
-    function($scope, $rootScope, $http, $location, Page) {
-
-        $scope.Page = Page;
-        Page.setTitle("Система online-звернень до депутатів місцевих рад");
+app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
+    function($scope, $rootScope, $http, $state) {
 
         $scope.logout = function() {
             $http({

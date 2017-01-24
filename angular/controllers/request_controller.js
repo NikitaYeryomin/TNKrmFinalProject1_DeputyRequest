@@ -1,15 +1,11 @@
-app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page', '$stateParams',
-    function($scope, $rootScope, $http, $location, $state, Page, $stateParams) {
-
-        if ($state.current.data != undefined) {
-            Page.setTitle($state.current.data.title);
-        }
+app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams',
+    function($scope, $rootScope, $http, $location, $state, $stateParams) {
 
         $scope.getuser = function() {
             if (!$rootScope.logged_in) {
                 $rootScope.returnUrl = '/request';
                 console.log($rootScope.returnUrl);
-                $location.path('/login');
+                $state.go('login');
             } else {
                 $http({
                     method: 'GET',

@@ -1,9 +1,5 @@
-app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page', '$stateParams',
-    function($scope, $rootScope, $http, $location, $state, Page, $stateParams) {
-
-        if ($state.current.data != undefined) {
-            Page.setTitle($state.current.data.title);
-        }
+app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams',
+    function($scope, $rootScope, $http, $location, $state, $stateParams) {
         
         $scope.user = {};
 

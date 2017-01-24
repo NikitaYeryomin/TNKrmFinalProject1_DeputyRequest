@@ -1,10 +1,8 @@
-app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
-    function($scope, $rootScope, $http, $location, $state, Page) {
-        if ($state.current.data != undefined) {
-            Page.setTitle($state.current.data.title);
-        }
+app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', '$state',
+    function($scope, $rootScope, $http, $location, $state) {
 
         $scope.login = function() {
+            console.log("login() called");
             $http({
                 method: 'POST',
                 url: '/backend/user/login',
@@ -14,11 +12,12 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
+                console.log("server called finished");
                 console.log(response.data);
                 if (response.data.error == 0) {
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
-                    console.log($rootScope.returnUrl);
+                    console.log('returnUrl: ' + $rootScope.returnUrl);
                     var path;
                     if ($rootScope.returnUrl) {
                         path = $rootScope.returnUrl;
@@ -32,6 +31,4 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                 }
             });
         };
-
-
     }]);
