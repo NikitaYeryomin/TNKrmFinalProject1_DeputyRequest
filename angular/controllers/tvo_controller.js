@@ -1,5 +1,5 @@
-app.controller('TvoController', ['$scope', '$http', '$location', '$state', 'Page', '$stateParams',
-    function($scope, $http, $location, $state, Page, $stateParams) {$scope.id = $stateParams.id;}])
+app.controller('TvoController', ['$scope', '$http', '$location', '$state', '$stateParams',
+    function($scope, $http, $location, $state, $stateParams) {$scope.id = $stateParams.id;}])
 /*************************************ТВО****************************************************/
 .directive('oneTvo', ['$http', function($http) {
     var map, infoWindow;
