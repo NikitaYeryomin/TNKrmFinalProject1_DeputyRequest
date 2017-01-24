@@ -8,7 +8,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         $scope.getuser = function() {
             if (!$rootScope.logged_in) {
                 $rootScope.returnUrl = '/request';
-                console.log($rootScope.returnUrl);
+                //console.log($rootScope.returnUrl);
                 $location.path('/login');
             } else {
                 $http({
@@ -17,7 +17,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 }).then(function(response) {
                     if (response.data.error == 0) {
                         $scope.user = response.data.User;
-                        console.log($scope.user);
+                        //console.log($scope.user);
                     }
                 });
             }

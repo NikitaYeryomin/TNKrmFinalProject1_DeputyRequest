@@ -28,12 +28,15 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     console.log('redirecting to mainpage...');
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
+                    console.log($rootScope.returnUrl);
+                    var path= '/user';
                     if ($rootScope.returnUrl) {
-                        $location.path($rootScoope.returnUrl);
-                        $rootScope.returnUrl = '';
-                    } else {
-                        $location.path('/user');
-                    }
+                        path = $rootScope.returnUrl;
+                        $rootScope.returnUrl = null;
+                    } 
+                    console.log(path);
+                    console.log($rootScope.logged_in);
+                    $location.path(path);
                 }
             });
         };

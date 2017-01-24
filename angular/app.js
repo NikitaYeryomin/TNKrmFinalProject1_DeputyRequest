@@ -22,7 +22,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 }
             })
             .state('login', {
-                url: '/login?returnUrl',
+                url: '/login',
                 templateUrl: '/angular/templates/login_form.html',
                 controller: 'AuthController',
                 data:{

@@ -19,15 +19,13 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
                     console.log($rootScope.returnUrl);
-                    var path;
+                    var path= '/user';
                     if ($rootScope.returnUrl) {
                         path = $rootScope.returnUrl;
                         $rootScope.returnUrl = null;
-                    } else {
-                        path = '/user';
-                    }
-                    console.log(path);
-                    console.log($rootScope.logged_in);
+                    } 
+                    //console.log(path);
+                    //console.log($rootScope.logged_in);
                     $location.path(path);
                 }
             });
