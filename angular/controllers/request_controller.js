@@ -24,6 +24,9 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         };
         
          $scope.requestTypes = [{
+            Title: 'Довільне звернення',
+            Name: 'request.custom'
+            },{
             Title: 'Матеріальна допомога',
             Name: 'request.material'
             }, {
