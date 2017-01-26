@@ -2,7 +2,7 @@
 ****************************** АДминка *****************************
 *******************************************************************/
 
-app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams', 'Page',
+app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams',
     function($scope, $rootScope, $http, $location, $state, $stateParams) {
         
         $scope.id = $stateParams.userId;

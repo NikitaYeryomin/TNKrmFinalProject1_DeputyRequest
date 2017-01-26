@@ -80,22 +80,57 @@ class User extends Front_controller {
     }
     
     public function get($id) {
-        
-        $sql = 'SELECT user.* , city.city, districts.tvoid, deputies.* 
+        $sql = 'SELECT user.* , city.city 
                 FROM user
                 JOIN city ON user.city_id = city.cityid
-                JOIN districts ON user.tvo_id = districts.id
-                JOIN deputies ON districts.tvoid = deputies.tvoid
                 WHERE userid =' . $id;
         $result = $this->user->sqlexec($sql);
         if ($result) {
             echo json_encode(array(
-                    'error'  => 0,
-                    'User'   => $result[0]
+                    'error'     => 0,
+                    'User'      => $result[0]
                 ));
         } else {
             echo json_encode(array(
                     'error' => 1
+                ));
+        }
+    }
+
+
+    public function getall($id) {
+        $sql = 'SELECT user.* , city.city 
+                FROM user
+                JOIN city ON user.city_id = city.cityid
+                WHERE userid =' . $id;
+        $result = $this->user->sqlexec($sql);
+        $districts = $this->user->sqlexec('SELECT districts.tvoid FROM districts WHERE districts.id =' . $result[0]['tvo_id']);
+        $deputies = $this->user->sqlexec('SELECT deputies.* FROM deputies WHERE deputies.tvoid =' . $districts[0]['tvoid']);
+        if ($result) {
+            echo json_encode(array(
+                    'error'     => 0,
+                    'User'      => $result[0],
+                    'District'  => $districts[0],
+                    'Deputy'    => $deputies[0]
+                ));
+        } else {
+            echo json_encode(array(
+                    'error' => 1
+                ));
+        }
+    }
+    
+    public function gettvo($id) {
+        $sql = 'SELECT user.userid, user.city_id, user.street, user.home, city.city as city_name
+                FROM user
+                JOIN city ON user.city_id = city.cityid
+                WHERE USERID =' . $id;
+        $tvo = $this->user->sqlexec($sql);
+        if ($tvo) {
+            echo json_encode(array(
+                    'error'     => 0,
+                    'tvo'       => $tvo[0],
+                    'districts' => $this->districts->get_districts()
                 ));
         }
     }

@@ -134,6 +134,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             });
             marker.setMap(map);
             marker.addListener('click', function () {
+                infowindow.close(map);
                 var infowindow = new google.maps.InfoWindow({
                     content: content,
                     position: marker.getPosition()

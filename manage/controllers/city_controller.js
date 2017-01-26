@@ -1,8 +1,5 @@
-app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
-    function($scope, $rootScope, $http, $location, $state, Page) {
-        if ($state.current.data != undefined) {
-            Page.setTitle($state.current.data.title);
-        }
+app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', '$state',
+    function($scope, $rootScope, $http, $location, $state) {
         
         $scope.city = function() {
             $http({
