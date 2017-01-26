@@ -1,7 +1,53 @@
 <ng-include src="'/angular/templates/header.html'"></ng-include>
-
-<h2>Кабінет користувача</h2>
-<div district-map=""></div>
-<a href="" ng-click="logout()">
-    <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out
-</a>
+<section class="content" style="">
+    <div class="petition-main account-main">
+        <div class="container">
+            <div class="col-sm-12">
+                <h2>Кабінет користувача</h2>
+            </div>
+            <div class="col-sm-12 row reg-input">
+                <div class="col-lg-12 col-sm-12">
+                    <label>Громадянин(ка):&nbsp;<strong>{{currentUser.username}},</strong></label>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <label>Адреса:&nbsp;<strong>{{user.city}},&nbsp;{{user.street}},&nbsp;{{user.home}}</strong></label>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <label>Телефон:&nbsp;<strong>{{user.phone}}</strong></label>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <label>E-mail:&nbsp;<strong>{{user.email}}</strong></label>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <label>
+                        Виборча дільниця:&nbsp;
+                        <span ng-show="user.tvo_id == 0">Не визначена. <a href="">Визначити</a></span><!-- Тут мы покажем модальное окошко с участком -->
+                        <span ng-show="user.tvo_id != 0"><strong><a href="#!/district/{{user.tvo_id}}">{{user.tvo_id}}</a></strong></span>
+                    </label>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <label>
+                        Теріторіальний виборчий округ:&nbsp;
+                        <span ng-show="!district.tvoid">Не визначений. <a href="">Визначити</a></span>
+                        <span ng-show="district.tvoid != 0"><strong><a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a></strong></span>
+                    </label>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <label>
+                        Депутат:&nbsp;
+                        <span ng-show="!deputy.id">Не визначений. <a href="">Визначити</a></span>
+                        <span ng-show="deputy.id != 0"><strong><a href="#!/deputy/{{deputy.id}}">{{deputy.name}}&nbsp;{{deputy.patronymic}}&nbsp;{{deputy.surname}}</a></strong></span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <h2>Запити користувача</h2>
+            </div>
+            <div class="col-sm-12">
+                <a href="" ng-click="logout()">
+                    <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
