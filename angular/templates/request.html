@@ -30,29 +30,19 @@
                             <div class="col-lg-3 col-sm-3">
                                 <label>Тип звернення:</label>
                                 <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="requestType" ng-model="request.type">
-                                        <option disabled selected value="">Оберіть тип:</option>
-                                        <option value="">Матеріальна допомога</option>
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="requestType" 
+                                        ng-model="requestType" 
+                                        data-ng-options="requestType.Title for requestType in requestTypes track by requestType.Name" 
+                                        data-ng-change="changeState(requestType.Name)">
+                                        <!--option disabled selected value="">Оберіть тип:</option>
+                                        <option value="material">Матеріальна допомога</option>
+                                        <option value="moral">Моральна допомога</option>
+                                        <option value="psychic">Психологічна допомога</option-->
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row reg-input">
-                            <div class="col-lg-7 col-sm-6">
-                                <label>Зміст звернення</label>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="PDescription" data-valmsg-replace="true"></span>
-                                <textarea class="form-control" cols="20" data-val="true" data-val-required="Це обов`язкове поле" id="PDescription" name="PDescription" placeholder="Зміст звернення" rows="10"></textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="a" value="Публічне звернення" checked />Публічне звернення
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        <div ui-view></div>
                         <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal">Відправити</button>
                     </form>
                 </div>

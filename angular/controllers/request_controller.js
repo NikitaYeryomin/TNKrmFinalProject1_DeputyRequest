@@ -20,6 +20,21 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 });
             }
         };
+        
+         $scope.requestTypes = [{
+            Title: 'Матеріальна допомога',
+            Name: 'request.material'
+            }, {
+            Title: 'Моральна допомога',
+            Name: 'request.moral'
+         }];
+    
+        $scope.changeState = function (stateName) {
+            console.log(stateName);
+            $state.go(stateName);
+        }
+        
+       
 
         $scope.getuser();
         
