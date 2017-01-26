@@ -20,29 +20,27 @@
                 </div>
                 <div class="col-lg-12 col-sm-12">
                     <label>
-                        Виборча дільниця:&nbsp;
+                        Ваша виборча дільниця:&nbsp;
                         <span ng-show="user.tvo_id == 0">Не визначена.&nbsp;<a href="" data-toggle="modal" data-target="#districtModal">Визначити</a></span><!-- Тут мы покажем модальное окошко с участком -->
                         <span ng-show="user.tvo_id != 0"><strong><a href="#!/district/{{user.tvo_id}}">{{user.tvo_id}}</a></strong></span>
                     </label>
                 </div>
                 <div class="col-lg-12 col-sm-12">
                     <label>
-                        Теріторіальний виборчий округ:&nbsp;
+                        Ваш теріторіальний виборчий округ:&nbsp;
                         <span ng-show="!district.tvoid">Не визначений.&nbsp;<a href="">Визначити</a></span>
                         <span ng-show="district.tvoid != 0"><strong><a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a></strong></span>
                     </label>
                 </div>
                 <div class="col-lg-12 col-sm-12">
                     <label>
-                        Депутат:&nbsp;
+                        Ваш депутат:&nbsp;
                         <span ng-show="!deputy.id">Не визначений.&nbsp;<a href="">Визначити</a></span>
                         <span ng-show="deputy.id != 0"><strong><a href="#!/deputy/{{deputy.id}}">{{deputy.name}}&nbsp;{{deputy.patronymic}}&nbsp;{{deputy.surname}}</a></strong></span>
                     </label>
                 </div>
-            </div><!--
-            <div class="col-sm-6" ng-show="user.tvo_id == 0">
-                
-            </div>-->
+            </div>
+            
             <div class="col-sm-12">
                 <h2>Звернення користувача</h2>
             </div>
@@ -75,7 +73,7 @@
                         <span>належить до дільниці:<strong>??? {{user.tvo_id}}</strong></span>
                     </div>
                     <div class="col-sm-12">
-                        <div districts-map=""></div>
+                        <div district-map=""></div>
                     </div>
                 </div>
             </div>
