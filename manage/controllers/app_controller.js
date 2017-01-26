@@ -2,10 +2,8 @@
 ****************************** АДминка *****************************
 *******************************************************************/
 
-app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '$state', 'Page',
-    function($scope, $rootScope, $http, $location, $state, Page) {
-
-        $scope.Page = Page;
+app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '$state',
+    function($scope, $rootScope, $http, $location, $state) {
 
         $scope.logout = function() {
             $http({
