@@ -24,17 +24,60 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     console.log('redirecting to mainpage...');
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
-                    console.log($rootScope.returnUrl);
                     var path= '/user';
                     if ($rootScope.returnUrl) {
                         path = $rootScope.returnUrl;
                         $rootScope.returnUrl = null;
-                    } 
-                    console.log(path);
-                    console.log($rootScope.logged_in);
+                    }
                     $location.path(path);
                 }
             });
+        };
+
+        $scope.init = function() {
+            if (!$rootScope.logged_in) {
+                $location.path('/login');
+            } else {
+                $http({
+                    method: 'GET',
+                    url: '/backend/user/getall/' + $rootScope.currentUser.id
+                }).then(function(response){
+                    if (response.data.error == 0) {
+                        $scope.user = response.data.User;
+                        $scope.district = response.data.District;
+                        $scope.deputy = response.data.Deputy;
+                        console.log($scope.user);
+                        console.log($scope.district);
+                        console.log($scope.deputy);
+                    }
+                }, function errorCallback(response) {
+                    console.log('Заполняем профиль');
+                    $http({
+                        method: 'GET',
+                        url: '/backend/user/get/' + $rootScope.currentUser.id
+                    }).then(function(response) {
+                        $scope.user = response.data.User;
+                        if ($scope.user.tvo_id == 0) {
+                            $http({
+                                method: 'GET',
+                                url: 'https://maps.googleapis.com/maps/api/geocode/json?address='
+                                     + $scope.user.city +' ' + $scope.user.street +' ' + $scope.user.home + ' '
+                                     + '&sensor=false&language=ru'
+                            }).then(function(response) {
+                                $scope.user.place = response.data.results[0].geometry.location;
+                                console.log($scope.user.place);
+                                
+                            });
+                        }
+                    });
+                });
+            }
+        };
+        
+        $scope.init();
+        
+        $scope.inpoly = function() {
+            
         };
 
     }]);
