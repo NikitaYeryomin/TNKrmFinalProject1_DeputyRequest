@@ -67,7 +67,7 @@ class User extends Front_controller {
             'lastname'  => $this->input->post('lastname'),
             'email'     => $this->input->post('email'),
             'phone'     => $this->input->post('phone'),
-            'city_id'   => $this->input->post('city'),
+            'city_id'   => $this->input->post('city_id'),
             'street'    => $this->input->post('street'),
             'home'      => $this->input->post('home'),
             'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),

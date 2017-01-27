@@ -42,7 +42,7 @@
                             <div class="col-lg-3 col-sm-3">
                                 <label>Ваше місто</label>
                                 <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="user.city">
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="user.city_id">
                                         <option disabled selected value="">Оберіть місто</option>
                                         <option ng-repeat="city in cities" value="{{city.cityid}}">{{city.city}}</option>
                                     </select>
@@ -120,13 +120,13 @@
                                 <p style="margin-bottom: 20px; color:#AAACB1;">Повідомляємо, що Єдина система місцевих петицій не здійснює обробку, використання, поширення та доступ третіх осіб до персональних даних користувачів. Мобільний телефон користувача використовується лише для підтвердження реєстрації та не зберігається в базі даних системи.</p>
                             </div>
                         </div>
-                        <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal">Переглянути реєстраційні дані</button>
+                        <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal" ng-click="detect_tvo()">Переглянути реєстраційні дані</button>
                         <div class="modal fade" id="registerPreviewModal">
                             <div class="modal-dialog modal-sm">
                                 <div class="modal-content new-modal-content">
                                     <div class="modal-header">
                                         <div class="top-modal-head">
-                                            <label>Завершення реєстрації</label>
+                                            <label>Завершення реєстрації {{user.test}}</label>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
                                         <div class="clearfix"></div>
@@ -153,7 +153,7 @@
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>Ваша адреса:</label>
-                                                <p ng-repeat="city in cities | filter: {cityid:user.city} : true">{{city.city}}</p>
+                                                <p ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</p>
                                                 <p>{{user.street}}, буд. {{user.home}}</p>
                                             </div>
                                         </div>

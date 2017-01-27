@@ -1,5 +1,5 @@
 <?php
-class Districts_model extends CI_Model {
+class Districts_model extends Base_Model {
 
 public function get_districts($id = FALSE)
 {

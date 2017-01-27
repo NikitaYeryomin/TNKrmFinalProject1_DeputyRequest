@@ -79,5 +79,16 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.inpoly = function() {
             
         };
+        
+        $scope.detect_tvo = function() {
+            if ($scope.user.city_id && $scope.user.street && $scope.user.home) {
+                $http({
+                    method: 'GET',
+                    url: '/backend/districts/get_tvo/' + $scope.user.city_id + '/' + $scope.user.street
+                }).then(function(response) {
+                    console.log(response.data);
+                });
+            }
+        };
 
     }]);
