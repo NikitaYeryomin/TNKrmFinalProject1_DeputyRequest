@@ -266,24 +266,26 @@ public function add()
         $this->load->view('templates/footer');
     }
     
-    public function get_tvo($cityid, $street) {
+    public function get_tvo() {
+        $cityid = $this->input->post('city_id');
+        $street = $this->input->post('street');
         if (!$cityid || !$street) {
-            return json_encode(array(
+            echo json_encode(array(
                     'error'     => 1,
                     'message'   => 'Адреса неповна'
                 ));
         } else {
-            $sql = "SELECT addresses
-                    FROM districts
+            $sql = "SELECT id, addresses 
+                    FROM districts 
                     WHERE city_id = " . $cityid . " AND addresses LIKE '%" . $street . "%'";
             $result = $this->districts->sqlexec($sql);
             if ($result) {
-                return json_encode(array(
+                echo json_encode(array(
                         'error'     => 0,
                         'Districts' => $result
                     ));
             } else {
-                return json_encode(array(
+                echo json_encode(array(
                         'error'     => 2,
                         'message'   => 'Адресу не знайдено'
                     ));

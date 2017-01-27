@@ -136,31 +136,36 @@
                                     <div class="modal-body">
                                         <div id="previewContent" class="row">
                                             <div class="col-sm-12">
-                                                <label>
-                                                    Ім`я при підписанні та створенні петиції
-                                                </label>
+                                                <label>Ім`я при підписанні та створенні петиції:</label>
                                                 <p>{{user.surname}}&nbsp;{{user.name}}&nbsp;{{user.patronymic}}</p>
                                             </div>
                                             <div class="col-sm-12">
-                                                <label>
-                                                    Електронна адреса
-                                                </label>
+                                                <label>Електронна адреса:</label>
                                                 <p>{{user.email}}</p>
-                                                <label>
-                                                    Мобільний телефон
-                                                </label>
+                                                <label>Мобільний телефон</label>
                                                 <p>{{user.phone}}</p>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>Ваша адреса:</label>
-                                                <p ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</p>
-                                                <p>{{user.street}}, буд. {{user.home}}</p>
+                                                <p>
+                                                    <span ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}},</span>
+                                                    <span>вул. {{user.street}}, буд. {{user.home}}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <label>Виборча дільниця:&nbsp;</label>
+                                                <p>
+                                                    <span ng-show="user.tvo_id != 0">{{user.tvo_id}}</span>
+                                                    <span style="color: red" ng-show="user.tvo_id == 0">
+                                                        <strong>Не визначена! Перевірте правильність адреси!</strong>
+                                                    </span>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <div class="footer-modal-border"></div>
-                                        <input type="submit" value="Зареєструватися" class="registration-submit" style="margin-bottom: 0px;">
+                                        <input type="submit" value="Зареєструватися" class="registration-submit" style="margin-bottom: 0px;" ng-disabled="user.tvo_id == 0">
                                     </div>
                                 </div>
                             </div>
