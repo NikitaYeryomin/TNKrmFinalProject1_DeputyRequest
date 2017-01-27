@@ -13,6 +13,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'lastname'  : $scope.user.surname,
                     'email'     : $scope.user.email,
                     'phone'     : $scope.user.phone,
+                    'tvo_id'    : $scope.user.tvo_id,
                     'password'  : $scope.user.password,
                     'city_id'   : $scope.user.city_id,
                     'street'    : $scope.user.street,
@@ -44,49 +45,24 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             } else {
                 $http({
                     method: 'GET',
-                    url: '/backend/user/getall/' + $rootScope.currentUser.id
+                    url: '/backend/user/get/' + $rootScope.currentUser.id
                 }).then(function(response){
                     if (response.data.error == 0) {
                         $scope.user = response.data.User;
                         $scope.district = response.data.District;
                         $scope.deputy = response.data.Deputy;
-                        console.log($scope.user);
-                        console.log($scope.district);
-                        console.log($scope.deputy);
+                        $scope.place = response.data.Place;
                     }
-                }, function errorCallback(response) {
-                    console.log('Заполняем профиль');
-                    $http({
-                        method: 'GET',
-                        url: '/backend/user/get/' + $rootScope.currentUser.id
-                    }).then(function(response) {
-                        $scope.user = response.data.User;
-                        if ($scope.user.tvo_id == 0) {
-                            $http({
-                                method: 'GET',
-                                url: 'https://maps.googleapis.com/maps/api/geocode/json?address='
-                                     + $scope.user.city +' ' + $scope.user.street +' ' + $scope.user.home + ' '
-                                     + '&sensor=false&language=ru'
-                            }).then(function(response) {
-                                $scope.user.place = response.data.results[0].geometry.location;
-                                console.log($scope.user.place);
-                                
-                            });
-                        }
-                    });
                 });
             }
         };
         
         $scope.init();
         
-        $scope.inpoly = function() {
-            
-        };
-        
         /******************************************************************************/
         /*************** вычисление избирательного участка по адресу ******************/
         /******************************************************************************/
+        
         $scope.detect_tvo = function() {
             $scope.user.tvo_id = 0;
             if ($scope.user.city_id && 
@@ -102,11 +78,9 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).then(function(response) {
                     var districts = response.data.Districts;
-                    //console.log(districts);
                     for (var i = 0; i < districts.length; i++) {
                         var addresses = districts[i]['addresses'];
                         var sym = addresses.charAt(addresses.search($scope.user.street) + $scope.user.street.length);
-                        //console.log(sym);
                         if (sym == ';' || sym == '') {
                             //нашли по ВСЕЙ улице! 
                             $scope.user.tvo_id = districts[i]['id'];
@@ -121,13 +95,10 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                             } else {
                                 homes = addresses;
                             }
-                            //console.log(homes);
                             var nums = homes.split(', ');
-                            //console.log(nums);
                             for (var j = 0; j < nums.length; j++) {
                                 if (nums[j].indexOf('–') > -1) {
                                     var dia = nums[j].split('–');
-                                    //console.log(dia);
                                     if ($scope.user.home > parseInt(dia[0]) &&
                                         $scope.user.home < parseInt(dia[1])) {
                                         //нашли: номер дома в диапазоне!
@@ -149,5 +120,4 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 });
             }
         };
-
     }]);
