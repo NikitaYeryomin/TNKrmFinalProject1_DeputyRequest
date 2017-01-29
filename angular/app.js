@@ -122,12 +122,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 }
             })
             .state('deputy', {
-                url: '/deputy/:districtId',
-                templateUrl: '/angular/templates/deputy_index.html',
+                url: '/deputy/:id',
+                templateUrl: '/angular/templates/deputy.html',
                 controller: 'DeputyController',
-                data:{
-                    title: "депутат {{getDistrictId}}"
-                },
+                data:{                    title: "депутат {{id}}"                },
                 resolve: {
                     getDistrictId: ['$stateParams', function($stateParams) {
                         return $stateParams.districtId;
