@@ -1,9 +1,10 @@
 var app = angular.module('App', [
     'ui.router',
-    'ngPageTitle'
+    'ngPageTitle',
+    'google.places'
     //'ui.bootstrap',
     //'ngResource',
-    //'angularFileUpload',
+    //'angularFileUpload'
     //'angucomplete-alt'
 ]);
 

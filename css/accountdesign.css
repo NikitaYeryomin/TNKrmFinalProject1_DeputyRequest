@@ -311,6 +311,10 @@
     margin: 0;
     margin-bottom: 20px;
 }
+
+input[disabled] {
+    background: #aaacb1 !important;
+}
 #previewContent label {
     display: block;
     font-family: "Roboto-Bold";

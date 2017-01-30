@@ -16,7 +16,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                         $scope.district = response.data.District;
                         $scope.deputy = response.data.Deputy;
                         //$scope.deputy = response.data.Deputy;
-                        console.log($scope.user);
+                        //console.log($scope.user);
                         //console.log($scope.deputy);
                     }
                 });

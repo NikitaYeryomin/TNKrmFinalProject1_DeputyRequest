@@ -3,6 +3,15 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.user = {};
         
+        $scope.place = null;
+        $scope.autocompleteOptions = {
+            componentRestrictions: { country: 'ua' },
+            bounds: $rootScope.bounds,
+            types: ['address']
+        };
+        
+        console.log($scope.autocompleteOptions);
+        
         $scope.register = function() {
             $http({
                 method: 'POST',
@@ -34,7 +43,10 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 }
             });
         };
-
+        
+        /******************************************************************************/
+        /*********************** заполнение данных пользователя ***********************/
+        /******************************************************************************/
         $scope.init = function() {
             if (!$rootScope.logged_in) {
                 if ($rootScope.returnUrl) {
@@ -62,7 +74,6 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         /******************************************************************************/
         /*************** вычисление избирательного участка по адресу ******************/
         /******************************************************************************/
-        
         $scope.detect_tvo = function() {
             $scope.user.tvo_id = 0;
             if ($scope.user.city_id && 
@@ -96,11 +107,12 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                                 homes = addresses;
                             }
                             var nums = homes.split(', ');
+                            //console.log(nums);
                             for (var j = 0; j < nums.length; j++) {
                                 if (nums[j].indexOf('–') > -1) {
                                     var dia = nums[j].split('–');
-                                    if ($scope.user.home > parseInt(dia[0]) &&
-                                        $scope.user.home < parseInt(dia[1])) {
+                                    if ($scope.user.home >= parseInt(dia[0]) &&
+                                        $scope.user.home <= parseInt(dia[1])) {
                                         //нашли: номер дома в диапазоне!
                                         $scope.user.tvo_id = districts[i]['id'];
                                         return $scope.user.tvo_id;
@@ -116,11 +128,12 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         }
                     }
                     //адрес не значится нигде
-                    return $scope.user.tvo_id = 0;
+                    return $scope.user.tvo_id;
                 });
             }
         };
-    }])
+        
+    }])/*
     .directive('ngAutocomplete', function($parse) {
         return {
             scope: {
@@ -172,4 +185,5 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 }, true);
             }
         };
-    });
+    })*/
+    ;

@@ -164,6 +164,43 @@ header {
     margin-left: 0;
     margin-right: 0;
 }
+
+.top-section .navigation-pages {
+  margin-left: 30px;
+  float: left;
+  margin-top: 7px;
+}
+
+@media (max-width: 991px) {
+  .top-section .navigation-pages {
+    display: none;
+  }
+}
+.top-section .navigation-pages ul li {
+  float: left;
+  margin-right: 15px;
+}
+.top-section .navigation-pages ul li a {
+  color: #8D919A;
+  font-family: "Roboto-Light";
+  font-size: 16px;
+  text-decoration: none;
+  border-bottom: 1px solid #8D919A;
+}
+.top-section .navigation-pages ul li a:hover {
+  color: white;
+  border-color: white;
+}
+.top-section .navigation-pages ul li .notify {
+  color: white;
+  border-bottom: 1px solid white;
+  opacity: 0.9;
+}
+.top-section .navigation-pages ul li .active {
+  color: white;
+  border-color: white;
+}
+
 .city-selector {
     margin-top: 0;
     display: inline-block;
@@ -193,6 +230,10 @@ header {
     float: right;
     font-size: 16px;
     margin-top: 8px;
+    color: white;
+}
+
+.register-links .user-holder label {
     color: white;
 }
 @media (max-width: 480px) {
