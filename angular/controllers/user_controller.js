@@ -10,8 +10,6 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             types: ['address']
         };
         
-        console.log($scope.autocompleteOptions);
-        
         $scope.register = function() {
             $http({
                 method: 'POST',
@@ -133,7 +131,49 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }
         };
         
-    }])/*
+        $scope.fillInAddress = function(){
+            if ($scope.user.address) {
+                console.log($scope.user.address.address_components);
+                $scope.user.home = $scope.user.address.address_components[0].longname;
+            }  
+        };
+        
+        $scope.geolocate = function() {
+            var autocomplete = new google.maps.places.Autocomplete();
+            autocomplete.addListener('place_changed', $scope.fillInAddress());
+            //https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform?hl=ru
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var geolocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    var circle = new google.maps.Circle({
+                        center: geolocation,
+                        radius: position.coords.accuracy
+                    });
+                    autocomplete.setBounds(circle.getBounds());
+                    $scope.autocompleteOptions.bounds = autocomplete.bounds;
+                    console.log($scope.autocompleteOptions);
+                });
+            }
+        };
+        
+    }])
+    
+    .directive('ngEnter', function() {
+        return function(scope, element, attrs) {
+            element.bind("keydown keypress", function(event) {
+                if(event.which === 13) {
+                    scope.$apply(function(){
+                        scope.$eval(attrs.ngEnter);
+                    });
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+    /*
     .directive('ngAutocomplete', function($parse) {
         return {
             scope: {
@@ -186,4 +226,3 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }
         };
     })*/
-    ;

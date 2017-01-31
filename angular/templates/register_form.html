@@ -40,22 +40,22 @@
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-9 col-sm-9">
-                                <label>Автоматичний пошук адреси:</label>
+                                <label>Автоматичний пошук адреси (введіть вулицю та номер будинку та оберіть з результатів пошуку):</label>
                                 <input class="form-control" type="text" name="item_location"
-                                    ng-model="item.address"
-                                    ng-change="changeLocation($index, item.address)"
+                                    ng-model="user.address"
+                                    ng-change="changeLocation($index, user.address)"
+                                    ng-focus="geolocate()"
                                     g-places-autocomplete
                                     options="autocompleteOptions"
                                     force-selection="true"
                                     autocomplete="off">
-                                <div>result: {{item.address}}</div>
                             </div>
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-3">
                                 <label>Ваше місто</label>
                                 <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="user.city_id" ng-change="bounds()">
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="City" ng-model="user.city_id">
                                         <option disabled selected value="">Оберіть місто</option>
                                         <option ng-repeat="city in cities" value="{{city.cityid}}">{{city.city}}</option>
                                     </select>
