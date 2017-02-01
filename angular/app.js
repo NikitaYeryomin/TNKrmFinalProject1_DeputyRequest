@@ -118,9 +118,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 url: '/deputies',
                 templateUrl: '/angular/templates/deputies_index.html',
                 controller: 'DeputyController',
-                data:{
-                   title: 'депутати'
-                }
+                data:{title: 'депутати'}
             })
             .state('deputy', {
                 url: '/deputy/:id',

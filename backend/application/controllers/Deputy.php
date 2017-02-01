@@ -21,7 +21,8 @@ public function index()
                 'surname'=>$deputies[$k]['surname'],
                 'name'=>$deputies[$k]['name'],
                 'patronymic'=>$deputies[$k]['patronymic'],
-                'tvoid'=>$deputies[$k]['tvoid']
+                'tvoid'=>$deputies[$k]['tvoid'],
+                'party'=>$deputies[$k]['party']                
                 ));
         }
         $data['deputies'] = $_deputies;
