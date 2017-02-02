@@ -1,0 +1,22 @@
+<ng-include src="'/angular/templates/header.html'"></ng-include>
+<content style="padding:5px; display:block;">
+<h2 style="text-align: center" id="h2">депутати <!--Краматорської -->міської ради</h2>
+<div deputies-list="">
+  
+</div>
+<table class="deputies">
+    <tr>
+        <th>прізвище, ім'я, по батькові
+        <th>партія
+        <th><acronym title="територіальний виборчий округ">ТВО</acronym>
+        <th>статус
+        <th>звернень: очікують / з відповідями</th>
+    <tr ng-repeat="deputy in deputies">
+        <td><a href="#!/deputy/{{deputy.id}}">{{deputy.surname}} {{deputy.name}} {{deputy.patronymic}}</a>
+        <td>{{deputy.party}}
+        <td><a href="#!/tvo/{{deputy.tvoid}}">{{deputy.tvoid}}</a>
+        <td>
+        <td>
+</table>  
+<p class="source">дані <a href="http://www.cvk.gov.ua/pls/vm2015/PVM057?PID112=30&PID102=398&PF7691=398&PT001F01=100&rej=0&pt00_t001f01=100">Центральної виборчої комісії</a></p>
+</content>

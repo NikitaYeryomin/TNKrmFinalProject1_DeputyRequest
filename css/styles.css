@@ -30,17 +30,27 @@ p {
 td:nth-child(2), td:nth-child(3), th {
     padding:3 3 3 3;
 }
-th, td:nth-child(1) {
-    text-align: center;
-}
 tr:nth-child(even){
    background-color:#eee;
 }
 
 
 /******************классы в алфавитном порядке*************************************/
+.districts, .deputies {
+    border-spacing: 0;
+    border: 1px solid #808080;
+    width: 100%;
+}
+.districts td, .districts th, .deputies td, .deputies th{
+        border: 1px solid #808080;
+        padding:3 3 3 3;
+}
 .districts td:nth-child(2), .districts td:nth-child(3){
     font-size: 12px;
+}
+.deputies th, .districts th, .districts td:nth-child(1), .deputies td:nth-child(3), .deputies td:nth-child(4), .deputies td:nth-child(5)
+{
+    text-align: center;
 }
 .l, .source{
     font-size: smaller;

@@ -1,5 +1,9 @@
-app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$stateParams',
-   function($scope, $http, $location, $state, $stateParams) {$scope.id = $stateParams.id;}
+app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$stateParams',//'items',
+   function($scope, $http, $location, $state, $stateParams
+   //,items
+   ) {$scope.id = $stateParams.id;
+       //$scope.items = items.data;
+   }
     ])
 /******************************************список депутатов*************************************************/
 .directive('deputiesList', ['$http', function($http) {
