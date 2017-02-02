@@ -16,7 +16,7 @@
             <td><a href="" ui-sref="user({userId: user.userid})">{{fullname(user)}}</a></td>
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
-            <td><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true"><a href="#" ng-click="">{{city.city}}</a>,</p>{{user.street + ", " + user.home}}</td>
+            <td><a href="#" ng-click=""><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</p></a>{{user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
                 <button class="btn btn-danger" type="button" id="previewButton{{user.userid}}" data-toggle="modal" data-target="#DeleteConfirmModal{{user.userid}}">Видалити</button>
@@ -31,14 +31,14 @@
                             <div class="modal-body">
                                 <div class="clearfix"></div>
                                 <h4 class="modal-title">Ви дійсно бажаєте видалити запис користувача</h4>
-                                <p><span>{{fullname(user)}}</span>?</p>
+                                <p>{{fullname(user)}} ?</p>
                                 <div class="head-modal-border"></div>
                             </div>
                             <div class="modal-footer">
                                 <div class="footer-modal-border"></div>
                                 <div class="row">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Скасувати</button>
-                                    <button type="button" class="btn btn-success" ng-click="deleteuser(user.userid)">Видалити</button>
+                                    <button type="button" class="btn btn-danger fa fa-info" data-dismiss="modal">Скасувати</button>
+                                    <button type="button" class="btn btn-success fa fa-trash" ng-click="deleteuser(user.userid)">Видалити</button>
                                 </div>
                             </div>
                         </div>
@@ -47,9 +47,10 @@
             </td>
         </tr>
     </table>
+    
 </div>
 <script type="text/javascript">
-    $(document).submit(function(){
-    	$('.modal').modal('hide');
-    });
+$(document).submit(function(){
+	$('.modal').modal('hide');
+});
 </script>

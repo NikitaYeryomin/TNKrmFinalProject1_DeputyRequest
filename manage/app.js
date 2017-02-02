@@ -1,6 +1,6 @@
 /*******************************************************************
 ****************************** АДминка *****************************
-*******************************************************************/
+************************************************************/
 
 var app = angular.module('App', [
     'ui.router',
@@ -38,6 +38,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         return "Редагування користувача " + $stateParams.userId;
                     }]
                 }
+            })
+            .state('deputies', {
+                url: '/deputies',
+                templateUrl: '/manage/templates/deputies.html',
+                controller: 'DeputyController',
+                resolve: {$title: function() {return 'Список депутатів'}}
             })
             .state('city', {
                 url: '/city',

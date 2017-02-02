@@ -1,7 +1,7 @@
 app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$stateParams',
    function($scope, $http, $location, $state, $stateParams) {$scope.id = $stateParams.id;}
     ])
-/******************************************список депутатов*****************************************************/
+/******************************************список депутатов*************************************************/
 .directive('deputiesList', ['$http', function($http) {
     var map, infoWindow;
     var link = function($scope, element, attrs) {
@@ -15,7 +15,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
     };
     return {
         restrict: 'A',
-        template: '<div id="gmaps"></div>',
+        template: '<div id="deputies-list"></div>',
         replace: true,
         link: link
     };
