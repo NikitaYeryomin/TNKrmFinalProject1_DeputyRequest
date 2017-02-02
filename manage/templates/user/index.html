@@ -31,14 +31,14 @@
                             <div class="modal-body">
                                 <div class="clearfix"></div>
                                 <h4 class="modal-title">Ви дійсно бажаєте видалити запис користувача</h4>
-                                <p>{{fullname(user)}} ?</p>
+                                <p><span>{{fullname(user)}}</span>?</p>
                                 <div class="head-modal-border"></div>
                             </div>
                             <div class="modal-footer">
                                 <div class="footer-modal-border"></div>
                                 <div class="row">
-                                    <button type="button" class="btn btn-danger fa fa-info" data-dismiss="modal">Скасувати</button>
-                                    <button type="button" class="btn btn-success fa fa-trash" ng-click="deleteuser(user.userid)">Видалити</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Скасувати</button>
+                                    <button type="button" class="btn btn-success" ng-click="deleteuser(user.userid)">Видалити</button>
                                 </div>
                             </div>
                         </div>
@@ -47,10 +47,9 @@
             </td>
         </tr>
     </table>
-    
 </div>
 <script type="text/javascript">
-$(document).submit(function(){
-	$('.modal').modal('hide');
-});
+    $(document).submit(function(){
+    	$('.modal').modal('hide');
+    });
 </script>
