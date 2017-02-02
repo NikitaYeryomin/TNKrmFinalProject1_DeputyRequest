@@ -3,6 +3,7 @@
     <meta http-equiv=Content-Type content="text/html; charset=utf-8">
     <title state-title title-element="title">Cистема online-звернень до місцевих депутатів</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-google-places-autocomplete/src/autocomplete.css">
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">-->
     <link rel="stylesheet" href="/css/css" />
     <link rel="stylesheet" href="/css/style.css">
@@ -20,17 +21,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
     <script src="https://cdn.rawgit.com/riggerthegeek/ng-page-title/master/dist/ng-page-title.min.js"></script>
-    <script type="text/javascript" defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCJjLs1molYuc7ro6rAG5G6tS9SQqvVOE"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&language=ua&key=AIzaSyCCJjLs1molYuc7ro6rAG5G6tS9SQqvVOE"></script>
+    <script src="/bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
+    <!--<script type="text/javascript" defer src="https://maps.googleapis.com/maps/api/js?"></script>-->
     <script src="/angular/app.js"></script>
     <script src="/angular/shared.js"></script>
     <script src="/angular/controllers/app_controller.js"></script>
     <script src="/angular/controllers/auth_controller.js"></script>
-    <script src="/angular/controllers/districts_controller.js" charset="utf-8"></script>
+    <script src="/angular/controllers/tvo_controller.js" charset="utf-8"></script>
     <script src="/angular/controllers/user_controller.js" charset="utf-8"></script>
     <script src="/angular/controllers/city_controller.js" charset="utf-8"></script>
     <script src="/angular/controllers/deputy_controller.js" charset="utf-8"></script>
     <script src="/angular/controllers/request_controller.js" charset="utf-8"></script>
-    <script src="/angular/controllers/tvo_controller.js" charset="utf-8"></script>   
+    <script src="/angular/controllers/districts_controller.js" charset="utf-8"></script>
 </head>
 <body>
 

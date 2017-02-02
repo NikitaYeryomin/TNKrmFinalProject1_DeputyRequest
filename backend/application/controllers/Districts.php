@@ -265,5 +265,31 @@ public function add()
         $this->load->view('districts/search');
         $this->load->view('templates/footer');
     }
-
+    
+    public function get_tvo() {
+        $cityid = $this->input->post('city_id');
+        $street = $this->input->post('street');
+        if (!$cityid || !$street) {
+            echo json_encode(array(
+                    'error'     => 1,
+                    'message'   => 'Адреса неповна'
+                ));
+        } else {
+            $sql = "SELECT id, addresses 
+                    FROM districts 
+                    WHERE city_id = " . $cityid . " AND addresses LIKE '%" . $street . "%'";
+            $result = $this->districts->sqlexec($sql);
+            if ($result) {
+                echo json_encode(array(
+                        'error'     => 0,
+                        'Districts' => $result
+                    ));
+            } else {
+                echo json_encode(array(
+                        'error'     => 2,
+                        'message'   => 'Адресу не знайдено'
+                    ));
+            }
+        }
+    }
 }

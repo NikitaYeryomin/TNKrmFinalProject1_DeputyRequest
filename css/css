@@ -2921,11 +2921,13 @@ textarea.input-group-sm>.input-group-btn>.btn {
     position: relative;
     display: block
 }
+/*
 .nav>li>a {
     position: relative;
     display: block;
     padding: 10px 15px
 }
+*/
 .nav>li>a:hover,
 .nav>li>a:focus {
     text-decoration: none;
@@ -3272,11 +3274,13 @@ textarea.input-group-sm>.input-group-btn>.btn {
 .navbar-nav {
     margin: 7.5px -15px
 }
+/*
 .navbar-nav>li>a {
     padding-top: 10px;
     padding-bottom: 10px;
     line-height: 20px
 }
+*/
 @media(max-width:767px) {
     .navbar-nav .open .dropdown-menu {
         position: static;
@@ -3307,10 +3311,12 @@ textarea.input-group-sm>.input-group-btn>.btn {
     .navbar-nav>li {
         float: left
     }
+    /*
     .navbar-nav>li>a {
         padding-top: 15px;
         padding-bottom: 15px
     }
+    */
 }
 @media(min-width:768px) {
     .navbar-left {

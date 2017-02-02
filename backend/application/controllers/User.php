@@ -67,7 +67,8 @@ class User extends Front_controller {
             'lastname'  => $this->input->post('lastname'),
             'email'     => $this->input->post('email'),
             'phone'     => $this->input->post('phone'),
-            'city_id'   => $this->input->post('city'),
+            'city_id'   => $this->input->post('city_id'),
+            'tvo_id'    => $this->input->post('tvo_id'),
             'street'    => $this->input->post('street'),
             'home'      => $this->input->post('home'),
             'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
@@ -80,57 +81,25 @@ class User extends Front_controller {
     }
     
     public function get($id) {
-        $sql = 'SELECT user.* , city.city 
+        $sql = 'SELECT user.*, city.city 
                 FROM user
                 JOIN city ON user.city_id = city.cityid
                 WHERE userid =' . $id;
         $result = $this->user->sqlexec($sql);
         if ($result) {
-            echo json_encode(array(
-                    'error'     => 0,
-                    'User'      => $result[0]
-                ));
-        } else {
-            echo json_encode(array(
-                    'error' => 1
-                ));
-        }
-    }
-
-
-    public function getall($id) {
-        $sql = 'SELECT user.* , city.city 
-                FROM user
-                JOIN city ON user.city_id = city.cityid
-                WHERE userid =' . $id;
-        $result = $this->user->sqlexec($sql);
-        $districts = $this->user->sqlexec('SELECT districts.tvoid FROM districts WHERE districts.id =' . $result[0]['tvo_id']);
-        $deputies = $this->user->sqlexec('SELECT deputies.* FROM deputies WHERE deputies.tvoid =' . $districts[0]['tvoid']);
-        if ($result) {
+            $districts = $this->user->sqlexec('SELECT tvoid, place_id FROM districts WHERE id = ' . $result[0]['tvo_id']);
+            $deputies = $this->user->sqlexec('SELECT * FROM deputies WHERE tvoid = ' . $districts[0]['tvoid']);
+            $places = $this->user->sqlexec('SELECT address FROM places WHERE id = ' . $districts[0]['place_id']);
             echo json_encode(array(
                     'error'     => 0,
                     'User'      => $result[0],
                     'District'  => $districts[0],
-                    'Deputy'    => $deputies[0]
+                    'Deputy'    => $deputies[0],
+                    'Place'     => $places[0]
                 ));
         } else {
             echo json_encode(array(
                     'error' => 1
-                ));
-        }
-    }
-    
-    public function gettvo($id) {
-        $sql = 'SELECT user.userid, user.city_id, user.street, user.home, city.city as city_name
-                FROM user
-                JOIN city ON user.city_id = city.cityid
-                WHERE USERID =' . $id;
-        $tvo = $this->user->sqlexec($sql);
-        if ($tvo) {
-            echo json_encode(array(
-                    'error'     => 0,
-                    'tvo'       => $tvo[0],
-                    'districts' => $this->districts->get_districts()
                 ));
         }
     }

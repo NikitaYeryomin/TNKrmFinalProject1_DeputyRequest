@@ -7,42 +7,52 @@
             </div>
             <div class="col-sm-12 row reg-input">
                 <div class="col-lg-12 col-sm-12">
-                    <label>Громадянин(ка):&nbsp;<strong>{{currentUser.username}},</strong></label>
+                    <label>Громадянин(ка):&nbsp;</label>
+                    <span><strong>{{currentUser.username}}</strong></span>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <label>Адреса:&nbsp;<strong>{{user.city}},&nbsp;{{user.street}},&nbsp;{{user.home}}</strong></label>
+                    <label>Адреса:&nbsp;</label>
+                    <strong>{{user.city}},&nbsp;{{user.street}},&nbsp;{{user.home}}</strong>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <label>Телефон:&nbsp;<strong>{{user.phone}}</strong></label>
+                    <label>Телефон:&nbsp;</label>
+                    <strong>{{user.phone}}</strong>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <label>E-mail:&nbsp;<strong>{{user.email}}</strong></label>
+                    <label>E-mail:&nbsp;</label>
+                    <strong>{{user.email}}</strong>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <label>
-                        Виборча дільниця:&nbsp;
-                        <span ng-show="user.tvo_id == 0">Не визначена.&nbsp;<a href="" data-toggle="modal" data-target="#districtModal">Визначити</a></span><!-- Тут мы покажем модальное окошко с участком -->
-                        <span ng-show="user.tvo_id != 0"><strong><a href="#!/district/{{user.tvo_id}}">{{user.tvo_id}}</a></strong></span>
-                    </label>
+                    <label>Ваша виборча дільниця:&nbsp;</label>
+                    <span>
+                        <strong>
+                            <a href="#!/district/{{user.tvo_id}}">{{user.tvo_id}}</a>
+                        </strong>
+                    </span>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <label>
-                        Теріторіальний виборчий округ:&nbsp;
-                        <span ng-show="!district.tvoid">Не визначений.&nbsp;<a href="">Визначити</a></span>
-                        <span ng-show="district.tvoid != 0"><strong><a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a></strong></span>
-                    </label>
+                    <label>Ваш теріторіальний виборчий округ:&nbsp;</label>
+                    <span>
+                        <strong>
+                            <a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a>
+                        </strong>
+                    </span>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <label>
-                        Депутат:&nbsp;
-                        <span ng-show="!deputy.id">Не визначений.&nbsp;<a href="">Визначити</a></span>
-                        <span ng-show="deputy.id != 0"><strong><a href="#!/deputy/{{deputy.id}}">{{deputy.name}}&nbsp;{{deputy.patronymic}}&nbsp;{{deputy.surname}}</a></strong></span>
-                    </label>
+                    <label>Адреса для голосування:&nbsp;</label>
+                    <span>
+                        <strong>{{place.address}}</strong>
+                    </span>
                 </div>
-            </div><!--
-            <div class="col-sm-6" ng-show="user.tvo_id == 0">
-                
-            </div>-->
+                <div class="col-lg-12 col-sm-12">
+                    <label>Ваш депутат:&nbsp;</label>
+                    <span>
+                        <strong>
+                            <a href="#!/deputy/{{deputy.id}}">{{deputy.name}}&nbsp;{{deputy.patronymic}}&nbsp;{{deputy.surname}}</a>
+                        </strong>
+                    </span>
+                </div>
+            </div>
             <div class="col-sm-12">
                 <h2>Звернення користувача</h2>
             </div>
@@ -54,35 +64,3 @@
         </div>
     </div>
 </section>
-
-<div class="modal fade" id="districtModal">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content new-modal-content">
-            <div class="modal-header">
-                <div class="top-modal-head">
-                    <label>Визначення виборчої дільниці</label>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-                <div class="clearfix"></div>
-                <div class="head-modal-border"></div>
-            </div>
-            <div class="modal-body">
-                <div id="previewContent" class="row">
-                    <div class="col-sm-12">
-                        <span>Ваша адреса:&nbsp;{{user.city}},&nbsp;{{user.street}},&nbsp;{{user.home}}</span>
-                    </div>
-                    <div class="col-sm-12">
-                        <span>належить до дільниці:<strong>??? {{user.tvo_id}}</strong></span>
-                    </div>
-                    <div class="col-sm-12">
-                        <div districts-map=""></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="footer-modal-border"></div>
-                <input type="submit" value="Зберегти" class="registration-submit" style="margin-bottom: 0px;">
-            </div>
-        </div>
-    </div>
-</div>

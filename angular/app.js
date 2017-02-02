@@ -1,9 +1,10 @@
 var app = angular.module('App', [
     'ui.router',
-    'ngPageTitle'
+    'ngPageTitle',
+    'google.places'
     //'ui.bootstrap',
     //'ngResource',
-    //'angularFileUpload',
+    //'angularFileUpload'
     //'angucomplete-alt'
 ]);
 
@@ -117,17 +118,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 url: '/deputies',
                 templateUrl: '/angular/templates/deputies_index.html',
                 controller: 'DeputyController',
-                data:{
-                   title: 'депутати'
-                }
+                data:{title: 'депутати'}
             })
             .state('deputy', {
-                url: '/deputy/:districtId',
-                templateUrl: '/angular/templates/deputy_index.html',
+                url: '/deputy/:id',
+                templateUrl: '/angular/templates/deputy.html',
                 controller: 'DeputyController',
-                data:{
-                    title: "депутат {{getDistrictId}}"
-                },
+                data:{                    title: "депутат {{id}}"                },
                 resolve: {
                     getDistrictId: ['$stateParams', function($stateParams) {
                         return $stateParams.districtId;

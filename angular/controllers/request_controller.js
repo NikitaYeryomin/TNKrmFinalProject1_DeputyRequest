@@ -9,21 +9,21 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             } else {
                 $http({
                     method: 'GET',
-                    url: '/backend/user/getall/' + $rootScope.currentUser.id
+                    url: '/backend/user/get/' + $rootScope.currentUser.id
                 }).then(function(response) {
                     if (response.data.error == 0) {
                         $scope.user = response.data.User;
                         $scope.district = response.data.District;
                         $scope.deputy = response.data.Deputy;
                         //$scope.deputy = response.data.Deputy;
-                        console.log($scope.user);
+                        //console.log($scope.user);
                         //console.log($scope.deputy);
                     }
                 });
             }
         };
         
-         $scope.requestTypes = [{
+        $scope.requestTypes = [{
             Title: 'Довільне звернення',
             Name: 'request.custom'
             },{
@@ -32,15 +32,13 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             }, {
             Title: 'Моральна допомога',
             Name: 'request.moral'
-         }];
+        }];
     
         $scope.changeState = function (stateName) {
             console.log(stateName);
             $state.go(stateName);
-        }
+        };
         
-       
-
         $scope.getuser();
         
         $scope.request = {};

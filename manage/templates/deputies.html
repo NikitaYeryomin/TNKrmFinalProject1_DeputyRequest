@@ -16,7 +16,7 @@
             <td><a href="" ui-sref="user({userId: user.userid})">{{fullname(user)}}</a></td>
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
-            <td><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true"><a href="#" ng-click="">{{city.city}}</a>,</p>{{user.street + ", " + user.home}}</td>
+            <td><a href="#" ng-click=""><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</p></a>{{user.street + " " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
                 <button class="btn btn-danger" type="button" id="previewButton{{user.userid}}" data-toggle="modal" data-target="#DeleteConfirmModal{{user.userid}}">Видалити</button>
