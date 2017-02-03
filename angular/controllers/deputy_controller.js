@@ -24,7 +24,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
         link: link
     };
 }])
-/*************************************депутат****************************************************/
+/*************************************один депутат****************************************************/
 .directive('deputyPage', ['$http', function($http) {
     var link = function($scope, element) {
        $http({
@@ -44,6 +44,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 $scope.deputy.tvoid="";
                 $scope.deputy.listfix3=" як лідер списку";
             }
+            if ($scope.deputy.user_id!=null){$scope.deputy.confirmed="цей депутат офіційно зареєстрований у системі та може особисто відповідати на ваші звернення тут";}
         });
     };
     return {

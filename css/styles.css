@@ -8,7 +8,7 @@ a:focus {
     color: #6cf;
 }
 content h2, content h4{
-    margin-bottom: 0;
+    margin-bottom: 3px;
     text-align: center!important;
 }
 legend {
@@ -36,6 +36,15 @@ tr:nth-child(even){
 
 
 /******************классы в алфавитном порядке*************************************/
+.confirmed {
+    color: #060;
+}
+.confirmed:not(td) {
+    text-align: center;
+    color: #060;
+    font-size: 18px;    
+    font-weight: 700;
+}
 .districts, .deputies {
     border-spacing: 0;
     border: 1px solid #808080;
