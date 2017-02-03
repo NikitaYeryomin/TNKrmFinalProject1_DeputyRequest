@@ -23,6 +23,25 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             }
         };
         
+        
+            $scope.request = {};
+            $scope.request.public_appeal = true;
+          $scope.add_request = function() {
+              console.log($scope.request);
+            $http({
+                method: 'POST',
+                url: '/backend/user/request',
+                data: $.param({
+                    'form' : $scope.request.form,
+                    'public_appeal' : $scope.request.public_appeal
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function(response) {
+                
+                console.log(response.data);
+            });
+        };
+        
         $scope.requestTypes = [{
             Title: 'Довільне звернення',
             Name: 'request.custom'

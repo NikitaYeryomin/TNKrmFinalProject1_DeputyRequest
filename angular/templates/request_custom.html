@@ -2,14 +2,14 @@
     <div class="col-lg-7 col-sm-6">
         <label>Зміст звернення</label>
         <span class="field-validation-valid text-danger" data-valmsg-for="PDescription" data-valmsg-replace="true"></span>
-        <textarea class="form-control" cols="20" data-val="true" data-val-required="Це обов`язкове поле" id="PDescription" name="PDescription" placeholder="Зміст звернення" rows="10"></textarea>
+        <textarea class="form-control" cols="20" data-val="true" data-val-required="Це обов`язкове поле" id="PDescription" name="PDescription" placeholder="Зміст звернення" ng-model="request.form" rows="10"></textarea>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
         <div class="checkbox">
             <label>
-                <input type="checkbox" name="a" value="Публічне звернення" checked />Публічне звернення
+                <input type="checkbox" name="a" value="Публічне звернення" ng-model="request.public_appeal" />Публічне звернення
             </label>
         </div>
     </div>
