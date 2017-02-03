@@ -1,6 +1,6 @@
-/*******************************************************************
-****************************** АДминка *****************************
-*******************************************************************/
+/*******************************************************************/
+/***************************** АДминка *****************************/
+/*******************************************************************/
 
 app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams',
     function($scope, $rootScope, $http, $location, $state, $stateParams) {
@@ -46,6 +46,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'city_id'   : $scope.user.city_id,
                     'street'    : $scope.user.street,
                     'home'      : $scope.user.home,
+                    'tvo_id'    : $scope.user.tvo_id,
                     'role'      : $scope.user.role
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}

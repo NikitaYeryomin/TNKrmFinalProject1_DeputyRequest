@@ -116,7 +116,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             })
             .state('deputies', {
                 url: '/deputies',
-                templateUrl: '/angular/templates/deputies_index.html',
+                templateUrl: '/angular/templates/deputies.html',
                 controller: 'DeputyController',
                 data:{title: 'депутати'}
             })
@@ -124,11 +124,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 url: '/deputy/:id',
                 templateUrl: '/angular/templates/deputy.html',
                 controller: 'DeputyController',
-                data:{                    title: "депутат {{id}}"                },
-                resolve: {
-                    getDistrictId: ['$stateParams', function($stateParams) {
-                        return $stateParams.districtId;
-                    }]
+                data:{title: "депутат № {{id}}"},
+                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]
                 }
             })
             ;

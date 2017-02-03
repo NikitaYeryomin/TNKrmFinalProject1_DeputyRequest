@@ -1,0 +1,35 @@
+<section class="content" style="">
+    <div class="petition-main account-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 register-tab">
+                    <form ng-submit="save({cityId: city.cityid})" role="form" novalidate="novalidate">
+                        <div class="row reg-input" style="margin-bottom: 29px;">
+                            <div class="col-lg-12 col-md-12">
+                                <label>Місто:</label>
+                                <span>{{city.city}}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <label>Область:</label>
+                                <span>{{city.region}}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="on" ng-checked="city.active" />Підключено до системи
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row reg-input">
+                            <div class="col-lg-1 col-sm-1">
+                                <label></label>
+                                <button class="btn btn-success" type="submit">Зберегти дані</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -50,6 +50,9 @@
                                     force-selection="true"
                                     autocomplete="off">
                             </div>
+                            <div class="col-sm-12 text-holder">
+                                <p style="margin-bottom: 20px; color:#AAACB1;">У деяких випадках Google може не знайти вашу адресу.</p>
+                            </div>
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-3">
@@ -162,13 +165,16 @@
                                                 <label>Ваша адреса:</label>
                                                 <p>
                                                     <span ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}},</span>
-                                                    <span>вул. {{user.street}}, буд. {{user.home}}</span>
+                                                    <span>{{user.street}}, буд. {{user.home}}</span>
                                                 </p>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>Виборча дільниця:&nbsp;</label>
                                                 <p>
-                                                    <span ng-show="user.tvo_id != 0">{{user.tvo_id}}</span>
+                                                    <span ng-show="user.tvo_id > 0">{{user.tvo_id}}</span>
+                                                    <span style="color: red" ng-show="user.tvo_id < 0">
+                                                        <strong>Визначаємо, зачекайте.</strong>
+                                                    </span>
                                                     <span style="color: red" ng-show="user.tvo_id == 0">
                                                         <strong>Не визначена! Перевірте правильність адреси!</strong>
                                                     </span>
@@ -178,7 +184,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <div class="footer-modal-border"></div>
-                                        <input type="submit" value="Зареєструватися" class="registration-submit" style="margin-bottom: 0px;" ng-disabled="user.tvo_id == 0">
+                                        <input type="submit" value="Зареєструватися" class="registration-submit" style="margin-bottom: 0px;" ng-disabled="user.tvo_id <= 0">
                                     </div>
                                 </div>
                             </div>

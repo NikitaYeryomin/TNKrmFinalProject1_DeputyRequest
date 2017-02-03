@@ -15,12 +15,30 @@ class City extends Admin_controller {
     }
     */
         
-    public function index()
-    {
+    public function index() {
         echo json_encode(array(
                 'error' => 0,
                 'CityList' => $this->city->get_records()
             ));
+    }
+    
+    public function get($id) {
+        $sql = 'SELECT city.*, region.name 
+                AS region
+                FROM city
+                JOIN region ON city.regionid = region.id
+                WHERE cityid =' . $id;
+        $result = $this->user->sqlexec($sql);
+        if ($result) {
+            echo json_encode(array(
+                    'error'     => 0,
+                    'City'      => $result[0]
+                ));
+        } else {
+            echo json_encode(array(
+                    'error' => 1
+                ));
+        }
     }
     
     /*    

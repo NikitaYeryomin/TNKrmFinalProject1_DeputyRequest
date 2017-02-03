@@ -52,6 +52,11 @@
                                 <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
                             </div>
+                            <div class="col-lg-3 col-sm-3">
+                                <label>Виборча дільниця</label>
+                                <input class="form-control" data-val="true" data-val-regex="Введіть номер будинку" data-val-required="Введіть номер будинку" id="Home" name="Home" ng-model="user.tvo_id" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Home" data-valmsg-replace="true"></span>
+                            </div>
                         </div>
                         <div class="row reg-input">
                             <div class="col-lg-3 col-sm-3">

@@ -6,9 +6,11 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.place = null;
         $scope.autocompleteOptions = {
             componentRestrictions: { country: 'ua' },
-            bounds: $rootScope.bounds,
+            bounds: {},
             types: ['address']
         };
+        
+        $scope.autocomplete = new google.maps.places.Autocomplete();
         
         $scope.register = function() {
             $http({
@@ -61,7 +63,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         $scope.user = response.data.User;
                         $scope.district = response.data.District;
                         $scope.deputy = response.data.Deputy;
-                        $scope.place = response.data.Place;
+                        $scope.eplace = response.data.Place;
                     }
                 });
             }
@@ -73,10 +75,19 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         /*************** вычисление избирательного участка по адресу ******************/
         /******************************************************************************/
         $scope.detect_tvo = function() {
-            $scope.user.tvo_id = 0;
+            $scope.user.tvo_id = -1;
             if ($scope.user.city_id && 
                 $scope.user.street && 
                 $scope.user.home) {
+                var street = $scope.user.street; 
+                street = street.replace('вулиця ', 'вул.');
+                street = street.replace('улица ', 'вул.');
+                street = street.replace('проспект ', 'просп.');
+                street = street.replace('провулок ', 'пров.');
+                street = street.replace('переулок ', 'пров.');
+                street = street.replace('бульвар ', 'бульв.');
+                street = street.replace('. ', '.');
+                $scope.user.street = street;
                 $http({
                     method: 'POST',
                     url: '/backend/districts/get_tvo',
@@ -126,22 +137,12 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         }
                     }
                     //адрес не значится нигде
-                    return $scope.user.tvo_id;
+                    return $scope.user.tvo_id = 0;
                 });
             }
         };
         
-        $scope.fillInAddress = function(){
-            if ($scope.user.address) {
-                console.log($scope.user.address.address_components);
-                $scope.user.home = $scope.user.address.address_components[0].longname;
-            }  
-        };
-        
         $scope.geolocate = function() {
-            var autocomplete = new google.maps.places.Autocomplete();
-            autocomplete.addListener('place_changed', $scope.fillInAddress());
-            //https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform?hl=ru
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var geolocation = {
@@ -152,27 +153,28 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         center: geolocation,
                         radius: position.coords.accuracy
                     });
-                    autocomplete.setBounds(circle.getBounds());
-                    $scope.autocompleteOptions.bounds = autocomplete.bounds;
-                    console.log($scope.autocompleteOptions);
+                    $scope.autocomplete.setBounds(circle.getBounds());
+                    $scope.autocompleteOptions.bounds = $scope.autocomplete.bounds;
+                    //console.log($scope.autocompleteOptions);
                 });
             }
         };
         
-    }])
-    
-    .directive('ngEnter', function() {
-        return function(scope, element, attrs) {
-            element.bind("keydown keypress", function(event) {
-                if(event.which === 13) {
-                    scope.$apply(function(){
-                        scope.$eval(attrs.ngEnter);
-                    });
-                    event.preventDefault();
-                }
-            });
-        };
-    });
+        $scope.$watch('user.address', function() {
+            var addr = $scope.user.address.address_components;
+            console.log(addr);
+            var street;
+            if (addr.length >= 6) {
+                $scope.user.home = addr[0].long_name;
+                street = addr[1].long_name;
+            }
+            if (addr.length == 5) {
+                street = addr[0].long_name;
+            }
+            $scope.user.street = street;
+        });
+        
+    }]);
     /*
     .directive('ngAutocomplete', function($parse) {
         return {

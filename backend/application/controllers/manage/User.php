@@ -37,6 +37,7 @@ class User extends Admin_controller {
                 'city_id'   => $this->input->post('city_id'),
                 'street'    => $this->input->post('street'),
                 'home'      => $this->input->post('home'),
+                'tvo_id'    => $this->input->post('tvo_id'),
                 'role'      => $this->input->post('role')
             );
         if ($this->input->post('password')) {

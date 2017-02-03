@@ -45,12 +45,22 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'DeputyController',
                 resolve: {$title: function() {return 'Список депутатів'}}
             })
-            .state('city', {
-                url: '/city',
+            .state('cities', {
+                url: '/cities',
                 templateUrl: '/manage/templates/city/index.html',
-                controller: 'CityController',
+                controller: 'CitiesController',
                 resolve: {
                     $title: function() { return 'Список міст'}
+                }
+            })
+            .state('city', {
+                url: '/city/:cityId',
+                templateUrl: '/manage/templates/city/view.html',
+                controller: 'CityController',
+                resolve: {
+                    $title: ['$stateParams', function($stateParams) {
+                        return "Місто " + $stateParams.userId;
+                    }]
                 }
             });
             /*
