@@ -11,7 +11,7 @@
                     <h2 style="text-align: center"><strong><a href="#!/deputy/{{deputy.id}}">{{deputy.name}}&nbsp;{{deputy.patronymic}}&nbsp;{{deputy.surname}}</a></strong></h2>
                 </div>
                 <div class="col-sm-12 register-tab">
-                    <form ng-submit="" role="form" novalidate="novalidate">
+                    <form ng-submit="add_request()" role="form" novalidate="novalidate">
                         <div class="row reg-input">
                             <div class="col-lg-12 col-sm-12">
                                 <label>Заявник:&nbsp;<strong>{{currentUser.username}},</strong></label>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div ui-view></div>
-                        <button type="button" id="previewButton" data-toggle="modal" ng-click="add_request" data-target="#registerPreviewModal">Відправити</button>
+                        <button type="button" id="previewButton">Відправити</button>
                     </form>
                 </div>
             </div>
