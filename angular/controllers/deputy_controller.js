@@ -1,9 +1,5 @@
 app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$stateParams',//'items',
-   function($scope, $http, $location, $state, $stateParams
-   //,items
-   ) {$scope.id = $stateParams.id;
-       //$scope.items = items.data;
-   }
+   function($scope, $http, $location, $state, $stateParams  ) {$scope.id = $stateParams.id;   }
     ])
 /******************************************список депутатов*************************************************/
 .directive('deputiesList', ['$http', function($http) {
@@ -15,6 +11,13 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
         }).then(function(response) {
             console.log(response.data);
             $scope.deputies = response.data.deputies;
+            var i;
+            for (i = 0; i < $scope.deputies.length; i++) {
+               if ($scope.deputies[i].tvoid==0){
+                   $scope.deputies[i].ifLeader='лідер списку';
+                   $scope.deputies[i].tvoid=null;
+               }
+            }
         });
     };
     return {
