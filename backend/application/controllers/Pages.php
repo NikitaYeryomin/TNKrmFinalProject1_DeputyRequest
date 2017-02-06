@@ -1,5 +1,5 @@
 <?php
-class Pages extends Admin_controller {
+class Pages extends Front_controller {
 
     public function view($page = 'home'){
         //$this->load->helper('date');

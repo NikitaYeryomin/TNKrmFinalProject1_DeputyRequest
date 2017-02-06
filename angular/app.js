@@ -42,9 +42,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 url: '/request',
                 templateUrl: '/angular/templates/request.html',
                 controller: 'RequestController',
-                data:{
-                    title: 'Звернення до депутата місцевої ради'
-                }
             })
             .state('request.material', {
                 url: '/material',
@@ -65,7 +62,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             .state('request.custom', {
                 url: '/custom',
                 templateUrl: '/angular/templates/request_custom.html',
-                controller: 'RequestController',
                 data:{
                     title: 'Звернення до депутата місцевої ради'
                 }

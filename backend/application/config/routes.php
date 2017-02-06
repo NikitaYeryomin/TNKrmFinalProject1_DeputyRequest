@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['user/edit'] = 'user/edit';
+/*$route['user/edit'] = 'user/edit';
 $route['user/delete'] = 'user/delete';
 $route['user/login'] = 'user/login';
 //$route['users/(:any)'] = 'users';
@@ -59,6 +59,6 @@ $route['city'] = 'city';
 $route['request/edit'] = 'request/edit';
 $route['request/delete'] = 'request/delete';
 $route['request/(:any)'] = 'request/view/$1';
-$route['request'] = 'request';
+$route['request'] = 'request';*/
 //$route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
