@@ -11,8 +11,12 @@
         <tr ng-repeat="city in cities">
             <td>{{city.cityid}}</td>
             <td><a href="" ui-sref="city({cityId: city.cityid})">{{city.city}}</td>
-            <td>{{city.regionid}}</td>
-            <td>{{city.active}}</td>
+            <td>{{city.region}}</td>
+            <td>
+                <span ng-show="city.active == 1">Підключено </span>
+                <span ng-show="city.active == 0">Не підключено </span>
+                <span>до системи</span>
+            </td>
         </tr>
     </table>
 </div>

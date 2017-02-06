@@ -6,12 +6,37 @@
                     <form ng-submit="save({cityId: city.cityid})" role="form" novalidate="novalidate">
                         <div class="row reg-input" style="margin-bottom: 29px;">
                             <div class="col-lg-12 col-md-12">
-                                <label>Місто:</label>
-                                <span>{{city.city}}</span>
+                                <img 
+                                    ng-src="{{city.cover}}" 
+                                    width="1000px" 
+                                    height="200px" 
+                                    id="image_preview" 
+                                    alt="обложка міста">
                             </div>
                             <div class="col-lg-12 col-md-12">
-                                <label>Область:</label>
-                                <span>{{city.region}}</span>
+                                <input type="file" name="file" id="image" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="col-lg-12 col-md-12">
+                                    <label>Місто:</label>
+                                    <span>{{city.city}}</span>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <label>Область:</label>
+                                    <span>{{city.region}}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="col-lg-12 col-md-12">
+                                    <img 
+                                        ng-src="{{city.embleme}}" 
+                                        width="200px" 
+                                        height="200px" 
+                                        alt="герб міста">
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <input type="file" name="file" id="image2" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                                </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="checkbox">
@@ -22,7 +47,7 @@
                             </div>
                         </div>
                         <div class="row reg-input">
-                            <div class="col-lg-1 col-sm-1">
+                            <div class="col-lg-12 col-sm-12">
                                 <label></label>
                                 <button class="btn btn-success" type="submit">Зберегти дані</button>
                             </div>

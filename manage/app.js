@@ -4,7 +4,8 @@
 
 var app = angular.module('App', [
     'ui.router',
-    'ui.router.title'
+    'ui.router.title',
+    'angularFileUpload'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -58,9 +59,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/manage/templates/city/view.html',
                 controller: 'CityController',
                 resolve: {
-                    $title: ['$stateParams', function($stateParams) {
-                        return "Місто " + $stateParams.userId;
-                    }]
+                    $title: function () { return 'Адміністрування міста'}
                 }
             });
             /*

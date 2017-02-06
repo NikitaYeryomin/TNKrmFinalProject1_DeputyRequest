@@ -95,3 +95,12 @@ th
 {
     font-weight: bold;
 }
+
+#image_preview_hidden {
+    opacity: 0;
+    width: 180px;
+    height: 180px;
+    border: 1px solid #000;
+    position: absolute;
+    margin-top: 0px;
+}

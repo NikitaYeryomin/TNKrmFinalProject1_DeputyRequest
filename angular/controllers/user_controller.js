@@ -2,6 +2,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
     function($scope, $rootScope, $http, $location, $state, $stateParams) {
         
         $scope.user = {};
+        $scope.user.city_id = 1; //Пока город только 1
         
         $scope.place = null;
         $scope.autocompleteOptions = {
@@ -97,47 +98,50 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         }),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).then(function(response) {
-                    var districts = response.data.Districts;
-                    for (var i = 0; i < districts.length; i++) {
-                        var addresses = districts[i]['addresses'];
-                        var sym = addresses.charAt(addresses.search($scope.user.street) + $scope.user.street.length);
-                        if (sym == ';' || sym == '') {
-                            //нашли по ВСЕЙ улице! 
-                            $scope.user.tvo_id = districts[i]['id'];
-                            return $scope.user.tvo_id;
-                        } else {
-                            //ищем по номеру дома
-                            addresses = addresses.substring(addresses.search($scope.user.street) + $scope.user.street.length + 2);
-                            var semicolon = addresses.search(';');
-                            var homes;
-                            if (semicolon > -1) {
-                                homes = addresses.substring(0, semicolon);
+                    if (response.data.error == 0) {
+                        var districts = response.data.Districts;
+                        for (var i = 0; i < districts.length; i++) {
+                            var addresses = districts[i]['addresses'];
+                            var sym = addresses.charAt(addresses.search($scope.user.street) + $scope.user.street.length);
+                            if (sym == ';' || sym == '') {
+                                //нашли по ВСЕЙ улице! 
+                                $scope.user.tvo_id = districts[i]['id'];
+                                return $scope.user.tvo_id;
                             } else {
-                                homes = addresses;
-                            }
-                            var nums = homes.split(', ');
-                            //console.log(nums);
-                            for (var j = 0; j < nums.length; j++) {
-                                if (nums[j].indexOf('–') > -1) {
-                                    var dia = nums[j].split('–');
-                                    if ($scope.user.home >= parseInt(dia[0]) &&
-                                        $scope.user.home <= parseInt(dia[1])) {
-                                        //нашли: номер дома в диапазоне!
-                                        $scope.user.tvo_id = districts[i]['id'];
-                                        return $scope.user.tvo_id;
-                                    }
+                                //ищем по номеру дома
+                                addresses = addresses.substring(addresses.search($scope.user.street) + $scope.user.street.length + 2);
+                                var semicolon = addresses.search(';');
+                                var homes;
+                                if (semicolon > -1) {
+                                    homes = addresses.substring(0, semicolon);
                                 } else {
-                                    if ($scope.user.home == nums[j]) {
-                                        //нашли: номер дома указан явно!
-                                        $scope.user.tvo_id = districts[i]['id'];
-                                        return $scope.user.tvo_id;
+                                    homes = addresses;
+                                }
+                                var nums = homes.split(', ');
+                                //console.log(nums);
+                                for (var j = 0; j < nums.length; j++) {
+                                    if (nums[j].indexOf('–') > -1) {
+                                        var dia = nums[j].split('–');
+                                        if ($scope.user.home >= parseInt(dia[0]) &&
+                                            $scope.user.home <= parseInt(dia[1])) {
+                                            //нашли: номер дома в диапазоне!
+                                            $scope.user.tvo_id = districts[i]['id'];
+                                            return $scope.user.tvo_id;
+                                        }
+                                    } else {
+                                        if ($scope.user.home == nums[j]) {
+                                            //нашли: номер дома указан явно!
+                                            $scope.user.tvo_id = districts[i]['id'];
+                                            return $scope.user.tvo_id;
+                                        }
                                     }
                                 }
                             }
                         }
+                    } else {
+                        //адрес не значится нигде
+                        return $scope.user.tvo_id = 0;
                     }
-                    //адрес не значится нигде
-                    return $scope.user.tvo_id = 0;
                 });
             }
         };
@@ -155,76 +159,23 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     });
                     $scope.autocomplete.setBounds(circle.getBounds());
                     $scope.autocompleteOptions.bounds = $scope.autocomplete.bounds;
-                    //console.log($scope.autocompleteOptions);
                 });
             }
         };
         
         $scope.$watch('user.address', function() {
             var addr = $scope.user.address.address_components;
-            console.log(addr);
+            //console.log(addr);
             var street;
             if (addr.length >= 6) {
                 $scope.user.home = addr[0].long_name;
                 street = addr[1].long_name;
-            }
-            if (addr.length == 5) {
-                street = addr[0].long_name;
+            } else {
+                if (addr.length == 5) {
+                    street = addr[0].long_name;
+                }
             }
             $scope.user.street = street;
         });
         
     }]);
-    /*
-    .directive('ngAutocomplete', function($parse) {
-        return {
-            scope: {
-                details: '=',
-                ngAutocomplete: '=',
-                options: '='
-            },
-            link: function(scope, element, attrs, model) {
-                var opts;
-                var initOpts = function() {
-                    opts = {};
-                    if (scope.options) {
-                        if (scope.options.types) {
-                            opts.types = [];
-                            opts.types.push(scope.options.types);
-                        }
-                        if (scope.options.bounds) {
-                            opts.bounds = scope.options.bounds;
-                        }
-                        if (scope.options.country) {
-                            opts.componentRestrictions = {
-                                country: scope.options.country
-                            };
-                        }
-                    }
-                };
-                initOpts();
-                var newAutocomplete = function() {
-                    scope.gPlace = new google.maps.places.Autocomplete(element[0], opts);
-                    google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-                        scope.$apply(function() {
-                            //              if (scope.details) {
-                            scope.details = scope.gPlace.getPlace();
-                            //              }
-                            scope.ngAutocomplete = element.val();
-                        });
-                    });
-                };
-                newAutocomplete();
-                //watch options provided to directive
-                scope.watchOptions = function () {
-                    return scope.options;
-                };
-                scope.$watch(scope.watchOptions, function () {
-                    initOpts();
-                    newAutocomplete();
-                    element[0].value = '';
-                    scope.ngAutocomplete = element.val();
-                }, true);
-            }
-        };
-    })*/

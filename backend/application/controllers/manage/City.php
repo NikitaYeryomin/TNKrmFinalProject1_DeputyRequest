@@ -16,9 +16,13 @@ class City extends Admin_controller {
     */
         
     public function index() {
+        $sql = 'SELECT city.*, region.name 
+                AS region
+                FROM city
+                JOIN region ON city.regionid = region.id';
         echo json_encode(array(
                 'error' => 0,
-                'CityList' => $this->city->get_records()
+                'CityList' => $this->city->sqlexec($sql)
             ));
     }
     
@@ -28,7 +32,7 @@ class City extends Admin_controller {
                 FROM city
                 JOIN region ON city.regionid = region.id
                 WHERE cityid =' . $id;
-        $result = $this->user->sqlexec($sql);
+        $result = $this->city->sqlexec($sql);
         if ($result) {
             echo json_encode(array(
                     'error'     => 0,
