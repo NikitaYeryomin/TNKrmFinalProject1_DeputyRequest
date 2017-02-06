@@ -23,5 +23,11 @@ class User_model extends Base_model {
         return FALSE;
     }
 
+public function get_users()
+{
+    $query = $this->db->get('user');
+    return $query->result_array();
+}
+
 }
 ?>
