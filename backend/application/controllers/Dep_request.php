@@ -1,6 +1,13 @@
 <?php
-class Request extends Front_controller {
+class Dep_request extends Front_controller {
 
+    public function add() {
+        //TODO: добавить код создания обращения
+        echo json_encode(array(
+            'error' => 0
+        ));
+    }
+    /*
     public function view($id = NULL)
     {
         $this->data['requests_item'] = $this->request->getrequests($id);
@@ -79,6 +86,6 @@ class Request extends Front_controller {
         $this->data['title'] = 'Requests archive';
         $this->data['inner_view'] = 'request/index';
         $this->load->view('template', $this->data);
-    }
+    }*/
 }
 ?>
