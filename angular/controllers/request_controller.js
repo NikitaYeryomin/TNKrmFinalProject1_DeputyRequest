@@ -22,7 +22,8 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 });
             }
         };
-
+        
+        $scope.getuser();
 
         $scope.request = {};
         $scope.request.public_appeal = true;
