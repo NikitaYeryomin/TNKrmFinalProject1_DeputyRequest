@@ -20,20 +20,16 @@ public function get_deputies_for_tvo($id = FALSE)
         $query = $this->db->get('deputies');
         return $query->result_array();
         }  
-/*
-public function set_deputy()
+
+public function set_deputy($id = NULL, $data)
 {
-    $this->load->helper('url');
-    $data = array(        
-        'id' => $this->input->post('id'),
-        'name' => $this->input->post('name'),
-        'surname' => $this->input->post('surname'),
-        'patronymic' => $this->input->post('patronymic'),
-        'bio' => $this->input->post('bio'),
-        'party_id' => $this->input->post('party_id'),
-        'tvoid' => $this->input->post('tvoid')
-        );
-    return $this->db->insert('deputies', $data);
+        if ($data['user_id']==0){$data['user_id']=NULL;}
+        if (!$id){return $this->db->insert('deputies', $data);}
+        return $this->db->update('deputies', $data, array('id' => $id));
 }
- */   
+
+
+
+
+    
 }
