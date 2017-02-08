@@ -26,7 +26,7 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
             }).then(function(response) {
                 if (response.data.error == 0) {
                     console.log(response.data.error);
-                    $scope.users();
+                    $state.go('/users');
                 }
             });
         };

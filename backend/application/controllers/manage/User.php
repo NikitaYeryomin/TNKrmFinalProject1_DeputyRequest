@@ -56,7 +56,12 @@ class User extends Admin_controller {
         if ($id == $logged_in['id']) {
             $this->logout();
         }
-        $this->user->delete($id);
+        $result = $this->user->delete($id);
+        if ($result) {
+            echo json_encode(array(
+                    'error' => 0
+                ));
+        }
     }
     
     public function login(){
