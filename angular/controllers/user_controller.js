@@ -81,13 +81,13 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 $scope.user.street && 
                 $scope.user.home) {
                 var street = $scope.user.street; 
-                street = street.replace('вулиця ', 'вул.');
-                street = street.replace('улица ', 'вул.');
-                street = street.replace('проспект ', 'просп.');
-                street = street.replace('провулок ', 'пров.');
-                street = street.replace('переулок ', 'пров.');
-                street = street.replace('бульвар ', 'бульв.');
-                street = street.replace('. ', '.');
+                street = street.replace('вулиця', 'вул.');
+                street = street.replace('улица', 'вул.');
+                street = street.replace('проспект', 'просп.');
+                street = street.replace('провулок', 'пров.');
+                street = street.replace('переулок', 'пров.');
+                street = street.replace('бульвар', 'бульв.');
+                //street = street.replace('. ', '.');
                 $scope.user.street = street;
                 $http({
                     method: 'POST',
