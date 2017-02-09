@@ -1,50 +1,50 @@
-<div deputy-page=""></div>
-<form ng-submit="saveuser({userId: user.userid})" role="form">
+<!--div deputy-page=""></div-->
+<form ng-submit="savedeputy({id: deputy.id})" role="form">
 <div class="row reg-input" style="margin-bottom:10px;">
     <div class="col-lg-3 col-md-3">
         <label>прізвище</label>
-    <input class="form-control" id="surname" name="surname" type="text" value="{{deputy.surname}}">
+    <input class="form-control" id="surname" name="surname" type="text" value="{{deputy.surname}}" ng-model="deputy.surname">
     </div>
     <div class="col-lg-3 col-md-3">
         <label>ім'я</label>
-    <input class="form-control" id="name" name="name" type="text" value="{{deputy.name}}">
+    <input class="form-control" id="name" name="name" type="text" value="{{deputy.name}}" ng-model="deputy.name">
     </div>
     <div class="col-lg-3 col-md-3">
         <label>по батькові</label>
-    <input class="form-control" id="patronymic" name="patronymic" type="text" value="{{deputy.patronymic}}">
+    <input class="form-control" id="patronymic" name="patronymic" type="text" value="{{deputy.patronymic}}" ng-model="deputy.patronymic">
     </div>
 </div>
 <div class="row reg-input" style="margin-bottom:10px;">
     <div class="col-lg-3 col-sm-3">
         <label>стать</label>
-            <select class="selectpicker show-tick form-control bs-select-hidden" name="sex" >
+            <select class="selectpicker show-tick form-control bs-select-hidden" name="sex" ng-model="deputy.sex">
             <option ng-repeat="sex in sexes" value="{{sex.id}}" ng-selected="{{sex.id==deputy.sex}}">{{sex.text}}</option>
             </select>
     </div>
     <div class="col-lg-3 col-sm-3">
         <label>зареєстрован як користувач</label>
-            <select class="selectpicker show-tick form-control bs-select-hidden" name="user_id" >
+            <select class="selectpicker show-tick form-control bs-select-hidden" name="user_id"  ng-model="deputy.user_id">
             <option ng-repeat="user in users" value="{{user.userid}}" ng-selected="{{user.userid==deputy.user_id}}">{{user.userid}} {{user.firstname}} {{user.secondname}} {{user.lastname}}</option>
             </select>
     </div>  
 </div>    
 <div class="row reg-input" style="margin-bottom:10px; margin-left:0; width:847px">
     <label>офіційна біографія</label>
-    <textarea class="form-control" rows="3" id="bio" name="bio" placeholder="відомості">{{deputy.bio}}</textarea>
+    <textarea class="form-control" rows="3" id="bio" name="bio" placeholder="відомості" ng-model="deputy.bio">{{deputy.bio}}</textarea>
 </div>    
 <div class="row reg-input" style="margin-bottom:10px;">
     <div class="col-lg-3 col-sm-3">
         <label>територіальний виборчий округ</label>
-            <select class="selectpicker show-tick form-control bs-select-hidden" name="tvoid" >
+            <select class="selectpicker show-tick form-control bs-select-hidden" name="tvoid" ng-model="deputy.tvoid">
             <option ng-repeat="t in tvo" value="{{t.id}}" ng-selected="{{t.id ==deputy.tvoid}}">{{t.text}}</option>
             </select>
     </div>
     <div class="col-lg-3 col-sm-3">
         <label>партія</label>
-            <select class="selectpicker show-tick form-control bs-select-hidden" name="party" >
+            <select class="selectpicker show-tick form-control bs-select-hidden" name="party"  ng-model="deputy.party_id">
             <option ng-repeat="party in parties" value="{{party.id}}" ng-selected="{{party.id ==deputy.party_id}}">{{party.title}}</option>
             </select>
     </div>
 </div>
-                                <button class="btn btn-success" type="submit">зберегти</button>
-                    </form>
+<button class="btn btn-success" type="submit">зберегти</button>
+</form>

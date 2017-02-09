@@ -34,7 +34,7 @@ public function index()
     }
     
 /******************************редактировать депутата***********************************************/
-public function edit($id = NULL)
+public function viewandedit($id)
     {
         $deputy = $this->deputy->get_deputies($id);
         $data['deputy'] = $deputy;
@@ -46,9 +46,26 @@ public function edit($id = NULL)
         $data['error'] = 0;
         $data['sexes']=array(array('id'=>'m','text'=>'чоловіча'),array('id'=>'f','text'=>'жіноча'));
         $users=$this->user->get_users();
-        array_unshift($users,array('userid'=>null));
+        array_unshift($users,array('userid'=>null,'firstname'=>'ні'));
         $data['users']=$users;
         echo json_encode($data);
     }
-    
+
+public function editandsave($id){
+    $data = array(
+                'surname' => $this->input->post('surname'),
+                'name'=> $this->input->post('name'),
+                'patronymic'=> $this->input->post('patronymic'),
+                'user_id'=> $this->input->post('user_id'),
+                'bio'=> $this->input->post('bio'),
+                'party_id'=> $this->input->post('party_id'),
+                'tvoid'=> $this->input->post('tvoid'),
+                'sex'=> $this->input->post('sex'),
+            );
+        $result = $this->deputy->set_deputy($id, $data);
+       // print_r($data); echo '<br>'.$id;
+        if ($result) {echo json_encode(array('error' => 0));}
+}
+
+   
 }

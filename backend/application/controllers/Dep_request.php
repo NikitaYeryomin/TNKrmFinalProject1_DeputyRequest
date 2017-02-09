@@ -2,10 +2,17 @@
 class Dep_request extends Front_controller {
 
     public function add() {
-        //TODO: добавить код создания обращения
-        echo json_encode(array(
-            'error' => 0
-        ));
+        $this->data = array(
+            'text' => $this->input->post('text'),
+            'public_appeal'=> $this->input->post('public_appeal') ? 1 : 0,
+            'adddate'  => date("Y-m-d H:i:s"),
+        );
+        $result = array('error' => 0);
+        if (!$this->request->set_data(NULL, $this->data)) {
+            $result['error'] = 1;
+            $result['message'] = 'Помилка при створенні звернення';
+        }
+        echo json_encode($result);
     }
     /*
     public function view($id = NULL)
