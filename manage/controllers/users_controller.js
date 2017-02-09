@@ -5,7 +5,7 @@
 app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location', '$state',
     function($scope, $rootScope, $http, $location, $state) {
         
-        $scope.users = function() {
+        $scope.get_users = function() {
             $http({
                 method: 'GET',
                 url: '/backend/manage/user'
@@ -17,7 +17,7 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
             });
         };
         
-        $scope.users();
+        $scope.get_users();
         
         $scope.deleteuser = function(userId) {
             $http({
@@ -26,7 +26,7 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
             }).then(function(response) {
                 if (response.data.error == 0) {
                     console.log(response.data.error);
-                    $state.go('/users');
+                    $scope.get_users();
                 }
             });
         };

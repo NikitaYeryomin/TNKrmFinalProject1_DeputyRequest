@@ -28,7 +28,7 @@ angular.module('google.places', [])
 	.directive('gPlacesAutocomplete',
         [ '$parse', '$compile', '$timeout', '$document', 'googlePlacesApi',
         function ($parse, $compile, $timeout, $document, google) {
-
+            console.log("processing gPlacesAutocomplete");
             return {
                 restrict: 'A',
                 require: '^ngModel',
@@ -40,6 +40,7 @@ angular.module('google.places', [])
                 },
                 controller: ['$scope', function ($scope) {}],
                 link: function ($scope, element, attrs, controller) {
+                    console.log("processing gPlacesAutocomplete on element: " + element[0]);
                     var keymap = {
                             tab: 9,
                             enter: 13,
@@ -57,8 +58,11 @@ angular.module('google.places', [])
                         $scope.input = element;
                         $scope.options = $scope.options || {};
 
+                        console.log("gPlacesAutocomplete: initAutocompleteDrawer()");
                         initAutocompleteDrawer();
+                        console.log("gPlacesAutocomplete: initEvents()");
                         initEvents();
+                        console.log("gPlacesAutocomplete: initNgModelController()");
                         initNgModelController();
                     }());
 
