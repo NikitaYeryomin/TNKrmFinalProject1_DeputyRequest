@@ -28,7 +28,7 @@ angular.module('google.places', [])
 	.directive('gPlacesAutocomplete',
         [ '$parse', '$compile', '$timeout', '$document', 'googlePlacesApi',
         function ($parse, $compile, $timeout, $document, google) {
-            console.log("processing gPlacesAutocomplete");
+            //console.log("processing gPlacesAutocomplete");
             return {
                 restrict: 'A',
                 require: '^ngModel',

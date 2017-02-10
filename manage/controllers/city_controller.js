@@ -9,7 +9,7 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.city = {};
         
-        $scope.city = function() {
+        $scope.getcity = function() {
             $http({
                 method: 'GET',
                 url: '/backend/manage/city/get/' + $scope.id
@@ -22,14 +22,17 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
             });
         };
         
-        $scope.city();
+        $scope.getcity();
         
         $scope.upload = function() {
             $scope.uploader = new FileUploader();
             $scope.uploadFile = function(files) {
                 var form_data = new FormData();
+                /*
                 form_data.append("avatar", files[0]);
                 form_data.append("id", $scope.currentUser.id);
+                */
+                console.log(files);
                 /*
                 //тут отправка на сервер
                 $http.post(

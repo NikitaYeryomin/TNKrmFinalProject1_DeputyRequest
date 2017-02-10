@@ -30,4 +30,8 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
                 }
             });
         };
+        
+        $(document).submit(function(){
+    	    $('.modal').modal('hide');
+        });
     }]);
