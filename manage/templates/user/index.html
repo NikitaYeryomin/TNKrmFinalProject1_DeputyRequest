@@ -22,7 +22,7 @@
                 <button class="btn btn-danger" type="button" id="previewButton{{user.userid}}" data-toggle="modal" data-target="#DeleteConfirmModal{{user.userid}}">Видалити</button>
                 <form ng-submit="deleteuser(user.userid)" role="form" novalidate="novalidate">
                     <div class="modal fade" id="DeleteConfirmModal{{user.userid}}">
-                        <div class="modal-dialog modal-sm">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content new-modal-content">
                                 <div class="modal-header">
                                     <div class="top-modal-head">
@@ -38,8 +38,10 @@
                                 <div class="modal-footer">
                                     <div class="footer-modal-border"></div>
                                     <div class="row">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Скасувати</button>
-                                        <button type="submit" class="btn btn-success">Видалити</button>
+                                        <div class="col-lg-12 col-sm-12">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Скасувати</button>
+                                            <button type="submit" class="btn btn-success">Видалити</button>
+                                        </div>    
                                     </div>
                                 </div>
                             </div>
