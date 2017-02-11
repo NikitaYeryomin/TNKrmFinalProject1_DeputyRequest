@@ -44,7 +44,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/deputies',
                 templateUrl: '/manage/templates/deputies.html',
                 controller: 'DeputyController',
-                resolve: {$title: function() {return 'Список депутатів'}}
+                resolve: {$title: function() {return 'список депутатів'}}
             })
             .state('deputy', {
                 url: '/deputy/:id',
@@ -71,7 +71,19 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 resolve: {
                     $title: function () { return 'Адміністрування міста'}
                 }
-            });
+            })
+            .state('places', {
+                url: '/places',
+                templateUrl: '/manage/templates/places.html',
+                controller: 'PlaceController',
+                resolve: {$title: function() {return 'список адрес дільниць'}}
+            })   
+            .state('place/add', {
+                url: '/place/add',
+                templateUrl: '/manage/templates/add_a_place.html',
+                controller: 'PlaceController',
+                resolve: {$title: function() {return 'додати місце для голосування'}}
+            }) 
             /*
             .state('user/delete', {
                 url: '/backend/manage/users/delete',
@@ -83,5 +95,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
          enabled: true,
          requireBase: false
          });*/
+         ;
     }]);
 

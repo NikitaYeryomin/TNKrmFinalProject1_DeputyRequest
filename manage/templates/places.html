@@ -1,0 +1,9 @@
+<div places-list=""></div>
+У цій таблиці визначені адреси та координати приміщень виборчих дільниць. За однією адресою можуть бути зареєстровані декілька дільниць.
+<table class="table-striped table-bordered table-hover table-condensed">
+    <thead>            <tr>                <th>адреса дільниці</thead>
+    <tr ng-repeat="place in places">
+            <td><a href="#!/place/{{place.id}}">{{place.address}}</a>
+    <tr><td align="center"><a href="#!/place/add">додати місце для голосування</a>
+</table>
+<em>дані згідно <a href="https://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&pid100=14&pf5271=48&prejim=3">Державного реєстра виборців</a></em>

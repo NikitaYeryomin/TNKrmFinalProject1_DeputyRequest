@@ -14,13 +14,7 @@ public function get_places($id = FALSE)
 
 public function add_a_place()
 {
-   $this->load->helper('url');
-  $data = array(
-        'address' => $this->input->post('address'),
-        'latitude' => $this->input->post('latitude'),
-        'longitude' => $this->input->post('longitude'),
-    );
-    return $this->db->insert('places', $data);
+    return $this->db->insert('place', $data);
 }
 
 public function edit_a_place($id = FALSE)

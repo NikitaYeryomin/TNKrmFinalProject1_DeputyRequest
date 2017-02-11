@@ -78,9 +78,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 url: '/districts',
                 templateUrl: '/angular/templates/districts_index.html',
                 controller: 'DistrictsController',
-                data:{
-                   title: 'Виборчі дільниці'
-                }
+                data:{title: 'Виборчі дільниці'}
             })
             .state('district', {
                 url: '/district/:districtId',
@@ -130,8 +128,3 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
          requireBase: false
          });*/
     }]);
-    
-    /*var getDistrictId = ["$route", function($route)
-    {    
-        return $route.current.params.districtId;
-    }];*/
