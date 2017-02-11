@@ -2,10 +2,11 @@
 class Dep_request extends Front_controller {
 
     public function add() {
+        $logged_in = $this->session->userdata('logged_in');
         $this->data = array(
             'text' => $this->input->post('text'),
             'public_appeal'=> $this->input->post('public_appeal') ? 1 : 0,
-            'user_id' => $this->input->post('user_id'),
+            'user_id' => $logged_in['id'],
             'deputy_id' => $this->input->post('deputy_id'),
             'adddate'  => date("Y-m-d H:i:s"),
         );

@@ -29,23 +29,22 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.uploadFile = function(files) {
             
             var form_data = new FormData();
-                /*
-                form_data.append("avatar", files[0]);
-                form_data.append("id", $scope.currentUser.id);
-                */
+            
+            form_data.append("avatar", files[0]);
+            /*
+            form_data.append("id", $scope.currentUser.id);
+            */
             console.log(files);
-                /*
-                //тут отправка на сервер
-                $http.post(
-                    '/administrator/users/upload_image',
-                    form_data,
-                    {
-                        withCredentials: true,
-                        headers: {'Content-Type': undefined },
-                        transformRequest: angular.identity
-                    }).success(function(response) {
-                    console.log(response);
-                });*/
+            //тут отправка на сервер
+            $http.post(
+                '/backend/manage/upload/do_upload',
+                form_data, {
+                    withCredentials: true,
+                    headers: {'Content-Type': undefined },
+                    transformRequest: angular.identity
+                }).success(function(response) {
+                console.log(response);
+            });
             };
         
         $('#image').change(function(){

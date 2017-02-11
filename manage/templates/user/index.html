@@ -7,7 +7,9 @@
                 <th>E-mail</th>
                 <th>Телефон #</th>
                 <th>Адреса</th>
+                <th>Дільниця</th>
                 <th>Дата реєстрації</th>
+                <th>Права</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,7 +19,9 @@
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
             <td><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true"><a href="#" ng-click="">{{city.city}}</a>,</p>{{user.street + ", " + user.home}}</td>
+            <td>{{user.tvo_id}}</td>
             <td>{{user.joindate}}</td>
+            <td>{{user.role}}</td>
             <td>
                 <button class="btn btn-danger" type="button" id="previewButton{{user.userid}}" data-toggle="modal" ng-click="confirm_delete(user)" data-target="#DeleteConfirmModal">Видалити</button>
             </td>
