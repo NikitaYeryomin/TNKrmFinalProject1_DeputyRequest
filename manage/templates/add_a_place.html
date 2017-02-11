@@ -1,0 +1,27 @@
+<form role="form" ng-submit="saveplace()">
+<fieldset>
+    <legend>адреса, заклад</legend>
+    <textarea name="address" id="address" placeholder="адреса без указання міста та області" rows="2" cols="60" required onchange="spacesAfterPoints()" ng-model="place.address"></textarea><br />
+    <script>
+function spacesAfterPoints (){
+    var address=document.getElementById("address");
+    var str=address.value; 
+    for (var i = 0; i < str.length; i++) {
+        if ((str.charAt(i)=='.' || str.charAt(i)==',' || str.charAt(i)=='№') && str.charAt(i+1)!=' ')
+        {str=str.slice(0,i+1)+' '+str.slice(i+1);}
+    }
+    address.value=str;
+}
+</script>
+</fieldset><fieldset>
+<legend>розташування</legend>
+введіть координати 
+    <input name="latitude" id="latitude" size="7" maxlength="7" required placeholder="широта" ng-model="place.latitude">
+    <input name="longitude" id="longitude" size="7" maxlength="7" required placeholder="довгота" ng-model="place.longitude">
+    <br>або вкажіть місце на мапі
+
+<div add-place="" style="width: 800px; height: 450px; margin: 10 auto;"></div>
+</fieldset>
+<br>
+    <input type="submit" name="submit" value="додати" />
+</form>

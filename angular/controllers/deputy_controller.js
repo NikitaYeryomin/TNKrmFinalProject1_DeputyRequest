@@ -52,7 +52,6 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
     };
     return {
         restrict: 'A',
-       // template: '<div id="gmaps"></div>',
         replace: true,
         link: link
     };
