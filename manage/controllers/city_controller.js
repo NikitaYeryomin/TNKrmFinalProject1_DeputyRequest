@@ -2,8 +2,8 @@
 ****************************** АДминка *****************************
 *******************************************************************/
 
-app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams',
-    function($scope, $rootScope, $http, $location, $state, $stateParams) {
+app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams', 'FileUploader',
+    function($scope, $rootScope, $http, $location, $state, $stateParams, FileUploader) {
         
         $scope.id = $stateParams.cityId;
         
@@ -24,15 +24,16 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.getcity();
         
-        $scope.upload = function() {
-            $scope.uploader = new FileUploader();
-            $scope.uploadFile = function(files) {
-                var form_data = new FormData();
+        $scope.uploader = new FileUploader();
+        
+        $scope.uploadFile = function(files) {
+            
+            var form_data = new FormData();
                 /*
                 form_data.append("avatar", files[0]);
                 form_data.append("id", $scope.currentUser.id);
                 */
-                console.log(files);
+            console.log(files);
                 /*
                 //тут отправка на сервер
                 $http.post(
@@ -46,7 +47,6 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
                     console.log(response);
                 });*/
             };
-        };
         
         $('#image').change(function(){
             showPreviewImage(this);
