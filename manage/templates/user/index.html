@@ -19,36 +19,35 @@
             <td><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true"><a href="#" ng-click="">{{city.city}}</a>,</p>{{user.street + ", " + user.home}}</td>
             <td>{{user.joindate}}</td>
             <td>
-                <button class="btn btn-danger" type="button" id="previewButton{{user.userid}}" data-toggle="modal" data-target="#DeleteConfirmModal{{user.userid}}">Видалити</button>
-                <form ng-submit="deleteuser(user.userid)" role="form" novalidate="novalidate">
-                    <div class="modal fade" id="DeleteConfirmModal{{user.userid}}">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content new-modal-content">
-                                <div class="modal-header">
-                                    <div class="top-modal-head">
-                                        <label>Підтвердження видалення облікового запису користувача</label>
-                                    </div>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="clearfix"></div>
-                                    <h4 class="modal-title">Ви дійсно бажаєте видалити запис користувача</h4>
-                                    <p><span><strong>{{fullname(user)}}</strong></span>?</p>
-                                    <div class="head-modal-border"></div>
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="footer-modal-border"></div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-sm-12">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Скасувати</button>
-                                            <button type="submit" class="btn btn-success">Видалити</button>
-                                        </div>    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                <button class="btn btn-danger" type="button" id="previewButton{{user.userid}}" data-toggle="modal" ng-click="confirm_delete(user)" data-target="#DeleteConfirmModal">Видалити</button>
             </td>
         </tr>
     </table>
+</div>
+
+<div class="modal fade" id="DeleteConfirmModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content new-modal-content">
+                <div class="modal-header">
+                    <div class="top-modal-head">
+                        <label>Підтвердження видалення облікового запису користувача</label>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="clearfix"></div>
+                    <h4 class="modal-title">Ви дійсно бажаєте видалити запис користувача</h4>
+                    <p><span>{{current_user_name}}</span>?</p>
+                    <div class="head-modal-border"></div>
+                </div>
+                <div class="modal-footer">
+                    <div class="footer-modal-border"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Скасувати</button>
+                            <button type="button" class="btn btn-success" ng-click="delete_user(current_user_id)" data-dismiss="modal">Видалити</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
 </div>

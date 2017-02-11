@@ -18,11 +18,18 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
         };
         
         $scope.get_users();
+
+        $scope.confirm_delete = function(user) {
+            $scope.current_user_id = user.userid;
+            $scope.current_user_name = $scope.fullname(user);
+            console.log("confirm delete: " + $scope.current_user_id);
+        };
         
-        $scope.deleteuser = function(userId) {
+        $scope.delete_user = function(user_id) {
+            console.log("delete user: " + user_id);
             $http({
                 method: 'GET',
-                url: '/backend/manage/user/delete/' + userId
+                url: '/backend/manage/user/delete/' + user_id
             }).then(function(response) {
                 if (response.data.error == 0) {
                     console.log(response.data.error);
@@ -30,8 +37,4 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
                 }
             });
         };
-        
-        $(document).submit(function(){
-    	    $('.modal').modal('hide');
-        });
     }]);
