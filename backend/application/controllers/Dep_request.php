@@ -5,6 +5,8 @@ class Dep_request extends Front_controller {
         $this->data = array(
             'text' => $this->input->post('text'),
             'public_appeal'=> $this->input->post('public_appeal') ? 1 : 0,
+            'user_id' => $this->input->post('user_id'),
+            'deputy_id' => $this->input->post('deputy_id'),
             'adddate'  => date("Y-m-d H:i:s"),
         );
         $result = array('error' => 0);

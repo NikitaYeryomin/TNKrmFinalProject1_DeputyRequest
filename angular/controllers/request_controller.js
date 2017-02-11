@@ -3,7 +3,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
 
         $scope.getuser = function() {
             if (!$rootScope.logged_in) {
-                $rootScope.returnUrl = '/request';
+                $rootScope.returnUrl = '/request/custom';
                 //console.log($rootScope.returnUrl);
                 $location.path('/login');
             } else {
@@ -32,6 +32,8 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 method: 'POST',
                 url: '/backend/dep_request/add',
                 data: $.param({
+                    'user_id' : $scope.user.user_id,
+                    'deputy_id' : $scope.deputy.id,
                     'text' : $scope.request.text,
                     'public_appeal' : $scope.request.public_appeal
                 }),
