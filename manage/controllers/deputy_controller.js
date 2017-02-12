@@ -11,7 +11,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             var i;
             for (i = 0; i < $scope.tvo.length; i++) {
                if ($scope.tvo[i].id==0)
-               {$scope.tvo[i].text='лідер списку';}
+               {$scope.tvo[i].text='лідер партійного списку';}
                else {$scope.tvo[i].text=$scope.tvo[i].id;}
             }
             $scope.parties=response.data.parties;
@@ -40,7 +40,9 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                     'bio': $scope.deputy.bio,
                     'tvoid': $scope.deputy.tvoid,
                     'party_id': $scope.deputy.party_id,
-                    'sex': $scope.deputy.sex
+                    'sex': $scope.deputy.sex,
+                    'function': $scope.deputy.function,
+                    'reception': $scope.deputy.reception
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
