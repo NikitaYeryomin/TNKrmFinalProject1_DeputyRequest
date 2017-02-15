@@ -17,6 +17,7 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
                 }).then(function(response) {
                     if (response.data.error == 0) {
                         $scope.city = response.data.City;
+                        console.log($scope.city);
                     }
                 });
             } else {
@@ -43,6 +44,7 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         };
         
         $scope.savecity = function() {
+            console.log($scope.city.active);
             $http({
                 method: 'POST',
                 url: '/backend/manage/city/save/' + $scope.city.cityid,

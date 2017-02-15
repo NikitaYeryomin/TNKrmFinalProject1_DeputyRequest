@@ -35,7 +35,7 @@ class City extends Admin_controller {
         
         echo json_encode(array(
                     'error' => $this->city->set_data($id, array(
-                        'active' => $this->input->post('active') ? 1 : 0
+                        'active' => $this->input->post('active') == 'true' ? 1 : 0
                     )) ? 0 : 1
                 ));
     }
