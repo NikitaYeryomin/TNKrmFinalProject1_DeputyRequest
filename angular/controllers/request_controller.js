@@ -32,7 +32,6 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 method: 'POST',
                 url: '/backend/dep_request/add',
                 data: $.param({
-                    'user_id' : $scope.user.user_id,
                     'deputy_id' : $scope.deputy.id,
                     'text' : $scope.request.text,
                     'public_appeal' : $scope.request.public_appeal

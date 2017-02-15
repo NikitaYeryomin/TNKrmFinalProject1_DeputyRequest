@@ -12,7 +12,7 @@ app.controller('CitiesController', ['$scope', '$rootScope', '$http', '$location'
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.cities = response.data.CityList;
-                    console.log($scope.cities);
+                    //console.log($scope.cities);
                 }
             });
         };

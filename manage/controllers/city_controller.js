@@ -26,27 +26,34 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.uploader = new FileUploader();
         
-        $scope.uploadFile = function(files) {
-            
+        $scope.uploadFile = function(files, type) {
             var form_data = new FormData();
-            
-            form_data.append("avatar", files[0]);
-            /*
-            form_data.append("id", $scope.currentUser.id);
-            */
-            console.log(files);
-            //тут отправка на сервер
+            form_data.append(type, files[0]);
+            form_data.append("id", $scope.city.cityid);
             $http.post(
-                '/backend/manage/upload/do_upload',
+                '/backend/manage/upload/do_upload/' + type,
                 form_data, {
-                    withCredentials: true,
-                    headers: {'Content-Type': undefined },
-                    transformRequest: angular.identity
-                }).success(function(response) {
-                console.log(response);
+                    headers: {'Content-Type': undefined }
+                }).then(function(response) {
+                console.log(response.data);
             });
-            };
+        };
         
+        $scope.savecity = function() {
+            $http({
+                method: 'POST',
+                url: '/backend/manage/city/save/' + $scope.city.cityid,
+                data: $.param({
+                    'active' : $scope.city.active
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $location.path('/cities');
+                }
+            });
+        };
+        /*
         $('#image').change(function(){
             showPreviewImage(this);
         });
@@ -64,5 +71,5 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
+        */
     }]);
