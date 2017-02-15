@@ -17,11 +17,11 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="col-lg-12 col-md-12">
                                     <label>Місто:</label>
-                                    <span>{{city.city}}</span>
+                                    <input class="form-control" id="City" name="City" ng-model="city.city" type="text" ng-disabled="city.cityid">
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <label>Область:</label>
-                                    <span>{{city.region}}</span>
+                                    <input class="form-control" id="Region" name="Region" ng-model="city.region" type="text"  ng-disabled="city.cityid">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
@@ -45,7 +45,8 @@
                         <div class="row reg-input">
                             <div class="col-lg-12 col-sm-12">
                                 <label></label>
-                                <button class="btn btn-success" ng-click="savecity()">Зберегти дані</button>
+                                <button ng-show="city.cityid" class="btn btn-success" ng-click="savecity()">Зберегти дані</button>
+                                <button ng-show="!city.cityid" class="btn btn-success" ng-click="add_city()">Додати нове місто</button>
                             </div>
                         </div>
                     </form>

@@ -10,7 +10,7 @@
         </thead>
         <tr ng-repeat="city in cities">
             <td>{{city.cityid}}</td>
-            <td><a href="" ui-sref="city({cityId: city.cityid})">{{city.city}}</td>
+            <td><a href="" ui-sref="city({cityId: city.cityid})">{{city.city}}</a></td>
             <td>{{city.region}}</td>
             <td>
                 <span ng-show="city.active == 1">Підключено </span>
@@ -18,5 +18,6 @@
                 <span>до системи</span>
             </td>
         </tr>
+        <tr colspan=4><a href="" ui-sref="city()">Підключити до системи нове місто</a></tr>
     </table>
 </div>

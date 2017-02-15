@@ -10,16 +10,19 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.city = {};
         
         $scope.getcity = function() {
-            $http({
-                method: 'GET',
-                url: '/backend/manage/city/get/' + $scope.id
-            }).then(function(response) {
-                if (response.data.error == 0) {
-                    $scope.city = response.data.City;
-                    //console.log($scope.city);
-                }
-                //$location.path('/city/' + $scope.id);
-            });
+            if ($scope.id) {
+                $http({
+                    method: 'GET',
+                    url: '/backend/manage/city/get/' + $scope.id
+                }).then(function(response) {
+                    if (response.data.error == 0) {
+                        $scope.city = response.data.City;
+                    }
+                });
+            } else {
+                $scope.city = {};
+                $scope.city.active = true;
+            }
         };
         
         $scope.getcity();
@@ -35,7 +38,7 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
                 form_data, {
                     headers: {'Content-Type': undefined }
                 }).then(function(response) {
-                console.log(response.data);
+                //console.log(response.data);
             });
         };
         
@@ -44,6 +47,23 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
                 method: 'POST',
                 url: '/backend/manage/city/save/' + $scope.city.cityid,
                 data: $.param({
+                    'active' : $scope.city.active
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $location.path('/cities');
+                }
+            });
+        };
+        
+        $scope.add_city = function() {
+            $http({
+                method: 'POST',
+                url: '/backend/manage/city/add',
+                data: $.param({
+                    'city' : $scope.city.city,
+                    'region' : $scope.city.region,
                     'active' : $scope.city.active
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
