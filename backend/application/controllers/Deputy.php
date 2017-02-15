@@ -61,9 +61,11 @@ public function editandsave($id){
                 'party_id'=> $this->input->post('party_id'),
                 'tvoid'=> $this->input->post('tvoid'),
                 'sex'=> $this->input->post('sex'),
+                'function'=> $this->input->post('function'),
+                'reception'=> $this->input->post('reception'),
             );
         $result = $this->deputy->set_deputy($id, $data);
-       // print_r($data); echo '<br>'.$id;
+        //print_r($data); 
         if ($result) {echo json_encode(array('error' => 0));}
 }
 

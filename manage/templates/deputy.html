@@ -29,8 +29,8 @@
     </div>  
 </div>    
 <div class="row reg-input" style="margin-bottom:10px; margin-left:0; width:847px">
-    <label>офіційна біографія</label>
-    <textarea class="form-control" rows="3" id="bio" name="bio" placeholder="відомості" ng-model="deputy.bio">{{deputy.bio}}</textarea>
+    <label>офіційна біографія</label> <span class="source">згідно <a href="http://www.cvk.gov.ua/pls/vm2015/PVM057?PID112=30&amp;PID102=398&amp;PF7691=398&amp;PT001F01=100&amp;rej=0&amp;pt00_t001f01=100">Центральної виборчої комісії</a></span>
+    <textarea class="form-control" rows="2" id="bio" name="bio" placeholder="відомості" ng-model="deputy.bio" onChange="fineQuotes()">{{deputy.bio}}</textarea>
 </div>    
 <div class="row reg-input" style="margin-bottom:10px;">
     <div class="col-lg-3 col-sm-3">
@@ -45,6 +45,36 @@
             <option ng-repeat="party in parties" value="{{party.id}}" ng-selected="{{party.id ==deputy.party_id}}">{{party.title}}</option>
             </select>
     </div>
+</div>    
+<div class="row reg-input" style="margin-bottom:10px;">    
+    <div class="col-lg-3 col-sm-3" style="margin-bottom:10px; margin-left:0; width:847px">
+        <label>обов'язки</label> <span class="source">згідно <a href="http://www.krm.gov.ua/person">сайту міської ради</a></span>
+        <textarea class="form-control" rows="2" id="function" name="function" ng-model="deputy.function">{{deputy.function}}</textarea>
+    </div>
+</div>    
+<div class="row reg-input" style="margin-bottom:10px;">    
+    <div class="col-lg-3 col-sm-3" style="margin-bottom:10px; margin-left:0; width:847px">
+        <label>прийом громадян</label>
+        <textarea class="form-control" rows="2" id="reception" name="reception" placeholder="місце, телефон та години прийому" ng-model="deputy.reception" onChange="noBreaks()">{{deputy.reception}}</textarea>
+    </div>
 </div>
 <button class="btn btn-success" type="submit">зберегти</button>
 </form>
+    <script>
+function noBreaks (){
+    var reception=document.getElementById("reception");
+    var str=reception.value; 
+    for (var i = 0; i < str.length; i++) {
+        if (str.charAt(i)=='\n' || str.charAt(i)==',\n')
+        {str=str.slice(0,i)+', '+str.slice(i+1);}
+    }
+    reception.value=str;
+}
+function fineQuotes (){
+    var bio=document.getElementById("bio");
+    var str=bio.value; 
+    if (str.indexOf('"')>=0)    
+        {str=str.slice(0,str.indexOf('"'))+'«'+str.slice(str.indexOf('"')+1,str.lastIndexOf('"'))+'»'+str.slice(str.lastIndexOf('"')+1); }
+    bio.value=str;
+}
+</script>
