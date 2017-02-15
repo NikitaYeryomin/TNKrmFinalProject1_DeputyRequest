@@ -10,21 +10,16 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.city = {};
         
         $scope.getcity = function() {
-            if ($scope.id) {
-                $http({
-                    method: 'GET',
-                    url: '/backend/manage/city/get/' + $scope.id
-                }).then(function(response) {
-                    if (response.data.error == 0) {
-                        $scope.city = response.data.City;
-                        $scope.city.active = ($scope.city.active == 1);
-                        console.log($scope.city);
-                    }
-                });
-            } else {
-                $scope.city = {};
-                $scope.city.active = true;
-            }
+            $http({
+                method: 'GET',
+                url: '/backend/manage/city/get/' + $scope.id
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.city = response.data.City;
+                    console.log($scope.city);
+                }
+                //$location.path('/city/' + $scope.id);
+            });
         };
         
         $scope.getcity();
@@ -36,37 +31,20 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
             form_data.append(type, files[0]);
             form_data.append("id", $scope.city.cityid);
             $http.post(
-                '/backend/manage/upload/do_upload/' + type,
+                '/backend/manage/upload/uploadCityThemes/' + type,
                 form_data, {
                     headers: {'Content-Type': undefined }
                 }).then(function(response) {
-                //console.log(response.data);
+                console.log(response.data);
             });
         };
         
         $scope.savecity = function() {
-            //console.log($scope.city.active);
+            console.log($scope.city.active);
             $http({
                 method: 'POST',
                 url: '/backend/manage/city/save/' + $scope.city.cityid,
                 data: $.param({
-                    'active' : $scope.city.active
-                }),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function(response) {
-                if (response.data.error == 0) {
-                    $location.path('/cities');
-                }
-            });
-        };
-        
-        $scope.add_city = function() {
-            $http({
-                method: 'POST',
-                url: '/backend/manage/city/add',
-                data: $.param({
-                    'city' : $scope.city.city,
-                    'region' : $scope.city.region,
                     'active' : $scope.city.active
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}

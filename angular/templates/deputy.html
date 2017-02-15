@@ -1,9 +1,12 @@
 <ng-include src="'/angular/templates/header.html'"></ng-include>
 <content style="padding:5px; display:block;">
-<h4>депутат <!--Краматорської -->міської ради</h3>
+<div style="padding:5px; display:inline-block; ">
+<h4>депутат Краматорської міської ради</h3>
 <h2>{{deputy.name}} {{deputy.patronymic}} {{deputy.surname}}</h2>
 <h4>обран{{deputy.sexfix}} від {{deputy.listfix1}}<a href="{{deputy.tvourl}}">{{deputy.tvoid}}</a> {{deputy.listfix2}}{{deputy.party}}{{deputy.listfix3}}</h4>
 <p class="confirmed">{{deputy.confirmed}}</p>
+</div>
+<div style="display:inline-block;  position:relative; top:10px; vertical-align:top;"><img src="/img/deputies/{{deputy.id}}.jpg" width=200  onclick="window.open(this.src)"></div>
 <fieldset> <legend>робота у міській раді</legend>
     <p>{{deputy.function}}</p>
 </fieldset>

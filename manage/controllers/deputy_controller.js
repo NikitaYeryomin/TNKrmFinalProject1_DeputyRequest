@@ -1,5 +1,5 @@
-app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$stateParams',
-   function($scope, $http, $location , $state, $stateParams) {$scope.id = $stateParams.id; 
+app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$stateParams','FileUploader',
+   function($scope, $http, $location , $state, $stateParams,FileUploader) {$scope.id = $stateParams.id; 
    $scope.link = function() {
        $http({
             method: 'GET',
@@ -45,19 +45,25 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                     'reception': $scope.deputy.reception
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function(response) {
-                if (response.data.error == 0) {
-                    $location.path('/deputies');
-                }
-            });
+            }).then(function(response) {if (response.data.error == 0){$location.path('/deputies');}});
         };
             
-
-    
-    
+        $scope.uploader = new FileUploader();
+        
+        $scope.uploadFile = function(files, type) {
+            var form_data = new FormData();
+            form_data.append(type, files[0]);
+            form_data.append("id", $scope.deputy.id);
+            $http.post(
+                '/backend/manage/upload/uploadDeputyFace/' + type,
+                form_data, {
+                    headers: {'Content-Type': undefined }
+                }).then(function(response) {
+                console.log(response.data);
+            });
+        };
     
 }])
-
 
 /******************************************список депутатов*************************************************/
 .directive('deputiesList', ['$http', function($http) {

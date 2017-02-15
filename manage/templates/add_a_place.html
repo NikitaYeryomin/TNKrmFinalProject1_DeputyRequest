@@ -20,8 +20,9 @@ function spacesAfterPoints (){
     <input name="longitude" id="longitude" size="7" maxlength="7" required placeholder="довгота" ng-model="place.longitude">
     <br>або вкажіть місце на мапі
 
-<div add-place="" style="width: 800px; height: 450px; margin: 10 auto;"></div>
+<div add-place="" style="width: 800px; height: 450px; margin: 10 auto;" ng-click="count = count + 1" ng-init="count=0"></div>
 </fieldset>
 <br>
     <input type="submit" name="submit" value="додати" />
 </form>
+ count: {{count}}

@@ -26,7 +26,12 @@
             <select class="selectpicker show-tick form-control bs-select-hidden" name="user_id"  ng-model="deputy.user_id">
             <option ng-repeat="user in users" value="{{user.userid}}" ng-selected="{{user.userid==deputy.user_id}}">{{user.userid}} {{user.firstname}} {{user.secondname}} {{user.lastname}}</option>
             </select>
-    </div>  
+    </div>
+    <div class="col-lg-3 col-sm-3">
+        <label>фото</label><br>
+        <img src="/img/deputies/{{deputy.id}}.jpg" height=100>
+        <input type="file" name="photo" id="image" onchange="angular.element(this).scope().uploadFile(this.files, this.name)">
+    </div>    
 </div>    
 <div class="row reg-input" style="margin-bottom:10px; margin-left:0; width:847px">
     <label>офіційна біографія</label> <span class="source">згідно <a href="http://www.cvk.gov.ua/pls/vm2015/PVM057?PID112=30&amp;PID102=398&amp;PF7691=398&amp;PT001F01=100&amp;rej=0&amp;pt00_t001f01=100">Центральної виборчої комісії</a></span>
@@ -65,7 +70,7 @@ function noBreaks (){
     var reception=document.getElementById("reception");
     var str=reception.value; 
     for (var i = 0; i < str.length; i++) {
-        if (str.charAt(i)=='\n' || str.charAt(i)==',\n')
+        if (str.charAt(i)==',\n' || str.charAt(i)=='\n')
         {str=str.slice(0,i)+', '+str.slice(i+1);}
     }
     reception.value=str;
