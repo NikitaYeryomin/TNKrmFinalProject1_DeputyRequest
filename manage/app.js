@@ -83,7 +83,25 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/manage/templates/add_a_place.html',
                 controller: 'PlaceController',
                 resolve: {$title: function() {return 'додати місце для голосування'}}
-            }) 
+            })
+            .state('requests', {
+                url: '/requests',
+                templateUrl: '/manage/templates/request/index.html',
+                controller: 'RequestsController',
+                resolve: {
+                    $title: function() { return 'Список запитів'}
+                }
+            })
+            .state('request', {
+                url: '/request/:requestId',
+                templateUrl: '/manage/templates/request/view.html',
+                controller: 'RequestController',
+                resolve: {
+                    $title: ['$stateParams', function($stateParams) {
+                        return "Редагування запита № " + $stateParams.id;
+                    }]
+                }
+            })
             /*
             .state('user/delete', {
                 url: '/backend/manage/users/delete',

@@ -13,12 +13,11 @@ class Request extends Admin_controller {
         $this->load->view('template', $this->data);
     }
         
-    public function index()
-    {
-        $this->data['requests'] = $this->request->getrequests();
-        $this->data['title'] = 'Requests archive';
-        $this->data['inner_view'] = 'request/index';
-        $this->load->view('template', $this->data);
+    public function index() {
+        echo json_encode(array(
+            'error' => 0,
+            'Requests' => $this->request->getrequests()
+        ));
     }
         
     public function edit($id = FALSE){

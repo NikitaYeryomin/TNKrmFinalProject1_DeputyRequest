@@ -3,24 +3,22 @@ class Request_model extends Base_model {
 
     private $sql;
     
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
-        // Добавить таблицу deputys
-        $this->sql = 'SELECT t1.*, t2.userid, t2.firstname, t2.secondname, t2.lastname FROM request AS t1, users AS t2 WHERE t1.user_id = t2.userid';
+        $this->sql = 'SELECT request.*, user.userid, user.firstname, user.secondname, user.lastname, deputies.name, deputies.patronymic, deputies.surname
+                    FROM request
+                    JOIN user ON user.userid = request.user_id
+                    JOIN deputies ON deputies.id = request.deputy_id';
     }    
     
-    public function getrequests($id = FALSE)
-    {
-        if (!$id)
-        {
+    public function getrequests($id = FALSE) {
+        if (!$id) {
             $result = $this->db->query($this->sql)->result_array();
             return $result;
         }
-        $this->sql .= ' AND t1.requestid = ?';
+        $this->sql .= 'WHERE request.requestid = ?';
         $result = $this->db->query($this->sql, array($id))->result_array();
-        if (count($result) > 0)
-        {
+        if (count($result) > 0) {
             return $result[0];
         }
         return null;
@@ -37,10 +35,8 @@ class Request_model extends Base_model {
         return null;
     }
     
-    public function editrequest($id = FALSE, $post)
-    {
-        if (!$id)
-        {
+    public function editrequest($id = FALSE, $post) {
+        if (!$id) {
             return $this->db->insert('request', $post);
         }
         return $this->db->update('request', $post, array('requestid' => $id));
