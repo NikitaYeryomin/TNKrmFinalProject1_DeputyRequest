@@ -10,16 +10,21 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.city = {};
         
         $scope.getcity = function() {
-            $http({
-                method: 'GET',
-                url: '/backend/manage/city/get/' + $scope.id
-            }).then(function(response) {
-                if (response.data.error == 0) {
-                    $scope.city = response.data.City;
-                    console.log($scope.city);
-                }
-                //$location.path('/city/' + $scope.id);
-            });
+            if ($scope.id) {
+                $http({
+                    method: 'GET',
+                    url: '/backend/manage/city/get/' + $scope.id
+                }).then(function(response) {
+                    if (response.data.error == 0) {
+                        $scope.city = response.data.City;
+                        $scope.city.active = ($scope.city.active == 1);
+                        console.log($scope.city);
+                    }
+                });
+            } else {
+                $scope.city = {};
+                $scope.city.active = true;
+            }
         };
         
         $scope.getcity();
@@ -54,6 +59,24 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
                 }
             });
         };
+        
+        $scope.add_city = function() {
+            $http({
+                method: 'POST',
+                url: '/backend/manage/city/add',
+                data: $.param({
+                    'city' : $scope.city.city,
+                    'region' : $scope.city.region,
+                    'active' : $scope.city.active
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $location.path('/cities');
+                }
+            });
+        };
+        
         /*
         $('#image').change(function(){
             showPreviewImage(this);
