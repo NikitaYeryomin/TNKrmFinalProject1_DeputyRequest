@@ -24,10 +24,10 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         };
         
         
-            $scope.request = {};
-            $scope.request.public_appeal = true;
-          $scope.add_request = function() {
-              console.log($scope.request);
+        $scope.request = {};
+        $scope.request.public_appeal = true;
+        $scope.add_request = function() {
+            console.log($scope.request);
             $http({
                 method: 'POST',
                 url: '/backend/dep_request/add',
@@ -38,7 +38,6 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
-                
                 console.log(response.data);
             });
         };

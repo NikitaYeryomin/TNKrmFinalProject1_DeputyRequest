@@ -66,10 +66,17 @@ class Request extends Admin_controller {
         }
     }
     
-    public function delete($id)
-    {
-        $this->request->delete($id);
-        redirect('request');
+    public function delete($id) {
+        if ($this->request->delete($id)) {
+            echo json_encode(array(
+                    'error' => 0
+                ));
+        } else {
+            echo json_encode(array(
+                    'error' => 1,
+                    'message' => 'Error deleting request'
+                ));
+        }
     }
     
     public function filter($class, $id)

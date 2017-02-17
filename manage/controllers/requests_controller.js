@@ -12,7 +12,7 @@ app.controller('RequestsController', ['$scope', '$rootScope', '$http', '$locatio
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.requests = response.data.Requests;
-                    console.log($scope.requests);
+                    //console.log($scope.requests);
                 }
             });
         };
@@ -26,13 +26,13 @@ app.controller('RequestsController', ['$scope', '$rootScope', '$http', '$locatio
         };
         
         $scope.delete_request = function(request_id) {
-            console.log("delete request: " + request_id);
+            //console.log("delete request: " + request_id);
             $http({
                 method: 'GET',
                 url: '/backend/manage/request/delete/' + request_id
             }).then(function(response) {
                 if (response.data.error == 0) {
-                    //console.log(response.data.error);
+                    //console.log(response.data);
                     $scope.get_requests();
                 }
             });

@@ -5,6 +5,7 @@
                 <th>ID</th>
                 <th>Додано</th>
                 <th>Тип запиту</th>
+                <th>Текст запиту</th>
                 <th>Автор запиту</th>
                 <th>Депутат</th>
                 <th>Статус</th>
@@ -22,10 +23,13 @@
                 {{request.type}}
             </td>
             <td>
+                {{request.text}}
+            </td>
+            <td>
                 <a href="" ui-sref="user({userId: request.user_id})">{{fullname(request)}}</a>
             </td>
             <td>
-                <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.patronymic}}&nbsp;{{request.name}}</a>
+                <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
             </td>
             <td>
                 {{request.status}}

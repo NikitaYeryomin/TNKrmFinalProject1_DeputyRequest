@@ -163,19 +163,21 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }
         };
         
-        $scope.$watch('user.address', function() {
-            var addr = $scope.user.address.address_components;
-            //console.log(addr);
-            var street;
-            if (addr.length >= 6) {
-                $scope.user.home = addr[0].long_name;
-                street = addr[1].long_name;
-            } else {
-                if (addr.length == 5) {
-                    street = addr[0].long_name;
+        $scope.$watch('user.geo', function() {
+            if ($scope.user.geo) {
+                var addr = $scope.user.geo.address_components;
+                //console.log(addr);
+                var street;
+                if (addr.length >= 6) {
+                    $scope.user.home = addr[0].long_name;
+                    street = addr[1].long_name;
+                } else {
+                    if (addr.length == 5) {
+                        street = addr[0].long_name;
+                    }
                 }
+                $scope.user.street = street;    
             }
-            $scope.user.street = street;
         });
         
     }]);

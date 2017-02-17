@@ -94,7 +94,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
             })
             .state('request', {
                 url: '/request/:requestId',
-                templateUrl: '/manage/templates/request/view.html',
+                templateUrl: '/manage/templates/request/edit.html',
                 controller: 'RequestController',
                 resolve: {
                     $title: ['$stateParams', function($stateParams) {

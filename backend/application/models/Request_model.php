@@ -13,10 +13,9 @@ class Request_model extends Base_model {
     
     public function getrequests($id = FALSE) {
         if (!$id) {
-            $result = $this->db->query($this->sql)->result_array();
-            return $result;
+            return $result = $this->db->query($this->sql)->result_array();
         }
-        $this->sql .= 'WHERE request.requestid = ?';
+        $this->sql .= ' WHERE request.requestid = ?';
         $result = $this->db->query($this->sql, array($id))->result_array();
         if (count($result) > 0) {
             return $result[0];

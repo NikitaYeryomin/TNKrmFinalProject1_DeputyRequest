@@ -15,34 +15,15 @@ class Base_model extends CI_Model {
         return $query = $this->db->query($sql)->result_array();
     }
 
-    public function get_records($str = NULL, $field = NULL){
+    public function get_records($str = NULL, $field = NULL) {
         
-        if ($field == NULL)
-        {
+        if ($field == NULL) {
             $field = $this->id_field;
         }
-        
-        if ($str == NULL)
-        {
+        if ($str == NULL) {
             $query = $this->db->get($this->table);
             return $query->result_array();
         }
-        
-        /*
-        $where = array();
-        if (is_array($field))
-        {
-            foreach ($field as $f)
-            {
-                $where[$f] = $str; 
-            }
-            $where = join(' OR ', $where);
-        }
-        else
-        {
-            $where = array($field => $str);
-        }
-        */
         $query = $this->db->get_where($this->table, array($field => $str));
         
         return $query->row_array();
@@ -50,8 +31,7 @@ class Base_model extends CI_Model {
     
     public function set_data($id = NULL, $post){
         
-        if (!$id)
-        {
+        if (!$id) {
             return $this->db->insert($this->table, $post);
         }
         return $this->db->update($this->table, $post, array($this->id_field => $id));
@@ -60,6 +40,13 @@ class Base_model extends CI_Model {
     public function delete($id){
         
         return $this->db->delete($this->table, array($this->id_field => $id));
+    }
+    
+    public function get_last() {
+        $result = $this->db->query(
+                'SELECT ' . $this->table . '.' . $this->id_field . ' FROM ' . $this->table . ' ORDER BY ' . $this->id_field . ' DESC LIMIT 1'
+            )->result_array();
+        return $result[0][$this->id_field];
     }
 }
 ?>
