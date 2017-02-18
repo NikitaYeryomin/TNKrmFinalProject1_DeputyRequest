@@ -1,4 +1,4 @@
-<form role="form" ng-submit="saveplace()">
+<form role="form" ng-submit="saveplace({id: place.id})">
 <fieldset>
     <legend>адреса, заклад</legend>
     <textarea name="address" id="address" placeholder="адреса без указання міста та області" rows="2" cols="60" required onchange="spacesAfterPoints()" ng-model="place.address"></textarea><br />
@@ -19,10 +19,17 @@ function spacesAfterPoints (){
     <input name="latitude" id="latitude" size="7" maxlength="7" required placeholder="широта" ng-model="place.latitude">
     <input name="longitude" id="longitude" size="7" maxlength="7" required placeholder="довгота" ng-model="place.longitude">
     <br>координати маркера на мапі:
-    <input id="marker_latitude" size="7" maxlength="7" placeholder="широта" readonly>
-    <input id="marker_longitude" size="7" maxlength="7" placeholder="довгота" readonly>
-<div add-place="" style="width: 800px; height: 450px; margin: 10 auto;"></div>
+    <input id="marker_latitude" size="7" maxlength="7" placeholder="широта" readonly value="{{place.latitude}}">
+    <input id="marker_longitude" size="7" maxlength="7" placeholder="довгота" readonly value="{{place.longitude}}">
+<div edit-place="" style="width: 800px; height: 450px; margin: 10 auto;"></div>
 </fieldset>
 <br>
-    <input type="submit" name="submit" value="додати" />
+<input type="submit" name="submit" value="виправити" />
+<script>
+    function confirmDelete() {
+        if (confirm("Чи ви дійсно намагаєтесь видалити цю дільницю?")) 
+            {window.location="site_url('places/delete/'+{{place.id}})";}    
+    }
+</script>
+<button ng-click="delete_user(current_user_id)" {{disabled}}>видалити</button>
 </form>

@@ -33,11 +33,8 @@ $query=$this->db->get();
  
 public function placed_districts($id = FALSE)
 {
-        if ($id === FALSE)
-        {
-                return $query=NULL;
-        }
-        else
+    if ($id === FALSE){return $query=NULL;}
+    else
         {
         $this->db->select('id');
         $this->db->where('place_id', $id);

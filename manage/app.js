@@ -84,6 +84,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'PlaceController',
                 resolve: {$title: function() {return 'додати місце для голосування'}}
             })
+            .state('place/edit', {
+                url: '/place/:id',
+                templateUrl: '/manage/templates/edit_a_place.html',
+                controller: 'PlaceController',
+                resolve: {$title: function() {return 'редагувати місце для голосування'}}
+            })            
             .state('requests', {
                 url: '/requests',
                 templateUrl: '/manage/templates/request/index.html',

@@ -26,7 +26,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
         };
         
         $scope.link();
-                    $scope.deputy = {};
+        $scope.deputy = {};
         
         $scope.savedeputy = function() {
             $http({

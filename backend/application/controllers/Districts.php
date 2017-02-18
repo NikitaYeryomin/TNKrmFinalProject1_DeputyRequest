@@ -258,14 +258,6 @@ public function add()
         }
     }
 
-    public function search()
-    {
-        $data['title'] = 'визначити виборчу дільницю';
-        $this->load->view('templates/header', $data);
-        $this->load->view('districts/search');
-        $this->load->view('templates/footer');
-    }
-    
     public function get_tvo() {
         $cityid = $this->input->post('city_id');
         $street = $this->input->post('street');
