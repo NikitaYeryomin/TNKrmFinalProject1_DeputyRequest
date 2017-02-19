@@ -18,7 +18,7 @@ app.controller('PlaceController', ['$scope', '$http', '$location', '$state', '$s
             });
         };      
    }])
-   
+/****************************добавление****************************************/  
 .directive('addPlace', ['$http', function($http) {    
     var map;
     var link = function($scope, element, attrs) {
@@ -33,21 +33,21 @@ app.controller('PlaceController', ['$scope', '$http', '$location', '$state', '$s
                     mapTypeIds: [google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.ROADMAP],
                 }
             };
-            if (map === void 0) {map = new google.maps.Map(element[0], mapOptions);}
+            map = new google.maps.Map(element[0], mapOptions);
         }//map
     initMap();    
     var oneMarker=false;
 	map.addListener('click', function(event) {
 	    if (oneMarker==false){addMarker(event.latLng.lat(),event.latLng.lng());oneMarker=true;}
 	});  
-    var f1=document.getElementById('marker_latitude');
-    var f2=document.getElementById('marker_longitude');
     function addMarker(lat, lon) {
         var marker = new google.maps.Marker
-        ({position:new google.maps.LatLng(lat,lon),map:map,draggable:true});
-        f2.value=lon; f1.value=lat;
-        marker.addListener('dragend', function() {
-            f2.value=marker.getPosition().lng(); f1.value=marker.getPosition().lat();
+            ({position:new google.maps.LatLng(lat,lon),map:map,draggable:true});
+            $scope.place.latitude=lat;
+            $scope.place.longitude=lon; 
+            marker.addListener('dragend', function() {
+                $scope.place.latitude=marker.getPosition().lat(); 
+                $scope.place.longitude=marker.getPosition().lng();
         });
     }
         };
@@ -93,13 +93,17 @@ app.controller('PlaceController', ['$scope', '$http', '$location', '$state', '$s
                     mapTypeIds: [google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.ROADMAP],
                 }
             };
-            if (map === void 0) {map = new google.maps.Map(element[0], mapOptions);}
-            var f1=document.getElementById('marker_latitude');
-            var f2=document.getElementById('marker_longitude');    
-            var marker = new google.maps.Marker
-        ({position:new google.maps.LatLng($scope.place.latitude,$scope.place.longitude),map:map,draggable:true});
-    marker.addListener('dragend', function() {  f2.value=marker.getPosition().lng(); f1.value=marker.getPosition().lat();  });
-marker.setMap(map);    
+        map = new google.maps.Map(element[0], mapOptions);
+            var marker = new google.maps.Marker({
+                position:new google.maps.LatLng($scope.place.latitude,$scope.place.longitude),
+                map:map,
+                draggable:true
+            });
+            marker.addListener('dragend', function() {
+                $scope.place.latitude=marker.getPosition().lat(); 
+                $scope.place.longitude=marker.getPosition().lng();   
+            });
+        marker.setMap(map);    
         }//map
     
         $http({
@@ -108,7 +112,8 @@ marker.setMap(map);
         }).then(function(response) {
             console.log(response.data);
             $scope.place = response.data.place;
-            initMap(); 
+            $scope.disabled=response.data.disabled;
+            initMap();
         });
         };
     return {
