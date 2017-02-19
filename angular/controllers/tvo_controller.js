@@ -17,7 +17,7 @@ app.controller('TvoController', ['$scope', '$http', '$location', '$state', '$sta
                     mapTypeIds: [google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.ROADMAP],
                 }
             };
-            if (map === void 0) {map = new google.maps.Map(element[0], mapOptions);}
+            map = new google.maps.Map(element[0], mapOptions);
         }
         function addDistrict(id, coords, сolor) {
             var district = new google.maps.Polygon({
