@@ -1,6 +1,8 @@
 <?php
 class Districts extends Front_Controller
 {
+
+/******************************общая карта***********************************************/
 public function full_map()
     {
         $districts = $this->districts->get_districts('fullmap');
@@ -67,7 +69,6 @@ public function full_map()
     }
 
 /******************************один участок***********************************************/
-
 public function district($id = NULL)
     {
         $district = $this->districts->get_districts($id);
@@ -114,6 +115,7 @@ public function district($id = NULL)
         echo json_encode($data,JSON_NUMERIC_CHECK);
     }
 
+/******************************все участки***********************************************/
 public function index()
     {
         $districts = $this->districts->get_districts();

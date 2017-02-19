@@ -45,6 +45,9 @@ tr:nth-child(even){
     font-size: 18px;    
     font-weight: 700;
 }
+.container{
+    width:100%;
+}
 .districts, .deputies {
     border-spacing: 0;
     border: 1px solid #808080;

@@ -1,7 +1,6 @@
 app.controller('DistrictsController', ['$scope', '$http', '$location', '$state', '$stateParams',
     function($scope, $http, $location, $state, $stateParams) {
         $scope.districtId = $stateParams.districtId;
-
   }])
 /**************************************карта на главной*********************************************************/
   .directive('fullMap', ['$http', function($http) {
@@ -130,7 +129,6 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             });
             marker.setMap(map);
             marker.addListener('click', function () {
-                infowindow.close(map);
                 var infowindow = new google.maps.InfoWindow({
                     content: content,
                     position: marker.getPosition()
