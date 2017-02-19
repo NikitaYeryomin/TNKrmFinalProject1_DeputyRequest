@@ -28,6 +28,6 @@ public function viewandedit($id)
         if (count($data['districts'])>0){$data['disabled']=' disabled';}
         $data['error'] = 0;
         echo json_encode($data,JSON_NUMERIC_CHECK);
-    } 
+} 
 
 }

@@ -73,7 +73,6 @@ app.controller('PlaceController', ['$scope', '$http', '$location', '$state', '$s
     };
     return {
         restrict: 'A',
-        template: '<div id="gmaps"></div>',
         replace: true,
         link: link
     };

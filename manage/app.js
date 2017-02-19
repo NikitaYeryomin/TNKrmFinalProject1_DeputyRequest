@@ -96,6 +96,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'DistrictController',
                 resolve: {$title: function() {return 'список дільниць'}}
             })              
+            .state('district/edit', {
+                url: '/district/:id',
+                templateUrl: '/manage/templates/edistrict.html',
+                controller: 'DistrictController',
+                resolve: {
+                    $title: ['$stateParams', function($stateParams) {
+                        return "редагування дільниці № " + $stateParams.id;
+                    }]
+                }
+            })  
             .state('requests', {
                 url: '/requests',
                 templateUrl: '/manage/templates/request/index.html',
