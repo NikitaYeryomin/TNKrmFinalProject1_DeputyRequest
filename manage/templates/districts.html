@@ -1,0 +1,16 @@
+<div districts-list=""></div>
+<table class="districts">
+    <tr>
+        <th>номер
+        <th>межі
+        <th>знаходження місця для голосування
+        <th><acronym title="територіальний виборчий округ">ТВО</acronym>
+<tr ng-repeat="district in districts">
+    <td><a href="#!/district/{{district.id}}">{{district.id}}</a></td>
+    <td>{{district.addresses}}</td>
+    <td><span ng-repeat="place in places | filter: {id: district.place_id} : true"><a href="#!/place/{{place.id}}">{{place.address}}</a></span></td>
+    <td align=center><a href="../#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a></td>
+<tr><td align="center" colspan=4><a href="#!/district/add">додати дільницю</a>
+</table>
+
+<p class="source">дані згідно <a href="http://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&pid100=14&pf5271=48&prejim=3">Державного реєстра виборців</a></p>
