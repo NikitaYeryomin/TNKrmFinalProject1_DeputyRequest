@@ -293,7 +293,7 @@ header {
 }
 .motivator .create-btn button {
     height: 40px;
-    background: #ffffff;
+    background: linear-gradient(to right, #ffc320 0%, #ffda2e 100%);
     border: none;
     border-radius: 2px;
     font-family: "Roboto-Bold";
