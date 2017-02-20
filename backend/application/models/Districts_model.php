@@ -43,32 +43,10 @@ public function placed_districts($id = FALSE)
         }
 }
  
-public function edit_a_district($id = FALSE)
-{
- $this->load->helper('url');
-  $data = array(
-        'id' => $this->input->post('id'),
-        'addresses' => $this->input->post('addresses'),
-        'place_id' => $this->input->post('place'),
-        'vertex' => $this->input->post('vertex'),
-        'tvoid' => $this->input->post('tvoid'),
-    );
-       return     $this->db->update('districts', $data, array('id' => $id));
-}
+public function edit_a_district($id=FALSE, $data){return $this->db->update('districts', $data, array('id'=>$id));}
 
 public function delete_district($id){return $this->db->delete('districts', array('id' => $id));}
 
-public function add_district()
-{
-   $this->load->helper('url');
-  $data = array(
-        'id' => $this->input->post('id'),
-        'addresses' => $this->input->post('addresses'),
-        'place_id' => $this->input->post('place'),
-        'vertex' => $this->input->post('vertex'),
-         'tvoid' => $this->input->post('tvoid'),       
-    );
-    return $this->db->insert('districts', $data);
-}
+public function add_district($data){return $this->db->insert('districts', $data);}
      
 }

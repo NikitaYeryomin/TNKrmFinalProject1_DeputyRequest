@@ -73,9 +73,7 @@ public function district($id = NULL)
     {
         $district = $this->districts->get_districts($id);
         $district['vertex'] = explode(";", $district['vertex']);
-        foreach ($district['vertex'] as $k => $v) {
-                $district['vertex'][$k] = explode(",", $v);
-            }
+        foreach ($district['vertex'] as $k => $v) {$district['vertex'][$k] = explode(",", $v);}
         $extremes = new stdClass();
         $extremes->maxlat = $district['latitude'];
         $extremes->minlat = $district['latitude'];
@@ -206,32 +204,53 @@ function сolorizer()
 
 public function edit($id = NULL)
     {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->model('tvo_model');
-        if ($id === NULL) {
-            show_404();
-        } else {
-            $data['title'] = 'редагувати виборчу дільницю № ' . $id;
-            $data['district'] = $this->districts_model->get_districts($id);
-            $data['ids'] = $this->districts_model->get_districts("id");
-            $data['places'] = $this->place_model->get_places();
-            $data['districts'] = $this->districts_model->get_districts();
-            $data['tvo'] = $this->tvo_model->get_tvo();
-        }
-
-        $this->form_validation->set_rules('place', 'place', 'required');
-
-
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('districts/edit', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->districts_model->edit_a_district($id);
-            $this->load->view('districts/success');
-        }
+        $district = $this->districts->get_districts($id);
+        $district['rawvertex'] = $district['vertex'];
+        $district['vertex'] = explode(";", $district['vertex']);
+        foreach ($district['vertex'] as $k => $v) {$district['vertex'][$k] = explode(",", $v);}
+        $extremes = new stdClass();
+        $extremes->maxlat = $district['latitude'];
+        $extremes->minlat = $district['latitude'];
+        $extremes->maxlon = $district['longitude'];
+        $extremes->minlon = $district['longitude'];
+        foreach ($district['vertex'] as $k => $v) {
+            if ($extremes->maxlat < $v[0]) {$extremes->maxlat = $v[0];}
+            if ($extremes->minlat > $v[0]) {$extremes->minlat = $v[0];}
+            if ($extremes->maxlon < $v[1]) {$extremes->maxlon = $v[1];}
+            if ($extremes->minlon > $v[1]) {$extremes->minlon = $v[1];}
+            }
+        $data['extremes'] = $extremes;
+        $vertex = array();
+            foreach ($district['vertex'] as $k => $v) {
+                $temp = new stdClass();
+                $temp->lat = $v[0];
+                $temp->lng = $v[1];
+                $vertex[] = $temp;
+            }
+        $district['vertex']=$vertex;
+        
+        //$data['ids'] = $this->districts->get_districts("id");
+        $data['district'] = $district;
+        $data['places'] = $this->place->get_places();
+        //$data['districts'] = $this->districts->get_districts();
+        $data['tvo'] = $this->tvo->get_tvo();
+        $data['error'] = 0;
+        echo json_encode($data,JSON_NUMERIC_CHECK);
     }
+    
+public function save($id){
+    $data = array(
+        //'id' => $this->input->post('id'),
+        'addresses' => $this->input->post('addresses'),
+        //'place_id' => $this->input->post('place'),
+        'vertex' => $this->input->post('vertex'),
+        //'tvoid' => $this->input->post('tvoid'),       
+    );
+    print_r($data); 
+    //if ($id>0){$result = $this->place->edit_a_place($id,$data);}
+    //else {$result = $this->place->add_district($data);}
+    //if ($result) {echo json_encode(array('error' => 0));}
+}
 
 public function delete($id)
     {
