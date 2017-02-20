@@ -8,7 +8,8 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
                 data: $.param({
                     'addresses': $scope.district.addresses,
                     'vertex': $scope.district.rawvertex
-                    //,'longitude': $scope.place.longitude
+                    ,'tvoid': $scope.district.tvoid
+                    ,'place': $scope.district.place_id
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
@@ -66,7 +67,6 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             fillOpacity: 0.25,
             editable: true
         });
-        var infoWindow=document.getElementById("vertex");
         function showVertex() {
             var vertices = polygon.getPath();
             var contentString='';
@@ -76,7 +76,6 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             }
             contentString=contentString.slice(0,contentString.length-1);
             $scope.district.rawvertex=contentString;
-            infoWindow.value=contentString;
         }
         polygon.getPaths().forEach(function (path, index) {
             google.maps.event.addListener(path, 'insert_at', function () 	{showVertex();});
@@ -84,10 +83,74 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             google.maps.event.addListener(path, 'set_at', function () {showVertex();});
         });
         polygon.addListener('dragend', showVertex);
-        
+        var deleteMenu = new DeleteMenu();
+        google.maps.event.addListener(polygon, 'rightclick', function(e) {
+	        if (e.vertex == undefined) {return;}
+	        deleteMenu.open(map, polygon.getPath(), e.vertex);
+        });        
         polygon.setMap(map);
-        }//map
-    
+        function addDistricts(coords){
+            var otherDistrict = new google.maps.Polygon({
+                paths: coords,
+                strokeColor: '#111',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#111',
+                fillOpacity: 0.35
+            });
+            otherDistrict.setMap(map);
+        }//addDistricts
+        for (var i= 0; i< $scope.districts.length; i++){
+            if($scope.districts[i].id!=$scope.id){addDistricts($scope.districts[i].vertex);    }
+            }    
+    }//map
+        function DeleteMenu() {
+            this.div_ = document.createElement('div');
+            this.div_.className = 'delete-menu';
+            this.div_.innerHTML = '&times;';
+            var menu = this;
+            google.maps.event.addDomListener(this.div_, 'click', function() {    menu.removeVertex();  });
+        }
+        DeleteMenu.prototype = new google.maps.OverlayView();
+        DeleteMenu.prototype.onAdd = function() {
+            var deleteMenu = this;
+            var map = this.getMap();
+            this.getPanes().floatPane.appendChild(this.div_);
+            this.divListener_ = google.maps.event.addDomListener(map.getDiv(), 'mousedown', function(e) {
+                if (e.target != deleteMenu.div_) {      deleteMenu.close();    }
+            }, true);
+        };
+        DeleteMenu.prototype.onRemove = function() {
+            google.maps.event.removeListener(this.divListener_);
+            this.div_.parentNode.removeChild(this.div_);
+            this.set('position');
+            this.set('path');
+            this.set('vertex');
+        };
+        DeleteMenu.prototype.close = function() { this.setMap(null);};
+        DeleteMenu.prototype.draw = function() {
+            var position = this.get('position');
+            var projection = this.getProjection();
+            if (!position || !projection) {return;}
+            var point = projection.fromLatLngToDivPixel(position);
+            this.div_.style.top = point.y + 'px';
+            this.div_.style.left = point.x + 'px';
+        };
+        DeleteMenu.prototype.open = function(map, path, vertex) {
+            this.set('position', path.getAt(vertex));
+            this.set('path', path);
+            this.set('vertex', vertex);
+            this.setMap(map);
+            this.draw();
+        };
+        DeleteMenu.prototype.removeVertex = function() {
+            var path = this.get('path');
+            var vertex = this.get('vertex');
+            if (!path || vertex == undefined) {         this.close();            return;  }
+            path.removeAt(vertex);
+            this.close();
+        };    
+        
         $http({
             method: 'GET',
             url: '/backend/districts/edit/' + $scope.id,
@@ -95,6 +158,7 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             console.log(response.data);
             $scope.places = response.data.places;
             $scope.district=response.data.district;
+            $scope.districts=response.data.districts;
             $scope.extremes=response.data.extremes;
             $scope.tvo=response.data.tvo;
             initMap();

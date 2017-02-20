@@ -48,6 +48,19 @@ tr:nth-child(even){
 .container{
     width:100%;
 }
+.delete-menu {
+        position: absolute;
+        font-family: sans-serif;
+        font-size: 16px;
+		font-weight:bold;
+        margin-top: -10px;
+        margin-left: 10px;
+        cursor: pointer;
+		background-color:#fff;
+		padding-left:5px;
+		padding-right:5px;
+		border:#666 solid 1px;
+}
 .districts, .deputies {
     border-spacing: 0;
     border: 1px solid #808080;

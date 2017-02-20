@@ -205,9 +205,20 @@ function сolorizer()
 public function edit($id = NULL)
     {
         $district = $this->districts->get_districts($id);
+        $districts = $this->districts->get_districts();
         $district['rawvertex'] = $district['vertex'];
         $district['vertex'] = explode(";", $district['vertex']);
         foreach ($district['vertex'] as $k => $v) {$district['vertex'][$k] = explode(",", $v);}
+        foreach ($districts as $k1=>$v1): 
+            $districts[$k1]['vertex']=  explode(";",$districts[$k1]['vertex']);
+            foreach ($districts[$k1]['vertex']  as $k2=>$v2){
+                $v2=explode(",", $v2);
+                $temp = new stdClass();
+                $temp->lat = $v2[0];
+                $temp->lng = $v2[1];
+                $districts[$k1]['vertex'][$k2]=$temp;
+        }
+        endforeach;
         $extremes = new stdClass();
         $extremes->maxlat = $district['latitude'];
         $extremes->minlat = $district['latitude'];
@@ -232,7 +243,7 @@ public function edit($id = NULL)
         //$data['ids'] = $this->districts->get_districts("id");
         $data['district'] = $district;
         $data['places'] = $this->place->get_places();
-        //$data['districts'] = $this->districts->get_districts();
+        $data['districts'] = $districts;
         $data['tvo'] = $this->tvo->get_tvo();
         $data['error'] = 0;
         echo json_encode($data,JSON_NUMERIC_CHECK);
@@ -240,16 +251,15 @@ public function edit($id = NULL)
     
 public function save($id){
     $data = array(
-        //'id' => $this->input->post('id'),
         'addresses' => $this->input->post('addresses'),
-        //'place_id' => $this->input->post('place'),
+        'place_id' => $this->input->post('place'),
         'vertex' => $this->input->post('vertex'),
-        //'tvoid' => $this->input->post('tvoid'),       
+        'tvoid' => $this->input->post('tvoid'),       
     );
-    print_r($data); 
-    //if ($id>0){$result = $this->place->edit_a_place($id,$data);}
-    //else {$result = $this->place->add_district($data);}
-    //if ($result) {echo json_encode(array('error' => 0));}
+    //print_r($data); 
+    if ($id>0){$result = $this->districts->edit_a_district($id,$data);}
+    else {$result = $this->districts->add_district($data);}
+    if ($result) {echo json_encode(array('error' => 0));}
 }
 
 public function delete($id)
