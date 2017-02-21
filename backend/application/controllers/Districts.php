@@ -220,10 +220,10 @@ public function edit($id = NULL)
         }
         endforeach;
         $extremes = new stdClass();
-        $extremes->maxlat = $district['latitude'];
-        $extremes->minlat = $district['latitude'];
-        $extremes->maxlon = $district['longitude'];
-        $extremes->minlon = $district['longitude'];
+        $extremes->maxlat = $district['vertex'][0][0];
+        $extremes->minlat = $district['vertex'][0][0];
+        $extremes->maxlon = $district['vertex'][0][1];
+        $extremes->minlon = $district['vertex'][0][1];
         foreach ($district['vertex'] as $k => $v) {
             if ($extremes->maxlat < $v[0]) {$extremes->maxlat = $v[0];}
             if ($extremes->minlat > $v[0]) {$extremes->minlat = $v[0];}

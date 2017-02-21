@@ -1,0 +1,11 @@
+<div tvo-list=""></div>
+Територіальні виборчі округи складаються з постійних виборчіх дільниць для певних виборів. У нашому випадку — для виборів депутатів міських рад.
+<table class="table-striped table-bordered table-hover table-condensed">
+    <thead>            <tr><th>номер<th>виборчі дільниці у складі</thead>
+    <tr ng-repeat="t in tvo">
+        <td><a href="../#!/tvo/{{t.id}}">{{t.id}}</a>
+        <td><span ng-repeat="district in districts | filter: {tvoid: t.id} : true"><a href="#!/district/{{district.id}}">{{district.id}}</a>, </span>
+    <tr><td align="center" colspan=2><a href="#" ng-click="add_tvo()" data-dismiss="modal">додати ТВО</a><!--!/tvo/add-->
+</table>
+Передати дільницю від одного до іншого ТВО можна на сторінці її редагування.
+<em>дані згідно <a href="http://www.cvk.gov.ua/pls/vm2015/PVM116?PT001F01=100&PT00_T001F01=100&pid112=2&pid100=14&pid102=398">Центральної виборчої комісії</a></em>
