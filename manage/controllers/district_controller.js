@@ -17,7 +17,7 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
                     $location.path('/districts');
                 }
             });
-        };  
+        };
   }])
 
 /******************************************список участков*************************************************/
@@ -149,8 +149,8 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             if (!path || vertex == undefined) {         this.close();            return;  }
             path.removeAt(vertex);
             this.close();
-        };    
-        
+        };
+
         $http({
             method: 'GET',
             url: '/backend/districts/edit/' + $scope.id,
@@ -162,6 +162,7 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             $scope.extremes=response.data.extremes;
             $scope.tvo=response.data.tvo;
             initMap();
+            console.log(typeof $scope.district.place_id);
         });
         };
     return {
@@ -170,6 +171,19 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
         replace: true,
         link: link
     };
-}]) 
+}])
+
+.directive('convertToNumber', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            ngModel.$parsers.push(function(val) {
+                return val != null ? parseInt(val, 10) : null;
+            });
+            ngModel.$formatters.push(function(val) {
+                return val != null ? '' + val : null;
+            });
+        }
+    };
+});
    
-;
