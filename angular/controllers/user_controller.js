@@ -13,6 +13,19 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.autocomplete = new google.maps.places.Autocomplete();
         
+        $scope.get_requests = function() {
+            $http({
+                method: 'GET',
+                url: '/backend/dep_request/index'
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.requests = response.data.Requests;
+                    //console.log($scope.requests);
+                }
+            });
+        };
+        $scope.get_requests();
+        
         $scope.register = function() {
             $http({
                 method: 'POST',
@@ -179,5 +192,6 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 $scope.user.street = street;    
             }
         });
+        
         
     }]);

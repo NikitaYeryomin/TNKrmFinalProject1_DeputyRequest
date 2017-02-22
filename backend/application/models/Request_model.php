@@ -23,6 +23,16 @@ class Request_model extends Base_model {
         return null;
     }
     
+    public function get_requests_by_user($id) {
+        if (!$id) {
+            //TODO: throw 'User id not defined!';
+            return null;
+        }
+        $this->sql .= ' WHERE request.user_id = ?';
+        $result = $this->db->query($this->sql, array($id))->result_array();
+        return $result;
+    }
+    
     public function filter_by_class($class, $id)
     {
         $this->sql .= ' AND t1.' . $class . '_id = ?';
