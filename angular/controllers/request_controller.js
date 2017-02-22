@@ -49,8 +49,11 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             Title: 'Матеріальна допомога',
             Name: 'request.material'
             }, {
-            Title: 'Моральна допомога',
-            Name: 'request.moral'
+            Title: 'Довідка про непроживання',
+            Name: 'request.living'
+            }, {
+            Title: 'Довідка про склад сім\'ї',
+            Name: 'request.family'
         }];
     
         $scope.changeState = function (stateName) {

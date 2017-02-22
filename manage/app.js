@@ -69,7 +69,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/manage/templates/city/view.html',
                 controller: 'CityController',
                 resolve: {
-                    $title: function () { return 'Адміністрування міста'}
+                    $title: ['$stateParams', function($stateParams) {
+                        return "Редагування міста " + $stateParams.cityId;
+                    }]
                 }
             })
             .state('places', {
@@ -120,7 +122,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'RequestController',
                 resolve: {
                     $title: ['$stateParams', function($stateParams) {
-                        return "Редагування запита № " + $stateParams.id;
+                        return "Редагування запита № " + $stateParams.requestId;
                     }]
                 }
             })

@@ -1,16 +1,19 @@
 <?php
 class Request extends Admin_controller {
 
-    public function view($id = NULL)
-    {
+    public function get($id = NULL) {
         $this->data['requests_item'] = $this->request->getrequests($id);
-        if (empty($this->data['requests_item']))
-        {
-            show_404();
+        $request = $this->data['requests_item'];
+        $result = array('error' => 0);
+        if (empty($request)) {
+            $result['error'] = 1;
+            $result['message'] = 'Помилка завантаження звернення';
+        } else {
+            $result['Request'] = $request;
+            $result['Types'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'type'");
+            $result['States'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'status'");
         }
-        $this->data['title'] = $this->data['requests_item']['title'];
-        $this->data['inner_view'] = 'request/view';
-        $this->load->view('template', $this->data);
+        echo json_encode($result);
     }
         
     public function index() {
