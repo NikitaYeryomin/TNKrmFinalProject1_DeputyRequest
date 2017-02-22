@@ -14,20 +14,25 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.request = response.data.Request;
-                    //$scope.cities = response.data.CityList;
-                    // getting list of user's roles
-                    /*
-                    var roles = response.data.Roles[0]['Type'];
-                    roles = roles.substring(roles.indexOf('(') + 1, roles.indexOf(')'));
-                    roles = roles.replace(/'/g, "");
-                    $scope.roles = roles.split(",");
-                    */
+                    $scope.request.public_appeal = ($scope.request.public_appeal == 1);
+                    //console.log($scope.request);
+                    $scope.types = $scope.transform(response.data.Types);
+                    $scope.states = $scope.transform(response.data.States);
+                    //console.log($scope.types);
+                    //console.log($scope.states);
                 } else {
                     console.log('Error getting request info!');
                     return;
                 }
                 $location.path('/request/' + $scope.id);
             });            
+        };
+        
+        $scope.transform = function(inp) {
+            var str = inp[0]['Type'];
+            str = str.substring(str.indexOf('(') + 1, str.indexOf(')'));
+            str = str.replace(/'/g, "");
+            return str.split(",");
         };
         
         $scope.get_request();

@@ -69,7 +69,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/manage/templates/city/view.html',
                 controller: 'CityController',
                 resolve: {
-                    $title: function () { return 'Адміністрування міста'}
+                    $title: ['$stateParams', function($stateParams) {
+                        return "Редагування міста " + $stateParams.cityId;
+                    }]
                 }
             })
             .state('places', {
@@ -96,6 +98,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'DistrictController',
                 resolve: {$title: function() {return 'список дільниць'}}
             })              
+            .state('district/add', {
+                url: '/district/add',
+                templateUrl: '/manage/templates/addistrict.html',
+                controller: 'DistrictController',
+                resolve: {$title: function() {return "створення дільниці"}}
+            }) 
             .state('district/edit', {
                 url: '/district/:id',
                 templateUrl: '/manage/templates/edistrict.html',
@@ -105,6 +113,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         return "редагування дільниці № " + $stateParams.id;
                     }]
                 }
+            }) 
+            .state('tvo', {
+                url: '/tvo',
+                templateUrl: '/manage/templates/tvo.html',
+                controller: 'TvoController',
+                resolve: {$title: function() {return 'список ТВО'}}
             })  
             .state('requests', {
                 url: '/requests',
@@ -120,7 +134,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'RequestController',
                 resolve: {
                     $title: ['$stateParams', function($stateParams) {
-                        return "Редагування запита № " + $stateParams.id;
+                        return "Редагування запита № " + $stateParams.requestId;
                     }]
                 }
             })
@@ -137,4 +151,3 @@ app.config(['$stateProvider', '$urlRouterProvider',
          });*/
          ;
     }]);
-

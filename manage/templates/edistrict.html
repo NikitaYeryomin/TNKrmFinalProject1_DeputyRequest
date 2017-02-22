@@ -1,18 +1,29 @@
 <form role="form" ng-submit="savedistrict({id: district.id})">
 <fieldset>
     <legend>межі</legend>
-    <textarea name="address" id="address" rows="3" cols="180" required onchange="spacesAfterPoints()" ng-model="district.addresses"></textarea><br />
+    <script>
+    function spacesAfterPoints (){
+        var addresses=document.getElementById("addresses");
+        var str=addresses.value; 
+        for (var i = 0; i < str.length; i++) {
+            if (str.charAt(i)=='.' && str.charAt(i+1)!=' ')
+            {str=str.slice(0,i+1)+' '+str.slice(i+1);}
+        }
+        addresses.value=str;
+    }
+    </script>
+    <textarea name="addresses" id="addresses" rows="3" cols="180" required onchange="spacesAfterPoints()" ng-model="district.addresses"></textarea><br />
     <!--input size="200" name="vertex" id="vertex" value="{{district.rawvertex}}" ng-model="district.rawvertex"-->
     <div edit-district="" style="width: 800px; height: 450px; margin: 0 auto;"></div>
 </fieldset>
 <fieldset> <legend>місцезнаходження дільничної комісії / приміщення для голосування</legend>
-    <select class="selectpicker show-tick form-control bs-select-hidden" name="place" ng-model="district.place_id">
-        <option ng-repeat="place in places" value="{{place.id}}" ng-selected="{{place.id==district.place_id}}">{{place.address}}</option>
-    </select>  
+    <select class="selectpicker show-tick form-control bs-select-hidden" name="place" ng-model="district.place_id" convert-to-number>
+        <option ng-repeat="place in places" value="{{place.id}}">{{place.address}}</option>
+    </select>
 </fieldset>
 <fieldset> <legend>територіальний виборчий округ, до якого входить дільниця</legend>
-    <select class="selectpicker show-tick form-control bs-select-hidden" name="tvoid" ng-model="district.tvoid">
-        <option ng-repeat="t in tvo" value="{{t.id}}" ng-selected="{{t.id==district.tvoid}}">{{t.id}}</option>
+    <select class="selectpicker show-tick form-control bs-select-hidden" name="tvoid" ng-model="district.tvoid" convert-to-number>
+        <option ng-repeat="t in tvo" value="{{t.id}}">{{t.id}}</option>
     </select>    
 </fieldset>
 <br>

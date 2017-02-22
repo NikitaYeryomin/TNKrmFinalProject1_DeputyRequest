@@ -193,5 +193,23 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }
         });
         
+<<<<<<< HEAD
         
     }]);
+=======
+    }])
+    
+.directive('convertToNumber', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            ngModel.$parsers.push(function(val) {
+                return val != null ? parseInt(val, 10) : null;
+            });
+            ngModel.$formatters.push(function(val) {
+                return val != null ? '' + val : null;
+            });
+        }
+    };
+});
+>>>>>>> e2bcc1c20080ee89ff09b252de54727a9cc19468

@@ -1,0 +1,37 @@
+<form role="form" ng-submit="savedistrict()">
+<h4>виборча дільниця № 
+    <select class="selectpicker show-tick bs-select-hidden" name="id" ng-model="district.id" convert-to-number required placeholder="sdfsdf">
+        <option ng-repeat="id in ids" value="{{id.no}}"  ng-disabled="{{id.co}}==true">{{id.no}}</option>
+    </select>
+</h4>
+<fieldset>
+    <legend>межі</legend>
+    <script>
+    function spacesAfterPoints (){
+        var addresses=document.getElementById("addresses");
+        var str=addresses.value; 
+        for (var i = 0; i < str.length; i++) {
+            if ((str.charAt(i)=='.'||str.charAt(i)==','||str.charAt(i)=='№') && str.charAt(i+1)!=' ')
+            {str=str.slice(0,i+1)+' '+str.slice(i+1);}
+        }
+        addresses.value=str;
+    }
+    </script>
+    <textarea name="addresses" id="addresses" rows="3" cols="180" required onchange="spacesAfterPoints()" ng-model="district.addresses" placeholder="адреси"></textarea><br />
+    <!--input size="200" name="vertex" id="vertex" value="{{district.rawvertex}}" ng-model="district.rawvertex" required-->
+    <em>Клацніть на мапі для початку малювання багатокутника. Для відображення кнопки видалення вершини клацніть правою кнопкою.</em>
+    <div add-district="" style="width: 800px; height: 450px; margin: 0 auto;"></div>
+</fieldset>
+<fieldset> <legend>місцезнаходження дільничної комісії / приміщення для голосування</legend>
+    <select class="selectpicker show-tick form-control bs-select-hidden" name="place" ng-model="district.place_id" convert-to-number required>
+        <option ng-repeat="place in places" value="{{place.id}}">{{place.address}}</option>
+    </select>
+</fieldset>
+<fieldset> <legend>територіальний виборчий округ, до якого входить дільниця</legend>
+    <select class="selectpicker show-tick form-control bs-select-hidden" name="tvoid" ng-model="district.tvoid" convert-to-number required>
+        <option ng-repeat="t in tvo" value="{{t.id}}">{{t.id}}</option>
+    </select>    
+</fieldset>
+<br>
+<input type="submit" name="submit" value="додати" />
+</form>

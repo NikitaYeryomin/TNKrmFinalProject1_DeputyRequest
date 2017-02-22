@@ -12,5 +12,7 @@ public function get_tvo($id = FALSE)
         $query=$this->db->get();
         return $query->result_array();
 }
- 
+
+public function stvo_tvo(){    return $this->db->insert('tvo', array('id' => ''));}
+
 }

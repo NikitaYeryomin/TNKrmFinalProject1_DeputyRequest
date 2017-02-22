@@ -38,7 +38,8 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
-                console.log(response.data);
+                $location.path('/user')
+                //console.log(response.data);
             });
         };
         
@@ -49,8 +50,11 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             Title: 'Матеріальна допомога',
             Name: 'request.material'
             }, {
-            Title: 'Моральна допомога',
-            Name: 'request.moral'
+            Title: 'Довідка про непроживання',
+            Name: 'request.living'
+            }, {
+            Title: 'Довідка про склад сім\'ї',
+            Name: 'request.family'
         }];
     
         $scope.changeState = function (stateName) {
