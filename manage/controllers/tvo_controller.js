@@ -10,9 +10,10 @@ $scope.add_tvo = function(user_id) {
                 if (response.data.error == 0) {
                     console.log(response.data.error);
                    //$scope.get_users();
+                   $location.path('/tvo/');  
                 }
             });
-$location.path('/tvo/');            
+          
 };   
 
 }])

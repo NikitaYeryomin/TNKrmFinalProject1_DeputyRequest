@@ -98,6 +98,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'DistrictController',
                 resolve: {$title: function() {return 'список дільниць'}}
             })              
+            .state('district/add', {
+                url: '/district/add',
+                templateUrl: '/manage/templates/addistrict.html',
+                controller: 'DistrictController',
+                resolve: {$title: function() {return "створення дільниці"}}
+            }) 
             .state('district/edit', {
                 url: '/district/:id',
                 templateUrl: '/manage/templates/edistrict.html',
@@ -107,7 +113,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         return "редагування дільниці № " + $stateParams.id;
                     }]
                 }
-            })  
+            }) 
             .state('tvo', {
                 url: '/tvo',
                 templateUrl: '/manage/templates/tvo.html',
@@ -145,4 +151,3 @@ app.config(['$stateProvider', '$urlRouterProvider',
          });*/
          ;
     }]);
-
