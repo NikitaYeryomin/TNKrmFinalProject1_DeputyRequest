@@ -108,6 +108,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     }]
                 }
             })  
+            .state('tvo', {
+                url: '/tvo',
+                templateUrl: '/manage/templates/tvo.html',
+                controller: 'TvoController',
+                resolve: {$title: function() {return 'список ТВО'}}
+            })  
             .state('requests', {
                 url: '/requests',
                 templateUrl: '/manage/templates/request/index.html',

@@ -83,34 +83,13 @@ function сolorizer()
         return $сolor;
     }
 
-public function edit($id = NULL)
-    {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->model('tvo_model');
-        if ($id === NULL) {
-            show_404();
-        } else {
-            $data['title'] = 'редагувати виборчу дільницю № ' . $id;
-            $data['district'] = $this->districts_model->get_districts($id);
-            $data['ids'] = $this->districts_model->get_districts("id");
-            $data['places'] = $this->place_model->get_places();
-            $data['districts'] = $this->districts_model->get_districts();
-            $data['tvo'] = $this->tvo_model->get_tvo();
-        }
-
-        $this->form_validation->set_rules('place', 'place', 'required');
-
-
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('districts/edit', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->districts_model->edit_a_district($id);
-            $this->load->view('districts/success');
-        }
-    }
+public function all()
+{
+        $data['tvo'] = $this->tvo->get_tvo();
+        $data['districts'] = $this->districts->get_districts('fortvo');
+        $data['error'] = 0;
+        echo json_encode($data,JSON_NUMERIC_CHECK);    
+}
 
 public function delete($id)
     {
@@ -120,31 +99,9 @@ public function delete($id)
 
 public function add()
     {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->model('tvo_model');
-        $data['ids'] = $this->districts_model->get_districts("id");
-        $data['title'] = 'додати виборчу дільницю';
-        $data['places'] = $this->place_model->get_places();
-        $data['districts'] = $this->districts_model->get_districts();
-        $data['tvo'] = $this->tvo_model->get_tvo();
-        $this->form_validation->set_rules('addresses', 'addresses', 'required');
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('districts/add');
-            $this->load->view('templates/footer');
-        } else {
-            $this->districts_model->add_district();
-            $this->load->view('districts/success');
-        }
-    }
-
-    public function search()
-    {
-        $data['title'] = 'визначити виборчу дільницю';
-        $this->load->view('templates/header', $data);
-        $this->load->view('districts/search');
-        $this->load->view('templates/footer');
-    }
+    $this->tvo->stvo_tvo();
+    $data['error'] = 0;
+    //redirect('tvo');
+    }    
 
 }
