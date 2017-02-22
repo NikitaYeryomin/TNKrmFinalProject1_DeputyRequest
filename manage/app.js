@@ -5,7 +5,8 @@
 var app = angular.module('App', [
     'ui.router',
     'ui.router.title',
-    'angularFileUpload'
+    'angularFileUpload',
+    'ui.bootstrap'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider',
