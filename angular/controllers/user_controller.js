@@ -193,10 +193,6 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }
         });
         
-<<<<<<< HEAD
-        
-    }]);
-=======
     }])
     
 .directive('convertToNumber', function() {
@@ -212,4 +208,3 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         }
     };
 });
->>>>>>> e2bcc1c20080ee89ff09b252de54727a9cc19468
