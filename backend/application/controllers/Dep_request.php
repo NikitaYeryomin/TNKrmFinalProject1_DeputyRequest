@@ -15,7 +15,7 @@ class Dep_request extends Front_controller {
             $result['error'] = 1;
             $result['message'] = 'Помилка при створенні звернення';
         } else {
-            $result['id'] = $this->request->get_last();
+            //$result['id'] = $this->request->get_last();
         }
         echo json_encode($result);
     }

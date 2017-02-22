@@ -38,7 +38,8 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
-                console.log(response.data);
+                $location.path('/user')
+                //console.log(response.data);
             });
         };
         
