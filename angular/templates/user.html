@@ -56,34 +56,70 @@
             <div class="col-sm-12">
                 <h2>Звернення користувача</h2>
                 <div>
-                    <table class="table-striped table-bordered table-hover table-condensed">
-                        <thead>
-                            <tr>
-                                <th>Додано</th>
-                                <th>Тип запиту</th>
-                                <th>Текст запиту</th>
-                                <th>Депутат</th>
-                                <th>Статус</th>
-                            </tr>
-                        </thead>
-                        <tr ng-repeat="request in requests">
-                            <td>
-                                <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
-                            </td>
-                            <td>
-                                {{request.type}}
-                            </td>
-                            <td>
-                                {{request.text}}
-                            </td>
-                            <td>
-                                <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
-                            </td>
-                            <td>
-                                {{request.status}}
-                            </td>
-                        </tr>
-                    </table>
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Не завершені">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Додано</th>
+                                    <th>Тип запиту</th>
+                                    <th>Текст запиту</th>
+                                    <th>Депутат</th>
+                                    <th>Статус</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {type: 'not_ready'} : true">
+                                    <td>
+                                        <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.type}}
+                                    </td>
+                                    <td>
+                                        {{request.text}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.status}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                        <uib-tab index="1" heading="Нові">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Додано</th>
+                                    <th>Тип запиту</th>
+                                    <th>Текст запиту</th>
+                                    <th>Депутат</th>
+                                    <th>Статус</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {type: 'new'} : true">
+                                    <td>
+                                        <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.type}}
+                                    </td>
+                                    <td>
+                                        {{request.text}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.status}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+
+                    </uib-tabset>
+
                 </div>
             </div>
             <div class="col-sm-12">
