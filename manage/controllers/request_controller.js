@@ -42,7 +42,11 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 method: 'POST',
                 url: '/backend/manage/request/save/' + $scope.id,
                 data: $.param({
-                    //
+                    'status': $scope.request.status,
+                    'type': $scope.request.type,
+                    'text': $scope.request.text,
+                    'response': $scope.request.response,
+                    'public_appeal': $scope.request.public_appeal
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
