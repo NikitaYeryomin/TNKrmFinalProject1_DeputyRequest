@@ -1,7 +1,18 @@
 <form role="form" ng-submit="savedistrict({id: district.id})">
 <fieldset>
     <legend>межі</legend>
-    <textarea name="address" id="address" rows="3" cols="180" required onchange="spacesAfterPoints()" ng-model="district.addresses"></textarea><br />
+    <script>
+    function spacesAfterPoints (){
+        var addresses=document.getElementById("addresses");
+        var str=addresses.value; 
+        for (var i = 0; i < str.length; i++) {
+            if (str.charAt(i)=='.' && str.charAt(i+1)!=' ')
+            {str=str.slice(0,i+1)+' '+str.slice(i+1);}
+        }
+        addresses.value=str;
+    }
+    </script>
+    <textarea name="addresses" id="addresses" rows="3" cols="180" required onchange="spacesAfterPoints()" ng-model="district.addresses"></textarea><br />
     <!--input size="200" name="vertex" id="vertex" value="{{district.rawvertex}}" ng-model="district.rawvertex"-->
     <div edit-district="" style="width: 800px; height: 450px; margin: 0 auto;"></div>
 </fieldset>

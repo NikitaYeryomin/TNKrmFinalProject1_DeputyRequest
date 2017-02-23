@@ -55,6 +55,48 @@
             </div>
             <div class="col-sm-12">
                 <h2>Звернення користувача</h2>
+                <div>
+                    <table class="table-striped table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Додано</th>
+                                <th>Тип запиту</th>
+                                <th>Текст запиту</th>
+                                <th>Автор запиту</th>
+                                <th>Депутат</th>
+                                <th>Статус</th>
+                                <th>Дія</th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="request in requests">
+                            <td>
+                                <a href="" ui-sref="request({requestId: request.requestid})">{{request.requestid}}</a>
+                            </td>
+                            <td>
+                                {{request.adddate}}
+                            </td>
+                            <td>
+                                {{request.type}}
+                            </td>
+                            <td>
+                                {{request.text}}
+                            </td>
+                            <td>
+                                <a href="" ui-sref="user({userId: request.user_id})">{{fullname(request)}}</a>
+                            </td>
+                            <td>
+                                <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                            </td>
+                            <td>
+                                {{request.status}}
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" type="button" ng-click="delete_request(request.requestid)">Видалити</button>    
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="col-sm-12">
                 <a href="" ng-click="logout()">
