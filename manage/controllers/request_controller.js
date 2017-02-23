@@ -51,4 +51,5 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 }
             });
         };
+        
     }]);
