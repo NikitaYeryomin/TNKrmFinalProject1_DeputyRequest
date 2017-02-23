@@ -26,7 +26,7 @@
                     <label>Ваша виборча дільниця:&nbsp;</label>
                     <span>
                         <strong>
-                            <a href="#!/district/{{user.tvo_id}}">{{user.tvo_id}}</a>
+                            <a href="#" ui-sref="district({districtId: user.tvo_id})">{{user.tvo_id}}</a>
                         </strong>
                     </span>
                 </div>
@@ -34,7 +34,7 @@
                     <label>Ваш теріторіальний виборчий округ:&nbsp;</label>
                     <span>
                         <strong>
-                            <a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a>
+                            <a href="#" ui-sref="tvo({id: district.tvoid})">{{district.tvoid}}</a>
                         </strong>
                     </span>
                 </div>
@@ -48,7 +48,7 @@
                     <label>Ваш депутат:&nbsp;</label>
                     <span>
                         <strong>
-                            <a href="#!/deputy/{{deputy.id}}">{{deputy.name}}&nbsp;{{deputy.patronymic}}&nbsp;{{deputy.surname}}</a>
+                            <a href="#" ui-sref="deputy({id: deputy.id})">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</a>
                         </strong>
                     </span>
                 </div>
@@ -59,22 +59,16 @@
                     <table class="table-striped table-bordered table-hover table-condensed">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Додано</th>
                                 <th>Тип запиту</th>
                                 <th>Текст запиту</th>
-                                <th>Автор запиту</th>
                                 <th>Депутат</th>
                                 <th>Статус</th>
-                                <th>Дія</th>
                             </tr>
                         </thead>
                         <tr ng-repeat="request in requests">
                             <td>
-                                <a href="" ui-sref="request({requestId: request.requestid})">{{request.requestid}}</a>
-                            </td>
-                            <td>
-                                {{request.adddate}}
+                                <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
                             </td>
                             <td>
                                 {{request.type}}
@@ -83,16 +77,10 @@
                                 {{request.text}}
                             </td>
                             <td>
-                                <a href="" ui-sref="user({userId: request.user_id})">{{fullname(request)}}</a>
-                            </td>
-                            <td>
                                 <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
                             </td>
                             <td>
                                 {{request.status}}
-                            </td>
-                            <td>
-                                <button class="btn btn-danger" type="button" ng-click="delete_request(request.requestid)">Видалити</button>    
                             </td>
                         </tr>
                     </table>
