@@ -62,27 +62,19 @@
                                 <thead>
                                 <tr>
                                     <th>Додано</th>
-                                    <th>Тип запиту</th>
                                     <th>Текст запиту</th>
                                     <th>Депутат</th>
-                                    <th>Статус</th>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="request in requests | filter: {type: 'not_ready'} : true">
+                                <tr ng-repeat="request in requests | filter: {status: 'not_ready'} : true">
                                     <td>
                                         <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
-                                    </td>
-                                    <td>
-                                        {{request.type}}
                                     </td>
                                     <td>
                                         {{request.text}}
                                     </td>
                                     <td>
                                         <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
-                                    </td>
-                                    <td>
-                                        {{request.status}}
                                     </td>
                                 </tr>
                             </table>
@@ -92,27 +84,19 @@
                                 <thead>
                                 <tr>
                                     <th>Додано</th>
-                                    <th>Тип запиту</th>
                                     <th>Текст запиту</th>
                                     <th>Депутат</th>
-                                    <th>Статус</th>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="request in requests | filter: {type: 'new'} : true">
+                                <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
                                     <td>
                                         <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
-                                    </td>
-                                    <td>
-                                        {{request.type}}
                                     </td>
                                     <td>
                                         {{request.text}}
                                     </td>
                                     <td>
                                         <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
-                                    </td>
-                                    <td>
-                                        {{request.status}}
                                     </td>
                                 </tr>
                             </table>
