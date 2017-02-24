@@ -77,10 +77,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
             .state('view', {
                 url: '/view/:id',
                 templateUrl: '/angular/templates/view.html',
-                controller: 'RequestController',
+                controller: 'ViewController',
                 data:{
                     title: 'Звернення'
-                }
+                },
+                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]}
             })
             .state('user', {
                 url: '/user',

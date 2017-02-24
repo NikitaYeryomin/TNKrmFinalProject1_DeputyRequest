@@ -79,11 +79,6 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         
         $scope.getuser();
 
-        $scope.save = function() {
-            
-        };
-        
-        
         $scope.data = {};
         $scope.instruction_parts = {
             'pensioner' : 'Копия удостоверения..',
@@ -109,26 +104,5 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             var test = $state.current.name =='request.material' && $rootScope.show_survey == true;
             console.log('$state.current.name == request.material && show_survey == true : ' + test);
         }
-        
-        $scope.get_request = function() {
-            $http({
-                method: 'GET',
-                url: '/backend/dep_request/get/' + $scope.id
-            }).then(function(response) {
-                if (response.data.error == 0) {
-                    $scope.request = response.data.Request;
-                    $scope.request.public_appeal = ($scope.request.public_appeal == 1);
-                    //console.log($scope.request);
-                    $scope.types = $scope.transform(response.data.Types);
-                    $scope.states = $scope.transform(response.data.States);
-                    //console.log($scope.types);
-                    //console.log($scope.states);
-                } else {
-                    console.log('Error getting request info!');
-                    return;
-                }
-                $location.path('/request/' + $scope.id);
-            });
-        };
         
     }]);
