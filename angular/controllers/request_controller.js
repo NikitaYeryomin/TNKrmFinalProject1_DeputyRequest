@@ -26,6 +26,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         
         $scope.request = {};
         $scope.request.public_appeal = true;
+        
         $scope.add_request = function() {
             console.log($scope.request);
             $http({
