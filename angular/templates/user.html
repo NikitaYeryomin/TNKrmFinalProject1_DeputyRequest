@@ -101,14 +101,17 @@
                                 </tr>
                             </table>
                         </uib-tab>
-
                     </uib-tabset>
-
                 </div>
             </div>
             <div class="col-sm-12">
                 <a href="" ng-click="logout()">
                     <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out
+                </a>
+            </div>
+            <div class="col-sm-12" ng-show="currentUser.role == 'admin'">
+                <a href="/manage">
+                    <span>Адміністрування</span>
                 </a>
             </div>
         </div>
