@@ -36,6 +36,22 @@ class Dep_request extends Front_controller {
         ));
     }
     
+    public function get($id = NULL) {
+        $this->data['requests_item'] = $this->request->getrequests($id);
+        $request = $this->data['requests_item'];
+        $result = array('error' => 0);
+        if (empty($request)) {
+            $result['error'] = 1;
+            $result['message'] = 'Помилка завантаження звернення';
+        } else {
+            $result['Request'] = $request;
+            $result['Types'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'type'");
+            $result['States'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'status'");
+            //$result['City'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'status'");
+        }
+        echo json_encode($result);
+    }
+    
     /*
     public function view($id = NULL)
     {

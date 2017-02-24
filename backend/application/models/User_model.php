@@ -17,17 +17,18 @@ class User_model extends Base_model {
             return array(
                 'id'        => $row['userid'],
                 'username'  => fullname($row),
-                'role'      => $row['role']
+                'role'      => $row['role'],
+                'cityid'    => $row['city_id']
             );
         }
         return FALSE;
     }
 
-public function get_users()
-{
-    $query = $this->db->get('user');
-    return $query->result_array();
-}
+    public function get_users()
+    {
+        $query = $this->db->get('user');
+        return $query->result_array();
+    }
 
 }
 ?>
