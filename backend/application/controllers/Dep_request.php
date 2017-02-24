@@ -1,10 +1,10 @@
 <?php
 class Dep_request extends Front_controller {
-
+    
     public function add() {
         $logged_in = $this->session->userdata('logged_in');
         $this->data = array(
-            'type' => $this->input->post('$state.current.name'),
+            'type' => $this->input->post('type'),
             'text' => $this->input->post('text'),
             'public_appeal'=> $this->input->post('public_appeal') == 'true' ? 1 : 0,
             'user_id' => $logged_in['id'],

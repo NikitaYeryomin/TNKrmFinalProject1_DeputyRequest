@@ -1,17 +1,37 @@
-<h2>Анкета на отримання матеріальної допомоги</h2>
-<p>Ви пенсіонер?</p>
-<div class="row">
+<div class="row" ng-if="show_survey">
+    <div class="col-lg-7 col-sm-6">
+        <h2>Анкета на отримання матеріальної допомоги</h2>
+    </div>
     <div class="col-sm-12">
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="a" value="Пенсіонер" ng-model="data.pensioner" />Так
-            </label>
-            <label>
-                <input type="checkbox" />Ні
-            </label>
+        <div class="radio">
+            <p>Ви пенсіонер?</p>
+                <div>
+                    <input type="radio" name="a" value="Пенсіонер" ng-model="data.pensioner" />Так
+                </div>
+                <div>
+                    <input type="radio" name="a"/>Ні
+                </div>
+            <p>Ви інвалід?</p>
+                <div>
+                    <input type="radio" name="b" value="Інвалід" ng-model="data.disabled_person" />Так
+                </div>
+                <div>
+                    <input type="radio" name="b"/>Ні
+                </div>
+            <p>Ви ветеран війни?</p>
+                <div>
+                    <input type="radio" name="с" value="Ветеран війни" ng-model="data.war_veteran" />Так
+                </div>
+                <div>
+                    <input type="radio" name="с"/>Ні
+                </div>
         </div>
     </div>
-</div>
+ </div>
+ 
 
-<button type="button" id="previewButton" ng-click="getMaterialInstructions()">Відправити</button>
-<div ng-repeat="instruction in instructions">abc: {{instruction}}</div>
+<button type="button" id="previewButton" ng-click="getMaterialInstructions()" ng-if="show_survey">Далі</button>
+<div ng-if="!show_survey">
+    <h4>Документи на отримання матеріальної допомоги:</h4>
+    <div ng-repeat="instruction in instructions">abc: {{instruction}}</div>
+</div>
