@@ -74,6 +74,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                     title: 'Звернення до депутата місцевої ради'
                 }
             })
+            .state('view', {
+                url: '/view/:id',
+                templateUrl: '/angular/templates/view.html',
+                controller: 'RequestController',
+                data:{
+                    title: 'Звернення'
+                }
+            })
             .state('user', {
                 url: '/user',
                 templateUrl: '/angular/templates/user.html',

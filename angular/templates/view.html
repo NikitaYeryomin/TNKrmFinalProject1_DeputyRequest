@@ -1,0 +1,69 @@
+<ng-include src="'/angular/templates/header.html'"></ng-include>
+
+<section class="content" style="">
+
+    <div class="petition-main account-main">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <div style="background-color: blue; height: 10px"> </div>
+                    <div style="background-color: yellow; height: 10px"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-sm-2">
+                        <img src="/img/UA.jpg" 
+                            width="200px"
+                            alt="герб України">
+                    </div>    
+                    <div class="col-lg-8 col-sm-8">
+                        <h2 style="text-align: center">Звернення</h2>
+                        <h2 style="text-align: center">до депутата територіального виборчого округу № <a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a></h2>
+                        <h2 style="text-align: center"><strong><a href="#!/deputy/{{deputy.id}}">{{deputy.name}}&nbsp;{{deputy.patronymic}}&nbsp;{{deputy.surname}}</a></strong></h2>
+                    </div>
+                    <div class="col-lg-2 col-sm-2">
+                        <img src="/img/city_embleme_{{city.cityid}}.jpg" 
+                            width="200px"
+                            alt="герб міста">
+                    </div>
+                </div>
+                <div class="col-sm-12 register-tab">
+                    <form ng-submit="add_request()" role="form" novalidate="novalidate">
+                        <div class="row reg-input">
+                            <div class="col-lg-12 col-sm-12">
+                                <label>Заявник:&nbsp;<strong>{{currentUser.username}},</strong></label>
+                            </div>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>що проживає за адресою:&nbsp;<strong>{{user.city}},&nbsp;{{user.street}},&nbsp;{{user.home}}</strong></label>
+                            </div>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>Телефон:&nbsp;<strong>{{user.phone}}</strong></label>
+                            </div>
+                            <div class="col-lg-12 col-sm-12">
+                                <label>E-mail:&nbsp;<strong>{{user.email}}</strong></label>
+                            </div>
+                        </div>
+                        <div class="row reg-input">
+                            <div class="col-lg-3 col-sm-3">
+                                <label>Тип звернення:</label>
+                                <div class="reg-city-selector">
+                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="requestType" 
+                                        ng-model="requestType"
+                                        ng-init="requestType = requestTypes[0]"
+                                        data-ng-options="requestType.Title for requestType in requestTypes track by requestType.Name" 
+                                        data-ng-change="changeState(requestType.Name)">
+                                        <!--option disabled selected value="">Оберіть тип:</option>
+                                        <option value="material">Матеріальна допомога</option>
+                                        <option value="moral">Моральна допомога</option>
+                                        <option value="psychic">Психологічна допомога</option-->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div ui-view></div>
+                        <button type="submit" id="previewButton" ng-hide="$state.current.name =='request.material' && show_survey == true">Відправити</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
