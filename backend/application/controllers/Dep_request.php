@@ -20,6 +20,22 @@ class Dep_request extends Front_controller {
         }
         echo json_encode($result);
     }
+    
+    public function index() {
+        $logged_in = $this->session->userdata('logged_in');
+        if (!$logged_in) {
+            echo json_encode(array(
+            'error' => 1,
+            'message' => 'Access denied!'
+            ));
+        }
+        
+        echo json_encode(array(
+            'error' => 0,
+            'Requests' => $this->request->get_requests_by_user($logged_in['id'])
+        ));
+    }
+    
     /*
     public function view($id = NULL)
     {

@@ -26,7 +26,7 @@
                     <label>Ваша виборча дільниця:&nbsp;</label>
                     <span>
                         <strong>
-                            <a href="#!/district/{{user.tvo_id}}">{{user.tvo_id}}</a>
+                            <a href="#" ui-sref="district({districtId: user.tvo_id})">{{user.tvo_id}}</a>
                         </strong>
                     </span>
                 </div>
@@ -34,7 +34,7 @@
                     <label>Ваш теріторіальний виборчий округ:&nbsp;</label>
                     <span>
                         <strong>
-                            <a href="#!/tvo/{{district.tvoid}}">{{district.tvoid}}</a>
+                            <a href="#" ui-sref="tvo({id: district.tvoid})">{{district.tvoid}}</a>
                         </strong>
                     </span>
                 </div>
@@ -48,13 +48,63 @@
                     <label>Ваш депутат:&nbsp;</label>
                     <span>
                         <strong>
-                            <a href="#!/deputy/{{deputy.id}}">{{deputy.name}}&nbsp;{{deputy.patronymic}}&nbsp;{{deputy.surname}}</a>
+                            <a href="#" ui-sref="deputy({id: deputy.id})">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</a>
                         </strong>
                     </span>
                 </div>
             </div>
             <div class="col-sm-12">
                 <h2>Звернення користувача</h2>
+                <div>
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Не завершені">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Додано</th>
+                                    <th>Текст запиту</th>
+                                    <th>Депутат</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {status: 'not_ready'} : true">
+                                    <td>
+                                        <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.text}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                        <uib-tab index="1" heading="Нові">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Додано</th>
+                                    <th>Текст запиту</th>
+                                    <th>Депутат</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
+                                    <td>
+                                        <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.text}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+
+                    </uib-tabset>
+
+                </div>
             </div>
             <div class="col-sm-12">
                 <a href="" ng-click="logout()">

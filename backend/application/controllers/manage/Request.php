@@ -22,6 +22,22 @@ class Request extends Admin_controller {
             'Requests' => $this->request->getrequests()
         ));
     }
+    
+    public function save($id) {
+        $post = array(
+                'status'        => $this->input->post('status'),
+                'type'          => $this->input->post('type'),
+                'text'          => $this->input->post('text'),
+                'response'      => $this->input->post('response'),
+                'public_appeal' => $this->input->post('public_appeal')
+            );
+        $result = $this->request->set_data($id, $post);
+        if ($result) {
+            echo json_encode(array(
+                    'error' => 0
+                ));
+        }
+    }
         
     public function edit($id = FALSE){
         

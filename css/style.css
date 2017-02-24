@@ -1146,14 +1146,16 @@ footer .bund-ukrain div p {
 .petition-main .tab-inner {
     min-height: 200px;
 }
+
 .petition-main table thead tr th {
     font-weight: 300;
     color: #aaacb1;
-    font-family: 'Roboto-Medium';
+    /*font-family: 'Roboto-Medium';*/
     font-size: 12px;
     border-bottom: 1px solid #bec0c6;
     padding-bottom: 15px;
 }
+
 .petition-main table tbody tr:hover {
     background-color: #fffbea;
 }
@@ -1164,7 +1166,7 @@ footer .bund-ukrain div p {
     border-bottom: 1px solid #e9eaec;
 }
 .petition-main table tbody tr td a {
-    color: #293042;
+    /*color: #293042;*/
     font-family: "Roboto-Regular";
     border: none;
     margin-right: 10px;
