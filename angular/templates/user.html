@@ -68,7 +68,7 @@
                                 </thead>
                                 <tr ng-repeat="request in requests | filter: {status: 'not_ready'} : true">
                                     <td>
-                                        <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
                                     <td>
                                         {{request.text}}
@@ -90,7 +90,7 @@
                                 </thead>
                                 <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
                                     <td>
-                                        <a href="" ui-sref="requestview({requestId: request.requestid})">{{request.adddate}}</a>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
                                     <td>
                                         {{request.text}}
