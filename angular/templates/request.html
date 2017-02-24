@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div ui-view></div>
-                        <button type="submit" id="previewButton">Відправити</button>
+                        <button type="submit" id="previewButton" ng-hide="$state.current.name =='request.material' && show_survey == true">Відправити</button>
                     </form>
                 </div>
             </div>
