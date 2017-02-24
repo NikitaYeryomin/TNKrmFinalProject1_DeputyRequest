@@ -1,1 +1,17 @@
-<p>Запит на матеріальну допомогу</p>
+<h2>Анкета на отримання матеріальної допомоги</h2>
+<p>Ви пенсіонер?</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="a" value="Пенсіонер" ng-model="data.pensioner" />Так
+            </label>
+            <label>
+                <input type="checkbox" />Ні
+            </label>
+        </div>
+    </div>
+</div>
+
+<button type="button" id="previewButton" ng-click="getMaterialInstructions()">Відправити</button>
+<div ng-repeat="instruction in instructions">abc: {{instruction}}</div>

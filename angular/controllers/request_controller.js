@@ -68,4 +68,22 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             
         };
         
+        
+        $scope.data = {};
+        $scope.instruction_parts = {
+            'pensioner' : 'Копия удостоверения..',
+            'disabled person' : 'Справка МСЭК..'
+        }
+        
+        $scope.getMaterialInstructions = function() {
+            console.log('getMaterialInstructions');
+            $scope.instructions = [];
+            if ($scope.data.pensioner) {
+                 $scope.instructions.push( $scope.instruction_parts['pensioner']);
+            }
+            console.log($scope.data);
+            console.log($scope.instructions);
+            console.log($state.current.name);
+        }
+        
     }]);
