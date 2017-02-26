@@ -3,7 +3,7 @@
 <h2 style="text-align: center" id="h2">територіальний виборчий округ № {{id}}
 <br><span class="l">з виборів депутатів Краматорської міської ради</span></h2>
 <div ng-repeat="district in districts">
-<fieldset> <legend>виборча дільниця № <a href="#!/district/{{district.id}}">{{district.id}}</a></legend>
+<fieldset> <legend>виборча дільниця № <a href="#!/district/{{district.id}}">{{district.id}}</a> <span style="background-color:{{district.color}};"> </span></legend>
 <p title="місцезнаходження дільничної комісії / приміщення для голосування" style="font-style: italic;"><img src="/img/flag.gif"> {{district.address}}</p>
 <p>{{district.addresses}}</p>
 </fieldset>

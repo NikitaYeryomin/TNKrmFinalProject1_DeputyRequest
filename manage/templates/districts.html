@@ -3,8 +3,8 @@
     <tr>
         <th>номер
         <th>межі
-        <th>знаходження місця для голосування
-        <th><acronym title="територіальний виборчий округ">ТВО</acronym>
+        <th><a href="#" ui-sref="places">знаходження місця для голосування</a>
+        <th><a href="#" ui-sref="tvo"><acronym title="територіальний виборчий округ">ТВО</acronym></a>
 <tr ng-repeat="district in districts">
     <td><a href="#!/district/{{district.id}}">{{district.id}}</a></td>
     <td>{{district.addresses}}</td>

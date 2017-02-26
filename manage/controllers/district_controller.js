@@ -14,11 +14,7 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
                     ,'id': $scope.district.id
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function(response) {
-                if (response.data.error == 0) {
-                    $location.path('/districts');
-                }
-            });
+            }).then(function(response) {if (response.data.error == 0) {$location.path('/districts');}});
         };
   }])
 
