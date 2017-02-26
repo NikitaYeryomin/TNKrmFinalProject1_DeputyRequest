@@ -47,26 +47,31 @@
                         <label>Зміст звернення:</label>
                         <p>{{request.text}}</p>
                     </div>
-                </div>
-                <div class="col-sm-12 register-tab">
+                    <div class="col-lg-12 col-sm-12" ng-show="request.status == 'answered'">
+                        <label>Відповідь:</label>
+                        <p>{{request.response}}</p>
+                    </div>
                 </div>
                 <div class="col-sm-12 register-tab" ng-show="currentUser.role == 'deputy'">
-                    <form ng-submit="add_request()" role="form" novalidate="novalidate">
+                    <form ng-submit="respond()" role="form" novalidate="novalidate">
                         <div class="row reg-input">
-                            <div class="col-lg-3 col-sm-3">
-                                <label>Тип звернення:</label>
-                                <div class="reg-city-selector">
-                                    <select class="selectpicker show-tick form-control bs-select-hidden" name="requestType" 
-                                        ng-model="requestType"
-                                        ng-init="requestType = requestTypes[0]"
-                                        data-ng-options="requestType.Title for requestType in requestTypes track by requestType.Name" 
-                                        data-ng-change="changeState(requestType.Name)">
-                                    </select>
-                                </div>
+                            <div class="col-lg-4 col-sm-4">
+                                <button type="respond" id="respondButton">Відповісти</button>
+                            </div>
+                            <div class="col-lg-4 col-sm-4">
+                                <button type="reject" id="rejectButton">Відхилити</button>
+                            </div>
+                            <div class="col-lg-4 col-sm-4">
+                                <button type="meeting" id="meetingButton">Призначити зустріч</button>
                             </div>
                         </div>
-                        <button type="submit" id="previewButton">Відправити</button>
+                        <button type="submit" id="previewButton">Відповісти</button>
                     </form>
+                </div>
+                <div class="col-sm-12 register-tab">
+                    <a href="#" ui-sref="user">
+                        <span class="glyphicon glyphicon-hand-left"></span>&nbsp;<strong>Повернутись у кабінет</strong>
+                    </a>
                 </div>
             </div>
         </div>

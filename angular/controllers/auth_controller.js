@@ -18,7 +18,11 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
                     //console.log('returnUrl: ' + $rootScope.returnUrl);
-                    var path= '/user';
+                    if ($rootScope.currentUser.role == 'deputy') {
+                        var path= '/office';    
+                    } else {
+                        var path= '/user';
+                    }
                     if ($rootScope.returnUrl) {
                         path = $rootScope.returnUrl;
                         $rootScope.returnUrl = null;

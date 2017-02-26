@@ -35,13 +35,14 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
+                            <li ng-show="currentUser.role == 'deputy'">
+                                <a href="#" ui-sref="office">Кабінет депутата</a>
+                            </li>
+                            <li ng-show="currentUser.role == ('user' || 'admin')">
                                 <a href="#" ui-sref="user">Мій кабінет</a>
                             </li>
                             <li ng-show="currentUser.role == 'admin'">
-                                <a href="/manage">
-                                    <span>Адміністрування</span>
-                                </a>
+                                <a href="/manage">Адміністрування</span></a>
                             </li>
                             <li>
                                 <a href="" ng-click="logout()">

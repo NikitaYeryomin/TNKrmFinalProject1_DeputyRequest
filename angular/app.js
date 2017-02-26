@@ -91,6 +91,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                     title: 'Кабінет користувача'
                 }
             })
+            .state('office', {
+                url: '/office',
+                templateUrl: '/angular/templates/office.html',
+                controller: 'OfficeController',
+                data:{
+                    title: 'Кабінет депутата'
+                }
+            })
             .state('districts', {
                 url: '/districts',
                 templateUrl: '/angular/templates/districts_index.html',
