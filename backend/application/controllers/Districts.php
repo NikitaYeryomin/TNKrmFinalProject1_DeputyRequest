@@ -120,9 +120,7 @@ public function index()
         $data['districts'] = $districts;
         $places = $this->place->get_places();
         $data['places'] = $places;
-
         $data['error'] = 0;
-
         foreach ($districts as $k1 => $v1) {
             $districts[$k1]['vertex'] = explode(";", $districts[$k1]['vertex']);
             foreach ($districts[$k1]['vertex'] as $k2 => $v2) {
@@ -151,7 +149,6 @@ public function index()
             }
         }
         $data['scale'] = $scale;
-
         $_districts = array();
         foreach ($districts as $k4 => $v4) {
             $vertex = array();
@@ -164,20 +161,16 @@ public function index()
             $_districts[$k4] = array($districts[$k4]['id'], $vertex, $this->сolorizer());
         }
         $data['districts_on_map'] = $_districts;
-
         $_places = array();
         foreach ($places as $k => $v) {
             $_places[$k]= array($places[$k]['latitude'], $places[$k]['longitude']);
             $vote_places = array();
             foreach ($districts as $k2 => $v2) {
-                if ($districts[$k2]['place_id'] == $places[$k]['id']) {
-                    $vote_places[] = $districts[$k2]['id'];
-                }
+                if ($districts[$k2]['place_id'] == $places[$k]['id']) {$vote_places[] = $districts[$k2]['id'];}
             }
             $_places[$k][] = $vote_places;
         }
         $data['places_on_map'] = $_places;
-
         echo json_encode($data, JSON_NUMERIC_CHECK );
     }
 
@@ -296,7 +289,6 @@ public function add()
         $data['tvo'] = $this->tvo->get_tvo();
         $data['error'] = 0;
         echo json_encode($data,JSON_NUMERIC_CHECK);
-        
     }
 
     public function get_tvo() {
