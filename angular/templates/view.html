@@ -47,14 +47,18 @@
                         <label>Зміст звернення:</label>
                         <p>{{request.text}}</p>
                     </div>
+                    <div class="col-lg-12 col-sm-12" ng-show="request.status == 'rejected'">
+                        <label>Відхилено з причини:</label>
+                        <p>{{request.response}}</p>
+                    </div>
                     <div class="col-lg-12 col-sm-12" ng-show="request.status == 'answered'">
                         <label>Відповідь:</label>
                         <p>{{request.response}}</p>
                     </div>
                 </div>
-                <div class="col-sm-12 register-tab" ng-show="currentUser.role == 'deputy'">
+                <div class="col-sm-12 register-tab" ng-show="request.status == 'new' && currentUser.role == 'deputy'">
                     <form ng-submit="respond()" role="form" novalidate="novalidate">
-                        <div class="row reg-input">
+                        <div class="row">
                             <div class="col-lg-4 col-sm-4">
                                 <button type="respond" id="respondButton">Відповісти</button>
                             </div>
@@ -65,10 +69,11 @@
                                 <button type="meeting" id="meetingButton">Призначити зустріч</button>
                             </div>
                         </div>
+                        
                         <button type="submit" id="previewButton">Відповісти</button>
                     </form>
                 </div>
-                <div class="col-sm-12 register-tab">
+                <div class="col-sm-12">
                     <a href="#" ui-sref="user" ng-show="currentUser.role == 'user' || currentUser.role == 'admin'">
                         <span class="glyphicon glyphicon-hand-left"></span>&nbsp;<strong>Повернутись у кабінет</strong>
                     </a>

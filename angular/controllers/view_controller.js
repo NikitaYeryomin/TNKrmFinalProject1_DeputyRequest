@@ -1,15 +1,20 @@
 app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams',
     function($scope, $rootScope, $http, $location, $state, $stateParams) {
         
+        $scope.id = $stateParams.id;
+        
         $scope.getuser = function() {
             $http({
                 method: 'GET',
-                url: '/backend/user/get/' + $rootScope.currentUser.id
+                url: '/backend/user/get/' + $scope.request.user_id
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.user = response.data.User;
                     $scope.district = response.data.District;
                     $scope.deputy = response.data.Deputy;
+                    //console.log($scope.user);
+                    //console.log($scope.district);
+                    //console.log($scope.deputy);
                 }
             });
         };
@@ -21,12 +26,11 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.request = response.data.Request;
-                    console.log($scope.request);
+                    $scope.getuser();
+                    //console.log($scope.request);
                 }
             });
         };
-        
-        $scope.getuser();
         
         $scope.get_request();
         

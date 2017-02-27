@@ -14,12 +14,16 @@
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Додано</th>
                                     <th>Текст запиту</th>
-                                    <th>Депутат</th>
+                                    <th>Заявник</th>
                                 </tr>
                                 </thead>
                                 <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
+                                    <td>
+                                        {{request.requestid}}
+                                    </td>
                                     <td>
                                         <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
@@ -27,7 +31,7 @@
                                         {{request.text}}
                                     </td>
                                     <td>
-                                        <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                                        <a href="" ui-sref="user({id: request.user_id})">{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}</a>
                                     </td>
                                 </tr>
                             </table>
@@ -36,12 +40,16 @@
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Додано</th>
                                     <th>Текст запиту</th>
                                     <th>Депутат</th>
                                 </tr>
                                 </thead>
                                 <tr ng-repeat="request in requests | filter: {status: 'answered'} : true">
+                                    <td>
+                                        {{request.requestid}}
+                                    </td>
                                     <td>
                                         <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>

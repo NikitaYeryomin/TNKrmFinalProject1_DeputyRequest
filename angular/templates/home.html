@@ -38,10 +38,7 @@
                             <li ng-show="currentUser.role == 'deputy'">
                                 <a href="#" ui-sref="office">Кабінет депутата</a>
                             </li>
-                            <li ng-show="currentUser.role == 'user'">
-                                <a href="#" ui-sref="user">Мій кабінет</a>
-                            </li>
-                            <li ng-show="currentUser.role == 'admin'">
+                            <li ng-show="currentUser.role == 'user' || currentUser.role == 'admin'">
                                 <a href="#" ui-sref="user">Мій кабінет</a>
                             </li>
                             <li ng-show="currentUser.role == 'admin'">
