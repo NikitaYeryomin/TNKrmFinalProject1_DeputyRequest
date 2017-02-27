@@ -47,6 +47,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controller: 'DeputyController',
                 resolve: {$title: function() {return 'список депутатів'}}
             })
+            .state('deputy/create', {
+                url: '/deputy/create',
+                templateUrl: '/manage/templates/deputy.html',
+                controller: 'DeputyController',
+                resolve: {$title: function() {return 'народити депутата'}}
+            })   
             .state('deputy', {
                 url: '/deputy/:id',
                 templateUrl: '/manage/templates/deputy.html',

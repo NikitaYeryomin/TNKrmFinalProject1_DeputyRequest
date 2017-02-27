@@ -1,17 +1,18 @@
 <div deputies-list=""></div>
-    <table class="table-striped table-bordered table-hover table-condensed">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>прізвище, ім'я, по батькові
-                <th>партія
-                <th><acronym title="територіальний виборчий округ">ТВО</acronym>
-                <th>id зареєстрованого користувача
-        </thead>
+<table class="table-striped table-bordered table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>прізвище, ім'я, по батькові
+            <th>партія
+            <th><acronym title="територіальний виборчий округ">ТВО</acronym>
+            <th>id зареєстрованого користувача
+    </thead>
         <tr ng-repeat="deputy in deputies">
             <td>{{deputy.id}}</td>
             <td><a href="#!/deputy/{{deputy.id}}">{{deputy.surname}} {{deputy.name}} {{deputy.patronymic}}</a>
             <td>{{deputy.party}}
             <td>{{deputy.tvoid}}
             <td><a href="#!/user/{{deputy.user_id}}">{{deputy.user_id}}</a>
-    </table>
+        <tr><td colspan="5" align="center"><a href="#!/deputy/create">народити депутата</a>
+</table>

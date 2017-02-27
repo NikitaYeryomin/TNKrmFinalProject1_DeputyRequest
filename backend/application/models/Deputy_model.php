@@ -23,10 +23,13 @@ public function get_deputies_for_tvo($id = FALSE)
 
 public function set_deputy($id = NULL, $data)
 {
-        if ($data['user_id']==0){$data['user_id']=NULL;}
-        if (!$id){return $this->db->insert('deputies', $data);}
-        return $this->db->update('deputies', $data, array('id' => $id));
+        //if ($data['user_id']==0){$data['user_id']=NULL;}
+        if (!$id){return $this->db->insert('deputies', $data);print_r($data); }
+        return $this->db->update('deputies', $data, array('id' => $id));print_r($this); 
 }
+
+
+public function adddeputy($data){return $this->db->insert('deputies', $data);}
 
 
     

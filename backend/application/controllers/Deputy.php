@@ -34,12 +34,18 @@ public function index()
     }
     
 /******************************редактировать депутата***********************************************/
-public function viewandedit($id)
+public function viewandedit($id=NULL)
     {
-        $deputy = $this->deputy->get_deputies($id);
-        $data['deputy'] = $deputy;
+        if ($id>0){$deputy = $this->deputy->get_deputies($id);
+        $data['deputy'] = $deputy;}
         $tvo = $this->tvo->get_tvo();
         array_push($tvo,array('id'=>'0'));
+        foreach ($tvo as $k=>$v){
+            $temp = new stdClass();
+            $temp->v = $v['id'];
+            $temp->t = ($v['id']==0?'лідер партійного списку':$v['id']);
+            $tvo[$k]=$temp;
+        }
         $data['tvo']=$tvo;
         $parties=$this->party->get_parties();
         $data['parties']=$parties;
@@ -64,9 +70,11 @@ public function editandsave($id){
                 'function'=> $this->input->post('function'),
                 'reception'=> $this->input->post('reception'),
             );
-        $result = $this->deputy->set_deputy($id, $data);
-        //print_r($data); 
-        if ($result) {echo json_encode(array('error' => 0));}
+    /*print_r($data); */
+    if ($data['user_id']==0){$data['user_id']=NULL;}
+    if ($id>0){$result = $this->deputy->set_deputy($id, $data);}
+    else {$result = $this->deputy->adddeputy($data);}
+    if ($result) {echo json_encode(array('error' => 0));}
 }
 
    

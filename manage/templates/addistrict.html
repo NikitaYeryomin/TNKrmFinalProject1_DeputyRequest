@@ -7,17 +7,19 @@
 <fieldset>
     <legend>межі</legend>
     <script>
-    function spacesAfterPoints (){
+    function spacesAfterPointsAndFineQuotes (){
         var addresses=document.getElementById("addresses");
         var str=addresses.value; 
         for (var i = 0; i < str.length; i++) {
             if ((str.charAt(i)=='.'||str.charAt(i)==','||str.charAt(i)=='№') && str.charAt(i+1)!=' ')
             {str=str.slice(0,i+1)+' '+str.slice(i+1);}
         }
+        if (str.indexOf('"')>=0)    
+            {str=str.slice(0,str.indexOf('"'))+'«'+str.slice(str.indexOf('"')+1,str.lastIndexOf('"'))+'»'+str.slice(str.lastIndexOf('"')+1); }
         addresses.value=str;
     }
     </script>
-    <textarea name="addresses" id="addresses" rows="3" cols="180" required onchange="spacesAfterPoints()" ng-model="district.addresses" placeholder="адреси"></textarea><br />
+    <textarea name="addresses" id="addresses" rows="3" cols="180" required onchange="spacesAfterPointsAndFineQuotes()" ng-model="district.addresses" placeholder="адреси"></textarea><br />
     <!--input size="200" name="vertex" id="vertex" value="{{district.rawvertex}}" ng-model="district.rawvertex" required-->
     <em>Клацніть на мапі для початку малювання багатокутника. Для відображення кнопки видалення вершини клацніть правою кнопкою.</em>
     <div add-district="" style="width: 800px; height: 450px; margin: 0 auto;"></div>
