@@ -31,7 +31,7 @@ class Dep_request extends Front_controller {
         }
         echo json_encode(array(
             'error' => 0,
-            'Requests' => $this->request->get_requests_by_user($logged_in['id'])
+            'Requests' => $this->request->get_requests_by_user($logged_in['id'], 'user')
         ));
     }
     
@@ -44,7 +44,7 @@ class Dep_request extends Front_controller {
         }
         echo json_encode(array(
             'error' => 0,
-            'Requests' => $this->request->get_requests_by_user($id)
+            'Requests' => $this->request->get_requests_by_user($id, 'deputy')
         ));
     }
     

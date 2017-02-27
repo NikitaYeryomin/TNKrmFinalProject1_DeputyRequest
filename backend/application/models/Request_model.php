@@ -27,16 +27,17 @@ class Request_model extends Base_model {
         return (count($this->db->query('SELECT deputies.id FROM deputies WHERE user_id = ?', array($id))->result_array()) > 0);
     }
     */
-    public function get_requests_by_user($id) {
+    public function get_requests_by_user($id, $role) {
         if (!$id) {
             //TODO: throw 'User id not defined!';
             return null;
         }
-        if (count($this->db->query('SELECT deputies.id FROM deputies WHERE user_id = ?', array($id))->result_array()) > 0) {
+        if ($role == 'deputy') {
             $this->sql .= ' WHERE request.deputy_id = ?';
         } else {
             $this->sql .= ' WHERE request.user_id = ?';
         }
+        //print($this->sql);
         $result = $this->db->query($this->sql, array($id))->result_array();
         return $result;
     }
