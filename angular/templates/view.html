@@ -57,20 +57,66 @@
                     </div>
                 </div>
                 <div class="col-sm-12 register-tab" ng-show="request.status == 'new' && currentUser.role == 'deputy'">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-4">
+                            <button type="respond" id="respondButton" data-toggle="modal" data-target="#respondPreviewModal">Відповісти</button>
+                        </div>
+                        <div class="col-lg-4 col-sm-4">
+                            <button type="reject" id="rejectButton" data-toggle="modal" data-target="#rejectPreviewModal">Відхилити</button>
+                        </div>
+                        <div class="col-lg-4 col-sm-4">
+                            <button type="meeting" id="meetingButton" data-toggle="modal" data-target="#meetingPreviewModal">Призначити зустріч</button>
+                        </div>
+                    </div>
                     <form ng-submit="respond()" role="form" novalidate="novalidate">
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-4">
-                                <button type="respond" id="respondButton">Відповісти</button>
-                            </div>
-                            <div class="col-lg-4 col-sm-4">
-                                <button type="reject" id="rejectButton">Відхилити</button>
-                            </div>
-                            <div class="col-lg-4 col-sm-4">
-                                <button type="meeting" id="meetingButton">Призначити зустріч</button>
+                        <div class="modal fade" id="respondPreviewModal">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content new-modal-content">
+                                    <div class="modal-header">
+                                        <div class="top-modal-head">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <h4 class="modal-title">Відповідь на звернення:</h4>
+                                        <div class="head-modal-border"></div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="previewContent" class="row">
+                                            <textarea class="form-control" cols="20" data-val="true" data-val-required="Це обов`язкове поле" id="Response" name="Response" placeholder="Відповідь на звернення" ng-model="request.response" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="footer-modal-border"></div>
+                                        <input type="submit" value="Відповісти" class="registration-submit" style="margin-bottom: 0px;">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <button type="submit" id="previewButton">Відповісти</button>
+                    </form>
+                    <form ng-submit="reject()" role="form" novalidate="novalidate">
+                        <div class="modal fade" id="rejectPreviewModal">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content new-modal-content">
+                                    <div class="modal-header">
+                                        <div class="top-modal-head">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <h4 class="modal-title">Відхилити звернення:</h4>
+                                        <div class="head-modal-border"></div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="previewContent" class="row">
+                                            <textarea class="form-control" cols="20" data-val="true" data-val-required="Це обов`язкове поле" id="Reject" name="Reject" placeholder="Відхилити звернення" ng-model="request.response" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="footer-modal-border"></div>
+                                        <input type="submit" value="Відхилити" class="registration-submit" style="margin-bottom: 0px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="col-sm-12">
