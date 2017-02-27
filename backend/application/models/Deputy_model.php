@@ -29,7 +29,5 @@ public function set_deputy($id = NULL, $data)
 }
 
 
-
-
     
 }

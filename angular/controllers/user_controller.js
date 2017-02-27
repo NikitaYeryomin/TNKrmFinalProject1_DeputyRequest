@@ -16,14 +16,15 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.get_requests = function() {
             $http({
                 method: 'GET',
-                url: '/backend/dep_request/index'
+                url: '/backend/dep_request'
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.requests = response.data.Requests;
-                    //console.log($scope.requests);
+                    console.log($scope.requests);
                 }
             });
         };
+        
         $scope.get_requests();
         
         $scope.register = function() {
