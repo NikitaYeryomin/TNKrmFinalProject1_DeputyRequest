@@ -1,6 +1,8 @@
 app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location', '$state', '$stateParams',
     function($scope, $rootScope, $http, $location, $state, $stateParams) {
+        
         $rootScope.$state = $state;
+        
         $scope.getuser = function() {
             if (!$rootScope.logged_in) {
                 $rootScope.returnUrl = '/request/custom';
@@ -77,11 +79,6 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         
         $scope.getuser();
 
-        $scope.save = function() {
-            
-        };
-        
-        
         $scope.data = {};
         $scope.instruction_parts = {
             'pensioner' : 'Копия удостоверения..',
@@ -107,7 +104,5 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             var test = $state.current.name =='request.material' && $rootScope.show_survey == true;
             console.log('$state.current.name == request.material && show_survey == true : ' + test);
         }
-        
-        
         
     }]);

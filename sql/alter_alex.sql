@@ -7,3 +7,5 @@ ALTER TABLE  `request` CHANGE  `status`  `status` ENUM(  'new',  'answered',  'r
 ALTER TABLE  `request` ADD  `response` VARCHAR( 255 ) NULL DEFAULT NULL ;
 ALTER TABLE  `request` CHANGE  `reception`  `reception` TIMESTAMP NULL ;
 ALTER TABLE  `request` CHANGE  `type`  `type` ENUM(  'custom',  'material',  'living',  'family' ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
+26.02.2017
+ALTER TABLE  `request` CHANGE  `status`  `status` ENUM(  'new',  'answered',  'rejected',  'not_ready' ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT  'new';

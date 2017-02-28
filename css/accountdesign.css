@@ -327,7 +327,10 @@ input[disabled] {
     font-size: 16px;
     color: #929293;
 }
-#previewButton {
+#previewButton,
+#respondButton,
+#meetingButton, 
+#rejectButton {
     font-family: 'Roboto-Bold';
     font-size: 16px;
     color: #3C3F47;

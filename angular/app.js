@@ -74,12 +74,29 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                     title: 'Звернення до депутата місцевої ради'
                 }
             })
+            .state('view', {
+                url: '/view/:id',
+                templateUrl: '/angular/templates/view.html',
+                controller: 'ViewController',
+                data:{
+                    title: 'Звернення'
+                },
+                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]}
+            })
             .state('user', {
                 url: '/user',
                 templateUrl: '/angular/templates/user.html',
                 controller: 'UserController',
                 data:{
                     title: 'Кабінет користувача'
+                }
+            })
+            .state('office', {
+                url: '/office',
+                templateUrl: '/angular/templates/office.html',
+                controller: 'OfficeController',
+                data:{
+                    title: 'Кабінет депутата'
                 }
             })
             .state('districts', {

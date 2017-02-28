@@ -1,4 +1,10 @@
+<div deputy-edit=""></div>
+{{listtitle}}
+<ul class="columns">
+    <li ng-repeat="deputy in deputies">{{deputy.name[0]}}. {{deputy.patronymic[0]}}. {{deputy.surname}}
+</ul>
 <form ng-submit="savedeputy({id: deputy.id})" role="form">
+<input name="new_id" value="{{new_id}}" ng-model="new_id" hidden>    
 <div class="row reg-input" style="margin-bottom:10px;">
     <div class="col-lg-3 col-md-3">
         <label>прізвище</label>
@@ -40,7 +46,7 @@
     <div class="col-lg-3 col-sm-3">
         <label>територіальний виборчий округ</label>
             <select class="selectpicker show-tick form-control bs-select-hidden" name="tvoid" ng-model="deputy.tvoid">
-            <option ng-repeat="t in tvo" value="{{t.id}}" ng-selected="{{t.id ==deputy.tvoid}}">{{t.id}}</option>
+            <option ng-repeat="t in tvo" value="{{t.v}}">{{t.t}}</option>
             </select>
     </div>
     <div class="col-lg-3 col-sm-3">

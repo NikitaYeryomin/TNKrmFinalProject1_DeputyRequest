@@ -103,5 +103,27 @@ class User extends Front_controller {
                 ));
         }
     }
+    
+    public function get_deputy($id) {
+        if ($id) {
+            $result = $this->user->sqlexec('SELECT deputies.id FROM deputies WHERE deputies.user_id = ' . $id);
+            if ($result) {
+                echo json_encode(array(
+                        'error'  => 0,
+                        'dep_id' => $result[0]['id']
+                    ));
+            } else {
+                echo json_encode(array(
+                    'error' => 1,
+                    'message' => 'Deputy is not registered'
+                ));    
+            }
+        } else {
+            echo json_encode(array(
+                    'error' => 2,
+                    'message' => 'Incorrect UserId'
+                ));
+        }
+    }
 }
 ?>

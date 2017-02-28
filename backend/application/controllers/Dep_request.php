@@ -25,15 +25,42 @@ class Dep_request extends Front_controller {
         $logged_in = $this->session->userdata('logged_in');
         if (!$logged_in) {
             echo json_encode(array(
-            'error' => 1,
-            'message' => 'Access denied!'
+                'error' => 1,
+                'message' => 'Access denied!'
             ));
         }
-        
         echo json_encode(array(
             'error' => 0,
-            'Requests' => $this->request->get_requests_by_user($logged_in['id'])
+            'Requests' => $this->request->get_requests_by_user($logged_in['id'], 'user')
         ));
+    }
+    
+    public function deprequests($id) {
+        if (!$id) {
+            echo json_encode(array(
+                'error' => 1,
+                'message' => 'Access denied!'
+            ));
+        }
+        echo json_encode(array(
+            'error' => 0,
+            'Requests' => $this->request->get_requests_by_user($id, 'deputy')
+        ));
+    }
+    
+    public function get($id = NULL) {
+        $this->data['requests_item'] = $this->request->getrequests($id);
+        $request = $this->data['requests_item'];
+        $result = array('error' => 0);
+        if (empty($request)) {
+            $result['error'] = 1;
+            $result['message'] = 'Помилка завантаження звернення';
+        } else {
+            $result['Request'] = $request;
+            $result['Types'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'type'");
+            $result['States'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'status'");
+        }
+        echo json_encode($result);
     }
     
     /*

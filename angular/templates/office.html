@@ -1,0 +1,80 @@
+<ng-include src="'/angular/templates/header.html'"></ng-include>
+<section class="content" style="">
+    <div class="petition-main account-main">
+        <div class="container">
+            <div class="col-sm-6">
+                <h2>Кабінет депутата:</h2>
+                <h2>{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</h2>
+            </div>
+            <div class="col-sm-12">
+                <h2>Звернення до депутата</h2>
+                <div>
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Нові">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Додано</th>
+                                    <th>Текст запиту</th>
+                                    <th>Заявник</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
+                                    <td>
+                                        {{request.requestid}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.text}}
+                                    </td>
+                                    <td>
+                                        {{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                        <uib-tab index="1" heading="Надано відповідь">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Додано</th>
+                                    <th>Текст запиту</th>
+                                    <th>Депутат</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {status: 'answered'} : true">
+                                    <td>
+                                        {{request.requestid}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.text}}
+                                    </td>
+                                    <td>
+                                        {{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <a href="" ng-click="logout()">
+                    <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out
+                </a>
+            </div>
+            <div class="col-sm-12" ng-show="currentUser.role == 'admin'">
+                <a href="/manage">
+                    <span>Адміністрування</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

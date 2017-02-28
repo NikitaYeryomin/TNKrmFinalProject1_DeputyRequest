@@ -108,15 +108,3 @@ th
 .modal-header {
     text-align: left;
 }
-
-.size {
-    overflow: hidden; /* Обрезаем содержимое */
-    text-overflow: ellipsis; /* Многоточие */
-    overflow: hidden; 
-    white-space: nowrap;
-}
-
-.size:hover {
-    background: #f0f0f0; /* Цвет фона */
-    white-space: normal; /* Обычный перенос текста */
-}
