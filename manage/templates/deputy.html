@@ -78,6 +78,8 @@ function noBreaks (){
         if (str.charAt(i)==',\n' || str.charAt(i)=='\n')
         {str=str.slice(0,i)+', '+str.slice(i+1);}
     }
+    if (str.indexOf('"')>=0)    
+        {str=str.slice(0,str.indexOf('"'))+'«'+str.slice(str.indexOf('"')+1,str.lastIndexOf('"'))+'»'+str.slice(str.lastIndexOf('"')+1); }
     reception.value=str;
 }
 function fineQuotes (){
