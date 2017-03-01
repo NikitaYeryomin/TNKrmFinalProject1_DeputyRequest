@@ -35,8 +35,8 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.get_request();
         
         $scope.respond = function() {
-                
-        }
+            
+        };
         
         $scope.reject = function() {
             

@@ -57,7 +57,7 @@
                 <h2>Звернення користувача</h2>
                 <div>
                     <uib-tabset active="active">
-                        <uib-tab index="0" heading="Не завершені">
+                        <uib-tab index="0" heading="Нові">
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
@@ -66,7 +66,7 @@
                                     <th>Депутат</th>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="request in requests | filter: {status: 'not_ready'} : true">
+                                <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
                                     <td>
                                         <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
@@ -79,7 +79,7 @@
                                 </tr>
                             </table>
                         </uib-tab>
-                        <uib-tab index="1" heading="Нові">
+                        <uib-tab index="1" heading="Не завершені">
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
@@ -88,7 +88,7 @@
                                     <th>Депутат</th>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
+                                <tr ng-repeat="request in requests | filter: {status: 'not_ready'} : true">
                                     <td>
                                         <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>

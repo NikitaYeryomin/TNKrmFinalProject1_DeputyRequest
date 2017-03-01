@@ -98,8 +98,7 @@ class Request extends Admin_controller {
         }
     }
     
-    public function filter($class, $id)
-    {
+    public function filter($class, $id) {
         $this->data['requests'] = $this->request->filter_by_class('user', $id);
         $this->data['title'] = 'Requests archive';
         $this->data['inner_view'] = 'request/index';
