@@ -1,12 +1,12 @@
 <ng-include src="'/angular/templates/header.html'"></ng-include>
 <content style="padding:5px; display:block;">
+<div style="display:inline-block;  position:relative; top:10px; vertical-align:top;"><img src="/img/deputies/{{deputy.id}}.jpg" width=200  onclick="window.open(this.src)"></div>
 <div style="padding:5px; display:inline-block; ">
 <h4>депутат Краматорської міської ради</h3>
 <h2>{{deputy.name}} {{deputy.patronymic}} {{deputy.surname}}</h2>
 <h4>обран{{deputy.sexfix}} від {{deputy.listfix1}}<a href="{{deputy.tvourl}}">{{deputy.tvoid}}</a> {{deputy.listfix2}}{{deputy.party}}{{deputy.listfix3}}</h4>
 <p class="confirmed">{{deputy.confirmed}}</p>
 </div>
-<div style="display:inline-block;  position:relative; top:10px; vertical-align:top;"><img src="/img/deputies/{{deputy.id}}.jpg" width=200  onclick="window.open(this.src)"></div>
 <fieldset> <legend>робота у міській раді</legend>
     <p>{{deputy.function}}</p>
 </fieldset>
@@ -18,6 +18,64 @@
 </fieldset>
 <div deputy-page=""></div>
 <fieldset> <legend>звернення до депутата</legend>
+                <div>
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Нові">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>№
+                                    <th>Додано</th>
+                                    <th>Текст запиту</th>
+                                    <th>Заявник</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {status: 'new'} : true| filter: {public_appeal: '1'} : true">
+                                    <td>
+                                        {{request.requestid}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.text}}
+                                    </td>
+                                    <td>
+                                        {{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                        <uib-tab index="1" heading="Надано відповідь">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>№
+                                    <th>Додано</th>
+                                    <th>Текст запиту</th>
+                                    <th>Депутат</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {status: 'answered'} : true| filter: {public_appeal: '1'} : true">
+                                    <td>
+                                        {{request.requestid}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.text}}
+                                    </td>
+                                    <td>
+                                        {{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+
 </fieldset>
 <p class="source">дані <a href="http://www.cvk.gov.ua/pls/vm2015/PVM057?PID112=30&PID102=398&PF7691=398&PT001F01=100&rej=0&pt00_t001f01=100">Центральної виборчої комісії</a> та <a href="http://www.krm.gov.ua/person">сайту міської ради</a></p>
 </content>

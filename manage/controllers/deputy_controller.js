@@ -18,6 +18,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 'function': $scope.deputy.function,
                 'reception': $scope.deputy.reception
                 ,'new_id': $scope.new_id
+                ,'ex_user_id': $scope.deputy.ex_user_id
             }),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {if (response.data.error == 0){$location.path('/deputies');}});
@@ -62,6 +63,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             $scope.users=response.data.users;
             $scope.listtitle=response.data.listtitle;
             $scope.new_id=response.data.new_id!=null?response.data.new_id:$scope.id;
+            $scope.deputy.ex_user_id=$scope.deputy.user_id;
            } else {
                     console.log('Error getting user info!');
                     return;
