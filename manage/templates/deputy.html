@@ -1,5 +1,10 @@
 <div deputy-edit=""></div>
+{{listtitle}}
+<ul class="columns">
+    <li ng-repeat="deputy in deputies">{{deputy.name[0]}}. {{deputy.patronymic[0]}}. {{deputy.surname}}
+</ul>
 <form ng-submit="savedeputy({id: deputy.id})" role="form">
+<input name="new_id" value="{{new_id}}" ng-model="new_id" hidden>    
 <div class="row reg-input" style="margin-bottom:10px;">
     <div class="col-lg-3 col-md-3">
         <label>прізвище</label>
@@ -73,6 +78,8 @@ function noBreaks (){
         if (str.charAt(i)==',\n' || str.charAt(i)=='\n')
         {str=str.slice(0,i)+', '+str.slice(i+1);}
     }
+    if (str.indexOf('"')>=0)    
+        {str=str.slice(0,str.indexOf('"'))+'«'+str.slice(str.indexOf('"')+1,str.lastIndexOf('"'))+'»'+str.slice(str.lastIndexOf('"')+1); }
     reception.value=str;
 }
 function fineQuotes (){

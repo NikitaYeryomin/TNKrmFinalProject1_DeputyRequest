@@ -35,9 +35,25 @@ public function index()
     
 /******************************редактировать депутата***********************************************/
 public function viewandedit($id=NULL)
-    {
-        if ($id>0){$deputy = $this->deputy->get_deputies($id);
-        $data['deputy'] = $deputy;}
+{
+    if ($id>0){
+        $deputy = $this->deputy->get_deputies($id);
+        $data['deputy'] = $deputy;
+    }
+    else {
+        $data['deputies']=$this->deputy->get_deputies();
+        $max_id=1;
+    foreach ($data['deputies'] as $value){ if ($max_id<$value['id']) {$max_id=$value['id'];   } }
+    $i=1;
+    while ($i <= $max_id+1) {
+        $fl=0;
+        foreach ($data['deputies'] as $value){        if($value['id']==$i){$fl=1; break;}    }
+        if    ($fl==0){$min_free_id=$i; break;}
+        $i++;    
+    }
+    $data['new_id'] =  $min_free_id;    
+        $data['listtitle']='до міської ради вже пройшли наступні депутати:';
+    }
         $tvo = $this->tvo->get_tvo();
         array_push($tvo,array('id'=>'0'));
         foreach ($tvo as $k=>$v){
@@ -69,12 +85,13 @@ public function editandsave($id){
                 'sex'=> $this->input->post('sex'),
                 'function'=> $this->input->post('function'),
                 'reception'=> $this->input->post('reception'),
+                'id'=>$this->input->post('new_id')
             );
-    /*print_r($data); */
+    //print_r($data); /*
     if ($data['user_id']==0){$data['user_id']=NULL;}
     if ($id>0){$result = $this->deputy->set_deputy($id, $data);}
     else {$result = $this->deputy->adddeputy($data);}
-    if ($result) {echo json_encode(array('error' => 0));}
+    if ($result) {echo json_encode(array('error' => 0));}//*/
 }
 
    

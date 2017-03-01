@@ -49,6 +49,8 @@ tr:nth-child(even){
 }
 
 /******************классы в алфавитном порядке*************************************/
+.columns li { display:inline-block; margin: 0 1% 0.4em 0; width: 32%; }
+.columns ul { width: 100%; }
 .confirmed {
     color: #060;
 }

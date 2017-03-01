@@ -5,7 +5,7 @@ public function get_deputies($id = FALSE)
 {
         if ($id === FALSE)
         {
-$this->db->select(' deputies.*, parties.title AS party FROM deputies INNER JOIN parties ON (deputies.party_id = parties.id)',FALSE);
+$this->db->select(' deputies.*, parties.title AS party FROM deputies INNER JOIN parties ON (deputies.party_id = parties.id) ORDER BY deputies.tvoid ASC',FALSE);
                 $query = $this->db->get();
                 return $query->result_array();
         }
@@ -23,9 +23,7 @@ public function get_deputies_for_tvo($id = FALSE)
 
 public function set_deputy($id = NULL, $data)
 {
-        //if ($data['user_id']==0){$data['user_id']=NULL;}
-        if (!$id){return $this->db->insert('deputies', $data);print_r($data); }
-        return $this->db->update('deputies', $data, array('id' => $id));print_r($this); 
+ return $this->db->update('deputies', $data, array('id' => $id));
 }
 
 

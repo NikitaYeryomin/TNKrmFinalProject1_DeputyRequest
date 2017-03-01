@@ -17,6 +17,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 'sex': $scope.deputy.sex,
                 'function': $scope.deputy.function,
                 'reception': $scope.deputy.reception
+                ,'new_id': $scope.new_id
             }),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {if (response.data.error == 0){$location.path('/deputies');}});
@@ -26,7 +27,8 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
     $scope.uploadFile = function(files, type) {
         var form_data = new FormData();
         form_data.append(type, files[0]);
-        form_data.append("id", $scope.deputy.id);
+        form_data.append("id", ($scope.new_id));
+        //form_data.append("id", (!$scope.new_id?$scope.new_id:$scope.deputy.id));
         $http.post(
             '/backend/manage/upload/uploadDeputyFace/' + type,
             form_data, {
@@ -39,13 +41,15 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
 
 /******************************************исправить депутата*************************************************/
 .directive('deputyEdit', ['$http', function($http) {
-var link = function($scope, element, attrs) {
+    var link = function($scope, element, attrs) {
        $http({
             method: 'GET',
              url: '/backend/deputy/viewandedit/' + $scope.id
         }).then(function(response) {
            if (response.data.error == 0) {
+            console.log(response.data);
             $scope.deputy = response.data.deputy;
+            $scope.deputies = response.data.deputies;
             $scope.tvo=response.data.tvo;
             var i;
             for (i = 0; i < $scope.tvo.length; i++) {
@@ -56,6 +60,8 @@ var link = function($scope, element, attrs) {
             $scope.parties=response.data.parties;
             $scope.sexes=response.data.sexes;
             $scope.users=response.data.users;
+            $scope.listtitle=response.data.listtitle;
+            $scope.new_id=response.data.new_id!=null?response.data.new_id:$scope.id;
            } else {
                     console.log('Error getting user info!');
                     return;
@@ -65,7 +71,7 @@ var link = function($scope, element, attrs) {
         };//link
     return {
         restrict: 'A',
-        template: '<div id="deputy-list"></div>',
+        template: '<div id="deputy-edit"></div>',
         replace: true,
         link: link
     };
