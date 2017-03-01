@@ -88,7 +88,17 @@ public function editandsave($id){
                 'id'=>$this->input->post('new_id')
             );
     //print_r($data); /*
-    if ($data['user_id']==0){$data['user_id']=NULL;}
+    if ($data['user_id']==0){
+        $data['user_id']=NULL;
+        if ($this->input->post('ex_user_id')!=NULL){
+            $post = array('role'      => 'user');
+            $result = $this->user->set_data($this->input->post('ex_user_id'), $post);
+        }
+    }
+    else {
+        $post = array('role'      => 'deputy');
+        $result = $this->user->set_data($data['user_id'], $post);
+    }
     if ($id>0){$result = $this->deputy->set_deputy($id, $data);}
     else {$result = $this->deputy->adddeputy($data);}
     if ($result) {echo json_encode(array('error' => 0));}//*/
