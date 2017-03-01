@@ -55,4 +55,8 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
             });
         };
         
+        $(document).submit(function(){
+            $('.modal').modal('hide');
+        });
+        
     }]);
