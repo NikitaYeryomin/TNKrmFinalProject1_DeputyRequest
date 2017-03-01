@@ -48,9 +48,9 @@ class Dep_request extends Front_controller {
         ));
     }
     
-    public function get($id = NULL) {
-        $this->data['requests_item'] = $this->request->getrequests($id);
-        $request = $this->data['requests_item'];
+    public function get($id) {
+        //$this->data['requests_item'] 
+        $request = $this->request->getrequests($id);
         $result = array('error' => 0);
         if (empty($request)) {
             $result['error'] = 1;
@@ -59,6 +59,19 @@ class Dep_request extends Front_controller {
             $result['Request'] = $request;
             $result['Types'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'type'");
             $result['States'] = $this->request->sqlexec("SHOW COLUMNS FROM request WHERE field = 'status'");
+        }
+        echo json_encode($result);
+    }
+    
+    public function save($id) {
+        $this->data = array(
+            'response'  => $this->input->post('response'),
+            'status'    => $this->input->post('status')
+        );
+        $result = array('error' => 0);
+        if (!$this->request->set_data($id, $this->data)) {
+            $result['error'] = 1;
+            $result['message'] = 'Помилка при створенні звернення';
         }
         echo json_encode($result);
     }

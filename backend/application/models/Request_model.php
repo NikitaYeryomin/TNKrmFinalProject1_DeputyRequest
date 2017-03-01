@@ -5,9 +5,10 @@ class Request_model extends Base_model {
     
     public function __construct() {
         parent::__construct();
-        $this->sql = 'SELECT request.*, user.userid, user.firstname, user.secondname, user.lastname, deputies.name, deputies.patronymic, deputies.surname
+        $this->sql = 'SELECT request.*, user.userid, user.firstname, user.secondname, user.lastname, districts.tvoid, deputies.name, deputies.patronymic, deputies.surname
                     FROM request
                     JOIN user ON user.userid = request.user_id
+                    JOIN districts ON districts.id = user.tvo_id
                     JOIN deputies ON deputies.id = request.deputy_id';
     }    
     

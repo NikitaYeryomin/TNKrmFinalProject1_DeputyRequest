@@ -10,8 +10,8 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.user = response.data.User;
-                    $scope.district = response.data.District;
-                    $scope.deputy = response.data.Deputy;
+                    //$scope.district = response.data.District;
+                    //$scope.deputy = response.data.Deputy;
                     //console.log($scope.user);
                     //console.log($scope.district);
                     //console.log($scope.deputy);
@@ -35,23 +35,39 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.get_request();
         
         $scope.respond = function() {
-            
+            $scope.data = $.param({
+                'response': $scope.request.response,
+                'status': 'answered'
+            });
+            $scope.save();
         };
         
         $scope.reject = function() {
-            
+            $scope.data = $.param({
+                'response': $scope.request.response,
+                'status': 'rejected'
+            });
+            $scope.save();
         };
         
         $scope.meeting = function() {
-            
+            $scope.data = $.param({
+                'response': 'Вам призначено зустріч: ' + $scope.request.response,
+                'status': 'answered'
+            });
+            $scope.save();
         };
         
         $scope.save = function() {
             $http({
                 method: 'POST',
-                url: '/backend/dep_request/save/' + $scope.id
+                url: '/backend/dep_request/save/' + $scope.id,
+                data: $scope.data,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
-                
+                if (response.data.error == 0) {
+                    $location.path('/office');
+                }
             });
         };
         
