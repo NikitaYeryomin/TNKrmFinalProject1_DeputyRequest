@@ -34,4 +34,25 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.get_request();
         
+        $scope.respond = function() {
+                
+        }
+        
+        $scope.reject = function() {
+            
+        };
+        
+        $scope.meeting = function() {
+            
+        };
+        
+        $scope.save = function() {
+            $http({
+                method: 'POST',
+                url: '/backend/dep_request/save/' + $scope.id
+            }).then(function(response) {
+                
+            });
+        };
+        
     }]);
