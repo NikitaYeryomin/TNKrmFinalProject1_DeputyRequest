@@ -33,6 +33,22 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
         }
         getCurrentUser();
         
+        $scope.count = {};
+        
+        $scope.request_count = function(){
+            $http({
+                method: 'GET',
+                url: 'backend/dep_request/count'
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.count = response.data;
+                    console.log($scope.count);
+                }
+            });
+        };
+        
+        $scope.request_count();
+        
         $scope.fullname = function(user){
             return user.lastname + " " + user.firstname + " " + user.secondname;
         };

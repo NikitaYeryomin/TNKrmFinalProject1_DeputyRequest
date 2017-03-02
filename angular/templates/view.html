@@ -66,9 +66,11 @@
                         <div class="col-lg-4 col-sm-4">
                             <button type="reject" id="rejectButton" data-toggle="modal" data-target="#rejectPreviewModal">Відхилити</button>
                         </div>
+                        <!--
                         <div class="col-lg-4 col-sm-4">
                             <button type="meeting" id="meetingButton" data-toggle="modal" data-target="#meetingPreviewModal">Призначити зустріч</button>
                         </div>
+                        -->
                     </div>
                     <form ng-submit="respond()" role="form" novalidate="novalidate">
                         <div class="modal fade" id="respondPreviewModal">
@@ -120,6 +122,7 @@
                             </div>
                         </div>
                     </form>
+                    <!--
                     <form ng-submit="meeting()" role="form" novalidate="novalidate">
                         <div class="modal fade" id="meetingPreviewModal">
                             <div class="modal-dialog modal-sm">
@@ -134,17 +137,18 @@
                                     </div>
                                     <div class="modal-body">
                                         <div id="previewContent" class="row">
-                                            <!-- тут будет date & time picker -->
+                                            <!-- тут будет date & time picker
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <div class="footer-modal-border"></div>
-                                        <input type="submit" value="Відхилити" class="registration-submit" style="margin-bottom: 0px;">
+                                        <input type="submit" value="Призначити зустріч" class="registration-submit" style="margin-bottom: 0px;">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
+                    -->
                 </div>
                 <div class="col-sm-12">
                     <a href="#" ui-sref="user" ng-show="currentUser.role == 'user' || currentUser.role == 'admin'">
