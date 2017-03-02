@@ -6,19 +6,6 @@
                 <div class="selectpicker city-selector">
                     <label onclick="showCityModal()" class="city-button" style="padding-top: 5px;">Краматорськ <span class="caret"></span></label>
                 </div>
-                <!--
-                <nav class="navigation-pages">
-                    <ul class="nav navbar-nav">
-                        <li><a href="" ui-sref="deputies">Депутати</a></li>
-                        <li><a href="" ui-sref="districts">Виборчі дільниці</a></li>
-                        <!--li>
-                            <a href="" ui-sref="laws">Нормативно-правова база</a>
-                        </li>
-                        <li>
-                            <a href="" ui-sref="about">Про проект</a>
-                        </li>
-                    </ul>
-                </nav>-->
                 <div ng-show="!logged_in" class="register-links col-tn-6">
                     <span>
                         <a href="#" ui-sref="login">Увійти</a>
@@ -77,20 +64,20 @@
                 <ul>
                     <li>
                         <label class="pet-count">
-                            16 звернень
+                            {{count.all}} звернень
                         </label>
-                        <a href="" class="active">НА РОЗГЛЯДІ</a>
+                        <a href="" class="active">ЗАРЕЄСТРОВАНО</a>
                     </li>
                     <li>
                         <label class="pet-count">
-                            1 звернення
+                            {{count.answer}} звернень
                         </label>
                         <a href="">З ВІДПОВІДДЮ</a>
-                    </li>
+                    </li><!--
                     <li>
                         <label></label>
                         <a class="menu-all" href="" >УСІ</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
 

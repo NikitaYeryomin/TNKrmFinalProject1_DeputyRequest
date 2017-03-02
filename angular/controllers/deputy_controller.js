@@ -34,7 +34,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             method: 'GET',
              url: '/backend/deputy/id/' + $scope.id
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.deputy = response.data.deputy;
             if ($scope.deputy.sex=="f"){$scope.deputy.sexfix="а";}
             if ($scope.deputy.sex=="m"){$scope.deputy.sexfix="ий";}
@@ -49,6 +49,16 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             }
             if ($scope.deputy.user_id!=null){$scope.deputy.confirmed="цей депутат офіційно зареєстрований у системі та може особисто відповідати на ваші звернення тут";}
         });
+        $http({
+            method: 'GET',
+            url: '/backend/dep_request/deprequests/' + $scope.id
+        }).then(function(response) {
+            if (response.data.error == 0) {
+                $scope.requests = response.data.Requests;
+                console.log($scope.requests);
+            }
+        });
+
     };
     return {
         restrict: 'A',

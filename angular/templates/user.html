@@ -31,7 +31,7 @@
                     </span>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <label>Ваш теріторіальний виборчий округ:&nbsp;</label>
+                    <label>Ваш територіальний виборчий округ:&nbsp;</label>
                     <span>
                         <strong>
                             <a href="#" ui-sref="tvo({id: district.tvoid})">{{district.tvoid}}</a>
@@ -57,7 +57,7 @@
                 <h2>Звернення користувача</h2>
                 <div>
                     <uib-tabset active="active">
-                        <uib-tab index="0" heading="Не завершені">
+                        <uib-tab index="0" heading="Зареєстровані">
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
@@ -66,7 +66,7 @@
                                     <th>Депутат</th>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="request in requests | filter: {status: 'not_ready'} : true">
+                                <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
                                     <td>
                                         <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
@@ -79,7 +79,7 @@
                                 </tr>
                             </table>
                         </uib-tab>
-                        <uib-tab index="1" heading="Нові">
+                        <uib-tab index="1" heading="Не завершені">
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
@@ -88,7 +88,7 @@
                                     <th>Депутат</th>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
+                                <tr ng-repeat="request in requests | filter: {status: 'not_ready'} : true">
                                     <td>
                                         <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
@@ -123,7 +123,7 @@
                                 </tr>
                             </table>
                         </uib-tab>
-                        <uib-tab index="3" heading="Відхилено">
+                        <uib-tab index="3" heading="Відхилені">
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
@@ -148,6 +148,11 @@
                     </uib-tabset>
                 </div>
             </div>
+            <section class="motivator row">
+                <div class="create-btn col-lg-3 col-md-3 col-sm-3 motivator" id="createMainButt">
+                    <a href="" ui-sref="request.custom"><button>+ Створити звернення</button></a>
+                </div>
+            </section>
             <div class="col-sm-12">
                 <a href="" ng-click="logout()">
                     <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out

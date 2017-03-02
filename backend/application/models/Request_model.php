@@ -5,9 +5,10 @@ class Request_model extends Base_model {
     
     public function __construct() {
         parent::__construct();
-        $this->sql = 'SELECT request.*, user.userid, user.firstname, user.secondname, user.lastname, deputies.name, deputies.patronymic, deputies.surname
+        $this->sql = 'SELECT request.*, user.userid, user.firstname, user.secondname, user.lastname, districts.tvoid, deputies.name, deputies.patronymic, deputies.surname
                     FROM request
                     JOIN user ON user.userid = request.user_id
+                    JOIN districts ON districts.id = user.tvo_id
                     JOIN deputies ON deputies.id = request.deputy_id';
     }    
     
@@ -22,11 +23,7 @@ class Request_model extends Base_model {
         }
         return null;
     }
-    /*
-    public function is_deputy($id) {
-        return (count($this->db->query('SELECT deputies.id FROM deputies WHERE user_id = ?', array($id))->result_array()) > 0);
-    }
-    */
+    
     public function get_requests_by_user($id, $role) {
         if (!$id) {
             //TODO: throw 'User id not defined!';
@@ -37,6 +34,7 @@ class Request_model extends Base_model {
         } else {
             $this->sql .= ' WHERE request.user_id = ?';
         }
+        $this->sql .= "ORDER BY requestid DESC";
         //print($this->sql);
         $result = $this->db->query($this->sql, array($id))->result_array();
         return $result;
@@ -58,6 +56,24 @@ class Request_model extends Base_model {
             return $this->db->insert('request', $post);
         }
         return $this->db->update('request', $post, array('requestid' => $id));
+    }
+    
+    public function count($state = NULL) {
+        $sql = "SELECT COUNT(*) FROM request";
+        if ($state) {
+            $sql .= " WHERE status = '" . $state ."'";
+        }
+        //print_r($sql);
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]['COUNT(*)'];
+    }
+    
+    public function getall($state = NULL) {
+        if ($state) {
+            $this->sql .= " WHERE status = '" . $state ."'";
+        }
+        $this->sql .= "ORDER BY requestid DESC";
+        return $result = $this->db->query($this->sql)->result_array();
     }
 }
 ?>

@@ -115,14 +115,9 @@ class User extends Front_controller {
             } else {
                 echo json_encode(array(
                     'error' => 1,
-                    'message' => 'Deputy is not registered'
+                    'message' => 'User is not deputy'
                 ));    
             }
-        } else {
-            echo json_encode(array(
-                    'error' => 2,
-                    'message' => 'Incorrect UserId'
-                ));
         }
     }
 }

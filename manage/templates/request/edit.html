@@ -37,6 +37,8 @@
                                         </span>
                                     </p>
                                 </div>
+                                <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                                <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="a" value="Публічне звернення" ng-model="request.public_appeal" />Публічне звернення
@@ -52,6 +54,7 @@
                                     <span class="field-validation-valid text-danger" data-valmsg-for="PDescription" data-valmsg-replace="true"></span>
                                     <textarea class="form-control" cols="20" data-val="true" data-val-required="Це обов`язкове поле" id="PDescription" name="PDescription" placeholder="Зміст звернення" ng-model="request.response" rows="10"></textarea>
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="row reg-input">
