@@ -58,12 +58,20 @@ class Request_model extends Base_model {
         return $this->db->update('request', $post, array('requestid' => $id));
     }
     
-    public function count($state = NULL) {
+    public function count($state = NULL, $id = NULL) {
         $sql = "SELECT COUNT(*) FROM request";
         if ($state) {
             $sql .= " WHERE status = '" . $state ."'";
+            if ($id) {
+                $sql .= " AND ";
+            }
         }
-        //print_r($sql);
+        if ($id) {
+            if (!$state) {
+                $sql .= " WHERE ";
+            }
+            $sql .= "deputy_id = " . $id;
+        }
         $result = $this->db->query($sql)->result_array();
         return $result[0]['COUNT(*)'];
     }

@@ -85,4 +85,22 @@
     </div>
 </header>
 
-<section class="content" style=""><div full-map=""></div></section>
+<section class="content" style="">
+    <table>
+        <tr>
+            <td width="50%" style="text-align: center; vertical-align: top;">
+                <label>Зареєстровані депутати:</label>
+                <table border="1">
+                    
+                    <tr ng-repeat="deputy in deputies">
+                        <td>{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</td>
+                        <td>{{deputy.reqall}} / {{deputy.answer}}</td>
+                    </tr>
+                </table>
+            </td>
+            <td style="text-align: left;">
+                <div full-map=""></div>
+            </td>
+        </tr>
+    </table>
+</section>

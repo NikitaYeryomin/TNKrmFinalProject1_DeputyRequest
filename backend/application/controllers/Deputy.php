@@ -103,6 +103,17 @@ public function editandsave($id){
     else {$result = $this->deputy->adddeputy($data);}
     if ($result) {echo json_encode(array('error' => 0));}//*/
 }
-
-   
+    
+    public function filter_dep() {
+        $active = $this->deputy->active_deputies();
+        for ($i = 0; $i < count($active); $i++) {
+            $active[$i]['reqall'] = $this->request->count(NULL, $active[$i]['id']);
+            $active[$i]['answer'] = $this->request->count('answered', $active[$i]['id']);
+        }
+        //print_r($active);
+        echo json_encode(array(
+                'error'     => 0,
+                'deputies'  => $active
+            ));
+    }
 }

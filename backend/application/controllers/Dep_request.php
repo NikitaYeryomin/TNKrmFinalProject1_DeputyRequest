@@ -80,7 +80,7 @@ class Dep_request extends Front_controller {
         echo json_encode(array(
                 'error' => 0,
                 'all'   => $this->request->count(),
-                'answer'=> $this->request->count('answered')
+                'answer'=> $this->request->count('answered', NULL)
             ));
     }
     
