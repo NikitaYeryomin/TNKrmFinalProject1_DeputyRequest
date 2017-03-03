@@ -10,7 +10,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             var latitude = (parseFloat($scope.scale.maxlat) + parseFloat($scope.scale.minlat)) / 2;
             var longtitude = (parseFloat($scope.scale.maxlon) + parseFloat($scope.scale.minlon)) / 2;
             var mapOptions = {
-                zoom: 12,
+                zoom: 11,
                 center: {lat: latitude, lng: longtitude},
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false,

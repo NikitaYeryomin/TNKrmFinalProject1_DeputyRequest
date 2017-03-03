@@ -49,6 +49,20 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
         
         $scope.request_count();
         
+        $scope.reg_dep = function(){
+            $http({
+                method: 'GET',
+                url: 'backend/deputy/filter_dep'
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.deputies = response.data.deputies;
+                    console.log($scope.deputies);
+                }
+            });
+        };
+        
+        $scope.reg_dep();
+        
         $scope.fullname = function(user){
             return user.lastname + " " + user.firstname + " " + user.secondname;
         };
