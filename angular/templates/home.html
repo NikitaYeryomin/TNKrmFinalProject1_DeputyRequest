@@ -29,7 +29,7 @@
                                 <a href="#" ui-sref="user">Мій кабінет</a>
                             </li>
                             <li ng-show="currentUser.role == 'admin'">
-                                <a href="/manage">Адміністрування</span></a>
+                                <a href="/manage" target="_blank">Адміністрування</span></a>
                             </li>
                             <li>
                                 <a href="" ng-click="logout()">
@@ -66,13 +66,13 @@
                         <label class="pet-count">
                             {{count.all}} звернень
                         </label>
-                        <a href="" class="active">ЗАРЕЄСТРОВАНО</a>
+                        <a href="" ui-sref="requests()" class="active">ЗАРЕЄСТРОВАНО</a>
                     </li>
                     <li>
                         <label class="pet-count">
                             {{count.answer}} звернень
                         </label>
-                        <a href="">З ВІДПОВІДДЮ</a>
+                        <a href="" ui-sref="requests({type: 'answered'})" >З ВІДПОВІДДЮ</a>
                     </li><!--
                     <li>
                         <label></label>
@@ -88,7 +88,8 @@
 <section class="content" style="">
     <table>
         <tr>
-            <td width="50%" style="text-align: center; vertical-align: top;">
+            <td width="10%"></td>
+            <td style="text-align: center; vertical-align: top;">
                 <label>Зареєстровані депутати:</label>
                 <ul class="nav">
                     <li ng-repeat="deputy in deputies">
@@ -99,7 +100,8 @@
                     </li>
                 </ul>
             </td>
-            <td style="text-align: left;">
+            <td width="10%"></td>
+            <td width="50%" style="text-align: left;">
                 <div full-map=""></div>
             </td>
         </tr>

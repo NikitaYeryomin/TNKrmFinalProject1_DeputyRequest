@@ -14,9 +14,10 @@ class Request_model extends Base_model {
     
     public function getrequests($id = FALSE) {
         if (!$id) {
+            $this->sql .= " ORDER BY requestid DESC";
             return $result = $this->db->query($this->sql)->result_array();
         }
-        $this->sql .= ' WHERE request.requestid = ?';
+        $this->sql .= ' WHERE request.requestid = ? ORDER BY requestid DESC';
         $result = $this->db->query($this->sql, array($id))->result_array();
         if (count($result) > 0) {
             return $result[0];
@@ -34,7 +35,7 @@ class Request_model extends Base_model {
         } else {
             $this->sql .= ' WHERE request.user_id = ?';
         }
-        $this->sql .= "ORDER BY requestid DESC";
+        $this->sql .= " ORDER BY requestid DESC";
         //print($this->sql);
         $result = $this->db->query($this->sql, array($id))->result_array();
         return $result;

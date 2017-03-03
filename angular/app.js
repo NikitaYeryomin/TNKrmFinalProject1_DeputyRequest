@@ -147,6 +147,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]
                 }
             })
+            .state('requests', {
+                url: '/requests/:type',
+                templateUrl: '/angular/templates/list.html',
+                controller: 'RequestsController',
+                data:{title: "Звернення"},
+                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.type;}]
+                }
+            })
             ;
         /*$locationProvider.html5Mode({
          enabled: true,
