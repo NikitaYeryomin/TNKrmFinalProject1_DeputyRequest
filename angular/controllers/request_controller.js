@@ -81,9 +81,11 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
 
         $scope.data = {};
         $scope.instruction_parts = {
-            'pensioner' : 'Копия удостоверения..',
-            'disabled_person' : 'Справка МСЭК..',
-            'war_veteran' : 'Удостоверение ветерана..',
+            'pensioner' : 'Копія посвідчення..',
+            'pensioner' : 'Справка о доходах із ПФУ..\nКопія посвідчення..',
+            'disabled_person' : 'Справка МСЕК..',
+            'war_veteran' : 'Посвідчення ветерана..',
+            'ato_participant' : 'Посвідчення учасника АТО..',
         }
         
         $scope.getMaterialInstructions = function() {
@@ -97,6 +99,9 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             }
             if ($scope.data.war_veteran) {
                  $scope.instructions.push( $scope.instruction_parts['war_veteran']);
+            }
+            if ($scope.data.ato_participant) {
+                 $scope.instructions.push( $scope.instruction_parts['ato_participant']);
             }
             $rootScope.show_survey = false;
             

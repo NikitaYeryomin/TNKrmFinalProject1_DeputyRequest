@@ -25,6 +25,27 @@
                 <div>
                     <input type="radio" name="с"/>Ні
                 </div>
+             <p>Ви учасник АТО або інших військових конфліктів?</p>
+                <div>
+                    <input type="radio" name="d" value="Учасник АТО" ng-model="data.ato_participant" />Так
+                </div>
+                <div>
+                    <input type="radio" name="d"/>Ні
+                </div>  
+            <p>Ви учасник АТО або інших військових конфліктів?</p>
+                <div>
+                    <input type="radio" name="d" value="Учасник АТО" ng-model="data.ato_participant" />Так
+                </div>
+                <div>
+                    <input type="radio" name="d"/>Ні
+                </div> 
+            <p>Ви працюєте?</p>
+                <div>
+                    <input type="radio" name="e" value="Працівник" ng-model="data.employee" />Так
+                </div>
+                <div>
+                    <input type="radio" name="e"/>Ні
+                </div>    
         </div>
     </div>
  </div>
@@ -33,5 +54,9 @@
 <button type="button" id="previewButton" ng-click="getMaterialInstructions()" ng-if="show_survey">Далі</button>
 <div ng-if="!show_survey">
     <h4>Документи на отримання матеріальної допомоги:</h4>
-    <div ng-repeat="instruction in instructions">abc: {{instruction}}</div>
+        <ul>
+         <li>Паспорт</li>
+         <li>Ідентифікаційний код</li>
+       </ul>
+    <div ng-repeat="instruction in instructions">{{instruction}}</div>
 </div>
