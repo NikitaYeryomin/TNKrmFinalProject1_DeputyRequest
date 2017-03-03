@@ -91,6 +91,13 @@ class Dep_request extends Front_controller {
             ));
     }
     
+    public function allrequests() {
+        echo json_encode(array(
+            'error' => 0,
+            'Requests' => $this->request->getrequests()
+        ));
+    }
+    
     /*
     public function view($id = NULL)
     {

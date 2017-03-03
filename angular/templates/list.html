@@ -1,0 +1,42 @@
+<ng-include src="'/angular/templates/header.html'"></ng-include>
+<section class="content" style="">
+    <div class="petition-main account-main">
+        <div class="container">
+            <table class="table-striped table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Додано</th>
+                        <th>Тип запиту</th>
+                        <th>Текст запиту</th>
+                        <th>Автор запиту</th>
+                        <th>Депутат</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="request in requests | filter: {public_appeal: '1'} : true | filter: {status: type}">
+                    <td>
+                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
+                    </td>
+                    <td>
+                        <span ng-show="request.type == 'custom'">Довільне</span>
+                        <span ng-show="request.type == 'material'">Запит на матеріальну допомогу</span>
+                    </td>
+                    <td>
+                        {{request.text}}
+                    </td>
+                    <td>
+                        {{fullname(request)}}
+                    </td>
+                    <td>
+                        <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                    </td>
+                    <td>
+                        <span ng-show="request.status == 'new'">Зареєстровано</span>
+                        <span ng-show="request.status == 'answered'">Надано відповідь</span>
+                        <span ng-show="request.status == 'rejected'">Відхилено</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
