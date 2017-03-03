@@ -114,6 +114,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         $scope.district = response.data.District;
                         $scope.deputy = response.data.Deputy;
                         $scope.eplace = response.data.Place;
+                        console.log($scope.deputy);
                     }
                 });
             }

@@ -49,6 +49,7 @@
                     <span>
                         <strong>
                             <a href="#" ui-sref="deputy({id: deputy.id})">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</a>
+                            <span style="color: red" ng-show="!deputy.user_id">Депутат не зареєстрований та НЕ може відповідати на звернення.</span>
                         </strong>
                     </span>
                 </div>
@@ -150,7 +151,7 @@
             </div>
             <section class="motivator row">
                 <div class="create-btn col-lg-3 col-md-3 col-sm-3 motivator" id="createMainButt">
-                    <a href="" ui-sref="request.custom"><button>+ Створити звернення</button></a>
+                    <a href="" ui-sref="request.custom"><button ng-disabled="!deputy.user_id">+ Створити звернення</button></a>
                 </div>
             </section>
             <div class="col-sm-12">
