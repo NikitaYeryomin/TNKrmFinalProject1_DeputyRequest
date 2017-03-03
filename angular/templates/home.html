@@ -90,13 +90,14 @@
         <tr>
             <td width="50%" style="text-align: center; vertical-align: top;">
                 <label>Зареєстровані депутати:</label>
-                <table border="1">
-                    
-                    <tr ng-repeat="deputy in deputies">
-                        <td>{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</td>
-                        <td>{{deputy.reqall}} / {{deputy.answer}}</td>
-                    </tr>
-                </table>
+                <ul class="nav">
+                    <li ng-repeat="deputy in deputies">
+                        <a href="" ui-sref="deputy({id: deputy.id})">
+                            {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
+                            <span class="badge">{{deputy.reqall}} / {{deputy.answer}}</span>
+                        </a>
+                    </li>
+                </ul>
             </td>
             <td style="text-align: left;">
                 <div full-map=""></div>
