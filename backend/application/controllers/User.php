@@ -1,35 +1,29 @@
 <?php
 class User extends Front_controller {
     
-    public function login(){
+    public function login() {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE) {
             echo json_encode(array(
                 'error'     => 1,
                 'message'   => 'validation_error',
                 'data'      => $this->form_validation->error_array()
             ));
-        }
-        else
-        {
+        } else {
             $this->data = array(
                 'email'     => $this->input->post('email'),
                 'pass'      => $this->input->post('password')
             );
             $result = $this->user->login($this->data);
-            if ($result)
-            {
+            if ($result) {
                 $this->session->set_userdata('logged_in', $result);
                 $this->data['username'] = $result['username'];
                 echo json_encode(array(
                     'error'       => 0,
                     'currentUser' => $result
                 ));
-            }
-            else
-            {
+            } else {
                 echo json_encode(array(
                     'error'   => 1,
                     'message' => 'Incorrect username and/or password!'
@@ -123,7 +117,6 @@ class User extends Front_controller {
     
     public function register_deputy() {
         $deputy = $this->deputy->get_deputies($this->input->post('depid'));
-        print_r($deputy);
         $this->data = array(
             'firstname' => $deputy['name'],
             'secondname'=> $deputy['patronymic'],

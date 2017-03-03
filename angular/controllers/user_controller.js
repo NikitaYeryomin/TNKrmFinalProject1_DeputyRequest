@@ -86,6 +86,9 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
                 if (response.data.error == 0) {
+                    console.log(response.data);
+                    $rootScope.logged_in = true;
+                    $rootScope.currentUser = response.data.currentUser;
                     $location.path('/office');
                 }
             });
