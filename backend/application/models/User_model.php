@@ -3,8 +3,7 @@ class User_model extends Base_model {
     
     public function set_user($id = NULL, $post){
         
-        if (!$id)
-        {
+        if (!$id) {
             return $this->db->insert('users', $post);
         }
         return $this->db->update('users', $post, array('userid' => $id));
