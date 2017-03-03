@@ -72,7 +72,7 @@ class User extends Front_controller {
             'street'    => $this->input->post('street'),
             'home'      => $this->input->post('home'),
             'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'joindate'  => date("Y-m-d H:i:s"),
+            'joindate'  => date("Y-m-d H:i:s")
         );
         if ($this->user->set_data(NULL, $this->data)) {
             $data['password'] = $this->input->post('password');
@@ -118,6 +118,28 @@ class User extends Front_controller {
                     'message' => 'User is not deputy'
                 ));    
             }
+        }
+    }
+    
+    public function register_deputy() {
+        $deputy = $this->deputy->get_deputies($this->input->post('depid'));
+        print_r($deputy);
+        $this->data = array(
+            'firstname' => $deputy['name'],
+            'secondname'=> $deputy['patronymic'],
+            'lastname'  => $deputy['surname'],
+            'email'     => $this->input->post('email'),
+            'city_id'   => $this->input->post('city_id'),
+            'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'joindate'  => date("Y-m-d H:i:s"),
+            'role'      => 'deputy'
+        );
+        if ($this->user->set_data(NULL, $this->data)) {
+            $deputy = array();
+            $deputy['user_id'] = $this->user->get_last();
+            $this->deputy->set_deputy($this->input->post('depid'), $deputy);
+            $data['password'] = $this->input->post('password');
+            $this->login();
         }
     }
 }

@@ -22,8 +22,22 @@
                 <div class="col-sm-12 register-tab">
                     <form ng-submit="register()" role="form" novalidate="novalidate" ng-controller="CityController">
                         <section>
-                                <legend>1. Вкажіть свої им'я, прізвище та по батькові.</legend>
-                            <div class="row reg-input" style="margin-bottom: 29px;">
+                            <legend>1. Вкажіть свої им'я, прізвище та по батькові.</legend>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="checkbox">
+                                        <label><input id="iDep" name="iDep" type="checkbox" value="true" ng-model="iDep" ng-click="get_deputies()"/>Я реєструюся як депутат та згоден відповідати на звернення виборців</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="iDep" class="reg-city-selector">
+                                <label>Оберіть депутата зі списку:</label>
+                                <select class="selectpicker show-tick form-control bs-select-hidden" name="Deputies" ng-model="deps.id" convert-to-number>
+                                    <option disabled selected value="">Оберіть депутата зі списку</option>
+                                    <option ng-repeat="deputy in deps" value="{{deputy.id}}">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</option>
+                                </select>
+                            </div>
+                            <div class="row reg-input" style="margin-bottom: 29px;" ng-hide="iDep">
                                 <div class="col-lg-3 col-md-3">
                                     <label>Прізвище</label>
                                     <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="user.surname" type="text" value="">
@@ -41,7 +55,7 @@
                                 </div>
                             </div>
                         </section>
-                        <section>
+                        <section ng-hide="iDep">
                             <legend>2. Оберіть свою адресу мешкання</legend>
                             <div class="row reg-input">
                                 <div class="col-lg-9 col-sm-9">
@@ -94,7 +108,7 @@
                                     <p>Буде використовуватись для входу</p>
                                 </div>
                             </div>
-                            <div class="row reg-input">
+                            <div class="row reg-input"  ng-hide="iDep">
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Мобільний телефон</label>
                                     <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
@@ -134,14 +148,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="checkbox">
-                                    <label><input checked="true" data-val="true" data-val-required="The EmailDelivery field is required." id="EmailDelivery" name="EmailDelivery" type="checkbox" value="true" ng-model="user.emailDelivery" />Я згоден отримувати email розсилку</label>
-                                </div>
-                            </div>
-                        </div>
                         -->
                         <div class="row">
                             <div class="col-sm-12 text-holder">
@@ -149,8 +155,14 @@
                             </div>
                         </div>
                         <section>
-                            <legend>5. Перегляньте реєстраційні дані, отримайте номер вашої дільниці та завершіть реєстрацію</legend>
-                            <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal" ng-click="detect_tvo()">Переглянути реєстраційні дані</button>
+                            <div ng-hide="iDep">
+                                <legend>5. Перегляньте реєстраційні дані, отримайте номер вашої дільниці та завершіть реєстрацію</legend>
+                                <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal" ng-click="detect_tvo()">Переглянути реєстраційні дані</button>
+                            </div>
+                            <div ng-show="iDep">
+                                <legend>5. Завершіть реєстрацію</legend>
+                                <button type="button" id="previewButton" ng-click="deputy_reg()">Зареєструватися</button>
+                            </div>
                         </section>
                         <div class="modal fade" id="registerPreviewModal">
                             <div class="modal-dialog modal-sm">

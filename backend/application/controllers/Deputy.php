@@ -116,4 +116,11 @@ public function editandsave($id){
                 'deputies'  => $active
             ));
     }
+    
+    public function unreg_deputies() {
+        echo json_encode(array(
+                'error'     => 0,
+                'Deputies'  => $this->deputy->unreg_deputies()
+            ));
+    }
 }
