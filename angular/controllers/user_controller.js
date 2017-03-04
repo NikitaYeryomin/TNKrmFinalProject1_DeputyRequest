@@ -50,7 +50,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'secondname': $scope.user.patronymic,
                     'lastname'  : $scope.user.surname,
                     'email'     : $scope.user.email,
-                    'phone'     : $scope.user.phone,
+                    //'phone'     : $scope.user.phone,
                     'tvo_id'    : $scope.user.tvo_id,
                     'password'  : $scope.user.password,
                     'city_id'   : $scope.user.city_id,
@@ -114,7 +114,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         $scope.district = response.data.District;
                         $scope.deputy = response.data.Deputy;
                         $scope.eplace = response.data.Place;
-                        console.log($scope.deputy);
+                        //console.log($scope.deputy);
                     }
                 });
             }
@@ -126,6 +126,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         /*************** вычисление избирательного участка по адресу ******************/
         /******************************************************************************/
         $scope.detect_tvo = function() {
+            //console.log($scope.user.city_id);
             $scope.user.tvo_id = -1;
             if ($scope.user.city_id && 
                 $scope.user.street && 

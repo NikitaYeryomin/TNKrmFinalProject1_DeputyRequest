@@ -60,7 +60,7 @@ class User extends Front_controller {
             'secondname'=> $this->input->post('secondname'),
             'lastname'  => $this->input->post('lastname'),
             'email'     => $this->input->post('email'),
-            'phone'     => $this->input->post('phone'),
+            //'phone'     => $this->input->post('phone'),
             'city_id'   => $this->input->post('city_id'),
             'tvo_id'    => $this->input->post('tvo_id'),
             'street'    => $this->input->post('street'),

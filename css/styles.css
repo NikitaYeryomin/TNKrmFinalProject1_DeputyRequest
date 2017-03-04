@@ -7,6 +7,10 @@ a:focus {
     text-decoration: none;
     color: #6cf;
 }
+
+button[disabled] {
+    background: #aaacb1 !important;
+}
 content h2, content h4{
     margin-bottom: 3px;
     text-align: center!important;
@@ -92,6 +96,18 @@ tr:nth-child(even){
 {
     text-align: center;
 }
+
+input.ng-invalid, textarea.ng-invalid {
+    background-color:pink;
+}
+
+input.ng-untouched, textarea.ng-untouched {
+    background-color:white;
+}
+input.ng-valid, textarea.ng-valid {
+    background-color:lightgreen;
+}
+
 .l, .source{
     font-size: smaller;
 }

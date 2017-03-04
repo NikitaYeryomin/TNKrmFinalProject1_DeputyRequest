@@ -13,11 +13,11 @@
                 <div class="col-lg-12 col-sm-12">
                     <label>Адреса:&nbsp;</label>
                     <strong>{{user.city}},&nbsp;{{user.street}},&nbsp;{{user.home}}</strong>
-                </div>
+                </div><!--
                 <div class="col-lg-12 col-sm-12">
                     <label>Телефон:&nbsp;</label>
                     <strong>{{user.phone}}</strong>
-                </div>
+                </div>-->
                 <div class="col-lg-12 col-sm-12">
                     <label>E-mail:&nbsp;</label>
                     <strong>{{user.email}}</strong>
@@ -49,7 +49,7 @@
                     <span>
                         <strong>
                             <a href="#" ui-sref="deputy({id: deputy.id})">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</a>
-                            <span style="color: red" ng-show="!deputy.user_id">Депутат не зареєстрований та НЕ може відповідати на звернення.</span>
+                            <span style="color: red" ng-show="!deputy.user_id">Депутат не зареєстрований у системі та НЕ може відповідати на звернення.</span>
                         </strong>
                     </span>
                 </div>
