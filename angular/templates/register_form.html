@@ -46,7 +46,7 @@
                                     <input class="form-control"
                                         data-val="true"
                                         data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
-                                        data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        ng-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
                                         id="Surname"
                                         name="Surname"
                                         ng-model="user.surname"
@@ -58,7 +58,7 @@
                                     <input class="form-control"
                                         data-val="true"
                                         data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
-                                        data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        ng-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
                                         id="Name"
                                         name="Name"
                                         ng-model="user.name"
@@ -70,7 +70,7 @@
                                     <input class="form-control"
                                         data-val="true"
                                         data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
-                                        data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        ng-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
                                         id="Patronymic"
                                         name="Patronymic"
                                         ng-model="user.patronymic"
@@ -84,7 +84,9 @@
                             <div class="row reg-input">
                                 <div class="col-lg-9 col-sm-9">
                                     <label>Автоматичний пошук адреси (введіть вулицю та номер будинку та оберіть з результатів пошуку):</label>
-                                    <input class="form-control" type="text" name="item_location"
+                                    <input class="form-control"
+                                        type="text"
+                                        name="item_location"
                                         ng-model="user.geo"
                                         ng-change="changeLocation($index, user.geo)"
                                         ng-focus="geolocate()"
@@ -170,7 +172,17 @@
                             <div class="row reg-input">
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Пароль</label>
-                                    <input class="form-control" data-val="true" data-val-length="Пароль має бути довжиною хоча б 6 символів" data-val-length-max="100" data-val-length-min="6" data-val-required="Це поле обов`язкове для заповнення" id="Password" name="Password" ng-model="user.password" type="password" required>
+                                    <input class="form-control"
+                                        data-val="true"
+                                        data-val-length="Пароль має бути довжиною хоча б 6 символів"
+                                        data-val-length-max="100"
+                                        data-val-length-min="6"
+                                        data-val-required="Це поле обов`язкове для заповнення"
+                                        id="Password"
+                                        name="Password"
+                                        ng-model="user.password"
+                                        type="password"
+                                        required>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">

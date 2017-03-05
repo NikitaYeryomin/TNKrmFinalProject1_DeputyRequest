@@ -1,4 +1,4 @@
-app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', '$state',
+app.controller('ErrorController', ['$scope', '$rootScope', '$http', '$location', '$state',
     function($scope, $rootScope, $http, $location, $state) {
 
         $scope.login = function() {
@@ -29,10 +29,6 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                         $rootScope.returnUrl = null;
                     } 
                     $location.path(path);
-                } else {
-                    $rootScope.message = response.data.message;
-                    $rootScope.returnUrl = '/login';
-                    $location.path('/error');
                 }
             });
         };
