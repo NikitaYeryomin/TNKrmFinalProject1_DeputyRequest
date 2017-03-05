@@ -4,48 +4,61 @@
     </div>
     <div class="col-sm-12">
         <div class="radio">
+             <p>Ви повнолітній?</p>
+                <div>
+                    <input type="radio" name="a" value="Повнолітній" ng-model="data.adult" />Так
+                </div>
+                <div>
+                    <input type="radio" name="a" value="Неповнолітній" ng-model="data.minor"/>Ні
+                </div>
             <p>Ви пенсіонер?</p>
                 <div>
-                    <input type="radio" name="a" value="Пенсіонер" ng-model="data.pensioner" />Так
-                </div>
-                <div>
-                    <input type="radio" name="a"/>Ні
-                </div>
-            <p>Ви інвалід?</p>
-                <div>
-                    <input type="radio" name="b" value="Інвалід" ng-model="data.disabled_person" />Так
+                    <input type="radio" name="b" value="Пенсіонер" ng-model="data.pensioner" />Так
                 </div>
                 <div>
                     <input type="radio" name="b"/>Ні
                 </div>
-            <p>Ви ветеран війни?</p>
+            <p>Ви інвалід?</p>
                 <div>
-                    <input type="radio" name="с" value="Ветеран війни" ng-model="data.war_veteran" />Так
+                    <input type="radio" name="c" value="Інвалід" ng-model="data.disabled_person" />Так
                 </div>
                 <div>
-                    <input type="radio" name="с"/>Ні
+                    <input type="radio" name="c"/>Ні
+                </div>
+            <p>Ви ветеран війни?</p>
+                <div>
+                    <input type="radio" name="d" value="Ветеран війни" ng-model="data.war_veteran" />Так
+                </div>
+                <div>
+                    <input type="radio" name="d"/>Ні
                 </div>
              <p>Ви учасник АТО або інших військових конфліктів?</p>
                 <div>
-                    <input type="radio" name="d" value="Учасник АТО" ng-model="data.ato_participant" />Так
-                </div>
-                <div>
-                    <input type="radio" name="d"/>Ні
-                </div>  
-            <p>Ви учасник АТО або інших військових конфліктів?</p>
-                <div>
-                    <input type="radio" name="d" value="Учасник АТО" ng-model="data.ato_participant" />Так
-                </div>
-                <div>
-                    <input type="radio" name="d"/>Ні
-                </div> 
-            <p>Ви працюєте?</p>
-                <div>
-                    <input type="radio" name="e" value="Працівник" ng-model="data.employee" />Так
+                    <input type="radio" name="e" value="Учасник АТО" ng-model="data.ato_participant" />Так
                 </div>
                 <div>
                     <input type="radio" name="e"/>Ні
-                </div>    
+                </div>  
+            <p>Ви працюєте?</p>
+                <div>
+                    <input type="radio" name="f" value="Працівник" ng-model="data.employee" />Так
+                </div>
+                <div>
+                    <input type="radio" name="f" value="Безробітний" ng-model="data.unemployed"/>Ні
+                </div> 
+             <p>Причини отримання допомоги</p>
+                <div>
+                    <input type="radio" name="g" value="Хвороба" ng-model="data.disease" />Хвороба
+                </div>
+                <div>
+                    <input type="radio" name="g" value="Пожежа" ng-model="data.fire"/>Пожежа
+                </div> 
+                <div>
+                    <input type="radio" name="g" value="Наслідки арт-обстрілу" ng-model="data.bomb"/>Наслідки арт-обстрілу
+                </div>
+                 <div>
+                    <input type="radio" name="g" value="Інший матеріальний збиток" ng-model="data.material_damage"/>Інший матеріальний збиток
+                </div> 
         </div>
     </div>
  </div>
@@ -54,9 +67,10 @@
 <button type="button" id="previewButton" ng-click="getMaterialInstructions()" ng-if="show_survey">Далі</button>
 <div ng-if="!show_survey">
     <h4>Документи на отримання матеріальної допомоги:</h4>
-        <ul>
-         <li>Паспорт</li>
-         <li>Ідентифікаційний код</li>
+        <ul class="list-group">
+         <li class="list-group-item">Паспорт</li>
+         <li class="list-group-item">Ідентифікаційний код</li>
+         <div ng-repeat="instruction in instructions" class="list-group-item">{{instruction}}</div>
+         <li class="list-group-item">Заповнена заява до депутата</li>
        </ul>
-    <div ng-repeat="instruction in instructions">{{instruction}}</div>
 </div>

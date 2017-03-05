@@ -81,11 +81,18 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
 
         $scope.data = {};
         $scope.instruction_parts = {
-            'pensioner' : 'Копія посвідчення..',
-            'pensioner' : 'Справка о доходах із ПФУ..\nКопія посвідчення..',
-            'disabled_person' : 'Справка МСЕК..',
+            'adult' : 'Справка о складі сімї (діє 10 днів)..',
+            'minor' : 'Справка із дитячого садка, школи або іншого закладу',
+            'pensioner' : 'Справка о доходах із ПФУ..' + '\n' +'Копія посвідчення..',
+            'disabled_person' : 'Справка МСЕК' + '\n' +'Справка о доходах із УСЗН',
             'war_veteran' : 'Посвідчення ветерана..',
             'ato_participant' : 'Посвідчення учасника АТО..',
+            'employed' : 'Справка о доходах кожного повнолітнього члена сімї..',
+            'unemployed' : 'Копія першої і останньої сторінки трудової книжки',
+            'disease' : 'Справка від лікаря',
+            'fire' : 'Акт пожежної інспекції',
+            'bomb' : 'Акт из управління ЖКГ',
+            'material_damage' : 'Акт о матерільних збитках',
         }
         
         $scope.getMaterialInstructions = function() {
@@ -102,6 +109,30 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             }
             if ($scope.data.ato_participant) {
                  $scope.instructions.push( $scope.instruction_parts['ato_participant']);
+            }
+            if ($scope.data.adult) {
+                 $scope.instructions.push( $scope.instruction_parts['adult']);
+            }
+            if ($scope.data.minor) {
+                 $scope.instructions.push( $scope.instruction_parts['minor']);
+            }
+            if ($scope.data.employed) {
+                 $scope.instructions.push( $scope.instruction_parts['employed']);
+            }
+            if ($scope.data.unemployed) {
+                 $scope.instructions.push( $scope.instruction_parts['unemployed']);
+            }
+            if ($scope.data.disease) {
+                 $scope.instructions.push( $scope.instruction_parts['disease']);
+            }
+            if ($scope.data.fire) {
+                 $scope.instructions.push( $scope.instruction_parts['fire']);
+            }
+            if ($scope.data.bomb) {
+                 $scope.instructions.push( $scope.instruction_parts['bomb']);
+            }
+            if ($scope.data.material_damage) {
+                 $scope.instructions.push( $scope.instruction_parts['material_damage']);
             }
             $rootScope.show_survey = false;
             
