@@ -17,13 +17,11 @@
                     </ul>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-sm-12 inputs-holder">
                     <div class="inputs">
                         <span>Використовуючи обліковий запис</span>
-                        <form ng-submit="login()" name="login" role="form" novalidate="novalidate">
+                        <form ng-submit="login()" name="formLogin" role="form" novalidate="novalidate">
                             <div class="email-zone input-zone">
                                 <label>Електронна пошта</label>
                                 <input class="form-control" data-val="true" data-val-email="Введіть електронну пошту" data-val-required="Введіть електронну пошту" id="Email" name="email" type="text" ng-model="email" value="" required>
@@ -36,15 +34,13 @@
                             </div>
                             <div style="clear: both;"></div>
                             <div class="reg-butt-container log-butt-cont">
-                                <input ng-disabled="!login.$valid" class="log-in-butt" type="submit" value="Увійти">
+                                <input ng-disabled="!formLogin.$valid" class="log-in-butt" type="submit" value="Увійти">
                                 <a href="" class="forgot-pass">Забули пароль?</a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </section>

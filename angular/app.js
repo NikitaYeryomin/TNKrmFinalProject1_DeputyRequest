@@ -155,6 +155,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.type;}]
                 }
             })
+            .state('error', {
+                url: '/error',
+                templateUrl: '/angular/templates/error.html',
+                controller: 'ErrorController',
+                data:{title: 'Помилка!'}
+            })
             ;
         /*$locationProvider.html5Mode({
          enabled: true,
