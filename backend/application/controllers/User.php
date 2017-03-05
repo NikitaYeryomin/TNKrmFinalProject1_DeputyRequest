@@ -1,35 +1,29 @@
 <?php
 class User extends Front_controller {
     
-    public function login(){
+    public function login() {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE) {
             echo json_encode(array(
                 'error'     => 1,
                 'message'   => 'validation_error',
                 'data'      => $this->form_validation->error_array()
             ));
-        }
-        else
-        {
+        } else {
             $this->data = array(
                 'email'     => $this->input->post('email'),
                 'pass'      => $this->input->post('password')
             );
             $result = $this->user->login($this->data);
-            if ($result)
-            {
+            if ($result) {
                 $this->session->set_userdata('logged_in', $result);
                 $this->data['username'] = $result['username'];
                 echo json_encode(array(
                     'error'       => 0,
                     'currentUser' => $result
                 ));
-            }
-            else
-            {
+            } else {
                 echo json_encode(array(
                     'error'   => 1,
                     'message' => 'Incorrect username and/or password!'
@@ -66,13 +60,13 @@ class User extends Front_controller {
             'secondname'=> $this->input->post('secondname'),
             'lastname'  => $this->input->post('lastname'),
             'email'     => $this->input->post('email'),
-            'phone'     => $this->input->post('phone'),
+            //'phone'     => $this->input->post('phone'),
             'city_id'   => $this->input->post('city_id'),
             'tvo_id'    => $this->input->post('tvo_id'),
             'street'    => $this->input->post('street'),
             'home'      => $this->input->post('home'),
             'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'joindate'  => date("Y-m-d H:i:s"),
+            'joindate'  => date("Y-m-d H:i:s")
         );
         if ($this->user->set_data(NULL, $this->data)) {
             $data['password'] = $this->input->post('password');
@@ -118,6 +112,27 @@ class User extends Front_controller {
                     'message' => 'User is not deputy'
                 ));    
             }
+        }
+    }
+    
+    public function register_deputy() {
+        $deputy = $this->deputy->get_deputies($this->input->post('depid'));
+        $this->data = array(
+            'firstname' => $deputy['name'],
+            'secondname'=> $deputy['patronymic'],
+            'lastname'  => $deputy['surname'],
+            'email'     => $this->input->post('email'),
+            'city_id'   => $this->input->post('city_id'),
+            'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'joindate'  => date("Y-m-d H:i:s"),
+            'role'      => 'deputy'
+        );
+        if ($this->user->set_data(NULL, $this->data)) {
+            $deputy = array();
+            $deputy['user_id'] = $this->user->get_last();
+            $this->deputy->set_deputy($this->input->post('depid'), $deputy);
+            $data['password'] = $this->input->post('password');
+            $this->login();
         }
     }
 }

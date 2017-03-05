@@ -20,29 +20,67 @@
 
             <div class="row">
                 <div class="col-sm-12 register-tab">
-                    <form ng-submit="register()" role="form" novalidate="novalidate" ng-controller="CityController">
+                    <form ng-submit="register()" name="registerUser" role="form" novalidate="novalidate" ng-controller="CityController">
                         <section>
-                                <legend>1. Вкажіть свої им'я, прізвище та по батькові.</legend>
-                            <div class="row reg-input" style="margin-bottom: 29px;">
+                            <legend>1. Вкажіть свої им'я, прізвище та по батькові.</legend>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="iDep" name="iDep" type="checkbox" value="true" ng-model="iDep" ng-click="get_deputies()"/>
+                                            Я реєструюсь, як депутат, та згоден відповідати на звернення виборців
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="iDep" class="reg-city-selector">
+                                <label>Оберіть депутата зі списку:</label>
+                                <select class="selectpicker show-tick form-control bs-select-hidden" name="Deputies" ng-model="deps.id" convert-to-number>
+                                    <option disabled selected value="">Оберіть депутата зі списку</option>
+                                    <option ng-repeat="deputy in deps" value="{{deputy.id}}">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</option>
+                                </select>
+                            </div>
+                            <div class="row reg-input" ng-hide="iDep">
                                 <div class="col-lg-3 col-md-3">
                                     <label>Прізвище</label>
-                                    <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Surname" name="Surname" ng-model="user.surname" type="text" value="">
-                                    <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>
+                                    <input class="form-control"
+                                        data-val="true"
+                                        data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
+                                        data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        id="Surname"
+                                        name="Surname"
+                                        ng-model="user.surname"
+                                        type="text"
+                                        required>
                                 </div>
                                 <div class="col-lg-3 col-md-3">
                                     <label>Ім’я</label>
-                                    <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Name" name="Name" ng-model="user.name" type="text" value="">
-                                    <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                    <input class="form-control"
+                                        data-val="true"
+                                        data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
+                                        data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        id="Name"
+                                        name="Name"
+                                        ng-model="user.name"
+                                        type="text"
+                                        required>
                                 </div>
                                 <div class="col-lg-3 col-md-3">
                                     <label>По батькові</label>
-                                    <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Patronymic" name="Patronymic" ng-model="user.patronymic" type="text" value="">
-                                    <span class="field-validation-valid text-danger" data-valmsg-for="Patronymic" data-valmsg-replace="true"></span>
+                                    <input class="form-control"
+                                        data-val="true"
+                                        data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
+                                        data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        id="Patronymic"
+                                        name="Patronymic"
+                                        ng-model="user.patronymic"
+                                        type="text"
+                                        required>
                                 </div>
                             </div>
                         </section>
-                        <section>
-                            <legend>2. Оберіть свою адресу мешкання</legend>
+                        <section ng-hide="iDep">
+                            <legend>2. Вкажіть свою адресу мешкання</legend>
                             <div class="row reg-input">
                                 <div class="col-lg-9 col-sm-9">
                                     <label>Автоматичний пошук адреси (введіть вулицю та номер будинку та оберіть з результатів пошуку):</label>
@@ -71,13 +109,27 @@
                                 </div>
                                 <div class="col-lg-3 col-sm-3">
                                     <label>Вулиця</label>
-                                    <input class="form-control" data-val="true" data-val-regex="Повинне починатися з великої літери і бути написано кирилицею" data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$" id="Street" name="Street" ng-model="user.street" type="text" value="">
-                                    <span class="field-validation-valid text-danger" data-valmsg-for="Street" data-valmsg-replace="true"></span>
+                                    <input class="form-control"
+                                        data-val="true"
+                                        data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
+                                        data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        id="Street"
+                                        name="Street"
+                                        ng-model="user.street"
+                                        type="text"
+                                        required>
                                 </div>
                                 <div class="col-lg-3 col-sm-3">
                                     <label>Номер будинку</label>
-                                    <input class="form-control" data-val="true" data-val-regex="Введіть номер будинку" data-val-required="Введіть номер будинку" id="Home" name="Home" ng-model="user.home" type="text" value="">
-                                    <span class="field-validation-valid text-danger" data-valmsg-for="Home" data-valmsg-replace="true"></span>
+                                    <input class="form-control"
+                                        data-val="true"
+                                        data-val-regex="Введіть номер будинку"
+                                        data-val-required="Введіть номер будинку"
+                                        id="Home"
+                                        name="Home"
+                                        ng-model="user.home"
+                                        type="text"
+                                        required>
                                 </div>
                             </div>
                         </section>
@@ -86,38 +138,44 @@
                             <div class="row reg-input">
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Електронна пошта</label>
-                                    <input class="form-control" data-val="true" data-val-email="Введіть електронну пошту" data-val-required="Введіть електронну пошту" id="Email" name="Email" ng-model="user.email" type="text" value="">
-                                    <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                                    <input class="form-control"
+                                        data-val="true"
+                                        data-val-email="Введіть електронну пошту"
+                                        data-val-required="Введіть електронну пошту"
+                                        id="Email"
+                                        name="Email"
+                                        ng-model="user.email"
+                                        type="email"
+                                        required>
                                 </div>
                                 <div class="col-lg-3 col-sm-6 hidden-xs">
                                     <label></label>
                                     <p>Буде використовуватись для входу</p>
                                 </div>
-                            </div>
-                            <div class="row reg-input">
+                            </div><!--
+                            <div class="row reg-input"  ng-hide="iDep">
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Мобільний телефон</label>
                                     <input class="form-control" data-val="true" data-val-phone="Введіть номер мобільного телефону" data-val-required="Введіть номер мобільного телефону" id="Phone" name="Phone" ng-model="user.phone" type="text" value="">
                                     <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
-                                </div><!--
+                                </div>
                                 <div class="col-lg-3 col-sm-6 hidden-xs">
                                     <label></label>
                                     <p>Потрібен щоб підтвердити реєстрацію</p>
-                                </div>-->
-                            </div>
+                                </div>
+                            </div>-->
                         </section>
                         <section>
-                            <legend>4. Оберіть пароль</legend>
+                            <legend>4. Вкажіть пароль</legend>
                             <div class="row reg-input">
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Пароль</label>
-                                    <input class="form-control" data-val="true" data-val-length="Пароль має бути довжиною хоча б 6 символів" data-val-length-max="100" data-val-length-min="6" data-val-required="Це поле обов`язкове для заповнення" id="Password" name="Password" ng-model="user.password" type="password">
+                                    <input class="form-control" data-val="true" data-val-length="Пароль має бути довжиною хоча б 6 символів" data-val-length-max="100" data-val-length-min="6" data-val-required="Це поле обов`язкове для заповнення" id="Password" name="Password" ng-model="user.password" type="password" required>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                                 </div>
-    
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Підтвердження паролю</label>
-                                    <input class="form-control" data-val="true" data-val-equalto="Пароль та підтвердження паролю мають співпадати" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password">
+                                    <input class="form-control" data-val="true" data-val-equalto="Пароль та підтвердження паролю мають співпадати" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" required>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
                                 </div>
                             </div>
@@ -134,14 +192,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="checkbox">
-                                    <label><input checked="true" data-val="true" data-val-required="The EmailDelivery field is required." id="EmailDelivery" name="EmailDelivery" type="checkbox" value="true" ng-model="user.emailDelivery" />Я згоден отримувати email розсилку</label>
-                                </div>
-                            </div>
-                        </div>
                         -->
                         <div class="row">
                             <div class="col-sm-12 text-holder">
@@ -149,8 +199,14 @@
                             </div>
                         </div>
                         <section>
-                            <legend>5. Перегляньте реєстраційні дані, отримайте номер вашої дільниці та завершіть реєстрацію</legend>
-                            <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal" ng-click="detect_tvo()">Переглянути реєстраційні дані</button>
+                            <div ng-hide="iDep">
+                                <legend>5. Перегляньте реєстраційні дані, отримайте номер вашої дільниці та завершіть реєстрацію</legend>
+                                <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal" ng-click="detect_tvo()" ng-disabled="!registerUser.$valid">Переглянути реєстраційні дані</button>
+                            </div>
+                            <div ng-show="iDep">
+                                <legend>5. Завершіть реєстрацію</legend>
+                                <button type="button" id="previewButton" ng-click="deputy_reg()">Зареєструватися</button>
+                            </div>
                         </section>
                         <div class="modal fade" id="registerPreviewModal">
                             <div class="modal-dialog modal-sm">
@@ -167,20 +223,20 @@
                                     <div class="modal-body">
                                         <div id="previewContent" class="row">
                                             <div class="col-sm-12">
-                                                <label>Ім`я при підписанні та створенні петиції:</label>
+                                                <label>Ім`я при підписанні та створенні звернення:</label>
                                                 <p>{{user.surname}}&nbsp;{{user.name}}&nbsp;{{user.patronymic}}</p>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>Електронна адреса:</label>
-                                                <p>{{user.email}}</p>
+                                                <p>{{user.email}}</p><!--
                                                 <label>Мобільний телефон</label>
-                                                <p>{{user.phone}}</p>
+                                                <p>{{user.phone}}</p>-->
                                             </div>
                                             <div class="col-sm-12">
                                                 <label>Ваша адреса:</label>
                                                 <p>
-                                                    <span ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}},</span>
-                                                    <span>Краматорськ, </span><span>{{user.street}}, буд. {{user.home}}</span>
+                                                    <span ng-repeat="city in cities">{{city.city}},</span>
+                                                    <span>{{user.street}}, буд. {{user.home}}</span>
                                                 </p>
                                             </div>
                                             <div class="col-sm-12">

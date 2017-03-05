@@ -2,6 +2,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
     function($scope, $rootScope, $http, $location, $state, $stateParams) {
         
         $scope.user = {};
+        $scope.deps = {};
         $scope.user.city_id = 1; //Пока город только 1
         
         $scope.place = null;
@@ -20,7 +21,20 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.requests = response.data.Requests;
-                    console.log($scope.requests);
+                    //console.log($scope.requests);
+                }
+            });
+        };
+        
+        $scope.get_deputies = function() {
+            //$scope.deputies = {};
+            $http({
+                method: 'GET',
+                url: '/backend/deputy/unreg_deputies'
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.deps = response.data.Deputies;
+                    //console.log($scope.deputies);
                 }
             });
         };
@@ -36,7 +50,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'secondname': $scope.user.patronymic,
                     'lastname'  : $scope.user.surname,
                     'email'     : $scope.user.email,
-                    'phone'     : $scope.user.phone,
+                    //'phone'     : $scope.user.phone,
                     'tvo_id'    : $scope.user.tvo_id,
                     'password'  : $scope.user.password,
                     'city_id'   : $scope.user.city_id,
@@ -55,6 +69,27 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         $rootScope.returnUrl = null;
                     }
                     $location.path(path);
+                }
+            });
+        };
+        
+        $scope.deputy_reg = function(){
+            $http({
+                method: 'POST',
+                url: '/backend/user/register_deputy',
+                data: $.param({
+                    'depid':    $scope.deps.id,
+                    'email':    $scope.user.email,
+                    'city_id':  $scope.user.city_id,
+                    'password': $scope.user.password
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    console.log(response.data);
+                    $rootScope.logged_in = true;
+                    $rootScope.currentUser = response.data.currentUser;
+                    $location.path('/office');
                 }
             });
         };
@@ -79,6 +114,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         $scope.district = response.data.District;
                         $scope.deputy = response.data.Deputy;
                         $scope.eplace = response.data.Place;
+                        //console.log($scope.deputy);
                     }
                 });
             }
@@ -90,6 +126,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
         /*************** вычисление избирательного участка по адресу ******************/
         /******************************************************************************/
         $scope.detect_tvo = function() {
+            //console.log($scope.user.city_id);
             $scope.user.tvo_id = -1;
             if ($scope.user.city_id && 
                 $scope.user.street && 

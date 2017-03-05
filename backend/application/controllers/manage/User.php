@@ -52,6 +52,14 @@ class User extends Admin_controller {
     }
     
     public function delete($id){
+        $user = $this->user->get_records($id);
+        if ($user['role'] != 'user') {
+            echo json_encode(array(
+                    'error'     => 1,
+                    'message'   => 'Не можу видалити адміністратора або депутата'
+                ));
+            return;
+        }
         $logged_in = $this->session->userdata('logged_in');
         if ($id == $logged_in['id']) {
             $this->logout();

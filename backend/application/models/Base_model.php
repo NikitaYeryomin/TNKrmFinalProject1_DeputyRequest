@@ -38,7 +38,6 @@ class Base_model extends CI_Model {
     }
     
     public function delete($id){
-        
         return $this->db->delete($this->table, array($this->id_field => $id));
     }
     
