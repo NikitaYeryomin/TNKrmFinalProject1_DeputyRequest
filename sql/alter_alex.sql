@@ -11,4 +11,4 @@ ALTER TABLE  `request` CHANGE  `type`  `type` ENUM(  'custom',  'material',  'li
 ALTER TABLE  `request` CHANGE  `status`  `status` ENUM(  'new',  'answered',  'rejected',  'not_ready' ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT  'new';
 5.03.2017
 /*подтверждение депутата*/
-ALTER TABLE  `deputies` ADD  `checked` TINYINT NOT NULL DEFAULT  '0';
+/*ALTER TABLE  `deputies` ADD  `checked` TINYINT NOT NULL DEFAULT  '0';*/

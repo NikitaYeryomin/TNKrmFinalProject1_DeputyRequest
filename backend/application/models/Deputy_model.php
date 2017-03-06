@@ -30,7 +30,7 @@ public function set_deputy($id = NULL, $data)
 public function adddeputy($data){return $this->db->insert('deputies', $data);}
 
 public function active_deputies() {
-        return $this->db->query('SELECT * FROM deputies WHERE user_id IS NOT NULL AND checked = 1')->result_array();
+        return $this->db->query('SELECT * FROM deputies WHERE user_id IS NOT NULL')->result_array();
 }
 
 public function unreg_deputies() {
