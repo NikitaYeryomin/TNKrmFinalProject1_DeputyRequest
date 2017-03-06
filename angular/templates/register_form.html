@@ -187,8 +187,26 @@
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Підтвердження паролю</label>
-                                    <input class="form-control" data-val="true" data-val-equalto="Пароль та підтвердження паролю мають співпадати" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" required>
-                                    <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                                    <input class="form-control"
+                                        data-val="true"
+                                        data-val-equalto="Пароль та підтвердження паролю мають співпадати"
+                                        data-val-equalto-other="*.Password"
+                                        id="ConfirmPassword"
+                                        ng-model="user.passconfirm"
+                                        name="ConfirmPassword"
+                                        type="password"
+                                        required><!--
+                                    
+                                    <span class="field-validation-valid text-danger"
+                                        data-valmsg-for="ConfirmPassword"
+                                        data-valmsg-replace="true">
+                                    </span>-->
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <label></label>
+                                    <span class="glyphicon glyphicon-ok"
+                                        ng-show="(user.password != '') && (user.password == user.passconfirm)">
+                                    </span>
                                 </div>
                             </div>
                         </section>

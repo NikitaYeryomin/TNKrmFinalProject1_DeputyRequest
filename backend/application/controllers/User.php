@@ -26,7 +26,7 @@ class User extends Front_controller {
             } else {
                 echo json_encode(array(
                     'error'   => 1,
-                    'message' => 'Incorrect username and/or password!'
+                    'message' => "Помилкове ім'я користувача та/або пароль!"
                 ));
             }
         }
@@ -55,6 +55,9 @@ class User extends Front_controller {
     }
 
     public function register() {
+        //form validation
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required');
         $this->data = array(
             'firstname' => $this->input->post('firstname'),
             'secondname'=> $this->input->post('secondname'),
