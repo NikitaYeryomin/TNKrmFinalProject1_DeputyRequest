@@ -56,24 +56,44 @@ class User extends Front_controller {
 
     public function register() {
         //form validation
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        
+        $this->form_validation->set_rules('firstname', "Ім'я", "required");
+        $this->form_validation->set_rules('secondname', "По батькові", "required");
+        $this->form_validation->set_rules('lastname', "Прізвище", "required");
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->data = array(
-            'firstname' => $this->input->post('firstname'),
-            'secondname'=> $this->input->post('secondname'),
-            'lastname'  => $this->input->post('lastname'),
-            'email'     => $this->input->post('email'),
-            //'phone'     => $this->input->post('phone'),
-            'city_id'   => $this->input->post('city_id'),
-            'tvo_id'    => $this->input->post('tvo_id'),
-            'street'    => $this->input->post('street'),
-            'home'      => $this->input->post('home'),
-            'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'joindate'  => date("Y-m-d H:i:s")
-        );
-        if ($this->user->set_data(NULL, $this->data)) {
-            $data['password'] = $this->input->post('password');
-            $this->login();
+        $this->form_validation->set_rules('street', "Вулиця", 'required');
+        $this->form_validation->set_rules('home', "Будинок", 'required|is_natural_no_zero');
+        $this->form_validation->set_rules('password', "Пароль", 'required|min_length[3]|max_length[10]');
+        $this->form_validation->set_rules('passconfirm', "Підтвердження паролю", 'required|matches[password]');
+        if ($this->form_validation->run()) {
+            $this->data = array(
+                'firstname' => $this->input->post('firstname'),
+                'secondname'=> $this->input->post('secondname'),
+                'lastname'  => $this->input->post('lastname'),
+                'email'     => $this->input->post('email'),
+                //'phone'     => $this->input->post('phone'),
+                'city_id'   => $this->input->post('city_id'),
+                'tvo_id'    => $this->input->post('tvo_id'),
+                'street'    => $this->input->post('street'),
+                'home'      => $this->input->post('home'),
+                'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'joindate'  => date("Y-m-d H:i:s")
+            );
+            if ($this->user->set_data(NULL, $this->data)) {
+                $data['password'] = $this->input->post('password');
+                $this->login();
+            } else {
+                echo json_encode(array(
+                    'error'     => 1,
+                    'message'   => "Помилка реєстрації: цей email вже зареєстровано"
+                ));
+            }
+        } else {
+            echo json_encode(array(
+                'error'     => 1,
+                'message'   => $this->form_validation->error_array()
+            ));
         }
     }
     
