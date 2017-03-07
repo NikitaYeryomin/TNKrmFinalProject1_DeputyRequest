@@ -53,6 +53,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     //'phone'     : $scope.user.phone,
                     'tvo_id'    : $scope.user.tvo_id,
                     'password'  : $scope.user.password,
+                    'passconfirm':$scope.user.passconfirm,
                     'city_id'   : $scope.user.city_id,
                     'street'    : $scope.user.street,
                     'home'      : $scope.user.home
@@ -63,13 +64,18 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     console.log('redirecting to mainpage...');
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
-                    var path= '/user';
+                    var path = '/user';
                     if ($rootScope.returnUrl) {
                         path = $rootScope.returnUrl;
                         $rootScope.returnUrl = null;
                     }
                     $location.path(path);
-                }
+                }/* else {
+                    $rootScope.messages = response.data.messages;
+                    console.log($rootScope.messages);
+                    $rootScope.returnUrl = 'register';
+                    $location.path('/error');
+                }*/
             });
         };
         
@@ -86,7 +92,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
                 if (response.data.error == 0) {
-                    console.log(response.data);
+                    //console.log(response.data);
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
                     $location.path('/office');
@@ -189,8 +195,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                                 }
                             }
                         }
+                        return $scope.user.tvo_id = 0;
                     } else {
-                        //адрес не значится нигде
                         return $scope.user.tvo_id = 0;
                     }
                 });

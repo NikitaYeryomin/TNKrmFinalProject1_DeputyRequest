@@ -22,7 +22,7 @@
                 <div class="col-sm-12 register-tab">
                     <form ng-submit="register()" name="registerUser" role="form" novalidate="novalidate" ng-controller="CityController">
                         <section>
-                            <legend>1. Вкажіть свої им'я, прізвище та по батькові.</legend>
+                            <legend>1. Вкажіть свої им'я, прізвище та по батькові (повинно починатися з великої літери і бути написано кирилицею).</legend>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="checkbox">
@@ -44,9 +44,7 @@
                                 <div class="col-lg-3 col-md-3">
                                     <label>Прізвище</label>
                                     <input class="form-control"
-                                        data-val="true"
-                                        data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
-                                        ng-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        ng-pattern="/^[А-ЯЁҐЄІЇ]{1}[\D]+$/"
                                         id="Surname"
                                         name="Surname"
                                         ng-model="user.surname"
@@ -56,9 +54,7 @@
                                 <div class="col-lg-3 col-md-3">
                                     <label>Ім’я</label>
                                     <input class="form-control"
-                                        data-val="true"
-                                        data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
-                                        ng-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        ng-pattern="/^[А-ЯЁҐЄІЇ]{1}[\D]+$/"
                                         id="Name"
                                         name="Name"
                                         ng-model="user.name"
@@ -68,9 +64,7 @@
                                 <div class="col-lg-3 col-md-3">
                                     <label>По батькові</label>
                                     <input class="form-control"
-                                        data-val="true"
-                                        data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
-                                        ng-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
+                                        ng-pattern="/^[А-ЯЁҐЄІЇ]{1}[\D]+$/"
                                         id="Patronymic"
                                         name="Patronymic"
                                         ng-model="user.patronymic"
@@ -93,7 +87,8 @@
                                         g-places-autocomplete
                                         options="autocompleteOptions"
                                         force-selection="true"
-                                        autocomplete="off">
+                                        autocomplete="off"
+                                        style="background-color:white;">
                                 </div>
                                 <div class="col-sm-12 text-holder">
                                     <p style="margin-bottom: 20px; color:#AAACB1;">У окремих випадках Google може не знайти вашу адресу - введіть ії власноруч нижче:</p>
@@ -112,9 +107,6 @@
                                 <div class="col-lg-3 col-sm-3">
                                     <label>Вулиця</label>
                                     <input class="form-control"
-                                        data-val="true"
-                                        data-val-regex="Повинне починатися з великої літери і бути написано кирилицею"
-                                        data-val-regex-pattern="^[А-ЯЁҐЄІЇ]{1}[\D]+$"
                                         id="Street"
                                         name="Street"
                                         ng-model="user.street"
@@ -124,9 +116,6 @@
                                 <div class="col-lg-3 col-sm-3">
                                     <label>Номер будинку</label>
                                     <input class="form-control"
-                                        data-val="true"
-                                        data-val-regex="Введіть номер будинку"
-                                        data-val-required="Введіть номер будинку"
                                         id="Home"
                                         name="Home"
                                         ng-model="user.home"
@@ -168,19 +157,16 @@
                             </div>-->
                         </section>
                         <section>
-                            <legend>4. Вкажіть пароль</legend>
+                            <legend>4. Вкажіть пароль (6...12 символів)</legend>
                             <div class="row reg-input">
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Пароль</label>
                                     <input class="form-control"
-                                        data-val="true"
-                                        data-val-length="Пароль має бути довжиною хоча б 6 символів"
-                                        data-val-length-max="100"
-                                        data-val-length-min="6"
-                                        data-val-required="Це поле обов`язкове для заповнення"
                                         id="Password"
                                         name="Password"
                                         ng-model="user.password"
+                                        ng-minlength="6"
+                                        ng-maxlength="12"
                                         type="password"
                                         required>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
@@ -188,25 +174,19 @@
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Підтвердження паролю</label>
                                     <input class="form-control"
-                                        data-val="true"
-                                        data-val-equalto="Пароль та підтвердження паролю мають співпадати"
-                                        data-val-equalto-other="*.Password"
                                         id="ConfirmPassword"
                                         ng-model="user.passconfirm"
+                                        ng-minlength="6"
+                                        ng-maxlength="12"
                                         name="ConfirmPassword"
                                         type="password"
-                                        required><!--
-                                    
-                                    <span class="field-validation-valid text-danger"
-                                        data-valmsg-for="ConfirmPassword"
-                                        data-valmsg-replace="true">
-                                    </span>-->
+                                        required>
                                 </div>
+                            </div>
+                            <div class="row reg-input" ng-show="(user.password != '') && (user.passconfirm != '') && (user.password != user.passconfirm)">
                                 <div class="col-lg-3 col-sm-6">
                                     <label></label>
-                                    <span class="glyphicon glyphicon-ok"
-                                        ng-show="(user.password != '') && (user.password == user.passconfirm)">
-                                    </span>
+                                    <span style="color:red;"><strong>Паролі мають співпадати!</strong></span>
                                 </div>
                             </div>
                         </section>

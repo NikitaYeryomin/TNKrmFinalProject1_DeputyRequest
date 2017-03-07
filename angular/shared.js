@@ -63,4 +63,11 @@ app.filter('locationFromAddress', function() {
         }
 
     }
+    
+    function show_message(message, returnUrl) {
+        $rootScope.message = message;
+        $rootScope.returnUrl = returnUrl;
+        $location.path('/error');
+    }
+    
 });

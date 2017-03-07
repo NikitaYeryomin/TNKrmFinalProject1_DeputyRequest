@@ -56,16 +56,43 @@ class User extends Front_controller {
 
     public function register() {
         //form validation
-        
-        $this->form_validation->set_rules('firstname', "Ім'я", "required");
-        $this->form_validation->set_rules('secondname', "По батькові", "required");
-        $this->form_validation->set_rules('lastname', "Прізвище", "required");
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('firstname', "Ім'я", "required|regex_match[/^[А-ЯЁҐЄІЇ]{1}[\D]+$/]",
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'regex_match'=> 'Повинне починатися з великої літери і бути написано кирилицею'
+            ));
+        $this->form_validation->set_rules('secondname', "По батькові", "required|regex_match[/^[А-ЯЁҐЄІЇ]{1}[\D]+$/]",
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'regex_match'=> 'Повинне починатися з великої літери і бути написано кирилицею'
+            ));
+        $this->form_validation->set_rules('lastname', "Прізвище", "required|regex_match[/^[А-ЯЁҐЄІЇ]{1}[\D]+$/]",
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'regex_match'=> 'Повинне починатися з великої літери і бути написано кирилицею'
+            ));
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]',
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'is_unique'=> 'Цей %s вже зареєстровано'
+            ));
         $this->form_validation->set_rules('street', "Вулиця", 'required');
-        $this->form_validation->set_rules('home', "Будинок", 'required|is_natural_no_zero');
-        $this->form_validation->set_rules('password', "Пароль", 'required|min_length[3]|max_length[10]');
-        $this->form_validation->set_rules('passconfirm', "Підтвердження паролю", 'required|matches[password]');
+        $this->form_validation->set_rules('home', "Будинок", 'required|is_natural_no_zero', 
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'is_natural_no_zero' => 'Має бути ціле число більше 0'
+            ));
+        $this->form_validation->set_rules('password', "Пароль", 'required|min_length[6]|max_length[12]',
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'min_length'=> 'Мінімум 6 символів',
+                'max_length'=> 'Максимум 12 символів'
+            ));
+        $this->form_validation->set_rules('passconfirm', "Підтвердження паролю", 'required|matches[password]',
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'matches'=> 'Має співпадати з паролем'
+            ));
         if ($this->form_validation->run()) {
             $this->data = array(
                 'firstname' => $this->input->post('firstname'),
@@ -83,16 +110,11 @@ class User extends Front_controller {
             if ($this->user->set_data(NULL, $this->data)) {
                 $data['password'] = $this->input->post('password');
                 $this->login();
-            } else {
-                echo json_encode(array(
-                    'error'     => 1,
-                    'message'   => "Помилка реєстрації: цей email вже зареєстровано"
-                ));
-            }
+            } 
         } else {
             echo json_encode(array(
                 'error'     => 1,
-                'message'   => $this->form_validation->error_array()
+                'messages'   => $this->form_validation->error_array()
             ));
         }
     }

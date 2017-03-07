@@ -93,7 +93,7 @@
                 <label>Зареєстровані депутати:</label>
                 <ul class="nav">
                     <li ng-repeat="deputy in deputies">
-                        <a href="" ui-sref="deputy({id: deputy.id})">
+                        <a href="" ui-sref="deputy({id: deputy.id})"  title="Звернень до депутата: усьго/з відповідями">
                             {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
                             <span class="badge">{{deputy.reqall}} / {{deputy.answer}}</span>
                         </a>
