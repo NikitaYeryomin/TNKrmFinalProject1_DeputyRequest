@@ -15,6 +15,18 @@ content h2, content h4{
     margin-bottom: 3px;
     text-align: center!important;
 }
+.h1,h1 {
+    font-size: 36px
+}
+.h2,h2 {
+    font-size: 30px
+}
+.h3,h3 {
+    font-size: 24px
+}
+.h4,h4 {
+    font-size: 18px
+}
 legend {
     display: block;
     width: 100%;
@@ -112,7 +124,7 @@ input.ng-valid, textarea.ng-valid {
     font-size: smaller;
 }
 .source{
-    margin: 0px;
+    margin: 5px 0px;
     font-style: italic;
 }
 /******************идентификаторы в алфавитном порядке*************************************/

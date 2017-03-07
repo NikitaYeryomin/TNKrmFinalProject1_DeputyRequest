@@ -17,6 +17,7 @@
     {{deputy.reception}}
 </fieldset>
 <div deputy-page=""></div>
+<p class="source">дані <a href="http://www.cvk.gov.ua/pls/vm2015/PVM057?PID112=30&PID102=398&PF7691=398&PT001F01=100&rej=0&pt00_t001f01=100">Центральної виборчої комісії</a> та <a href="http://www.krm.gov.ua/person">сайту міської ради</a></p>
 <fieldset> <legend>звернення до депутата</legend>
                 <div>
                     <uib-tabset active="active">
@@ -25,25 +26,14 @@
                                 <thead>
                                 <tr>
                                     <th>№
-                                    <th>Додано</th>
-                                    <th>Текст запиту</th>
-                                    <th>Заявник</th>
-                                </tr>
-                                </thead>
+                                    <th>Додано
+                                    <th>Заявник
+                                    <th>Зміст
                                 <tr ng-repeat="request in requests | filter: {status: 'new'} : true| filter: {public_appeal: '1'} : true">
-                                    <td>
-                                        {{request.requestid}}
-                                    </td>
-                                    <td>
-                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
-                                    </td>
-                                    <td>
-                                        {{request.text}}
-                                    </td>
-                                    <td>
-                                        {{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
-                                    </td>
-                                </tr>
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
+                                    <td>{{request.adddate}}
+                                    <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.text}}</a>
                             </table>
                         </uib-tab>
                         <uib-tab index="1" heading="Надано відповідь">
@@ -51,25 +41,18 @@
                                 <thead>
                                 <tr>
                                     <th>№
-                                    <th>Додано</th>
-                                    <th>Текст запиту</th>
-                                    <th>Депутат</th>
-                                </tr>
-                                </thead>
+                                    <th>Додано
+                                    <th>Заявник
+                                    <th>Зміст
+                                    <th>Час відповіді
+                                    <th>Відповідь
                                 <tr ng-repeat="request in requests | filter: {status: 'answered'} : true| filter: {public_appeal: '1'} : true">
-                                    <td>
-                                        {{request.requestid}}
-                                    </td>
-                                    <td>
-                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
-                                    </td>
-                                    <td>
-                                        {{request.text}}
-                                    </td>
-                                    <td>
-                                        {{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}
-                                    </td>
-                                </tr>
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
+                                    <td>{{request.adddate}}
+                                    <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.text}}</a>
+                                    <td>{{request.ansdate}}
+                                    <td>{{request.response}}
                             </table>
                         </uib-tab>
                     </uib-tabset>
@@ -77,5 +60,4 @@
             </div>
 
 </fieldset>
-<p class="source">дані <a href="http://www.cvk.gov.ua/pls/vm2015/PVM057?PID112=30&PID102=398&PF7691=398&PT001F01=100&rej=0&pt00_t001f01=100">Центральної виборчої комісії</a> та <a href="http://www.krm.gov.ua/person">сайту міської ради</a></p>
 </content>

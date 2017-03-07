@@ -67,6 +67,7 @@ class Dep_request extends Front_controller {
         $this->data = array(
             'response'  => $this->input->post('response'),
             'status'    => $this->input->post('status')
+            ,'ansdate'  => date("Y-m-d H:i:s")
         );
         $result = array('error' => 0);
         if (!$this->request->set_data($id, $this->data)) {

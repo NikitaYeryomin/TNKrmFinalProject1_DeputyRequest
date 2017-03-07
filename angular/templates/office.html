@@ -3,8 +3,6 @@
     <div class="petition-main account-main">
         <div class="container">
             <div class="col-sm-6">
-                <h2>Кабінет депутата:</h2>
-                <h2>{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</h2>
             </div>
             <div class="col-sm-12">
                 <h2>Звернення до депутата</h2>
@@ -14,25 +12,15 @@
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Додано</th>
-                                    <th>Текст запиту</th>
-                                    <th>Заявник</th>
-                                </tr>
-                                </thead>
+                                    <th>№
+                                    <th>Додано
+                                    <th>Заявник
+                                    <th>Зміст
                                 <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
-                                    <td>
-                                        {{request.requestid}}
-                                    </td>
-                                    <td>
-                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
-                                    </td>
-                                    <td>
-                                        {{request.text}}
-                                    </td>
-                                    <td>
-                                        {{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
-                                    </td>
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
+                                    <td>{{request.adddate}}
+                                    <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.text}}</a>
                                 </tr>
                             </table>
                         </uib-tab>
@@ -40,26 +28,19 @@
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Додано</th>
-                                    <th>Текст запиту</th>
-                                    <th>Депутат</th>
-                                </tr>
-                                </thead>
+                                    <th>№
+                                    <th>Додано
+                                    <th>Заявник
+                                    <th>Зміст
+                                    <th>Час відповіді
+                                    <th>Відповідь
                                 <tr ng-repeat="request in requests | filter: {status: 'answered'} : true">
-                                    <td>
-                                        {{request.requestid}}
-                                    </td>
-                                    <td>
-                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
-                                    </td>
-                                    <td>
-                                        {{request.text}}
-                                    </td>
-                                    <td>
-                                        {{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}
-                                    </td>
-                                </tr>
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
+                                    <td>{{request.adddate}}
+                                    <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.text}}</a>
+                                    <td>{{request.ansdate}}
+                                    <td>{{request.response}}
                             </table>
                         </uib-tab>
                         <uib-tab index="2" heading="Відхилено">

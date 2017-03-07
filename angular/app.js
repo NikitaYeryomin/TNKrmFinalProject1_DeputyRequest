@@ -79,7 +79,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 templateUrl: '/angular/templates/view.html',
                 controller: 'ViewController',
                 data:{
-                    title: 'Звернення'
+                    title: 'Звернення № {{id}}'
                 },
                 resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]}
             })
@@ -143,7 +143,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 url: '/deputy/:id',
                 templateUrl: '/angular/templates/deputy.html',
                 controller: 'DeputyController',
-                data:{title: "депутат № {{id}}"},
+                data:{title: "депутат"},// № {{id}}"},
                 resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]
                 }
             })

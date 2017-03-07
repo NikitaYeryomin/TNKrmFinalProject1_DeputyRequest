@@ -18,7 +18,7 @@
                     <div class="col-lg-8 col-sm-8">
                         <h2 style="text-align: center">Звернення</h2>
                         <h2 style="text-align: center">до депутата територіального виборчого округу № <a href="#" ui-sref="tvo({id: district.tvoid})">{{request.tvoid}}</a></h2>
-                        <h2 style="text-align: center"><strong><a href="#" ui-sref="deputy({id: deputy.id})">{{request.name}}&nbsp;{{request.patronymic}}&nbsp;{{request.surname}}</a></strong></h2>
+                        <h2 style="text-align: center"><strong><a href="#!/deputy/{{request.deputy_id}}">{{request.name}}&nbsp;{{request.patronymic}}&nbsp;{{request.surname}}</a></strong></h2>
                     </div>
                     <div class="col-lg-2 col-sm-2">
                         <img src="/img/city_embleme_{{currentUser.cityid}}.jpg" 
@@ -46,12 +46,20 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-sm-12">
+                        <label>Дата звернення:</label>
+                        <p>{{request.adddate}}</p>
+                    </div>
+                    <div class="col-lg-12 col-sm-12">
                         <label>Зміст звернення:</label>
                         <p>{{request.text}}</p>
                     </div>
                     <div class="col-lg-12 col-sm-12" ng-show="request.status == 'rejected'">
                         <label>Відхилено з причини:</label>
                         <p>{{request.response}}</p>
+                    </div>
+                    <div class="col-lg-12 col-sm-12">
+                        <label>Дата відповіді:</label>
+                        <p>{{request.ansdate}}</p>
                     </div>
                     <div class="col-lg-12 col-sm-12" ng-show="request.status == 'answered'">
                         <label>Відповідь:</label>

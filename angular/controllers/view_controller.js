@@ -10,11 +10,7 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.user = response.data.User;
-                    //$scope.district = response.data.District;
-                    //$scope.deputy = response.data.Deputy;
                     //console.log($scope.user);
-                    //console.log($scope.district);
-                    //console.log($scope.deputy);
                 }
             });
         };
@@ -27,7 +23,7 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
                 if (response.data.error == 0) {
                     $scope.request = response.data.Request;
                     $scope.getuser();
-                    //console.log($scope.request);
+                    console.log($scope.request);
                 }
             });
         };
