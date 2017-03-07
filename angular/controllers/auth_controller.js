@@ -20,9 +20,9 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                     //console.log($rootScope.currentUser.role);
                     var path;
                     if ($rootScope.currentUser.role == 'deputy') {
-                        path= '/office';    
+                        path = '/office';    
                     } else {
-                        path= '/user';
+                        path = '/user';
                     }
                     if ($rootScope.returnUrl) {
                         path = $rootScope.returnUrl;
@@ -31,7 +31,7 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                     $location.path(path);
                 } else {
                     $rootScope.message = response.data.message;
-                    $rootScope.returnUrl = '/login';
+                    $rootScope.returnUrl = 'login';
                     $location.path('/error');
                 }
             });

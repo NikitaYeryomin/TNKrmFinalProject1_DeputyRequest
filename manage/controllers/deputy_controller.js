@@ -16,9 +16,9 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 'party_id': $scope.deputy.party_id,
                 'sex': $scope.deputy.sex,
                 'function': $scope.deputy.function,
-                'reception': $scope.deputy.reception
-                ,'new_id': $scope.new_id
-                ,'ex_user_id': $scope.deputy.ex_user_id
+                'reception': $scope.deputy.reception,
+                'new_id': $scope.new_id,
+                'ex_user_id': $scope.deputy.ex_user_id
             }),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {if (response.data.error == 0){$location.path('/deputies');}});
