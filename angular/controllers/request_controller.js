@@ -83,8 +83,8 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         $scope.instruction_parts = {
             'adult' : 'Справка о складі сімї (діє 10 днів)..',
             'minor' : 'Справка із дитячого садка, школи або іншого закладу',
-            'pensioner' : 'Справка о доходах із ПФУ..' + '\n' +'Копія посвідчення..',
-            'disabled_person' : 'Справка МСЕК' + '\n' +'Справка о доходах із УСЗН',
+            'pensioner' : ['Справка о доходах із ПФУ','Копія посвідчення'],
+            'disabled_person' : ['Справка МСЕК', 'Справка о доходах із УСЗН'],
             'war_veteran' : 'Посвідчення ветерана..',
             'ato_participant' : 'Посвідчення учасника АТО..',
             'employed' : 'Справка о доходах кожного повнолітнього члена сімї..',
@@ -99,10 +99,13 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             console.log('getMaterialInstructions');
             $scope.instructions = [];
             if ($scope.data.pensioner) {
-                 $scope.instructions.push( $scope.instruction_parts['pensioner']);
+                 $scope.instructions.push( $scope.instruction_parts['pensioner'[0]]);
+                 $scope.instructions.push( $scope.instruction_parts['pensioner'[1]]);
             }
             if ($scope.data.disabled_person) {
-                 $scope.instructions.push( $scope.instruction_parts['disabled_person']);
+                 $scope.instructions.push( $scope.instruction_parts['disabled_person'][0]);
+                 $scope.instructions.push( $scope.instruction_parts['disabled_person'][1]);
+                
             }
             if ($scope.data.war_veteran) {
                  $scope.instructions.push( $scope.instruction_parts['war_veteran']);
@@ -122,8 +125,8 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             if ($scope.data.unemployed) {
                  $scope.instructions.push( $scope.instruction_parts['unemployed']);
             }
-            if ($scope.data.disease) {
-                 $scope.instructions.push( $scope.instruction_parts['disease']);
+            if ($scope.data.employed) {
+                 $scope.instructions.push( $scope.instruction_parts['employed']);
             }
             if ($scope.data.fire) {
                  $scope.instructions.push( $scope.instruction_parts['fire']);
