@@ -13,7 +13,7 @@
                     <h2 style="text-align: center">Звернення</h2>
                     <h2 style="text-align: center">до депутата територіального виборчого округу № <a href="#" ui-sref="tvo({id: district.tvoid})">{{district.tvoid}}</a></h2>
                     <h2 style="text-align: center"><strong><a href="#" ui-sref="deputy({id: deputy.id})">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</a></strong></h2>
-                    <span style="color: red; text-align: center" ng-show="!deputy.user_id">Депутат не зареєстрований у системі та НЕ може відповідати на звернення.</span>
+                    <h4 style="color: red; text-align: center" ng-show="!deputy.user_id"><strong>Депутат не зареєстрований у системі та НЕ може відповідати на звернення.</strong></h4>
                 </div>
                 <div class="col-sm-12 register-tab">
                     <form ng-submit="add_request()" role="form" novalidate="novalidate">

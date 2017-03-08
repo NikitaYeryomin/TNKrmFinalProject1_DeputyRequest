@@ -46,7 +46,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                     'type': $scope.request.type,
                     'text': $scope.request.text,
                     'response': $scope.request.response,
-                    'public_appeal': $scope.request.public_appeal
+                    'public_appeal': (($scope.request.public_appeal == true) ? 1 : 0)
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
