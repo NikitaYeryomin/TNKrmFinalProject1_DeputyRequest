@@ -5,7 +5,7 @@ class Request_model extends Base_model {
     
     public function __construct() {
         parent::__construct();
-        $this->sql = 'SELECT request.*, user.userid, user.firstname, user.secondname, user.lastname, districts.tvoid, deputies.name, deputies.patronymic, deputies.surname
+        $this->sql = 'SELECT request.*, user.userid, user.firstname, user.secondname, user.lastname, districts.tvoid, deputies.name, deputies.patronymic, deputies.surname, deputies.name_gen_case, deputies.patronymic_gen_case, deputies.surname_gen_case
                     FROM request
                     JOIN user ON user.userid = request.user_id
                     JOIN districts ON districts.id = user.tvo_id
