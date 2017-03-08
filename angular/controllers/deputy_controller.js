@@ -57,7 +57,10 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             var i; $scope.answered=0; $scope.new=0;
             for (i = 0; i < $scope.requests.length; i++) {
                 if ($scope.requests[i].status=='answered'){$scope.answered++;}
-                if ($scope.requests[i].status=='new'){$scope.new++;}
+                if (($scope.requests[i].status=='new') &&
+                    ($scope.requests[i].public_appeal == 1)) {
+                        $scope.new++;
+                    }
             }
             if ($scope.answered==0){$scope.answered='жодного';}
             if ($scope.new==0){$scope.new='жодного нового';}

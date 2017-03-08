@@ -40,15 +40,16 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                 method: 'GET',
                 url: 'backend/dep_request/count'
             }).then(function(response) {
+                console.log(response);
                 if (response.data.error == 0) {
                     $scope.count = response.data;
+                    console.log($scope.count);
                     if (($scope.count.answer % 10 >= 1 && $scope.count.answer % 10 <= 4) && ($scope.count.answer < 10 || $scope.count.answer > 20))
                     {$scope.count.answer+=' звернення';}
                     else {$scope.count.answer+=' звернень';}
                     if (($scope.count.all % 10 >= 1 && $scope.count.all % 10 <= 4) && ($scope.count.all< 10 || $scope.count.all > 20))
                     {$scope.count.all+=' звернення';}
                     else {$scope.count.all+=' звернень';}
-                    //console.log($scope.count);
                 }
             });
         };
