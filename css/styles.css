@@ -164,6 +164,38 @@ input.ng-valid, textarea.ng-valid {
 .l, .source{
     font-size: smaller;
 }
+.register-links {
+    display: inline-block;
+    float: right;
+    font-size: 16px;
+    margin-top: 8px;
+    color: white;
+}
+.register-links .user-holder label {
+    color: white;
+}
+@media (max-width: 480px) {
+    .register-links {
+        width: auto;
+    }
+}
+@media (max-width: 1369px) {
+}
+.register-links a {
+    color: white;
+    border-bottom: 1px solid white;
+    text-decoration: none;
+    margin-left:10px;
+}
+.register-links a:first-child {
+    margin-left:0;
+}
+@media (max-width: 490px) {
+    .register-links .hide-reg {
+        display: none;
+        width: auto;
+    }
+}
 .source{
     margin: 5px 0px;
     font-style: italic;

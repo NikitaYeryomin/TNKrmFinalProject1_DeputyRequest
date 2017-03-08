@@ -1,10 +1,7 @@
 <ng-include src="'/angular/templates/header.html'"></ng-include>
-
 <section class="content" style="">
-
     <div class="petition-main account-main">
         <div class="container">
-
             <div class="row" style="text-align: center;margin-bottom: 10px;">
                 <div class="col-lg-12 first-level">
                     <ul class="nav nav-tabs cabinet-tabs">
@@ -17,7 +14,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-12 register-tab">
                     <form ng-submit="register()" name="registerUser" role="form" novalidate="novalidate" ng-controller="CityController">
@@ -252,7 +248,7 @@
                                             <div class="col-sm-12">
                                                 <label>Виборча дільниця:&nbsp;</label>
                                                 <p>
-                                                    <span ng-show="user.tvo_id > 0">{{user.tvo_id}}</span>
+                                                    <span ng-show="user.tvo_id > 0"><a href="#!/district/{{user.tvo_id}}">{{user.tvo_id}}</a></span>
                                                     <span style="color: red" ng-show="user.tvo_id < 0">
                                                         <strong>Визначаємо, зачекайте.</strong>
                                                     </span>

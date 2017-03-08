@@ -4,7 +4,7 @@
         <section class="top-section">
             <div class="row top-menu-row">
                 <div class="selectpicker city-selector">
-                    <label onclick="showCityModal()" class="city-button" style="padding-top: 5px;">Краматорськ <span class="caret"></span></label>
+                    <label class="city-button" style="padding-top: 5px;">Краматорськ<!--span class="caret"></span--></label>
                 </div>
                 <div ng-show="!logged_in" class="register-links col-tn-6">
                     <span>
@@ -59,48 +59,32 @@
                 <a href="" ui-sref="request.custom"><button>+ Створити звернення</button></a>
             </div>
         </section>
-        <section class="status-navigation">
-            <div class="row">
-                <ul>
-                    <li>
-                        <label class="pet-count">
-                            {{count.all}} звернень
-                        </label>
-                        <a href="" ui-sref="requests()" class="active">ЗАРЕЄСТРОВАНО</a>
-                    </li>
-                    <li>
-                        <label class="pet-count">
-                            {{count.answer}} звернень
-                        </label>
-                        <a href="" ui-sref="requests({type: 'answered'})" >З ВІДПОВІДДЮ</a>
-                    </li><!--
-                    <li>
-                        <label></label>
-                        <a class="menu-all" href="" >УСІ</a>
-                    </li>-->
-                </ul>
-            </div>
-
-        </section>
+        <section class="status-navigation"><div class="row">
+            <ul>
+                <li>
+                    <label class="pet-count">{{count.all}}</label>
+                    <a href="" ui-sref="requests()" style="text-transform: uppercase;">зареєстровано</a>
+                <li>
+                    <label class="pet-count">{{count.answer}}</label>
+                    <a href="" ui-sref="requests({type: 'answered'})" style="text-transform: uppercase;">з відповіддю</a>
+            </ul>
+        </div></section>
     </div>
 </header>
 
 <section class="content" style="">
     <table>
         <tr>
-            <td width="10%"></td>
             <td style="text-align: center; vertical-align: top;">
-                <label>Зареєстровані депутати:</label>
+                <label>Зареєстровані в системі депутати:</label>
                 <ul class="nav">
                     <li ng-repeat="deputy in deputies">
                         <a href="" ui-sref="deputy({id: deputy.id})"  title="Звернень до депутата: усьго/з відповідями">
                             {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
                             <span class="badge">{{deputy.reqall}} / {{deputy.answer}}</span>
                         </a>
-                    </li>
                 </ul>
-            </td>
-            <td width="10%"></td>
+            <td width="1%"></td>
             <td width="50%" style="text-align: left;">
                 <div full-map=""></div>
             </td>

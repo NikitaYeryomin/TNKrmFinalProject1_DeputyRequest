@@ -221,7 +221,7 @@ header {
     font-size: 16px;
     font-weight: lighter;
     color: white;
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 .city-selector .city-button .caret {
     color: #C6C8CD;
@@ -231,38 +231,6 @@ header {
 .city-selector .bootstrap-select {
     margin-top: 5px;
 }
-
-.register-links {
-    display: inline-block;
-    float: right;
-    font-size: 16px;
-    margin-top: 8px;
-    color: white;
-}
-
-.register-links .user-holder label {
-    color: white;
-}
-@media (max-width: 480px) {
-    .register-links {
-        width: auto;
-    }
-}
-@media (max-width: 1369px) {
-}
-.register-links a {
-    color: white;
-    border-bottom: 1px solid white;
-    text-decoration: none;
-}
-
-@media (max-width: 490px) {
-    .register-links .hide-reg {
-        display: none;
-        width: auto;
-    }
-}
-
 .motivator {
     margin: 30px 0 44px;
 }
