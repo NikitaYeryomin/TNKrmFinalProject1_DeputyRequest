@@ -42,6 +42,12 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.count = response.data;
+                    if (($scope.count.answer % 10 >= 1 && $scope.count.answer % 10 <= 4) && ($scope.count.answer < 10 || $scope.count.answer > 20))
+                    {$scope.count.answer+=' звернення';}
+                    else {$scope.count.answer+=' звернень';}
+                    if (($scope.count.all % 10 >= 1 && $scope.count.all % 10 <= 4) && ($scope.count.all< 10 || $scope.count.all > 20))
+                    {$scope.count.all+=' звернення';}
+                    else {$scope.count.all+=' звернень';}
                     //console.log($scope.count);
                 }
             });
@@ -56,7 +62,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.deputies = response.data.deputies;
-                    //console.log($scope.deputies);
+                    console.log($scope.deputies);
                 }
             });
         };
