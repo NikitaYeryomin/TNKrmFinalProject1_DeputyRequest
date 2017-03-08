@@ -52,18 +52,31 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
         $http({
             method: 'GET',
             url: '/backend/dep_request/deprequests/' + $scope.id
-        }).then(function(response) {
-            if (response.data.error == 0) {
-                $scope.requests = response.data.Requests;
-                console.log($scope.requests);
+        }).then(function(response) {if (response.data.error == 0) {
+            $scope.requests = response.data.Requests;
+            var i; $scope.answered=0; $scope.new=0;
+            for (i = 0; i < $scope.requests.length; i++) {
+                if ($scope.requests[i].status=='answered'){$scope.answered++;}
+                if ($scope.requests[i].status=='new'){$scope.new++;}
             }
+            if ($scope.answered==0){$scope.answered='жодного';}
+            if ($scope.new==0){$scope.new='жодного нового';}
+            else if ($scope.new % 10 ==1){$scope.new+=' нове';}
+            else {$scope.new+=' нових';}
+            //console.log($scope.requests);
+            //console.log($scope);
+        }
         });
 
     };
+    //для img:
+    var url;
+    $(document).ready(function() {$("a.gallery, a.iframe").fancybox();$("a.modalbox").attr("href", url);});    
     return {
         restrict: 'A',
         replace: true,
         link: link
     };
+    
 }])
 ;
