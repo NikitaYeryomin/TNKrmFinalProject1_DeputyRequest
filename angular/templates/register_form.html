@@ -90,8 +90,13 @@
                                         autocomplete="off"
                                         style="background-color:white;">
                                 </div>
-                                <div class="col-sm-12 text-holder">
-                                    <p style="margin-bottom: 20px; color:#AAACB1;">У окремих випадках Google може не знайти вашу адресу - введіть ії власноруч нижче:</p>
+                                <div class="col-sm-9 text-holder">
+                                    <label>
+                                        Якшо у окремих випадках Google не знаходить вашу адресу, спробуйте здійснити пошук українською або вказати ії власноруч нижче, обрав з 
+                                        <a href="" ui-sref="districts" target="_blank">
+                                            переліку віборчих дільниць:
+                                        </a>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row reg-input">
@@ -211,11 +216,22 @@
                         <section>
                             <div ng-hide="iDep">
                                 <legend>5. Перегляньте реєстраційні дані, отримайте номер вашої дільниці та завершіть реєстрацію</legend>
-                                <button type="button" id="previewButton" data-toggle="modal" data-target="#registerPreviewModal" ng-click="detect_tvo()" ng-disabled="!registerUser.$valid">Переглянути реєстраційні дані</button>
+                                <button type="button"
+                                    id="previewButton"
+                                    data-toggle="modal"
+                                    data-target="#registerPreviewModal"
+                                    ng-click="detect_tvo()"
+                                    ng-disabled="!registerUser.$valid">
+                                        Переглянути реєстраційні дані
+                                </button>
                             </div>
                             <div ng-show="iDep">
                                 <legend>5. Завершіть реєстрацію</legend>
-                                <button type="button" id="previewButton" ng-click="deputy_reg()">Зареєструватися</button>
+                                <button type="button"
+                                    id="previewButton"
+                                    ng-click="deputy_reg()">
+                                        Зареєструватися
+                                </button>
                             </div>
                         </section>
                         <div class="modal fade" id="registerPreviewModal">

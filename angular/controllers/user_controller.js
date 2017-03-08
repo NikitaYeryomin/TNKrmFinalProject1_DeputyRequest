@@ -138,7 +138,12 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 $scope.user.street && 
                 $scope.user.home) {
                 var street = $scope.user.street; 
-                street = street.replace('вулиця', 'вул.');
+                if (street.indexOf('вулиця') > 0) {
+                    street = street.substring(0, street.indexOf('вулиця') - 1);
+                    street = 'вул. ' + street;
+                } else {
+                    street = street.replace('вулиця', 'вул.');
+                }
                 street = street.replace('улица', 'вул.');
                 street = street.replace('проспект', 'просп.');
                 street = street.replace('провулок', 'пров.');
@@ -160,7 +165,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         for (var i = 0; i < districts.length; i++) {
                             var addresses = districts[i]['addresses'];
                             var sym = addresses.charAt(addresses.search($scope.user.street) + $scope.user.street.length);
-                            if (sym == ';' || sym == '') {
+                            if (sym == ',' || sym == '') {
                                 //нашли по ВСЕЙ улице! 
                                 $scope.user.tvo_id = districts[i]['id'];
                                 return $scope.user.tvo_id;
