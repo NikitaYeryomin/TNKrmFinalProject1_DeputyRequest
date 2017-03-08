@@ -175,7 +175,7 @@ class User extends Front_controller {
         if ($this->user->set_data(NULL, $this->data)) {
             $deputy = array();
             $deputy['user_id'] = $this->user->get_last();
-            $this->deputy->set_deputy($this->input->post('depid'), $deputy);
+            //$this->deputy->set_deputy($this->input->post('depid'), $deputy);
             $data['password'] = $this->input->post('password');
             $this->login();
         }
