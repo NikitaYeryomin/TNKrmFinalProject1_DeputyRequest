@@ -19,6 +19,9 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 'reception': $scope.deputy.reception,
                 'new_id': $scope.new_id,
                 'ex_user_id': $scope.deputy.ex_user_id
+                ,'name_gen_case': $scope.deputy.name_gen_case
+                ,'surname_gen_case': $scope.deputy.surname_gen_case
+                ,'patronymic_gen_case': $scope.deputy.patronymic_gen_case
             }),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {if (response.data.error == 0){$location.path('/deputies');}});
@@ -64,6 +67,32 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             $scope.listtitle=response.data.listtitle;
             $scope.new_id=response.data.new_id!=null?response.data.new_id:$scope.id;
             $scope.deputy.ex_user_id=$scope.deputy.user_id;
+            if($scope.deputy.surname_gen_case==null){
+                var surname_gen_case=$scope.deputy.surname;
+                if (surname_gen_case.slice(surname_gen_case.length-2)=='ий'){surname_gen_case=surname_gen_case.slice(0,surname_gen_case.length-2)+'ого';}
+                else if (surname_gen_case.slice(surname_gen_case.length-2)=='ов' || surname_gen_case.slice(surname_gen_case.length-2)=='єв' || surname_gen_case.slice(surname_gen_case.length-2)=='ев'){surname_gen_case=surname_gen_case+'а';}
+                else if (surname_gen_case.slice(surname_gen_case.length-2)=='ва'||surname_gen_case.slice(surname_gen_case.length-2)=='на'){surname_gen_case=surname_gen_case.slice(0,surname_gen_case.length-1)+'ої';}
+                else if (surname_gen_case.slice(surname_gen_case.length-1)=='а'){surname_gen_case=surname_gen_case.slice(0,surname_gen_case.length-1)+'и';}
+                else if (surname_gen_case.slice(surname_gen_case.length-1)=='о'&& $scope.deputy.sex=='m'){surname_gen_case=surname_gen_case.slice(0,surname_gen_case.length-1)+'а';}
+                else if (surname_gen_case.slice(surname_gen_case.length-1)=='ч'&& $scope.deputy.sex=='m'){surname_gen_case=surname_gen_case+'а';}
+                if (surname_gen_case.slice(surname_gen_case.length-1)=='н'){surname_gen_case=surname_gen_case+'а';}
+                $scope.deputy.surname_gen_case=surname_gen_case;
+            }
+            if($scope.deputy.name_gen_case==null){
+                var name_gen_case=$scope.deputy.name;
+                if (name_gen_case.slice(name_gen_case.length-1)=='р'||name_gen_case.slice(name_gen_case.length-1)=='н' || name_gen_case.slice(name_gen_case.length-1)=='г' || name_gen_case.slice(name_gen_case.length-1)=='с'){name_gen_case=name_gen_case+'а';}
+                else if (name_gen_case.slice(name_gen_case.length-1)=='й'){name_gen_case=name_gen_case.slice(0,name_gen_case.length-1)+'я';}
+                else if (name_gen_case.slice(name_gen_case.length-1)=='а'){name_gen_case=name_gen_case.slice(0,name_gen_case.length-1)+'и';}
+                else if (name_gen_case.slice(name_gen_case.length-1)=='о'){name_gen_case=name_gen_case.slice(0,name_gen_case.length-1)+'а';}
+                else if (name_gen_case.slice(name_gen_case.length-1)=='я'){name_gen_case=name_gen_case.slice(0,name_gen_case.length-1)+'ї';}
+                $scope.deputy.name_gen_case=name_gen_case;
+            }
+            if($scope.deputy.patronymic_gen_case==null){
+                var patronymic_gen_case=$scope.deputy.patronymic;
+                if (patronymic_gen_case.slice(patronymic_gen_case.length-1)=='ч'){patronymic_gen_case=patronymic_gen_case+'а';}
+                else if (patronymic_gen_case.slice(patronymic_gen_case.length-1)=='а'){patronymic_gen_case=patronymic_gen_case.slice(0,patronymic_gen_case.length-1)+'и';}
+                $scope.deputy.patronymic_gen_case=patronymic_gen_case;
+            }
            } else {
                     console.log('Error getting user info!');
                     return;
@@ -77,7 +106,6 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
         replace: true,
         link: link
     };
-    
 }])
 
 /******************************************список депутатов*************************************************/

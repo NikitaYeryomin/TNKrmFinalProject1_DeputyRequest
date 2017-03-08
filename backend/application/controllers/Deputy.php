@@ -86,6 +86,9 @@ public function editandsave($id){
                 'function'=> $this->input->post('function'),
                 'reception'=> $this->input->post('reception'),
                 'id'=>$this->input->post('new_id')
+                ,'name_gen_case'=>$this->input->post('name_gen_case')
+                ,'patronymic_gen_case'=>$this->input->post('patronymic_gen_case')
+                ,'surname_gen_case'=>$this->input->post('surname_gen_case')
             );
     //print_r($data); /*
     if ($data['user_id']==0){
