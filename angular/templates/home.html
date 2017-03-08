@@ -55,7 +55,7 @@
                 </a>
             </div>
 
-            <div class="create-btn col-lg-3 col-md-3 col-sm-3 motivator" id="createMainButt">
+            <div class="create-btn col-lg-3 col-md-3 col-sm-3 motivator" id="createMainButt" ng-show="currentUser.role != 'deputy'">
                 <a href="" ui-sref="request.custom"><button>+ Створити звернення</button></a>
             </div>
         </section>
