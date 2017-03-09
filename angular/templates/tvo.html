@@ -9,6 +9,9 @@
 </fieldset>
 </div>
 <div one-tvo=""></div>
+<fieldset> <legend>орієнтовна кількість виборців</legend>
+{{tvo.electorate}}
+</fieldset>
 <fieldset> <legend>депутат{{postfix}}</legend>
 <p ng-repeat="deputy in deputies"><a href="#!/deputy/{{deputy.id}}">{{deputy.name}} {{deputy.patronymic}} {{deputy.surname}}</a></p>
 </fieldset>

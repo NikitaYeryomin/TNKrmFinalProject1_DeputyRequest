@@ -2,8 +2,8 @@
 class Tvo extends Front_Controller
 {
 /******************************один ТВО***********************************************/
-public function id($id = NULL)
-    {
+public function id($id = NULL){
+    $data['tvo'] = $this->tvo->view_tvo($id);
         $districts = $this->tvo->get_tvo($id);
         foreach ($districts as $k1 => $v1) {
             $districts[$k1]['vertex'] = explode(";", $districts[$k1]['vertex']);
@@ -91,6 +91,19 @@ public function all()
         echo json_encode($data,JSON_NUMERIC_CHECK);    
 }
 
+public function view($id = NULL){
+    $tvo = $this->tvo->view_tvo($id);
+    $data['tvo'] = $tvo;
+    $data['error'] = 0;
+    echo json_encode($data,JSON_NUMERIC_CHECK);
+}
+public function save($id = NULL){
+    $data = array('electorate' => $this->input->post('electorate'));
+    //print_r($data);
+    $result = $this->tvo->setvo($id, $data);
+    $data['error'] = 0;
+    echo json_encode($data,JSON_NUMERIC_CHECK);
+}
 public function delete($id)
     {
         $this->districts_model->delete_district($id);

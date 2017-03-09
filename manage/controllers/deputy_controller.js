@@ -38,7 +38,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             form_data, {
                 headers: {'Content-Type': undefined }
             }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
         });
     };
 }])

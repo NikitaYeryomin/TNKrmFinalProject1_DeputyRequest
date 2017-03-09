@@ -1,0 +1,8 @@
+<div edit-tvo=""></div>
+<form ng-submit="savetvo({id: tvo.id})" role="form">
+    орієнтовна кількість виборців
+    <br><em>згідно <a href="http://www.cvk.gov.ua/pls/vm2015/PVM116?PT001F01=100&PT00_T001F01=100&pid112=2&pid100=14&pid102=398&rej=0">Центральної виборчої комісії</a></em><br>
+    <input name="electorate" value="{{tvo.electorate}}" ng-model="tvo.electorate">  
+    <br>
+    <button class="btn btn-success" type="submit">зберегти</button>
+</form>
