@@ -8,7 +8,7 @@
                     <tr>
                         <th>Додано</th>
                         <th>Тип звернення</th>
-                        <th>Текст звернення</th>
+                        <th>Тема звернення</th>
                         <th>Автор звернення</th>
                         <th>Депутат</th>
                         <th>Статус</th>
@@ -23,7 +23,7 @@
                         <span ng-show="request.type == 'material'">Запит на матеріальну допомогу</span>
                     </td>
                     <td>
-                        {{request.text}}
+                        {{request.title}}
                     </td>
                     <td>
                         {{fullname(request)}}
