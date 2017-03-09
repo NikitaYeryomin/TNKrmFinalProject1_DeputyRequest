@@ -192,9 +192,9 @@ class User extends Front_controller {
             $deputy = array();
             $deputy['user_id'] = $this->user->get_last();
             $this->_send_email_upon_registration($this->input->post('email'),
-                    $this->input->post('firstname'), $this->input->post('secondname'), 'deputy_registered');
+                $this->input->post('firstname'), $this->input->post('secondname'), 'deputy_registered');
             $this->_send_email_upon_registration('admin@e-city.org.ua',
-                    $this->input->post('lastname'), $$this->input->post('firstname') . $this->input->post('secondname'), 'deputy_confirm');
+                $this->input->post('lastname'), $this->input->post('firstname') . $this->input->post('secondname'), 'deputy_confirm');
             //$this->deputy->set_deputy($this->input->post('depid'), $deputy);
             $data['password'] = $this->input->post('password');
             $this->login();
