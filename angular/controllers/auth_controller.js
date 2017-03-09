@@ -26,7 +26,7 @@ app.controller('AuthController', ['$scope', '$rootScope', '$http', '$location', 
                     } 
                     $location.path(path);
                 } else {
-                    $rootScope.message = response.data.message;
+                    $rootScope.messages = response.data.messages;
                     $rootScope.returnUrl = 'login';
                     $location.path('/error');
                 }

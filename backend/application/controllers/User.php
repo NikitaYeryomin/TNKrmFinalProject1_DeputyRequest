@@ -29,8 +29,9 @@ class User extends Front_controller {
             } else {
                 echo json_encode(array(
                     'error'    => 1,
-                    'messages' => "Помилкове ім'я користувача та/або пароль!"
-                ));
+                    'messages' => array(
+                        'login' => "Помилкове ім'я користувача та/або пароль!"
+                )));
             }
         }
     }
