@@ -45,7 +45,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             method: 'GET',
             url: '/backend/districts/full_map'
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.scale = response.data.scale;
             var districts = response.data.districts;
             var deputies = response.data.deputies;
@@ -140,7 +140,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             method: 'GET',
             url: '/backend/districts/index'
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.scale = response.data.scale;
             var districts = response.data.districts_on_map;
             var places = response.data.places_on_map;
@@ -170,7 +170,7 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             var latitude = ($scope.extremes.maxlat+$scope.extremes.minlat)/2;
             var longtitude = ($scope.extremes.maxlon+$scope.extremes.minlon)/2;
             var mapOptions = {
-                zoom: 15,
+                zoom: $scope.z,
                 center: {lat: latitude, lng: longtitude},
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false,
@@ -213,9 +213,19 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             method: 'GET',
              url: '/backend/districts/district/' + $scope.districtId
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.district = response.data.district;
             $scope.extremes = response.data.extremes;
+            var diflat=$scope.extremes.maxlat-$scope.extremes.minlat;
+            var diflon=$scope.extremes.maxlon-$scope.extremes.minlon;
+            $scope.z=12;
+            if (diflat<=0.05 && diflon<=0.135) {$scope.z=13;}
+            if (diflat<=0.024 && diflon<=0.067) {$scope.z=14;}
+            if (diflat<=0.012 && diflon<=0.033) {$scope.z=15;}
+            if (diflat<=0.006 && diflon<=0.017) {$scope.z=16;}
+            if (diflat<=0.003 && diflon<=0.008) {$scope.z=17;}
+            if (diflat<=0.0025 && diflon<=0.005) {$scope.z=18;}
+            //console.log( $scope.z);
             $scope.deputies = response.data.deputies;
             if ($scope.deputies.length==0){$scope.prescriptum='не представляє жоден депутат';}
             if ($scope.deputies.length==1){$scope.prescriptum='представляє депутат';}
