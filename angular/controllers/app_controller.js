@@ -24,6 +24,8 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                     return;
                 }
                 $rootScope.currentUser = response.data.currentUser;
+                console.log('$rootScope (AppController)');
+                console.log($rootScope);
                 if ($rootScope.currentUser) {
                     $rootScope.logged_in = true;
                 }/*
