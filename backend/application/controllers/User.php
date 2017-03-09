@@ -2,13 +2,16 @@
 class User extends Front_controller {
     
     public function login() {
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email', array(
+                'required' => 'Ви повинні вказати %s'
+            ));
+        $this->form_validation->set_rules('password', 'Пароль', 'required', array(
+                'required' => 'Ви повинні вказати %s'
+            ));
         if ($this->form_validation->run() === FALSE) {
             echo json_encode(array(
-                'error'     => 1,
-                'message'   => 'validation_error',
-                'data'      => $this->form_validation->error_array()
+                'error'    => 1,
+                'messages' => $this->form_validation->error_array()
             ));
         } else {
             $this->data = array(
@@ -25,8 +28,8 @@ class User extends Front_controller {
                 ));
             } else {
                 echo json_encode(array(
-                    'error'   => 1,
-                    'message' => "Помилкове ім'я користувача та/або пароль!"
+                    'error'    => 1,
+                    'messages' => "Помилкове ім'я користувача та/або пароль!"
                 ));
             }
         }
@@ -116,8 +119,8 @@ class User extends Front_controller {
             } 
         } else {
             echo json_encode(array(
-                'error'     => 1,
-                'messages'   => $this->form_validation->error_array()
+                'error'    => 1,
+                'messages' => $this->form_validation->error_array()
             ));
         }
     }

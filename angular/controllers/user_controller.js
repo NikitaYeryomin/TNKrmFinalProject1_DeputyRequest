@@ -70,12 +70,12 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                         $rootScope.returnUrl = null;
                     }
                     $location.path(path);
-                }/* else {
+                } else {
                     $rootScope.messages = response.data.messages;
                     console.log($rootScope.messages);
                     $rootScope.returnUrl = 'register';
                     $location.path('/error');
-                }*/
+                }
             });
         };
         

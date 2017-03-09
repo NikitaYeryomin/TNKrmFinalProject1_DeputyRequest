@@ -170,7 +170,6 @@
                                         ng-maxlength="12"
                                         type="password"
                                         required>
-                                    <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
                                     <label>Підтвердження паролю</label>
@@ -184,8 +183,8 @@
                                         required>
                                 </div>
                             </div>
-                            <div class="row reg-input" ng-show="(user.password != '') && (user.passconfirm != '') && (user.password != user.passconfirm)">
-                                <div class="col-lg-3 col-sm-6">
+                            <div class="row reg-input" ng-show="((user.password != '') && (user.passconfirm != '')) && (user.password != user.passconfirm)">
+                                <div class="col-lg-3 col-sm-6" style="margin-top: 20px;">
                                     <label></label>
                                     <span style="color:red;"><strong>Паролі мають співпадати!</strong></span>
                                 </div>
