@@ -118,9 +118,11 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     if (response.data.error == 0) {
                         $scope.user = response.data.User;
                         $scope.district = response.data.District;
-                        $scope.deputy = response.data.Deputy;
-                        $scope.eplace = response.data.Place;
-                        //console.log($scope.deputy);
+                        $scope.deputies = response.data.Deputy;
+                        $scope.eplace = response.data.Place;/*
+                        if (Array.isArray($scope.deputies)) {
+                            console.log(true);
+                        }*/
                     }
                 });
             }

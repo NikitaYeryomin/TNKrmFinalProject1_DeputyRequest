@@ -16,7 +16,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                     if (response.data.error == 0) {
                         $scope.user = response.data.User;
                         $scope.district = response.data.District;
-                        $scope.deputy = response.data.Deputy;
+                        $scope.deputies = response.data.Deputy;
                         //$scope.deputy = response.data.Deputy;
                         //console.log($scope.user);
                         //console.log($scope.deputy);
@@ -30,7 +30,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         $scope.request.public_appeal = true;
         
         $scope.add_request = function() {
-            console.log($scope.request);
+            //console.log($scope.request);
             var req_Type = $state.current.name.split('.');
             if (req_Type[1] == 'material')
             {
@@ -38,13 +38,20 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 $scope.request.public_appeal = false;
                 //console.log('Іф працює');
             }
-            console.log(req_Type);
+            //console.log(req_Type);
+            var id;
+            if ($scope.deputies.length == 1) {
+                id = $scope.deputies[0].id;
+            } else {
+                id = $scope.deputy.id;
+            }
+            //console.log(id);
             $http({
                 method: 'POST',
                 url: '/backend/dep_request/add',
                 data: $.param({
                     'type' : req_Type[1],
-                    'deputy_id' : $scope.deputy.id,
+                    'deputy_id' : id,
                     'text' : $scope.request.text,
                     'public_appeal' : $scope.request.public_appeal
                 }),
@@ -70,7 +77,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         }];
     
         $scope.changeState = function (stateName) {
-            console.log(stateName);
+            //console.log(stateName);
             if (stateName == 'request.material') {
                 $rootScope.show_survey = true;
             }
@@ -96,7 +103,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
         }
         
         $scope.getMaterialInstructions = function() {
-            console.log('getMaterialInstructions');
+            //console.log('getMaterialInstructions');
             $scope.instructions = [];
             if ($scope.data.pensioner) {
                  $scope.instructions.push( $scope.instruction_parts['pensioner'[0]]);
@@ -139,9 +146,9 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             }
             $rootScope.show_survey = false;
             
-            console.log($scope);
+            //console.log($scope);
             var test = $state.current.name =='request.material' && $rootScope.show_survey == true;
-            console.log('$state.current.name == request.material && show_survey == true : ' + test);
+            //console.log('$state.current.name == request.material && show_survey == true : ' + test);
         }
         
     }]);
