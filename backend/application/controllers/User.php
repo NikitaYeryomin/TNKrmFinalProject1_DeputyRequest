@@ -144,7 +144,7 @@ class User extends Front_controller {
                     'error'     => 0,
                     'User'      => $result[0],
                     'District'  => $districts[0],
-                    'Deputy'    => $deputies[0],
+                    'Deputy'    => $deputies,
                     'Place'     => $places[0]
                 ));
         } else {
