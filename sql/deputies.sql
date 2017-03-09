@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `deputies` (
   `reception` varchar(255) NOT NULL COMMENT 'місце та час прийому громадян',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=43 ;
 
 --
 -- Дамп данных таблицы `deputies`
