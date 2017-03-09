@@ -15,4 +15,14 @@ public function get_tvo($id = FALSE)
 
 public function stvo_tvo(){    return $this->db->insert('tvo', array('id' => ''));}
 
+public function view_tvo($id = FALSE)
+{
+       $query = $this->db->get_where('tvo', array('id' => $id));
+        return $query->row_array();
+        //return $this->db->query('SELECT * FROM tvo WHERE id='.$id ,FALSE)->result_array();
+}
+
+public function setvo($id = NULL, $data){    return $this->db->update('tvo', $data, array('id' => $id));}
+
+
 }

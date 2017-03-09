@@ -58,6 +58,7 @@ app.controller('TvoController', ['$scope', '$http', '$location', '$state', '$sta
              url: '/backend/tvo/id/' + $scope.id
         }).then(function(response) {
             //console.log(response.data);
+            $scope.tvo = response.data.tvo;
             $scope.districts = response.data.districts;
             $scope.extremes = response.data.extremes;
             var diflat=$scope.extremes.maxlat-$scope.extremes.minlat;
