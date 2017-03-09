@@ -62,7 +62,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.deputies = response.data.deputies;
-                    console.log($scope.deputies);
+                    //console.log($scope.deputies);
                 }
             });
         };

@@ -1,6 +1,13 @@
 <?php
 class Districts extends Front_Controller
 {
+    
+public function ids(){
+        $districts = $this->districts->get_districts('ids');
+        $data['districts'] = $districts;
+        $data['error'] = 0;
+        echo json_encode($data, JSON_NUMERIC_CHECK );
+}
 
 /******************************общая карта***********************************************/
 public function full_map()
@@ -291,30 +298,32 @@ public function add()
         echo json_encode($data,JSON_NUMERIC_CHECK);
     }
 
-    public function get_tvo() {
-        $cityid = $this->input->post('city_id');
-        $street = $this->input->post('street');
-        if (!$cityid || !$street) {
+public function get_tvo() {
+    $cityid = $this->input->post('city_id');
+    $street = $this->input->post('street');
+    if (!$cityid || !$street) {
+        echo json_encode(array(
+                'error'     => 1,
+                'message'   => 'Адреса неповна'
+            ));
+    } else {
+        $sql = "SELECT id, addresses 
+                FROM districts 
+                WHERE city_id = " . $cityid . " AND addresses LIKE '%" . $street . "%'";
+        $result = $this->districts->sqlexec($sql);
+        if ($result) {
             echo json_encode(array(
-                    'error'     => 1,
-                    'message'   => 'Адреса неповна'
+                    'error'     => 0,
+                    'Districts' => $result
                 ));
         } else {
-            $sql = "SELECT id, addresses 
-                    FROM districts 
-                    WHERE city_id = " . $cityid . " AND addresses LIKE '%" . $street . "%'";
-            $result = $this->districts->sqlexec($sql);
-            if ($result) {
-                echo json_encode(array(
-                        'error'     => 0,
-                        'Districts' => $result
-                    ));
-            } else {
-                echo json_encode(array(
-                        'error'     => 2,
-                        'message'   => 'Адресу не знайдено'
-                    ));
-            }
+            echo json_encode(array(
+                    'error'     => 2,
+                    'message'   => 'Адресу не знайдено'
+                ));
         }
     }
+    }
+
+    
 }
