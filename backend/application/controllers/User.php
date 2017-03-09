@@ -109,6 +109,9 @@ class User extends Front_controller {
             );
             if ($this->user->set_data(NULL, $this->data)) {
                 $data['password'] = $this->input->post('password');
+                //send notification to user
+                $this->_send_email_upon_registration($this->input->post('email'),
+                    $this->input->post('firstname'), $this->input->post('secondname'));
                 $this->login();
             } 
         } else {
@@ -117,6 +120,14 @@ class User extends Front_controller {
                 'messages'   => $this->form_validation->error_array()
             ));
         }
+    }
+
+    private function _send_email_upon_registration($email, $firstname, $secondname) {
+        $mail_data = array(
+            'username' => $firstname . ($secondname ? ' '.$secondname : '')
+        );
+        $this->mailer->send($email, 'Завершення реєстрації на сайті e-city.org.ua',
+            'email_templates/account_registered', $mail_data);
     }
     
     public function get($id) {
