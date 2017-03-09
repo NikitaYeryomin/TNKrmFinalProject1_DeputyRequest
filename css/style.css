@@ -397,11 +397,20 @@ header {
     margin-bottom: 10px;
     overflow: hidden;
 }
-.main-footer {
-    padding: 7px 0;
+html {
     position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 90px !important;
+}
+.main-footer {
+    padding: 1rem;
+    position: absolute;
     bottom: 0;
-    height: 50px;
+    height: 90px;
+    right: 0;
+    left: 0;
     width: 100%;
 }
 footer {

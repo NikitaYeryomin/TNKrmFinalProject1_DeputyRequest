@@ -73,6 +73,12 @@ class Request_model extends Base_model {
             }
             $sql .= "deputy_id = " . $id;
         }
+        if (!$state && !$id) {
+            $sql .= " WHERE ";
+        } else {
+            $sql .= " AND ";
+        }
+        $sql .= "public_appeal = 1";
         $result = $this->db->query($sql)->result_array();
         return $result[0]['COUNT(*)'];
     }

@@ -36,7 +36,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             {
                 $scope.request.text = 'Матеріальна допомога';
                 $scope.request.public_appeal = false;
-                console.log('Іф працює');
+                //console.log('Іф працює');
             }
             console.log(req_Type);
             $http({

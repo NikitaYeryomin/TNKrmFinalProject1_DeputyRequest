@@ -34,7 +34,7 @@ public function active_deputies() {
 }
 
 public function unreg_deputies() {
-        return $this->db->query('SELECT * FROM deputies WHERE user_id IS NULL')->result_array();
+        return $this->db->query('SELECT * FROM deputies WHERE user_id IS NULL ORDER BY surname')->result_array();
 }
     
 }
