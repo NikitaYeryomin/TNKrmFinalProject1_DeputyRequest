@@ -16,6 +16,8 @@ class Mailer {
         $this->CI->email->to($email);
         $this->CI->email->subject($subject);
         $this->CI->email->message($content);
+        log_message('error', "email: $email");
+        log_message('error', "message: $content");
         return @$this->CI->email->send();
     }
 }

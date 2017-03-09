@@ -126,8 +126,9 @@ class User extends Front_controller {
         $mail_data = array(
             'username' => $firstname . ($secondname ? ' '.$secondname : '')
         );
-        $this->mailer->send($email, 'Завершення реєстрації на сайті e-city.org.ua',
+        $result = $this->mailer->send($email, 'Завершення реєстрації на сайті e-city.org.ua',
             'email_templates/account_registered', $mail_data);
+        log_message('error', 'Email sent with result: '.$result);
     }
     
     public function get($id) {
