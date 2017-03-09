@@ -43,7 +43,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                 console.log(response);
                 if (response.data.error == 0) {
                     $scope.count = response.data;
-                    console.log($scope.count);
+                    //console.log($scope.count);
                     if (($scope.count.answer % 10 >= 1 && $scope.count.answer % 10 <= 4) && ($scope.count.answer < 10 || $scope.count.answer > 20))
                     {$scope.count.answer+=' звернення';}
                     else {$scope.count.answer+=' звернень';}
