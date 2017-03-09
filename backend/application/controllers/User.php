@@ -115,7 +115,7 @@ class User extends Front_controller {
                 $data['password'] = $this->input->post('password');
                 //send notification to user
                 $this->_send_email_upon_registration($this->input->post('email'),
-                    $this->input->post('firstname'), $this->input->post('secondname'));
+                    $this->input->post('firstname'), $this->input->post('secondname'), 'account_registered');
                 $this->login();
             } 
         } else {
@@ -126,12 +126,12 @@ class User extends Front_controller {
         }
     }
 
-    private function _send_email_upon_registration($email, $firstname, $secondname) {
+    private function _send_email_upon_registration($email, $firstname, $secondname, $template) {
         $mail_data = array(
             'username' => $firstname . ($secondname ? ' '.$secondname : '')
         );
         $result = $this->mailer->send($email, 'Завершення реєстрації на сайті e-city.org.ua',
-            'email_templates/account_registered', $mail_data);
+            'email_templates/' . $template, $mail_data);
         log_message('error', 'Email sent with result: '.$result);
     }
     
@@ -191,6 +191,10 @@ class User extends Front_controller {
         if ($this->user->set_data(NULL, $this->data)) {
             $deputy = array();
             $deputy['user_id'] = $this->user->get_last();
+            $this->_send_email_upon_registration($this->input->post('email'),
+                    $this->input->post('firstname'), $this->input->post('secondname'), 'deputy_registered');
+            $this->_send_email_upon_registration('admin@e-city.org.ua',
+                    $this->input->post('lastname'), $$this->input->post('firstname') . $this->input->post('secondname'), 'deputy_confirm');
             //$this->deputy->set_deputy($this->input->post('depid'), $deputy);
             $data['password'] = $this->input->post('password');
             $this->login();
