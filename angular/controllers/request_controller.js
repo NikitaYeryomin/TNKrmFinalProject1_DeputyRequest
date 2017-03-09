@@ -34,6 +34,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
             var req_Type = $state.current.name.split('.');
             if (req_Type[1] == 'material')
             {
+                $scope.request.title = 'Матеріальна допомога';
                 $scope.request.text = 'Матеріальна допомога';
                 $scope.request.public_appeal = false;
                 //console.log('Іф працює');
@@ -52,6 +53,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                 data: $.param({
                     'type' : req_Type[1],
                     'deputy_id' : id,
+                    'title' : $scope.request.title,
                     'text' : $scope.request.text,
                     'public_appeal' : $scope.request.public_appeal
                 }),
