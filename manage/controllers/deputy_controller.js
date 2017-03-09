@@ -98,7 +98,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                     return;
                 }
                 //$location.path('/deputy/' + $scope.id);
-            });            
+            });
         };//link
     return {
         restrict: 'A',

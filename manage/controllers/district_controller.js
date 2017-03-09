@@ -207,10 +207,19 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             function showVertex() {
                 var vertices = district.getPath();
                 var contentString='';
+/*var maxlat=vertices.getAt(0).lat().toFixed(3);
+var minlat=vertices.getAt(0).lat().toFixed(3);
+var maxlon=vertices.getAt(0).lng().toFixed(3);
+var minlon=vertices.getAt(0).lng().toFixed(3);*/
                 for (var i =0; i < vertices.getLength(); i++) {
                     var xy = vertices.getAt(i);
                     contentString += xy.lat().toFixed(5) + ',' +    xy.lng().toFixed(5)+';';
+/*if  (minlat>vertices.getAt(i).lat().toFixed(3)){minlat=vertices.getAt(i).lat().toFixed(3);}                
+if  (maxlat<vertices.getAt(i).lat().toFixed(3)){maxlat=vertices.getAt(i).lat().toFixed(3);}                
+if  (minlon>vertices.getAt(i).lng().toFixed(3)){minlon=vertices.getAt(i).lng().toFixed(3);}                
+if  (maxlon<vertices.getAt(i).lng().toFixed(3)){maxlon=vertices.getAt(i).lng().toFixed(3);}                */
                 }
+//alert ('lat: '+(maxlat-minlat).toFixed(3)+'\nlon: '+(maxlon-minlon).toFixed(3)); 
                 contentString=contentString.slice(0,contentString.length-1);
                 $scope.district.rawvertex=contentString;
 //document.getElementById("vertex").value=contentString;

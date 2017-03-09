@@ -8,7 +8,7 @@ app.controller('TvoController', ['$scope', '$http', '$location', '$state', '$sta
             var latitude = ($scope.extremes.maxlat+$scope.extremes.minlat)/2;
             var longtitude = ($scope.extremes.maxlon+$scope.extremes.minlon)/2;
             var mapOptions = {
-                zoom: 14,
+                zoom: $scope.z,
                 center: {lat: latitude, lng: longtitude},
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false,
@@ -57,9 +57,19 @@ app.controller('TvoController', ['$scope', '$http', '$location', '$state', '$sta
             method: 'GET',
              url: '/backend/tvo/id/' + $scope.id
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.districts = response.data.districts;
             $scope.extremes = response.data.extremes;
+            var diflat=$scope.extremes.maxlat-$scope.extremes.minlat;
+            var diflon=$scope.extremes.maxlon-$scope.extremes.minlon;
+            $scope.z=12;
+            if (diflat<=0.05 && diflon<=0.135) {$scope.z=13;}
+            if (diflat<=0.025 && diflon<=0.067) {$scope.z=14;}
+            if (diflat<=0.012 && diflon<=0.033) {$scope.z=15;}
+            if (diflat<=0.006 && diflon<=0.017) {$scope.z=16;}
+            if (diflat<=0.003 && diflon<=0.008) {$scope.z=17;}
+            if (diflat<=0.0025 && diflon<=0.005) {$scope.z=18;}
+            //console.log($scope.z);console.log(diflat);
             $scope.deputies = response.data.deputies;
             if ($scope.deputies.length>1){$scope.postfix='и';}
             if ($scope.deputies.length==0){$scope.collision='Від округу депутата до міськради не делеговано.';}

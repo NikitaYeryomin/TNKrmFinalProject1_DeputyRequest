@@ -47,7 +47,7 @@
                     <label>Відхилено з причини:</label>
                     <p>{{request.response}}</p>
                 </div>
-                <div class="col-lg-12 col-sm-12">
+                <div class="col-lg-12 col-sm-12" ng-show="request.status == 'answered'">
                     <label>Дата відповіді:</label>
                     <p>{{request.ansdate}}</p>
                 </div>
