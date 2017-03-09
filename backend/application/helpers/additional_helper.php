@@ -11,3 +11,12 @@ function sorry($message){
 function fullname($user){
     return $user['lastname'] . ' ' . $user['firstname'] .' ' . $user['secondname'];
 }
+
+if (!function_exists('password_verify')){
+    function password_verify($password, $hash){
+        return (crypt($password, $hash) === $hash);
+    }
+}
+
+
+?>
