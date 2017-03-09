@@ -5,6 +5,7 @@ class Dep_request extends Front_controller {
         $logged_in = $this->session->userdata('logged_in');
         $this->data = array(
             'type' => $this->input->post('type'),
+            'title' => $this->input->post('title'),
             'text' => $this->input->post('text'),
             'public_appeal'=> $this->input->post('public_appeal') == 'true' ? 1 : 0,
             'user_id' => $logged_in['id'],

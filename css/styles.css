@@ -202,7 +202,7 @@ input.ng-valid, textarea.ng-valid {
 }
 /******************идентификаторы в алфавитном порядке*************************************/
 #gmaps {
-    width: 600px;
+    width: 800px;
     height: 450px;
     margin: 10 auto;
 }

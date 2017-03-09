@@ -14,10 +14,10 @@ public function get_districts($id = FALSE)
                 $query = $this->db->get('districts');
                 return $query->result_array();
         }        
-        if ($id == "id")
+        if ($id == "ids")
         {
                 $this->db->select('id');
-              //  $query = $this->db->get('districts');
+                $query = $this->db->get('districts');
                 return $query->result_array();
         }
                 if ($id == "fortvo")
