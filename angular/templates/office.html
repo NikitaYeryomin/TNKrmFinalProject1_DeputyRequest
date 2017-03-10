@@ -15,12 +15,12 @@
                                     <th>№
                                     <th>Додано
                                     <th>Заявник
-                                    <th>Зміст
+                                    <th>Тема звернення
                                 <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
                                     <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
                                     <td>{{request.adddate}}
                                     <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
-                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.text}}</a>
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
                                 </tr>
                             </table>
                         </uib-tab>
@@ -31,14 +31,14 @@
                                     <th>№
                                     <th>Додано
                                     <th>Заявник
-                                    <th>Зміст
+                                    <th>Тема звернення
                                     <th>Час відповіді
                                     <th>Відповідь
                                 <tr ng-repeat="request in requests | filter: {status: 'answered'} : true">
                                     <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
                                     <td>{{request.adddate}}
                                     <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
-                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.text}}</a>
+                                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
                                     <td>{{request.ansdate}}
                                     <td>{{request.response}}
                             </table>
@@ -49,7 +49,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Додано</th>
-                                    <th>Текст запиту</th>
+                                    <th>Тема звернення</th>
                                     <th>Депутат</th>
                                 </tr>
                                 </thead>
@@ -61,7 +61,7 @@
                                         <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
                                     <td>
-                                        {{request.text}}
+                                        {{request.title}}
                                     </td>
                                     <td>
                                         {{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}
