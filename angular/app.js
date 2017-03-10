@@ -161,6 +161,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 controller: 'ErrorController',
                 data:{title: 'Помилка!'}
             })
+            .state('about', {
+                url: '/about',
+                templateUrl: '/angular/templates/about.html',
+                controller: 'AppController',
+                data:{title: 'Про проект'}
+            })
             ;
         /*$locationProvider.html5Mode({
          enabled: true,
