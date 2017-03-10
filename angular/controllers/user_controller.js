@@ -87,7 +87,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'depid':    $scope.deps.id,
                     'email':    $scope.user.email,
                     'city_id':  $scope.user.city_id,
-                    'password': $scope.user.password
+                    'password': $scope.user.password,
+                    'passconfirm': $scope.user.password
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
@@ -96,6 +97,10 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
                     $location.path('/office');
+                } else {
+                    $rootScope.messages = response.data.messages;
+                    $rootScope.returnUrl = 'register';
+                    $location.path('/error');
                 }
             });
         };

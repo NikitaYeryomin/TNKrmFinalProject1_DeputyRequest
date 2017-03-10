@@ -177,27 +177,50 @@ class User extends Front_controller {
     }
     
     public function register_deputy() {
-        $deputy = $this->deputy->get_deputies($this->input->post('depid'));
-        $this->data = array(
-            'firstname' => $deputy['name'],
-            'secondname'=> $deputy['patronymic'],
-            'lastname'  => $deputy['surname'],
-            'email'     => $this->input->post('email'),
-            'city_id'   => $this->input->post('city_id'),
-            'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'joindate'  => date("Y-m-d H:i:s"),
-            'role'      => 'deputy'
-        );
-        if ($this->user->set_data(NULL, $this->data)) {
-            $deputy = array();
-            $deputy['user_id'] = $this->user->get_last();
-            $this->_send_email_upon_registration($this->input->post('email'),
-                $this->input->post('firstname'), $this->input->post('secondname'), 'deputy_registered');
-            $this->_send_email_upon_registration('admin@e-city.org.ua',
-                $this->input->post('lastname'), $this->input->post('firstname') . $this->input->post('secondname'), 'deputy_confirm');
-            //$this->deputy->set_deputy($this->input->post('depid'), $deputy);
-            $data['password'] = $this->input->post('password');
-            $this->login();
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]',
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'is_unique'=> 'Цей %s вже зареєстровано'
+            ));
+        $this->form_validation->set_rules('password', "Пароль", 'required|min_length[6]|max_length[12]',
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'min_length'=> 'Мінімум 6 символів',
+                'max_length'=> 'Максимум 12 символів'
+            ));
+        $this->form_validation->set_rules('passconfirm', "Підтвердження паролю", 'required|matches[password]',
+            array(
+                'required' => 'Ви повинні вказати %s',
+                'matches'=> 'Має співпадати з паролем'
+            ));
+        if ($this->form_validation->run()) {
+            $deputy = $this->deputy->get_deputies($this->input->post('depid'));
+            $this->data = array(
+                'firstname' => $deputy['name'],
+                'secondname'=> $deputy['patronymic'],
+                'lastname'  => $deputy['surname'],
+                'email'     => $this->input->post('email'),
+                'city_id'   => $this->input->post('city_id'),
+                'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'joindate'  => date("Y-m-d H:i:s"),
+                'role'      => 'deputy'
+            );
+            if ($this->user->set_data(NULL, $this->data)) {
+                $deputy = array();
+                $deputy['user_id'] = $this->user->get_last();
+                $this->_send_email_upon_registration($this->input->post('email'),
+                    $this->input->post('firstname'), $this->input->post('secondname'), 'deputy_registered');
+                $this->_send_email_upon_registration('admin@e-city.org.ua',
+                    $this->input->post('lastname'), $this->input->post('firstname') . $this->input->post('secondname'), 'deputy_confirm');
+                //$this->deputy->set_deputy($this->input->post('depid'), $deputy);
+                $data['password'] = $this->input->post('password');
+                $this->login();
+            }
+        } else {
+            echo json_encode(array(
+                'error'    => 1,
+                'messages' => $this->form_validation->error_array()
+            ));
         }
     }
 }
