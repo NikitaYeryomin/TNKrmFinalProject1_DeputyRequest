@@ -108,23 +108,6 @@ label {
     font-family: "Roboto-Light";
     color: #323232;
 }
-h1,
-h2,
-h3 {
-    font-family: "Roboto-Bold";
-    font: 1.5em;
-}
-h1,h3 {
-    color: white;
-}
-
-header h2 {
-    color: white;
-}
-h2 {
-    text-align:left;
-     margin-top: 0;
-}
 ul,
 li {
     padding: 0;
@@ -710,7 +693,7 @@ footer .bund-ukrain div p {
     margin-bottom: 30px;
 }
 #RegionCityModal .city-modal-container .head-city-modal h3 {
-    color: #ffffff;
+    color: #fff;
     font-family: "Roboto-Light";
     font-size: 32px;
     display: inline-block;
