@@ -149,7 +149,7 @@ class User extends Front_controller {
                     'error'     => 0,
                     'User'      => $result[0],
                     'District'  => $districts[0],
-                    'Deputy'    => count($deputies) > 0 ? $deputies : null,
+                    'Deputy'    => count($deputies) > 0 ? $deputies : $this->user->sqlexec('SELECT * FROM deputies WHERE tvoid = 0'),
                     'Place'     => $places[0]
                 ));
         } else {
