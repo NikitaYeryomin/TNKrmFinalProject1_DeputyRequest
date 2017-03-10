@@ -21,8 +21,8 @@ app.filter('formatDateTimeUnix', ['$filter', function ($filter) {
 app.filter('formatDateTime', ['$filter', function ($filter) {
     return function (date, format) {
         if (date) {
-            return moment(date).format(format || "DD/MM/YYYY h:mm A");
-        }
+            return moment(date).format('DD/MM/YYYY h:mm' );
+          }
         else
             return "";
     };
