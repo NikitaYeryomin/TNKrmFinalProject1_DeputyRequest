@@ -26,7 +26,7 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             method: 'GET',
             url: '/backend/districts/index',
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.districts = response.data.districts;
             $scope.places = response.data.places;
         });
@@ -153,7 +153,7 @@ app.controller('DistrictController', ['$scope', '$http', '$location', '$state', 
             method: 'GET',
             url: '/backend/districts/edit/' + $scope.id,
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.places = response.data.places;
             $scope.district=response.data.district;
             $scope.districts=response.data.districts;
@@ -304,7 +304,7 @@ if  (maxlon<vertices.getAt(i).lng().toFixed(3)){maxlon=vertices.getAt(i).lng().t
             method: 'GET',
             url: '/backend/districts/add/',
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.places = response.data.places;
             $scope.districts=response.data.districts;
             $scope.tvo=response.data.tvo;

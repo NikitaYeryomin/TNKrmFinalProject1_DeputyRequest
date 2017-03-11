@@ -61,7 +61,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
                 if (response.data.error == 0) {
-                    console.log('redirecting to mainpage...');
+                    //console.log('redirecting to mainpage...');
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
                     var path = '/user';
@@ -72,7 +72,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     $location.path(path);
                 } else {
                     $rootScope.messages = response.data.messages;
-                    console.log($rootScope.messages);
+                    //console.log($rootScope.messages);
                     $rootScope.returnUrl = 'register';
                     $location.path('/error');
                 }

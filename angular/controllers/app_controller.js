@@ -18,14 +18,14 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                 method: 'GET',
                 url: '/backend/user/current'
             }).then(function(response) {
-                console.log(response.data);
+                //console.log(response.data);
                 if (response.data.error) {
-                    console.log('Error getting user info!');
+                    //console.log('Error getting user info!');
                     return;
                 }
                 $rootScope.currentUser = response.data.currentUser;
-                console.log('$rootScope (AppController)');
-                console.log($rootScope);
+                //console.log('$rootScope (AppController)');
+                //console.log($rootScope);
                 if ($rootScope.currentUser) {
                     $rootScope.logged_in = true;
                 }/*
@@ -42,7 +42,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                 method: 'GET',
                 url: 'backend/dep_request/count'
             }).then(function(response) {
-                console.log(response);
+                //console.log(response);
                 if (response.data.error == 0) {
                     $scope.count = response.data;
                     //console.log($scope.count);

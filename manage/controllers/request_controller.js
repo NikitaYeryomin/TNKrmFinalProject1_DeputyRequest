@@ -21,7 +21,7 @@ app.controller('RequestController', ['$scope', '$rootScope', '$http', '$location
                     //console.log($scope.types);
                     //console.log($scope.states);
                 } else {
-                    console.log('Error getting request info!');
+                    //console.log('Error getting request info!');
                     return;
                 }
                 $location.path('/request/' + $scope.id);

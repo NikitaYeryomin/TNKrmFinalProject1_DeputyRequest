@@ -18,7 +18,7 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
                     if (response.data.error == 0) {
                         $scope.city = response.data.City;
                         $scope.city.active = ($scope.city.active == 1);
-                        console.log($scope.city);
+                        //console.log($scope.city);
                     }
                 });
             } else {
@@ -40,12 +40,12 @@ app.controller('CityController', ['$scope', '$rootScope', '$http', '$location', 
                 form_data, {
                     headers: {'Content-Type': undefined }
                 }).then(function(response) {
-                console.log(response.data);
+                //console.log(response.data);
             });
         };
         
         $scope.savecity = function() {
-            console.log($scope.city.active);
+            //console.log($scope.city.active);
             $http({
                 method: 'POST',
                 url: '/backend/manage/city/save/' + $scope.city.cityid,

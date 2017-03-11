@@ -22,6 +22,8 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.request = response.data.Request;
+                    $scope.request.adddate=humantime($scope.request.adddate);
+                    $scope.request.ansdate=humantime($scope.request.ansdate);
                     $scope.getuser();
                     console.log($scope.request);
                 }

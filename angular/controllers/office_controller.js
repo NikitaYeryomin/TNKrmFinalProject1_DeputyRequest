@@ -8,14 +8,14 @@ app.controller('OfficeController', ['$scope', '$rootScope', '$http', '$location'
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.deputyid = response.data.dep_id;
-                    console.log($scope.deputyid);
+                    //console.log($scope.deputyid);
                     $http({
                         method: 'GET',
                         url: '/backend/deputy/id/' + $scope.deputyid
                     }).then(function(response) {
                         if (response.data.error == 0) {
                             $scope.deputy = response.data.deputy;
-                            console.log($scope.deputy);
+                            //console.log($scope.deputy);
                         }
                     });
                     $http({
@@ -24,13 +24,14 @@ app.controller('OfficeController', ['$scope', '$rootScope', '$http', '$location'
                     }).then(function(response) {
                         if (response.data.error == 0) {
                             $scope.requests = response.data.Requests;
-                            console.log($scope.requests);
+                          for (var i = 0; i < $scope.requests.length; i++) {
+                               $scope.requests[i].adddate=humantime($scope.requests[i].adddate);
+                          }
+                            //console.log($scope.requests);
                         }
                     });
                 }
             });
         };
-        
         $scope.get_requests();
-        
     }]);
