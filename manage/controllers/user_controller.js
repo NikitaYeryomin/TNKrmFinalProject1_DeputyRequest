@@ -21,7 +21,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     roles = roles.replace(/'/g, "");
                     $scope.roles = roles.split(",");
                 } else {
-                    console.log('Error getting user info!');
+                    //console.log('Error getting user info!');
                     return;
                 }
                 $location.path('/user/' + $scope.id);

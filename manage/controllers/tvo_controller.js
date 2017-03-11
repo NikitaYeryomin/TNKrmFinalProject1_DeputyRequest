@@ -2,7 +2,7 @@ app.controller('TvoController', ['$scope', '$http', '$location', '$state', '$sta
    function($scope, $http, $location , $state, $stateParams){
        $scope.id = $stateParams.id;  
         $scope.add_tvo = function(user_id) {
-            console.log("add tvo");
+            //console.log("add tvo");
             $http({
                 method: 'GET',
                 url: '/backend/tvo/add/'
@@ -56,7 +56,7 @@ app.controller('TvoController', ['$scope', '$http', '$location', '$state', '$sta
             method: 'GET',
             url: '/backend/tvo/view/' + $scope.id,
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.tvo = response.data.tvo;
             $scope.districts = response.data.districts;
         });

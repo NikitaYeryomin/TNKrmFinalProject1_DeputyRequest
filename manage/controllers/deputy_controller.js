@@ -51,7 +51,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
              url: '/backend/deputy/viewandedit/' + $scope.id
         }).then(function(response) {
            if (response.data.error == 0) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.deputy = response.data.deputy;
             $scope.deputies = response.data.deputies;
             $scope.tvo=response.data.tvo;
@@ -94,7 +94,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 $scope.deputy.patronymic_gen_case=patronymic_gen_case;
             }
            } else {
-                    console.log('Error getting user info!');
+                    //console.log('Error getting user info!');
                     return;
                 }
                 //$location.path('/deputy/' + $scope.id);
@@ -115,7 +115,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             method: 'GET',
             url: '/backend/deputy/index',
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.deputies = response.data.deputies;
         });
     };

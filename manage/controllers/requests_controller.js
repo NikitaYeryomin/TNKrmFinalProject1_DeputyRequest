@@ -22,7 +22,7 @@ app.controller('RequestsController', ['$scope', '$rootScope', '$http', '$locatio
         $scope.confirm_delete = function(user) {
             $scope.current_user_id = user.userid;
             $scope.current_user_name = $scope.fullname(user);
-            console.log("confirm delete: " + $scope.current_user_id);
+            //console.log("confirm delete: " + $scope.current_user_id);
         };
         
         $scope.delete_request = function(request_id) {

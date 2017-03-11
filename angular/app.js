@@ -74,6 +74,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                     title: 'Звернення до депутата місцевої ради'
                 }
             })
+            .state('requests', {
+                url: '/requests/:type',
+                templateUrl: '/angular/templates/list.html',
+                controller: 'RequestsController',
+                data:{title: "Звернення"},
+                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.type;}]
+                }
+            })
             .state('view', {
                 url: '/view/:id',
                 templateUrl: '/angular/templates/view.html',
@@ -145,14 +153,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 controller: 'DeputyController',
                 data:{title: "депутат"},// № {{id}}"},
                 resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.id;}]
-                }
-            })
-            .state('requests', {
-                url: '/requests/:type',
-                templateUrl: '/angular/templates/list.html',
-                controller: 'RequestsController',
-                data:{title: "Звернення"},
-                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.type;}]
                 }
             })
             .state('error', {

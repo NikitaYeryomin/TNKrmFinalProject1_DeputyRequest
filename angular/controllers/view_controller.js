@@ -23,7 +23,7 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
                 if (response.data.error == 0) {
                     $scope.request = response.data.Request;
                     $scope.getuser();
-                    console.log($scope.request);
+                    //console.log($scope.request);
                 }
             });
         };

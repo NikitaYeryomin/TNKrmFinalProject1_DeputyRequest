@@ -24,7 +24,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$location', '
             }).then(function(response) {
                 //console.log(response.data);
                 if (response.data.error) {
-                    console.log('Error getting user info!');
+                    //console.log('Error getting user info!');
                     return;
                 }
                 $rootScope.currentUser = response.data.currentUser;

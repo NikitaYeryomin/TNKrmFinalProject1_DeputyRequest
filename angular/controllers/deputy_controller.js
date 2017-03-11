@@ -9,7 +9,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             method: 'GET',
             url: '/backend/deputy/index',
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.deputies = response.data.deputies;
             var i;
             for (i = 0; i < $scope.deputies.length; i++) {

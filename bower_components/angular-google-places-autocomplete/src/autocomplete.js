@@ -40,7 +40,7 @@ angular.module('google.places', [])
                 },
                 controller: ['$scope', function ($scope) {}],
                 link: function ($scope, element, attrs, controller) {
-                    console.log("processing gPlacesAutocomplete on element: " + element[0]);
+                    //console.log("processing gPlacesAutocomplete on element: " + element[0]);
                     var keymap = {
                             tab: 9,
                             enter: 13,
@@ -58,11 +58,11 @@ angular.module('google.places', [])
                         $scope.input = element;
                         $scope.options = $scope.options || {};
 
-                        console.log("gPlacesAutocomplete: initAutocompleteDrawer()");
+                        //console.log("gPlacesAutocomplete: initAutocompleteDrawer()");
                         initAutocompleteDrawer();
-                        console.log("gPlacesAutocomplete: initEvents()");
+                        //console.log("gPlacesAutocomplete: initEvents()");
                         initEvents();
-                        console.log("gPlacesAutocomplete: initNgModelController()");
+                        //console.log("gPlacesAutocomplete: initNgModelController()");
                         initNgModelController();
                     }());
 

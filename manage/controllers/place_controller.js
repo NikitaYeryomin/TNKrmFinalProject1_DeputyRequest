@@ -67,7 +67,7 @@ app.controller('PlaceController', ['$scope', '$http', '$location', '$state', '$s
             method: 'GET',
             url: '/backend/place/index',
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.places = response.data.places;
         });
     };
@@ -109,7 +109,7 @@ app.controller('PlaceController', ['$scope', '$http', '$location', '$state', '$s
             method: 'GET',
             url: '/backend/place/viewandedit/' + $scope.id,
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.place = response.data.place;
             $scope.disabled=response.data.disabled;
             initMap();
