@@ -69,7 +69,7 @@
                                 </thead>
                                 <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
                                     <td>
-                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate  | formatDateTime}}</a>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
                                     <td>
                                         {{request.title}}
@@ -91,7 +91,7 @@
                                 </thead>
                                 <tr ng-repeat="request in requests | filter: {status: 'not_ready'} : true">
                                     <td>
-                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate  | formatDateTime}}</a>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
                                     <td>
                                         {{request.title}}
@@ -113,7 +113,7 @@
                                 </thead>
                                 <tr ng-repeat="request in requests | filter: {status: 'answered'} : true">
                                     <td>
-                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate  | formatDateTime}}</a>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
                                     <td>
                                         {{request.title}}
@@ -135,7 +135,7 @@
                                 </thead>
                                 <tr ng-repeat="request in requests | filter: {status: 'rejected'} : true">
                                     <td>
-                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate  | formatDateTime}}</a>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
                                     </td>
                                     <td>
                                         {{request.title}}
