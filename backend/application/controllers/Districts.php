@@ -141,18 +141,10 @@ public function index()
         $scale->minlon = $districts[0]['vertex'][0][1];
         foreach ($districts as $k3 => $v3) {
             foreach ($districts[$k3]['vertex'] as $k4 => $v4) {
-                if ($scale->maxlat < $v4[0]) {
-                    $scale->maxlat = $v4[0];
-                }
-                if ($scale->minlat > $v4[0]) {
-                    $scale->minlat = $v4[0];
-                }
-                if ($scale->maxlon < $v4[1]) {
-                    $scale->maxlon = $v4[1];
-                }
-                if ($scale->minlon > $v4[1]) {
-                    $scale->minlon = $v4[1];
-                }
+                if ($scale->maxlat < $v4[0]) {$scale->maxlat = $v4[0];}
+                if ($scale->minlat > $v4[0]) {$scale->minlat = $v4[0];}
+                if ($scale->maxlon < $v4[1]) {$scale->maxlon = $v4[1];}
+                if ($scale->minlon > $v4[1]) {$scale->minlon = $v4[1];}
             }
         }
         $data['scale'] = $scale;

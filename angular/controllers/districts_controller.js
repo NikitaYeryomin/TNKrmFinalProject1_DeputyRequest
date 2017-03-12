@@ -140,11 +140,12 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             method: 'GET',
             url: '/backend/districts/index'
         }).then(function(response) {
-            //console.log(response.data);
             $scope.scale = response.data.scale;
             var districts = response.data.districts_on_map;
             var places = response.data.places_on_map;
             $scope.districts = response.data.districts;
+            console.log(districts);
+            console.log($scope.districts);
             $scope.places = response.data.places;
             initMap();
             for (var i = 0; i < districts.length; i++) {
