@@ -9,10 +9,10 @@ app.controller('RequestsController', ['$scope', '$rootScope', '$http', '$locatio
                 url: '/backend/dep_request/allrequests'
             }).then(function(response) {
                 if (response.data.error == 0) {
-                    $scope.requests = response.data.Requests;
+                    $scope.requests = response.data.Requests;/*
                     for (var i = 0; i < $scope.requests.length; i++) {
-                        $scope.requests[i].adddate=humantime($scope.requests[i].adddate);
-                    }
+                        //$scope.requests[i].adddate=humantime($scope.requests[i].adddate);
+                    }*/
                     //console.log($scope.requests);
                     //console.log($scope.type);
                 }

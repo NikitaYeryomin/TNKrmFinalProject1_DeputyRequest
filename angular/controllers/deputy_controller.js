@@ -61,7 +61,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                     ($scope.requests[i].public_appeal == 1)) {
                         $scope.new++;
                     }
-                $scope.requests[i].adddate=humantime($scope.requests[i].adddate);    
+                //$scope.requests[i].adddate=humantime($scope.requests[i].adddate);    
             }
             if ($scope.answered==0){$scope.answered='жодного';}
             if ($scope.new==0){$scope.new='жодного нового';}
