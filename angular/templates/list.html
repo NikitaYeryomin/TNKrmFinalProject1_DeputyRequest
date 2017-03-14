@@ -6,7 +6,6 @@
             <table class="table-striped table-bordered table-hover table-condensed">
                 <thead>
                     <tr>
-                        <th>№
                         <th>Додано</th>
                         <th>Тип звернення</th>
                         <th>Тема звернення</th>
@@ -16,14 +15,13 @@
                     </tr>
                 </thead>
                 <tr ng-repeat="request in requests | filter: {public_appeal: '1'} : true | filter: {status: type}">
-                    <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
-                    <td>{{request.adddate}}
+                    <td>{{request.adddate}}</td>
                     <td>
                         <span ng-show="request.type == 'custom'">Довільне</span>
                         <span ng-show="request.type == 'material'">Запит на матеріальну допомогу</span>
                     </td>
                     <td>
-                        {{request.title}}
+                        <a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
                     </td>
                     <td>
                         {{fullname(request)}}
