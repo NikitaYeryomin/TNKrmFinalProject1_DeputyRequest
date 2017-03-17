@@ -25,7 +25,7 @@
                             <li ng-show="currentUser.role == 'deputy'">
                                 <a href="#" ui-sref="office">Кабінет депутата</a>
                             </li>
-                            <li ng-show="currentUser.role == 'user' || currentUser.role == 'admin'">
+                            <li>
                                 <a href="#" ui-sref="user">Мій кабінет</a>
                             </li>
                             <li ng-show="currentUser.role == 'admin'">
@@ -54,7 +54,7 @@
                 </a>
             </div>
 
-            <div class="create-btn col-lg-3 col-md-3 col-sm-3 motivator" id="createMainButt" ng-show="currentUser.role != 'deputy'">
+            <div class="create-btn col-lg-3 col-md-3 col-sm-3 motivator" id="createMainButt">
                 <a href="" ui-sref="request.custom"><button>+ Створити звернення</button></a>
             </div>
         </section>
