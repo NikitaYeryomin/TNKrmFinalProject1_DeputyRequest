@@ -36,7 +36,7 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
         
         $scope.review = function() {
             $scope.data = $.param({
-                'response': 'Ваше звернення прийнято до розгляду. Строк розгляду 10 робочих днів.',
+                'response': 'Ваше звернення принято до розгляду. Строк розгляду 10 робочих днів.',
                 'status': 'review'
             });
             $scope.save();
