@@ -65,7 +65,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 $scope.requests[i].adddate=humantime($scope.requests[i].adddate);    
             }
             if ($scope.answered==0){$scope.answered='жодного';}
-            if ($scope.review==0){$scope.answered='жодне не ';}
+            if ($scope.review==0){$scope.review='жодне не ';}
             if ($scope.new==0){$scope.new='жодного нового';}
             else if ($scope.new % 10 ==1){$scope.new+=' нове';}
             else {$scope.new+=' нових';}
