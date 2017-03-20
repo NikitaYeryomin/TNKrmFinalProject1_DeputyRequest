@@ -64,9 +64,9 @@
                     <p>{{request.response}}</p>
                 </div>
             </div>
-            <div class="col-sm-12 register-tab" ng-show="request.status == 'new' && currentUser.role == 'deputy'">
+            <div class="col-sm-12 register-tab" ng-show="(request.status == 'new' || request.status == 'review') && currentUser.role == 'deputy'">
                 <div class="row">
-                    <div class="col-lg-4 col-sm-4">
+                    <div class="col-lg-4 col-sm-4" ng-hide="request.status == 'review'">
                         <button type="review" id="reviewButton" ng-click="review()">Приняти до розгляду</button>
                     </div>
                     <div class="col-lg-4 col-sm-4">
