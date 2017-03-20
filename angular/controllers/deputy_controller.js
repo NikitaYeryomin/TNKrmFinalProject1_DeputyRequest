@@ -54,9 +54,10 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             url: '/backend/dep_request/deprequests/' + $scope.id
         }).then(function(response) {if (response.data.error == 0) {
             $scope.requests = response.data.Requests;
-            var i; $scope.answered=0; $scope.new=0;
+            var i; $scope.answered=0; $scope.new=0; $scope.review=0;
             for (i = 0; i < $scope.requests.length; i++) {
                 if ($scope.requests[i].status=='answered'){$scope.answered++;}
+                if ($scope.requests[i].status=='review'){$scope.review++;}
                 if (($scope.requests[i].status=='new') &&
                     ($scope.requests[i].public_appeal == 1)) {
                         $scope.new++;
@@ -64,6 +65,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 $scope.requests[i].adddate=humantime($scope.requests[i].adddate);    
             }
             if ($scope.answered==0){$scope.answered='жодного';}
+            if ($scope.review==0){$scope.answered='жодне не ';}
             if ($scope.new==0){$scope.new='жодного нового';}
             else if ($scope.new % 10 ==1){$scope.new+=' нове';}
             else {$scope.new+=' нових';}
