@@ -12,3 +12,6 @@ ALTER TABLE  `request` CHANGE  `status`  `status` ENUM(  'new',  'answered',  'r
 5.03.2017
 /*подтверждение депутата*/
 /*ALTER TABLE  `deputies` ADD  `checked` TINYINT NOT NULL DEFAULT  '0';*/
+20.03.2017
+/* Статус запроса review */
+ALTER TABLE  `request` CHANGE  `status`  `status` ENUM(  'new',  'answered',  'rejected',  'not_ready',  'review' ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT  'new';

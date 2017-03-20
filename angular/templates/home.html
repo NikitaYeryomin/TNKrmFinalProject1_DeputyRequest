@@ -26,7 +26,7 @@
                                 <a href="#" ui-sref="office">Кабінет депутата</a>
                             </li>
                             <li>
-                                <a href="#" ui-sref="user">Мій кабінет</a>
+                                <a href="#" ui-sref="user">Кабінет користувача</a>
                             </li>
                             <li ng-show="currentUser.role == 'admin'">
                                 <a href="/manage" target="_blank">Адміністрування</span></a>
@@ -63,9 +63,15 @@
                 <li>
                     <label class="pet-count">{{count.all}}</label>
                     <a href="" ui-sref="requests()" style="text-transform: uppercase;">зареєстровано</a>
+                </li>
+                <li>
+                    <label class="pet-count">{{count.review}}</label>
+                    <a href="" ui-sref="requests({type: 'review'})" style="text-transform: uppercase;">розглядається</a>
+                </li>
                 <li>
                     <label class="pet-count">{{count.answer}}</label>
                     <a href="" ui-sref="requests({type: 'answered'})" style="text-transform: uppercase;">з відповіддю</a>
+                </li>
             </ul>
         </div></section>
     </div>

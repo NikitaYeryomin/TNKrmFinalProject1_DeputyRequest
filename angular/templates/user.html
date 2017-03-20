@@ -31,7 +31,7 @@
                     </span>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <label>Ваш територіальний виборчий округ:&nbsp;</label>
+                    <label>Ваш територіальний виборчий округ (ТВО):&nbsp;</label>
                     <span>
                         <strong>
                             <a href="#" ui-sref="tvo({id: district.tvoid})">{{district.tvoid}}</a>
@@ -102,7 +102,29 @@
                                 </tr>
                             </table>
                         </uib-tab>
-                        <uib-tab index="2" heading="Надано відповідь">
+                        <uib-tab index="2" heading="Розглядається">
+                            <table class="table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Додано</th>
+                                    <th>Тема запиту</th>
+                                    <th>Депутат</th>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="request in requests | filter: {status: 'review'} : true">
+                                    <td>
+                                        <a href="" ui-sref="view({id: request.requestid})">{{request.adddate}}</a>
+                                    </td>
+                                    <td>
+                                        {{request.title}}
+                                    </td>
+                                    <td>
+                                        <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </uib-tab>
+                        <uib-tab index="3" heading="Надано відповідь">
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>
@@ -124,7 +146,7 @@
                                 </tr>
                             </table>
                         </uib-tab>
-                        <uib-tab index="3" heading="Відхилені">
+                        <uib-tab index="4" heading="Відхилені">
                             <table class="table-striped table-bordered table-hover table-condensed">
                                 <thead>
                                 <tr>

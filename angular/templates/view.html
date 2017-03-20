@@ -47,6 +47,10 @@
                     <label>Зміст звернення:</label>
                     <p>{{request.text}}</p>
                 </div>
+                <div class="col-lg-12 col-sm-12" ng-show="request.status == 'review'">
+                    <label>Статус звернення:</label>
+                    <p><strong>{{request.response}}</strong></p>
+                </div>
                 <div class="col-lg-12 col-sm-12" ng-show="request.status == 'rejected'">
                     <label>Відхилено з причини:</label>
                     <p>{{request.response}}</p>
@@ -62,6 +66,9 @@
             </div>
             <div class="col-sm-12 register-tab" ng-show="request.status == 'new' && currentUser.role == 'deputy'">
                 <div class="row">
+                    <div class="col-lg-4 col-sm-4">
+                        <button type="review" id="reviewButton" ng-click="review()">Приняти до розгляду</button>
+                    </div>
                     <div class="col-lg-4 col-sm-4">
                         <button type="respond" id="respondButton" data-toggle="modal" data-target="#respondPreviewModal">Відповісти</button>
                     </div>

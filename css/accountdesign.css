@@ -329,6 +329,7 @@ input[disabled] {
 }
 #previewButton,
 #respondButton,
+#reviewButton,
 #meetingButton, 
 #rejectButton {
     font-family: 'Roboto-Bold';

@@ -31,30 +31,40 @@
                 <uib-tab index="0" heading="{{new}}">
                     <table class="table-striped table-bordered table-hover table-condensed">
                         <thead>
-                        <tr>
-                            <th>№
-                            <th>Додано
+                        <tr><th>Додано
                             <th>Заявник
                             <th>Тема
                         <tr ng-repeat="request in requests | filter: {status: 'new'} : true| filter: {public_appeal: '1'} : true">
-                            <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
                             <td>{{request.adddate}}
                             <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
                             <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
                     </table>
                 </uib-tab>
-                <uib-tab index="1" heading="{{answered}} з відповідями">
+                <uib-tab index="1" heading="{{review}} розглядається">
                     <table class="table-striped table-bordered table-hover table-condensed">
                         <thead>
-                        <tr>
-                            <th>№
-                            <th>Додано
+                        <tr><th>Додано
+                            <th>Заявник
+                            <th>Тема
+                            <th>Час відповіді
+                            <th>Відповідь
+                        <tr ng-repeat="request in requests | filter: {status: 'review'} : true| filter: {public_appeal: '1'} : true">
+                            <td>{{request.adddate}}
+                            <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
+                            <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
+                            <td>{{request.ansdate}}
+                            <td>{{request.response}}
+                    </table>
+                </uib-tab>
+                <uib-tab index="2" heading="{{answered}} з відповідями">
+                    <table class="table-striped table-bordered table-hover table-condensed">
+                        <thead>
+                        <tr><th>Додано
                             <th>Заявник
                             <th>Тема
                             <th>Час відповіді
                             <th>Відповідь
                         <tr ng-repeat="request in requests | filter: {status: 'answered'} : true| filter: {public_appeal: '1'} : true">
-                            <td><a href="" ui-sref="view({id: request.requestid})">{{request.requestid}}</a>
                             <td>{{request.adddate}}
                             <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
                             <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
