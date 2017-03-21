@@ -58,7 +58,6 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                 }
             });
         };
-        
         $scope.request_count();
         
         $scope.reg_dep = function(){

@@ -56,13 +56,13 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             $scope.requests = response.data.Requests;
             var i; $scope.answered=0; $scope.new=0; $scope.review=0;
             for (i = 0; i < $scope.requests.length; i++) {
-                if ($scope.requests[i].status=='answered'){$scope.answered++;}
-                if ($scope.requests[i].status=='review'){$scope.review++;}
-                if (($scope.requests[i].status=='new') &&
-                    ($scope.requests[i].public_appeal == 1)) {
-                        $scope.new++;
-                    }
-                $scope.requests[i].adddate=humantime($scope.requests[i].adddate);    
+                $scope.requests[i].adddate=humantime($scope.requests[i].adddate);
+                if ($scope.requests[i].ansdate!=null){$scope.requests[i].ansdate=humantime($scope.requests[i].ansdate);}
+                if ($scope.requests[i].public_appeal == 1) {
+                    if ($scope.requests[i].status=='new') {$scope.new++;}
+                    if ($scope.requests[i].status=='answered'){$scope.answered++;}
+                    if ($scope.requests[i].status=='review'){$scope.review++;}
+                }    
             }
             if ($scope.answered==0){$scope.answered='жодного';}
             if ($scope.review==0){$scope.review='жодне не ';}
@@ -75,9 +75,6 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
         });
 
     };
-    //для img:
-    var url;
-    $(document).ready(function() {$("a.gallery, a.iframe").fancybox();$("a.modalbox").attr("href", url);});    
     return {
         restrict: 'A',
         replace: true,

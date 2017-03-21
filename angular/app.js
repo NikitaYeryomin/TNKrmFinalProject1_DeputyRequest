@@ -79,8 +79,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$qProvider',
                 templateUrl: '/angular/templates/list.html',
                 controller: 'RequestsController',
                 data:{title: "Звернення"},
-                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.type;}]
-                }
+                resolve: {id: ['$stateParams', function($stateParams) {return $stateParams.type;}]}
             })
             .state('view', {
                 url: '/view/:id',
