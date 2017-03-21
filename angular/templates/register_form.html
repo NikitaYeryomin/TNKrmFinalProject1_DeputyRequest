@@ -23,20 +23,20 @@
                                 <div class="col-sm-12">
                                     <div class="checkbox">
                                         <label>
-                                            <input id="iDep" name="iDep" type="checkbox" value="true" ng-model="iDep" ng-click="get_deputies()"/>
+                                            <input id="iDep" name="iDep" type="checkbox" value="true" ng-model="user.iDep" ng-click="get_deputies()"/>
                                             Я реєструюсь, як депутат, та згоден відповідати на звернення виборців
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <div ng-show="iDep" class="reg-city-selector">
+                            <div ng-show="user.iDep" class="reg-city-selector">
                                 <label>Оберіть депутата зі списку:</label>
                                 <select class="selectpicker show-tick form-control bs-select-hidden" name="Deputies" ng-model="deps.id" convert-to-number>
                                     <option disabled selected value="">Оберіть депутата зі списку</option>
                                     <option ng-repeat="deputy in deps" value="{{deputy.id}}">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</option>
                                 </select>
                             </div>
-                            <div class="row reg-input" ng-hide="iDep">
+                            <div class="row reg-input">
                                 <div class="col-lg-3 col-md-3">
                                     <label>Прізвище</label>
                                     <input class="form-control"
@@ -45,7 +45,8 @@
                                         name="Surname"
                                         ng-model="user.surname"
                                         type="text"
-                                        required>
+                                        required
+                                        ng-disabled="user.iDep">
                                 </div>
                                 <div class="col-lg-3 col-md-3">
                                     <label>Ім’я</label>
@@ -55,7 +56,8 @@
                                         name="Name"
                                         ng-model="user.name"
                                         type="text"
-                                        required>
+                                        required
+                                        ng-disabled="user.iDep">
                                 </div>
                                 <div class="col-lg-3 col-md-3">
                                     <label>По батькові</label>
@@ -65,7 +67,8 @@
                                         name="Patronymic"
                                         ng-model="user.patronymic"
                                         type="text"
-                                        required>
+                                        required
+                                        ng-disabled="user.iDep">
                                 </div>
                             </div>
                         </section>
@@ -209,7 +212,7 @@
                             </div>
                         </div>
                         <section>
-                            <div ng-hide="iDep">
+                            <div>
                                 <legend>5. Перегляньте реєстраційні дані, отримайте номер вашої дільниці та завершіть реєстрацію</legend>
                                 <button type="button"
                                     id="previewButton"
@@ -219,15 +222,15 @@
                                     ng-disabled="!registerUser.$valid">
                                         Переглянути реєстраційні дані
                                 </button>
-                            </div>
-                            <div ng-show="iDep">
+                            </div><!--
+                            <div ng-show="user.iDep">
                                 <legend>5. Завершіть реєстрацію</legend>
                                 <button type="button"
                                     id="previewButton"
                                     ng-click="deputy_reg()">
                                         Зареєструватися
                                 </button>
-                            </div>
+                            </div>-->
                         </section>
                         <div class="modal fade" id="registerPreviewModal">
                             <div class="modal-dialog modal-sm">

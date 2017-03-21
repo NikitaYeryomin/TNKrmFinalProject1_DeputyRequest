@@ -109,13 +109,21 @@ class User extends Front_controller {
                 'street'    => $this->input->post('street'),
                 'home'      => $this->input->post('home'),
                 'hash'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'role'      => $this->input->post('role'),
                 'joindate'  => date("Y-m-d H:i:s")
             );
             if ($this->user->set_data(NULL, $this->data)) {
                 $data['password'] = $this->input->post('password');
                 //send notification to user
-                $this->_send_email_upon_registration($this->input->post('email'),
-                    $this->input->post('firstname'), $this->input->post('secondname'), 'account_registered');
+                if ($this->input->post('role') == 'deputy') {
+                    $this->_send_email_upon_registration($this->input->post('email'),
+                        $this->input->post('firstname'), $this->input->post('secondname'), 'deputy_registered');
+                    $this->_send_email_upon_registration('breo-pav@yandex.ru',
+                        $this->input->post('lastname'), $this->input->post('firstname') . $this->input->post('secondname'), 'deputy_confirm');
+                } else {
+                    $this->_send_email_upon_registration($this->input->post('email'),
+                        $this->input->post('firstname'), $this->input->post('secondname'), 'account_registered');    
+                }
                 $this->login();
             } 
         } else {

@@ -59,7 +59,8 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     'passconfirm':$scope.user.passconfirm,
                     'city_id'   : $scope.user.city_id,
                     'street'    : $scope.user.street,
-                    'home'      : $scope.user.home
+                    'home'      : $scope.user.home,
+                    'role'      : ($scope.user.iDep == true) ? 'deputy' : 'user'
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(response) {
@@ -67,7 +68,12 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                     //console.log('redirecting to mainpage...');
                     $rootScope.logged_in = true;
                     $rootScope.currentUser = response.data.currentUser;
-                    var path = '/user';
+                    var path;
+                    if ($scope.user.iDep) {
+                        path = '/office';    
+                    } else {
+                        path = '/user';
+                    }
                     if ($rootScope.returnUrl) {
                         path = $rootScope.returnUrl;
                         $rootScope.returnUrl = null;
@@ -247,6 +253,16 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 }
                 $scope.user.street = street;    
             }
+        });
+        
+        $scope.$watch('deps.id', function() {
+            var i = 0;
+            while ($scope.deps[i].id != $scope.deps.id) {
+                i++;
+            }
+            $scope.user.surname = $scope.deps[i].surname;
+            $scope.user.name = $scope.deps[i].name;
+            $scope.user.patronymic = $scope.deps[i].patronymic;
         });
         
     }])
