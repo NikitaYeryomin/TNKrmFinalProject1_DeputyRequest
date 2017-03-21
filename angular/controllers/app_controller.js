@@ -75,6 +75,20 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
         
         $scope.reg_dep();
         
+        $scope.users_count = function(){
+            $http({
+                method: 'GET',
+                url: 'backend/user/count'
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.userscount = response.data.users;
+                    //console.log($scope.deputies);
+                }
+            });
+        };
+        
+        $scope.users_count();
+        
         $scope.fullname = function(user){
             return user.lastname + " " + user.firstname + " " + user.secondname;
         };

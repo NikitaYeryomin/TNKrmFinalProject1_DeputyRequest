@@ -223,5 +223,12 @@ class User extends Front_controller {
             ));
         }
     }
+    
+    public function count() {
+        echo json_encode(array(
+                'error' => 0,
+                'users' => $this->user->counter()
+            ));
+    }
 }
 ?>

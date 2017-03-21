@@ -81,13 +81,19 @@
     <table>
         <tr>
             <td style="text-align: center; vertical-align: top;">
-                <label>Зареєстровані в системі депутати:</label>
                 <ul class="nav">
+                    <li>
+                        <label>Зареєстрованo в системі виборців: <span class="badge">{{userscount}}</span></label>    
+                    </li>
+                    <li>
+                        <label>Зареєстровані в системі депутати:</label>
+                    </li>
                     <li ng-repeat="deputy in deputies">
                         <a href="" ui-sref="deputy({id: deputy.id})"  title="Звернень до депутата: усьго/з відповідями">
                             {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
                             <span class="badge">{{deputy.reqall}} / {{deputy.answer}}</span>
                         </a>
+                    </li>
                 </ul>
             <td width="1%"></td>
             <td width="50%" style="text-align: left;">

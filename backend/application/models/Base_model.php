@@ -47,5 +47,10 @@ class Base_model extends CI_Model {
             )->result_array();
         return $result[0][$this->id_field];
     }
+    
+    public function counter() {
+        $result = $this->db->query("SELECT COUNT(*) FROM " . $this->table)->result_array();
+        return $result[0]['COUNT(*)'];
+    }
 }
 ?>
