@@ -16,7 +16,7 @@
                                     <th>Заявник
                                     <th>Тема звернення
                                 <tr ng-repeat="request in requests | filter: {status: 'new'} : true">
-                                    <td>{{request.adddate}}
+                                    <td>{{request.adddate| humantime}}
                                     <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
                                     <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
                                 </tr>
@@ -32,10 +32,10 @@
                                     <th>Час відповіді
                                     <th>Відповідь
                                 <tr ng-repeat="request in requests | filter: {status: 'review'} : true">
-                                    <td>{{request.adddate}}
+                                    <td>{{request.adddate| humantime}}
                                     <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
                                     <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
-                                    <td>{{request.ansdate}}
+                                    <td>{{request.ansdate| humantime}}
                                     <td>{{request.response}}
                             </table>
                         </uib-tab>
@@ -49,10 +49,10 @@
                                     <th>Час відповіді
                                     <th>Відповідь
                                 <tr ng-repeat="request in requests | filter: {status: 'answered'} : true">
-                                    <td>{{request.adddate}}
+                                    <td>{{request.adddate| humantime}}
                                     <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
                                     <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
-                                    <td>{{request.ansdate}}
+                                    <td>{{request.ansdate| humantime}}
                                     <td>{{request.response}}
                             </table>
                         </uib-tab>
@@ -70,7 +70,7 @@
                                         {{request.requestid}}
                                     </td>
                                     <td>
-                                        {{request.adddate}}
+                                        {{request.adddate| humantime}}
                                     </td>
                                     <td>
                                         <a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>

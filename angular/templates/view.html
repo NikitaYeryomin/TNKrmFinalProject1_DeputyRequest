@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-lg-12 col-sm-12">
                     <label>Дата звернення:</label>
-                    <p>{{request.adddate}}</p>
+                    <p>{{request.adddate| humantime}}</p>
                 </div>
                 <div class="col-lg-12 col-sm-12">
                     <label>Тема звернення:</label>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-lg-12 col-sm-12" ng-show="request.status == 'answered'">
                     <label>Дата відповіді:</label>
-                    <p>{{request.ansdate}}</p>
+                    <p>{{request.ansdate| humantime}}</p>
                 </div>
                 <div class="col-lg-12 col-sm-12" ng-show="request.status == 'answered'">
                     <label>Відповідь:</label>

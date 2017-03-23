@@ -17,7 +17,7 @@
                 <a href="" ui-sref="request({requestId: request.requestid})">{{request.requestid}}</a>
             </td>
             <td>
-                {{request.adddate}}
+                {{request.adddate| humantime}}
             </td>
             <td>
                 {{request.type}}

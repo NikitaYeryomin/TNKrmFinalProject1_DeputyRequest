@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tr ng-repeat="request in requests | filter: {public_appeal: '1'} : true | filter: {status: type}">
-                    <td>{{request.adddate}}</td>
+                    <td>{{request.adddate| humantime}}</td>
                     <td>
                         <span ng-show="request.type == 'custom'">Довільне</span>
                         <span ng-show="request.type == 'material'">Запит на матеріальну допомогу</span>

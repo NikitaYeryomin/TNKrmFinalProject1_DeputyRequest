@@ -22,9 +22,6 @@ app.controller('UserController', ['$scope', '$rootScope', '$http', '$location', 
                 if (response.data.error == 0) {
                     $scope.requests = response.data.Requests;
                     //console.log($scope.requests);
-                    for (var i = 0; i < $scope.requests.length; i++) {
-                        $scope.requests[i].adddate = humantime($scope.requests[i].adddate);
-                    }
                 }
             });
         };
