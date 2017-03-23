@@ -1,0 +1,40 @@
+<section class="content" style="">
+    <div class="petition-main account-main">
+        <div class="container">
+            <div class="row reg-input">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 register-tab">
+                    <form ng-submit="save_news()" role="form" novalidate="novalidate">
+                        <textarea class="form-control" 
+                            cols="20"
+                            name="News"
+                            placeholder="Текст новини"
+                            ng-model="news.text"
+                            rows="10">
+                        </textarea>
+                        <button type="submit"
+                            class="btn btn-success"
+                            style="margin-top:20px;">
+                                Додати новину
+                        </button>
+                    </form>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <hr>
+            <section>
+                <div class="row" ng-repeat="n in news | orderBy : '-newsid'">
+                    <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <p>
+                                <label>{{n.date}}:</label>
+                                {{n.text}}
+                            </p>
+                        </div>
+                    <div class="col-sm-3"></div>
+                    <hr>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>

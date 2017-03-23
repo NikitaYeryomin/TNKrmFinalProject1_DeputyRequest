@@ -28,6 +28,16 @@ app.filter('formatDateTime', ['$filter', function ($filter) {
     };
 }]);
 
+app.filter('formatDate', ['$filter', function ($filter) {
+    return function (date, format) {
+        if (date) {
+            return moment(date).format('DD.MM.YYYY' );
+          }
+        else
+            return "";
+    };
+}]);
+
 app.filter('numberWithCommasFormat', [function () {
     return function (x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

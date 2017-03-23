@@ -64,7 +64,7 @@
                     <label class="pet-count">{{count.all}}</label>
                     <a href="" ui-sref="requests()" style="text-transform: uppercase;">зареєстровано</a>
                 </li>
-                <li>
+                <li ng-show="count.review > 0">
                     <label class="pet-count">{{count.review}}</label>
                     <a href="" ui-sref="requests({type: 'review'})" style="text-transform: uppercase;">розглядається</a>
                 </li>
@@ -89,14 +89,21 @@
                         <label>Зареєстровані в системі депутати:</label>
                     </li>
                     <li ng-repeat="deputy in deputies">
-                        <a href="" ui-sref="deputy({id: deputy.id})"  title="Звернень до депутата: усьго/з відповідями">
+                        <a href="" ui-sref="deputy({id: deputy.id})" title="Звернень до депутата: усьго/з відповідями">
                             {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
                             <span class="badge">{{deputy.reqall}} / {{deputy.answer}}</span>
                         </a>
                     </li>
                 </ul>
+                <section>
+                    <legend>Новини розробки системи</legend>
+                    <div class="row" ng-repeat="n in news | orderBy : '-newsid'">
+                        <p><strong>{{n.date | formatDate}}:</strong>&nbsp;{{n.text}}</p>
+                        <hr>
+                    </div>
+                </section>
             <td width="1%"></td>
-            <td width="50%" style="text-align: left;">
+            <td width="50%" style="text-align: left; vertical-align: top;">
                 <div full-map=""></div>
             </td>
         </tr>

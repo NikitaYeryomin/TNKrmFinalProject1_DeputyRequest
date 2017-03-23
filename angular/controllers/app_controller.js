@@ -49,9 +49,13 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                     if (($scope.count.answer % 10 >= 1 && $scope.count.answer % 10 <= 4) && ($scope.count.answer < 10 || $scope.count.answer > 20))
                     {$scope.count.answer+=' звернення';}
                     else {$scope.count.answer+=' звернень';}
-                    if (($scope.count.review % 10 >= 1 && $scope.count.review % 10 <= 4) && ($scope.count.review < 10 || $scope.count.review > 20))
-                    {$scope.count.review+=' звернення';}
-                    else {$scope.count.review+=' звернень';}
+                    if ($scope.count.review > 0) {
+                        if (($scope.count.review % 10 >= 1 && $scope.count.review % 10 <= 4) && ($scope.count.review < 10 || $scope.count.review > 20)) {
+                            $scope.count.review+=' звернення';
+                        } else {
+                            $scope.count.review+=' звернень';
+                        }
+                    }
                     if (($scope.count.all % 10 >= 1 && $scope.count.all % 10 <= 4) && ($scope.count.all< 10 || $scope.count.all > 20))
                     {$scope.count.all+=' звернення';}
                     else {$scope.count.all+=' звернень';}
@@ -87,6 +91,21 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
         };
         
         $scope.users_count();
+        
+        $scope.news = {};
+    
+        $scope.get_news = function() {
+            $http({
+                method: 'GET',
+                url:    '/backend/news'
+            }).then(function(response) {
+                if (response.data.error == 0) {
+                    $scope.news = response.data.News;
+                }
+            });
+        };
+        
+        $scope.get_news();
         
         $scope.fullname = function(user){
             return user.lastname + " " + user.firstname + " " + user.secondname;

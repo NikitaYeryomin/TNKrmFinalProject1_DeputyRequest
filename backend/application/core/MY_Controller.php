@@ -14,7 +14,8 @@ class MY_Controller extends CI_Controller {
         $this->load->model('place_model', 'place');
         $this->load->model('districts_model', 'districts');
         $this->load->model('tvo_model', 'tvo');
-         $this->load->model('party_model', 'party');
+        $this->load->model('party_model', 'party');
+        $this->load->model('news_model', 'news');
         $this->data = array();
         date_default_timezone_set('Europe/Kiev');
 
