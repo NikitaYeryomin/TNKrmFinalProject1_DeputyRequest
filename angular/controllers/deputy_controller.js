@@ -56,8 +56,6 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             $scope.requests = response.data.Requests;
             var i; $scope.answered=0; $scope.new=0; $scope.review=0;
             for (i = 0; i < $scope.requests.length; i++) {
-                $scope.requests[i].adddate=humantime($scope.requests[i].adddate);
-                if ($scope.requests[i].ansdate!=null){$scope.requests[i].ansdate=humantime($scope.requests[i].ansdate);}
                 if ($scope.requests[i].public_appeal == 1) {
                     if ($scope.requests[i].status=='new') {$scope.new++;}
                     if ($scope.requests[i].status=='answered'){$scope.answered++;}
