@@ -1,11 +1,11 @@
-<script src="/js/jquery-1.3.2.min.js"></script>
-<script src="/js/jquery.fancybox-1.2.1.pack.js"></script>
 <ng-include src="'/angular/templates/header.html'"></ng-include>
 <content style="padding:5px; display:block;">
 <div style="display:inline-block;  position:relative; top:10px; vertical-align:top;">
-    <a class="gallery" href="/img/deputies/{{deputy.id}}.jpg">
-    <img src="/img/deputies/{{deputy.id}}.jpg" width=200>
-    </a>
+    <img src="/img/deputies/{{deputy.id}}.jpg" width=200 id="windowed" onmouseover="mw()">
+    <div id="modalWindow" class="modal">
+        <span class="close" onclick="document.getElementById('modalWindow').style.display='none'">&times;</span>
+        <img class="modal-content" id="modalimage">
+    </div>
 </div>
 <div style="padding:5px; display:inline-block; ">
 <h4>депутат Краматорської міської ради</h3>
