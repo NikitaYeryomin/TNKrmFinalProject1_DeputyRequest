@@ -1,6 +1,13 @@
 <ng-include src="'/angular/templates/header.html'"></ng-include>
 <content style="padding:5px; display:block;">
 <h2 style="text-align: center" id="h2">депутати <!--Краматорської -->міської ради</h2>
+<div>
+    <input type="text"
+        class="form-control"
+        ng-model="search"
+        placeholder="Знайти депутата"
+        style="background-color:white;">
+</div>
 <div deputies-list="">
   
 </div>
@@ -11,7 +18,7 @@
         <th><acronym title="територіальний виборчий округ">ТВО</acronym>
         <th>статус
         <th>звернень: очікують / з відповідями</th>
-    <tr ng-repeat="deputy in deputies">
+    <tr ng-repeat="deputy in deputies | filter: search">
         <td><a href="#!/deputy/{{deputy.id}}">{{deputy.surname}} {{deputy.name}} {{deputy.patronymic}}</a>
         <td>{{deputy.party}}
         <td><a href="#!/tvo/{{deputy.tvoid}}">{{deputy.tvoid}}</a>{{deputy.ifLeader}}

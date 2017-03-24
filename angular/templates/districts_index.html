@@ -3,14 +3,20 @@
 <h2 style="text-align: center">Виборчі дільниці</h2>
 
 <div districts-map=""></div>
-
+<div>
+    <input type="text"
+        class="form-control"
+        ng-model="search"
+        placeholder="Знайти адресу"
+        style="background-color:white;">
+</div>
 <table class="districts">
     <tr>
         <th>номер
         <th>межі
         <th>знаходження місця для голосування
         <th><acronym title="територіальний виборчий округ">ТВО</acronym>
-<tr ng-repeat="district in districts">
+<tr ng-repeat="district in districts | filter: {addresses: search}">
     <td><a href="" ui-sref="district({districtId: district.id})">{{district.id}}</a></td>
     <td>{{district.addresses}}</td>
     <td><span ng-repeat="place in places | filter: {id: district.place_id} : true">{{place.address}}</span></td>
