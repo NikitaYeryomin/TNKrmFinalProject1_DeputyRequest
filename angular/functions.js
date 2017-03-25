@@ -73,7 +73,6 @@ app.filter('locationFromAddress', function() {
         } else {
             return '-';
         }
-
     }
     
     function show_message(message, returnUrl) {
@@ -81,5 +80,23 @@ app.filter('locationFromAddress', function() {
         $rootScope.returnUrl = returnUrl;
         $location.path('/error');
     }
-    
 });
+
+function mw(){
+    var modal = document.getElementById('modalWindow');
+    var img = document.getElementById('windowed');
+    var modalImg = document.getElementById("modalimage");
+    img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    }
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {modal.style.display = "none";}
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        var isEscape = false;
+        if ("key" in evt) {isEscape = (evt.key == "Escape" || evt.key == "Esc");} 
+        else {isEscape = (evt.keyCode == 27);}
+        if (isEscape) {modal.style.display = "none";}
+    };
+}
