@@ -15,3 +15,6 @@ ALTER TABLE  `request` CHANGE  `status`  `status` ENUM(  'new',  'answered',  'r
 20.03.2017
 /* Статус запроса review */
 ALTER TABLE  `request` CHANGE  `status`  `status` ENUM(  'new',  'answered',  'rejected',  'not_ready',  'review' ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT  'new';
+24.03.2017
+/* Депутат, який відповів */
+ALTER TABLE  `request` ADD  `reply_deputy_id` INT( 10 ) NULL DEFAULT NULL COMMENT  'Депутат, який відповів' AFTER  `deputy_id` ;

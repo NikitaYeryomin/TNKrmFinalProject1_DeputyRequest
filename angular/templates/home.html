@@ -64,7 +64,7 @@
                     <label class="pet-count">{{count.all}}</label>
                     <a href="" ui-sref="requests()" style="text-transform: uppercase;">зареєстровано</a>
                 </li>
-                <li ng-show="count.review > 0">
+                <li ng-show="count.review != 0">
                     <label class="pet-count">{{count.review}}</label>
                     <a href="" ui-sref="requests({type: 'review'})" style="text-transform: uppercase;">розглядається</a>
                 </li>

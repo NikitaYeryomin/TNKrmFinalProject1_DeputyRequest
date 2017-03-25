@@ -31,13 +31,17 @@ class Request_model extends Base_model {
             return null;
         }
         if ($role == 'deputy') {
-            $this->sql .= ' WHERE request.deputy_id = ?';
+            $this->sql .= ' WHERE request.deputy_id = ? OR request.reply_deputy_id = ?';
         } else {
             $this->sql .= ' WHERE request.user_id = ?';
         }
         $this->sql .= " ORDER BY requestid DESC";
         //print($this->sql);
-        $result = $this->db->query($this->sql, array($id))->result_array();
+        if ($role == 'deputy') {
+            $result = $this->db->query($this->sql, array($id, $id))->result_array();
+        } else {
+            $result = $this->db->query($this->sql, array($id))->result_array();
+        }
         return $result;
     }
     
@@ -71,7 +75,7 @@ class Request_model extends Base_model {
             if (!$state) {
                 $sql .= " WHERE ";
             }
-            $sql .= "deputy_id = " . $id;
+            $sql .= "(deputy_id = " . $id . " OR reply_deputy_id = " . $id . ")";
         }
         if (!$state && !$id) {
             $sql .= " WHERE ";

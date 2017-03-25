@@ -48,12 +48,18 @@
                             <th>Тема
                             <th>Час відповіді
                             <th>Відповідь
+                            <th>Депутат, що відповів
                         <tr ng-repeat="request in requests | filter: {status: 'review'} : true| filter: {public_appeal: '1'} : true">
                             <td>{{request.adddate| humantime}}
                             <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
                             <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
                             <td>{{request.ansdate| humantime}}
                             <td>{{request.response}}
+                            <td>
+                                <a href="" ui-sref="deputy({id: request.deputy_id})" ng-repeat="deputy in deputies | filter: {id: request.reply_deputy_id}">
+                                    {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
+                                </a>
+                            </td>
                     </table>
                 </uib-tab>
                 <uib-tab index="2" heading="{{answered}} з відповідями">
@@ -64,12 +70,18 @@
                             <th>Тема
                             <th>Час відповіді
                             <th>Відповідь
+                            <th>Депутат, що відповів
                         <tr ng-repeat="request in requests | filter: {status: 'answered'} : true| filter: {public_appeal: '1'} : true">
                             <td>{{request.adddate| humantime}}
                             <td>{{request.lastname}}&nbsp;{{request.firstname}}&nbsp;{{request.secondname}}
                             <td><a href="" ui-sref="view({id: request.requestid})">{{request.title}}</a>
                             <td>{{request.ansdate| humantime}}
                             <td>{{request.response}}
+                            <td>
+                                <a href="" ui-sref="deputy({id: request.deputy_id})" ng-repeat="deputy in deputies | filter: {id: request.reply_deputy_id}">
+                                    {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
+                                </a>
+                            </td>
                     </table>
                 </uib-tab>
             </uib-tabset>

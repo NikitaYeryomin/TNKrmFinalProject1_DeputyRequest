@@ -23,16 +23,28 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
                 if (response.data.error == 0) {
                     $scope.request = response.data.Request;
                     $scope.getuser();
+                    $scope.get_deputies();
                     //console.log($scope.request);
                 }
             });
         };
+        
+        $scope.get_deputies = function() {
+            $http({
+                method: 'GET',
+                url: '/backend/deputy/index',
+            }).then(function(response) {
+                //console.log(response.data);
+                $scope.deputies = response.data.deputies;
+            });
+        }
         
         $scope.get_request();
         
         $scope.review = function() {
             $scope.data = $.param({
                 'response': 'Ваше звернення принято до розгляду. Строк розгляду 10 робочих днів.',
+                'reply_deputy_id': $rootScope.currentUser.deputy_id,
                 'status': 'review'
             });
             $scope.save();
@@ -41,6 +53,7 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.respond = function() {
             $scope.data = $.param({
                 'response': $scope.request.response,
+                'reply_deputy_id': $rootScope.currentUser.deputy_id,
                 'status': 'answered'
             });
             $scope.save();
@@ -49,6 +62,7 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.reject = function() {
             $scope.data = $.param({
                 'response': $scope.request.response,
+                'reply_deputy_id': $rootScope.currentUser.deputy_id,
                 'status': 'rejected'
             });
             $scope.save();
@@ -57,12 +71,14 @@ app.controller('ViewController', ['$scope', '$rootScope', '$http', '$location', 
         $scope.meeting = function() {
             $scope.data = $.param({
                 'response': 'Вам призначено зустріч: ' + $scope.request.response,
+                'reply_deputy_id': $rootScope.currentUser.deputy_id,
                 'status': 'answered'
             });
             $scope.save();
         };
         
         $scope.save = function() {
+            //$scope.data.reply_deputy_id = $rootScope.currentUser.deputy_id;
             $http({
                 method: 'POST',
                 url: '/backend/dep_request/save/' + $scope.id,

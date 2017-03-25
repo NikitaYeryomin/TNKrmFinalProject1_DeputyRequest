@@ -33,6 +33,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                 console.log('logged_in = ' + $rootScope.logged_in);*/
             });
         }
+        
         getCurrentUser();
         
         $scope.count = {};
@@ -62,6 +63,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
                 }
             });
         };
+        
         $scope.request_count();
         
         $scope.reg_dep = function(){
@@ -101,6 +103,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.news = response.data.News;
+                    console.log($scope.news);
                 }
             });
         };

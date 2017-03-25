@@ -20,6 +20,12 @@ class User extends Front_controller {
             );
             $result = $this->user->login($this->data);
             if ($result) {
+                if ($result['role'] == 'deputy') {
+                    $deputy = $this->deputy->deputy_by_userid($result['id']);
+                    //print_r($deputy);
+                    $result['deputy_id'] = $deputy[0]['id'];
+                }
+                //print_r($result);
                 $this->session->set_userdata('logged_in', $result);
                 $this->data['username'] = $result['username'];
                 echo json_encode(array(

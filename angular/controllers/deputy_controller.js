@@ -67,6 +67,13 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             if ($scope.new==0){$scope.new='жодного нового';}
             else if ($scope.new % 10 ==1){$scope.new+=' нове';}
             else {$scope.new+=' нових';}
+            $http({
+                method: 'GET',
+                url: '/backend/deputy/index',
+            }).then(function(response) {
+                //console.log(response.data);
+                $scope.deputies = response.data.deputies;
+            });
             //console.log($scope.requests);
             //console.log($scope);
         }

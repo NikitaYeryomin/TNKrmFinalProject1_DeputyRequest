@@ -12,12 +12,12 @@
                 <div class="col-lg-8 col-sm-8">
                     <h2 style="text-align: center">Звернення</h2>
                     <h2 style="text-align: center">до депутата Краматорської міської ради</h2>
-                    <h2 style="text-align: center"><strong><a href="#!/deputy/{{request.deputy_id}}">{{request.name_gen_case}}&nbsp;{{request.patronymic_gen_case}}&nbsp;{{request.surname_gen_case}}</a></strong></h2>
+                    <h2 style="text-align: center"><strong><a href="#" ui-sref="deputy({id: deputy.id})">{{request.name_gen_case}}&nbsp;{{request.patronymic_gen_case}}&nbsp;{{request.surname_gen_case}}</a></strong></h2>
                 </div>
                 <div class="col-lg-2 col-sm-2">
                     <img src="/img/city_embleme_1.jpg" 
-                            width="200px"
-                            alt="герб міста">
+                        width="200px"
+                        alt="герб міста">
                 </div>
             </div>
             <div class="row reg-input">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-lg-12 col-sm-12">
                     <label>Дата звернення:</label>
-                    <p>{{request.adddate| humantime}}</p>
+                    <p>{{request.adddate | humantime}}</p>
                 </div>
                 <div class="col-lg-12 col-sm-12">
                     <label>Тема звернення:</label>
@@ -52,15 +52,24 @@
                     <p><strong>{{request.response}}</strong></p>
                 </div>
                 <div class="col-lg-12 col-sm-12" ng-show="request.status == 'rejected'">
-                    <label>Відхилено з причини:</label>
+                    <label>Відхилено депутатом 
+                        <span ng-repeat="deputy in deputies | filter: {id: request.reply_deputy_id}">
+                            <a href="" ui-sref="deputy({id: request.deputy_id})">{{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}</a>:
+                        </span>
+                        з причини:
+                    </label>
                     <p>{{request.response}}</p>
                 </div>
                 <div class="col-lg-12 col-sm-12" ng-show="request.status == 'answered'">
                     <label>Дата відповіді:</label>
-                    <p>{{request.ansdate| humantime}}</p>
+                    <p>{{request.ansdate | humantime}}</p>
                 </div>
                 <div class="col-lg-12 col-sm-12" ng-show="request.status == 'answered'">
-                    <label>Відповідь:</label>
+                    <label>Відповідь депутата
+                        <span ng-repeat="deputy in deputies | filter: {id: request.reply_deputy_id}">
+                            <a href="" ui-sref="deputy({id: request.deputy_id})">{{deputy.surname_gen_case}}&nbsp;{{deputy.name_gen_case}}&nbsp;{{deputy.patronymic_gen_case}}</a>:
+                        </span>
+                    </label>
                     <p>{{request.response}}</p>
                 </div>
             </div>

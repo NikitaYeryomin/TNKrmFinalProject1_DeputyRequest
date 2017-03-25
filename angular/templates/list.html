@@ -12,6 +12,7 @@
                         <th>Автор звернення</th>
                         <th>Депутат</th>
                         <th>Статус</th>
+                        <th>Депутат, що відповів</th>
                     </tr>
                 </thead>
                 <tr ng-repeat="request in requests | filter: {public_appeal: '1'} : true | filter: {status: type}">
@@ -27,13 +28,20 @@
                         {{fullname(request)}}
                     </td>
                     <td>
-                        <a href="" ui-sref="deputy({id: request.deputy_id})">{{request.surname}}&nbsp;{{request.name}}&nbsp;{{request.patronymic}}</a>
+                        <a href="" ui-sref="deputy({id: request.deputy_id})" ng-repeat="deputy in deputies | filter: {id: request.deputy_id}">
+                            {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
+                        </a>
                     </td>
                     <td>
                         <span ng-show="request.status == 'new'">Зареєстровано</span>
                         <span ng-show="request.status == 'review'">Принято до розгляду</span>
                         <span ng-show="request.status == 'answered'">Надано відповідь</span>
                         <span ng-show="request.status == 'rejected'">Відхилено</span>
+                    </td>
+                    <td>
+                        <a href="" ui-sref="deputy({id: request.deputy_id})" ng-repeat="deputy in deputies | filter: {id: request.reply_deputy_id}">
+                            {{deputy.surname}}&nbsp;{{deputy.name}}&nbsp;{{deputy.patronymic}}
+                        </a>
                     </td>
                 </tr>
             </table>

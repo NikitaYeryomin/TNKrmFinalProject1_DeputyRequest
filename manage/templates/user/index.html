@@ -5,7 +5,7 @@
                 <th>ID</th>
                 <th>Прізвище, ім'я, по батькові</th>
                 <th>E-mail</th>
-                <th>Телефон #</th>
+                <th>Місто</th>
                 <th>Адреса</th>
                 <th>Дільниця</th>
                 <th>Дата реєстрації</th>
@@ -17,8 +17,8 @@
             <td>{{user.userid}}</td>
             <td><a href="" ui-sref="user({userId: user.userid})">{{fullname(user)}}</a></td>
             <td>{{user.email}}</td>
-            <td>{{user.phone}}</td>
-            <td><p ng-repeat="city in cities | filter: {cityid:user.city_id} : true"><a href="#" ng-click="">{{city.city}}</a>,</p>{{user.street + ", " + user.home}}</td>
+            <td><a href="#" ng-click="" ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</a></td>
+            <td>{{user.street}},&nbsp;буд.&nbsp;{{user.home}}</td>
             <td>{{user.tvo_id}}</td>
             <td>{{user.joindate}}</td>
             <td>{{user.role}}</td>

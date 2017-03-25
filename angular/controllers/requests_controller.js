@@ -4,6 +4,7 @@ app.controller('RequestsController', ['$scope', '$rootScope', '$http', '$locatio
         $scope.type = $stateParams.type;
         
         $scope.get_requests = function() {
+            // get requests
             $http({
                 method: 'GET',
                 url: '/backend/dep_request/allrequests'
@@ -13,6 +14,14 @@ app.controller('RequestsController', ['$scope', '$rootScope', '$http', '$locatio
                     //console.log($scope.requests);
                     //console.log($scope.type);
                 }
+            });
+            // get deputies
+            $http({
+                method: 'GET',
+                url: '/backend/deputy',
+            }).then(function(response) {
+                //console.log(response.data);
+                $scope.deputies = response.data.deputies;
             });
         };
         
