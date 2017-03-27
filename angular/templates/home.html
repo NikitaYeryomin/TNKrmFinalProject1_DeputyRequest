@@ -78,7 +78,7 @@
 </header>
 
 <section class="content" style="">
-    <table>
+    <table style="width: 97%">
         <tr>
             <td style="text-align: center; vertical-align: top;">
                 <ul class="nav">
@@ -97,8 +97,8 @@
                 </ul>
                 <section>
                     <legend>Новини розробки системи</legend>
-                    <div class="row" ng-repeat="n in news | orderBy : '-newsid'">
-                        <p><strong>{{n.date | formatDate}}:</strong>&nbsp;{{n.text}}</p>
+                    <div class="row" ng-repeat="n in news | orderBy:'-newsid'">
+                        <p><strong>{{n.date|humandate}}:</strong>&nbsp;{{n.text}}</p>
                         <hr>
                     </div>
                 </section>

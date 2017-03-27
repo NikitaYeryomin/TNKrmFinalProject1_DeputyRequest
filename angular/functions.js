@@ -30,7 +30,19 @@ app.filter('humantime', ['$filter', function ($filter) {
     };
 }]);
 
-app.filter('formatDate', ['$filter', function ($filter) {
+app.filter('humandate', ['$filter', function ($filter) {
+    return function (datestamp) {
+        if (datestamp) {
+    var months=['січня','лютого',"березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"];
+    var time=(datestamp.slice(8,10)<10?datestamp.slice(9,10):datestamp.slice(8,10))+' '+months[datestamp.slice(5,7)-1]+' '+datestamp.slice(0,4);
+    return time;
+          }
+        else
+            return "";
+    };
+}]);
+
+/*app.filter('formatDate', ['$filter', function ($filter) {
     return function (date, format) {
         if (date) {
             return moment(date).format('DD.MM.YYYY' );
@@ -38,7 +50,7 @@ app.filter('formatDate', ['$filter', function ($filter) {
         else
             return "";
     };
-}]);
+}]);*/
 
 app.filter('numberWithCommasFormat', [function () {
     return function (x) {

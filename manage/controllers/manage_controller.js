@@ -5,7 +5,7 @@
 app.controller('ManageController', ['$scope', '$rootScope', '$http', '$location', '$state',
     function($scope, $rootScope, $http, $location, $state) {
 
-    $scope.news = {};
+   // $scope.news = {};
     
     $scope.get_news = function() {
         $http({

@@ -94,7 +94,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
         
         $scope.users_count();
         
-        $scope.news = {};
+        //$scope.news = {};
     
         $scope.get_news = function() {
             $http({
@@ -103,7 +103,7 @@ app.controller('AppController', ['$scope', '$rootScope', '$http', '$state',
             }).then(function(response) {
                 if (response.data.error == 0) {
                     $scope.news = response.data.News;
-                    console.log($scope.news);
+                    //console.log($scope.news);
                 }
             });
         };

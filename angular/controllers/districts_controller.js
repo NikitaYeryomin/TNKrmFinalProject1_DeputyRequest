@@ -144,8 +144,8 @@ app.controller('DistrictsController', ['$scope', '$http', '$location', '$state',
             var districts = response.data.districts_on_map;
             var places = response.data.places_on_map;
             $scope.districts = response.data.districts;
-            console.log(districts);
-            console.log($scope.districts);
+            //console.log(districts);
+            //console.log($scope.districts);
             $scope.places = response.data.places;
             initMap();
             for (var i = 0; i < districts.length; i++) {
