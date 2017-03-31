@@ -18,8 +18,8 @@
         <th><acronym title="територіальний виборчий округ">ТВО</acronym>
         <th>статус
         <th>звернень: очікують / з відповідями</th>
-    <tr ng-repeat="deputy in deputies | filter: search">
-        <td><a href="#!/deputy/{{deputy.id}}">{{deputy.surname}} {{deputy.name}} {{deputy.patronymic}}</a>
+    <tr ng-repeat="deputy in deputies | filter: {fullname: search}">
+        <td><a href="#!/deputy/{{deputy.id}}"><span ng-bind-html="deputy.fullname | highlight: search"></span></a>
         <td>{{deputy.party}}
         <td><a href="#!/tvo/{{deputy.tvoid}}">{{deputy.tvoid}}</a>{{deputy.ifLeader}}
         <td class="confirmed" title="цей депутат офіційно зареєстрований у системі та може особисто відповідати на ваші звернення тут">{{deputy.registered}}

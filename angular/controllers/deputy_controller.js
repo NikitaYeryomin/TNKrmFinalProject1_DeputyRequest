@@ -13,10 +13,12 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
             $scope.deputies = response.data.deputies;
             var i;
             for (i = 0; i < $scope.deputies.length; i++) {
-               if ($scope.deputies[i].tvoid==0){
-                   $scope.deputies[i].ifLeader='лідер списку';
-                   $scope.deputies[i].tvoid=null;
-               }
+                if ($scope.deputies[i].tvoid==0){
+                    $scope.deputies[i].ifLeader='лідер списку';
+                    $scope.deputies[i].tvoid=null;
+                    console.log($scope.deputies[i]);
+                }
+                $scope.deputies[i].fullname = $scope.deputies[i].surname + ' ' + $scope.deputies[i].name + ' ' + $scope.deputies[i].patronymic;
             }
         });
     };

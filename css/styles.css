@@ -142,6 +142,10 @@ tr:nth-child(even){
     text-align: center;
 }
 
+.highlighted {
+    background: yellow;
+}
+
 input.ng-invalid, textarea.ng-invalid {
     background-color:pink;
 }
