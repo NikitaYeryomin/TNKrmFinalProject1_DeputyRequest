@@ -1,4 +1,11 @@
 <div>
+    <div>
+        <input type="text"
+            class="form-control"
+            ng-model="search"
+            placeholder="Знайти користувача"
+            style="background-color:white; text-align:center;">   
+    </div>
     <table class="table-striped table-bordered table-hover table-condensed">
         <thead>
             <tr>
@@ -13,13 +20,25 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tr ng-repeat="user in users">
+        <tr ng-repeat="user in users | filter: search">
             <td>{{user.userid}}</td>
-            <td><a href="" ui-sref="user({userId: user.userid})">{{fullname(user)}}</a></td>
-            <td>{{user.email}}</td>
-            <td><a href="#" ng-click="" ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</a></td>
-            <td>{{user.street}},&nbsp;буд.&nbsp;{{user.home}}</td>
-            <td>{{user.tvo_id}}</td>
+            <td>
+                <a href="" ui-sref="user({userId: user.userid})">
+                    <span ng-bind-html="user.fullname | highlight: search"></span>
+                </a>
+            </td>
+            <td>
+                <span ng-bind-html="user.email | highlight: search"></span>
+            </td>
+            <td>
+                <a href="#" ng-click="" ng-repeat="city in cities | filter: {cityid:user.city_id} : true">{{city.city}}</a>
+            </td>
+            <td>
+                <span ng-bind-html="user.street | highlight: search"></span>,&nbsp;буд.&nbsp;{{user.home}}
+            </td>
+            <td>
+                <span ng-bind-html="user.tvo_id | highlight: search"></span>
+            </td>
             <td>{{user.joindate}}</td>
             <td>{{user.role}}</td>
             <td>

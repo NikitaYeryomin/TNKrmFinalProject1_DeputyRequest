@@ -14,6 +14,10 @@ app.controller('UsersController', ['$scope', '$rootScope', '$http', '$location',
                     $scope.users = response.data.UserList;
                     $scope.cities = response.data.CityList;
                 }
+                console.log($scope.users);
+                for (var i = 0; i < $scope.users.length; i++) {
+                    $scope.users[i].fullname = $scope.users[i].lastname + ' ' + $scope.users[i].firstname + ' ' + $scope.users[i].secondname;
+                }
             });
         };
         

@@ -16,7 +16,7 @@ app.controller('DeputyController', ['$scope', '$http', '$location', '$state', '$
                 if ($scope.deputies[i].tvoid==0){
                     $scope.deputies[i].ifLeader='лідер списку';
                     $scope.deputies[i].tvoid=null;
-                    console.log($scope.deputies[i]);
+                    //console.log($scope.deputies[i]);
                 }
                 $scope.deputies[i].fullname = $scope.deputies[i].surname + ' ' + $scope.deputies[i].name + ' ' + $scope.deputies[i].patronymic;
             }

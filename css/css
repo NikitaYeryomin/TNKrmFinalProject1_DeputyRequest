@@ -4352,6 +4352,7 @@ body.modal-open,
     overflow-y: scroll
 }
 */
+
 .modal.fade .modal-dialog {
     -webkit-transform: translate(0, -25%);
     -ms-transform: translate(0, -25%);
@@ -4449,6 +4450,7 @@ body.modal-open,
 .modal-footer .btn-block+.btn-block {
     margin-left: 0
 }
+
 @media screen and (min-width: 768px) {
     .modal-dialog {
         right: auto;
